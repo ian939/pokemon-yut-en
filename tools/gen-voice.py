@@ -7,7 +7,7 @@
 
 - 녹음할 문장 찾기 (index.html 을 읽는다):
   · TTS.say( … ) / TTS.sayEn( … ) 안의 글자, vo("…") 로 감싼 글자
-  · 포켓몬 이름 1025개 (data/pokemon.js) · 포켓몬 기술 이름(배틀) · 판 기술 이름 · 볼 이름 · 윷 결과 이름 (yut-rules.js) · 희귀도 이름 · 숫자 0~100
+  · 포켓몬 이름 1025개 (data/pokemon.js) · 포켓몬 기술 이름(배틀) · 판 기술 이름 · 볼 이름 · 윷 결과 이름 (yut-rules.js) · 희귀도 이름 · 숫자 0~100 · 기본 프로필 이름(Dreamer·Mom…)
   → 문장을 바꾸거나 새로 쓰면 이 스크립트를 다시 돌린다 (안 돌리면 그 말만 브라우저 목소리로 나온다).
 - 결과: assets/voice/<열쇠의 md5 10자>.mp3 + assets/voice/voice.js (window.VOICE = { 열쇠: [파일, 말 시작초, 길이초] })
   열쇠 = 글자를 소문자로, 기호·이모지를 빼고 — index.html TTS.key() 와 똑같이 유지할 것
@@ -125,6 +125,9 @@ def phrases():
         add(s, "rarity")
     for n in range(0, 101):
         add(str(n), "number")
+    # 기본 프로필 이름 (사람이 이름을 바꾸지 않았으면 녹음으로 읽힌다)
+    for s in ("Dreamer", "Jion", "Mom", "Dad", "Aunt", "Grandma", "Grandpa", "Friend"):
+        add(s, "member")
     return found, skipped
 
 

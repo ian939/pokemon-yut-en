@@ -277,9 +277,9 @@ img { -webkit-user-drag: none; }
   border: 4px dashed #fff; background: rgba(255,255,255,.2); box-shadow: 0 0 0 3px var(--gold), 0 0 18px 4px rgba(245,184,46,.8);
   animation: ring 1s ease-in-out infinite;
 }
-.dest b { position: absolute; top: -34%; right: -44%; background: var(--gold); color: var(--ink); border: 3px solid var(--ink); border-radius: 10px; padding: 1px 9px; font-weight: 900; font-size: max(15px, calc(var(--bs) * .034)); white-space: nowrap; box-shadow: 0 3px 0 var(--ink); line-height: 1.3; }
+.dest b { position: absolute; top: -34%; left: 10%; background: var(--gold); color: var(--ink); border: 3px solid var(--ink); border-radius: 10px; padding: 1px 9px; font-weight: 900; font-size: max(15px, calc(var(--bs) * .034)); white-space: nowrap; box-shadow: 0 3px 0 var(--ink); line-height: 1.3; }
 .dest b small { font-size: .7em; margin-left: 3px; }
-.dest.flip b { right: auto; left: -44%; }
+.dest.flip b { left: auto; right: 10%; } /* 영어판: 말풍선 글이 길어서 판 가운데 쪽으로 늘어나게 — 왼쪽 반은 오른쪽으로, 오른쪽 반(flip)은 왼쪽으로 */
 .dest.hit { box-shadow: 0 0 0 3px var(--red), 0 0 18px 4px rgba(229,72,77,.8); }
 .dest.hit b { background: var(--red); color: #fff; }
 .dest.back b { background: #9cc9f5; }
@@ -329,6 +329,8 @@ img { -webkit-user-drag: none; }
 .pending.compact .rchip { padding-right: 6px; font-size: calc(var(--t1) * .85); } .pending.compact .rchip img { width: 28px; height: 28px; }
 .pending.tiny .rchip img { display: none; } .pending.tiny .rchip { padding: 0 6px; }
 .pending .lab { font-size: 14px; font-weight: 800; color: var(--ink-soft); }
+.pending .lab, .pending .rchip { flex: none; white-space: nowrap; } /* 영어판: 글이 길어 칩이 줄어들며 글자가 세로로 꺾이지 않게 — 넘치면 위 .compact → .tiny → .mini 로 작게 */
+.pending.mini { gap: 2px 3px; flex-wrap: wrap; align-content: center; } .pending.mini .rchip { padding: 0 4px; font-size: calc(var(--t1) * .68); line-height: 1.15; border-width: 2px; box-shadow: none; } /* 그래도 넘치면 두 줄로 */
 .rchip { display: inline-flex; align-items: center; gap: 2px; background: var(--paper); border: 3px solid var(--ink); border-radius: 10px; padding: 0 10px 0 0; font-family: var(--pixel); font-weight: 700; font-size: var(--t1); box-shadow: 0 3px 0 var(--ink); }
 .rchip img { width: 36px; height: 36px; object-fit: contain; }
 .btn.throw { width: 100%; white-space: nowrap; overflow: hidden; padding-left: 12px; padding-right: 12px; }
@@ -1016,7 +1018,7 @@ body.coining .tcard.active { border-color: var(--ink) !important; box-shadow: va
 /* ================================================================
    설정
 ================================================================ */
-const APP_VERSION = "2026-10-04e";
+const APP_VERSION = "2026-10-08a";
 const D = window.YUT_DATA;
 const Q = new URLSearchParams(location.search);
 const SPEED = Q.has("fast") ? 0.12 : 1;           // 테스트용: ?fast=1 이면 연출을 빠르게
@@ -1739,6 +1741,7 @@ function updatePick() {
   const slots = $("#slots");
   if (!slots) return;
   slots.innerHTML = Array.from({ length: n }, (_, k) => slotHtml(mine[k], k)).join("");
+  $$(".slot .nm", slots).forEach(el => fitText(el, 10)); // 영어 이름은 길다 (Charmander) — 폰에서 잘리지 않게 글자를 줄인다
   $("#pick-count").textContent = mine.length + "/" + n;
   $("#pick-next").disabled = mine.length < n;
   $("#pick-next").classList.toggle("cursor", mine.length >= n);
@@ -1909,9 +1912,10 @@ function renderPending() {
   box.innerHTML = G.s.pending.length
     ? '<span class="lab">Left</span>' + G.s.pending.map(r => '<span class="rchip"><img src="' + artUrl(CAST.yut[r]) + '" alt="">' + RES[r].name + "</span>").join("")
     : "";
-  box.classList.remove("compact", "tiny"); // 한 줄에 안 들어가면 작게
+  box.classList.remove("compact", "tiny", "mini"); // 한 줄에 안 들어가면 작게
   if (box.scrollWidth > box.clientWidth + 1) box.classList.add("compact");
   if (box.scrollWidth > box.clientWidth + 1) box.classList.add("tiny");
+  if (box.scrollWidth > box.clientWidth + 1) box.classList.add("mini");
 }
 function setSticks(sticks) {
   const mark = G.s.settings.backdo;
@@ -2141,7 +2145,7 @@ function showDests(ms, cpu) {
     const b = document.createElement("button");
     const at = m.finish ? "goal" : m.to.node;
     b.className = "dest" + (m.finish ? " goal" : m.capture.length ? " hit" : m.result < 0 ? " back" : "") + (cpu ? " cpu" : "") +
-      (nodeXY(at)[0] >= 90 ? " flip" : ""); // 판 오른쪽 끝 칸은 말풍선을 왼쪽에 (판 밖으로 잘리지 않게)
+      (nodeXY(at)[0] >= 50 ? " flip" : ""); // 판 오른쪽 반은 말풍선을 왼쪽으로 늘인다 (영어 글이 길어 판 밖으로 잘리지 않게)
     placeAt(b, at);
     b.dataset.move = m.id;
     b.setAttribute("aria-label", m.finish ? "Goal" : RES[m.result].name);
@@ -2918,7 +2922,7 @@ async function showWin(ti) {
     '<div class="win-team">' + finals.map((id, k) =>
       '<div class="w" style="--i:' + k + '"><img src="' + artUrl(id) + '" alt="" onerror="artFail(this,' + id + ')"><b>' + esc(nameOf(id)) + "</b></div>").join("") + "</div>" +
     boxHtml(s.reward) + bonusHtml(s.reward) +
-    '<div class="win-btns' + (s.reward && (!s.reward.opened || (studyFlag() && !s.reward.bonus)) ? " hidden" : "") + '">' + (netOn() ? '<button class="btn big gold" data-act="net-rematch">🔁 Play again</button>' : '<button class="btn big gold" data-act="rematch">🔁 Play again</button>') + '<button class="btn big" data-act="win-home">🏠 Home</button></div></div>';
+    '<div class="win-btns' + (s.reward && (!s.reward.opened || (studyFlag() && !s.reward.bonus)) ? " hidden" : "") + '">' + (netOn() ? '<button class="btn big gold" data-act="net-rematch">🔁 Rematch!</button>' : '<button class="btn big gold" data-act="rematch">🔁 Play again</button>') + '<button class="btn big" data-act="win-home">🏠 Home</button></div></div>';
   document.body.appendChild(o);
 }
 /* ---------- 🎁 보물상자 — 볼은 이긴 순간 이미 가방에 들어갔다. 여기서는 열어서 보여 주기만 ---------- */
@@ -3204,7 +3208,7 @@ function showSkillTargets(i, x) {
   const team = G.s.pieces[i].team, u = Yut.unitOfPiece(G.s, i);
   const ring = (node, label, target, hit) => {
     const b = document.createElement("button");
-    b.className = "dest skill-t" + (hit ? " hit" : "") + (nodeXY(node)[0] >= 90 ? " flip" : "");
+    b.className = "dest skill-t" + (hit ? " hit" : "") + (nodeXY(node)[0] >= 50 ? " flip" : "");
     placeAt(b, node);
     b.dataset.node = node;
     b.setAttribute("aria-label", skillName(x.key));

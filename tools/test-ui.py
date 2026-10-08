@@ -192,7 +192,7 @@ def scenario(browser, base, errors):
     page.on("pageerror", lambda e: errors.append("pageerror: " + str(e)))
     page.goto(base + "?seed=2&spots=none&force=1,1,2,-1,3,4,4,2")  # 풀숲 없이 (v1 연출만)
     page.wait_for_timeout(400)
-    page.click("text=가족 대결")
+    page.click("[data-act=new-family]")
     page.click("[data-act=set][data-field=pieces][data-value='2']")
     page.click("[data-act=to-pick]")
     page.evaluate("() => { window.__yut.Setup.picks[0] = []; }")
@@ -205,14 +205,14 @@ def scenario(browser, base, errors):
     # 🪙 동전 던지기 — 눌러서 던지면 먼저 할 팀 면으로 떨어진다
     page.wait_for_selector(".coin-ov #ct-coin", timeout=10000)
     card = page.inner_text(".coin-ov")
-    check("앞면" in card and "뒷면" in card, "🪙 시작할 때 동전 던지기 (앞면·뒷면에 두 팀)")
+    check("Heads" in card and "Tails" in card, "🪙 시작할 때 동전 던지기 (앞면·뒷면에 두 팀)")
     page.screenshot(path=str(OUT / "00-coin.png"))
     measure(page, "🪙 동전 던지기")
     page.click("#ct-coin", force=True)
     page.wait_for_selector(".coin-ov.landed", timeout=10000)
     first = page.evaluate("() => window.__yut.G.s.turn")
     say = page.inner_text("#ct-say")
-    check(("앞면" if first == 0 else "뒷면") in say and "먼저" in say, f"동전이 먼저 할 팀 면으로 ({say})")
+    check(("Heads" if first == 0 else "Tails") in say and "first" in say, f"동전이 먼저 할 팀 면으로 ({say})")
     page.screenshot(path=str(OUT / "00-coin-landed.png"))
     wait_idle(page)
 
@@ -234,12 +234,16 @@ def scenario(browser, base, errors):
     page.wait_for_selector(".battle", timeout=5000)
     t0 = time.time()
     stamp = None
-    for name, at in (("50-battle-meet", 1.5), ("50-battle-move", 2.6), ("50-battle-hit", 3.1), ("50-battle-defeat", 5.3), ("50-battle-home", 6.3)):
+    # 영어판은 대화창 글이 길어 배틀이 약 1.3배 길다 (한국어판 약 10초 → 13초) — 찍는 때도 그만큼 늦춘다
+    for name, at in (("50-battle-meet", 2.0), ("50-battle-move", 3.4), ("50-battle-hit", 4.0), ("50-battle-defeat", 6.9), ("50-battle-home", 8.2)):
         page.wait_for_timeout(max(0, int((t0 + at - time.time()) * 1000)))
         page.screenshot(path=str(OUT / f"{name}.png"))
-        el = page.query_selector(".bt-stamp")
+        el = page.query_selector(".bt-stamp:not(.super)")  # '효과가 굉장했다' 도장(.super)은 따로 — 물리친 도장만 본다
         stamp = stamp or (el.inner_text() if el else None)
-    check(stamp == "물리쳤다!", f"배틀: 기술로 물리침 (도장: {stamp})")
+    if not stamp:
+        el = page.wait_for_selector(".bt-stamp:not(.super)", timeout=10000)
+        stamp = el.inner_text() if el else None
+    check(stamp == "Knocked out!", f"배틀: 기술로 물리침 (도장: {stamp})")
     check(page.query_selector(".bt-ball") is None, "배틀에 몬스터볼이 안 나옴")
     page.wait_for_selector(".battle", state="detached", timeout=15000)
     check(True, f"배틀 길이 약 {time.time() - t0:.1f}초")
@@ -291,7 +295,7 @@ def scenario_v2(browser, base, errors):
     def ctx_page(vw=1180, vh=820, bag=None):
         ctx = browser.new_context(viewport={"width": vw, "height": vh}, has_touch=True)
         if bag is not None:
-            ctx.add_init_script("if (!localStorage.getItem('engmon_yut_v1')) localStorage.setItem('engmon_yut_v1', " + json.dumps(json.dumps({"bag": bag})) + ");")
+            ctx.add_init_script("if (!localStorage.getItem('engmon_yut_en_v1')) localStorage.setItem('engmon_yut_en_v1', " + json.dumps(json.dumps({"bag": bag})) + ");")
         page = ctx.new_page()
         page.on("pageerror", lambda e: errors.append("pageerror: " + str(e)))
         return ctx, page
@@ -299,7 +303,7 @@ def scenario_v2(browser, base, errors):
     def start_family(page, query):
         page.goto(base + query)
         page.wait_for_timeout(300)
-        page.click("text=가족 대결")
+        page.click("[data-act=new-family]")
         page.click("[data-act=set][data-field=pieces][data-value='2']")
         page.click("[data-act=to-pick]")
         page.click("[data-act=pick-auto]"); page.click("#pick-next")
@@ -334,14 +338,14 @@ def scenario_v2(browser, base, errors):
     check(page.eval_on_selector_all("#spots .spot", "e => e.length") == 1, "쓴 풀숲은 윷판에서 사라짐")
     # 보관함 → 다음 판 고르기
     page.click("[data-act=pause]"); page.click("[data-act=pause-home]")
-    page.click("text=가족 대결"); page.click("[data-act=to-pick]")
+    page.click("[data-act=new-family]"); page.click("[data-act=to-pick]")
     page.wait_for_timeout(200)
-    check("잡은 포켓몬" in page.inner_text("#pick-scroll") and page.query_selector(".pcard[data-id='58']") is not None, "고르기 화면 🎯 잡은 포켓몬에 가디가 생김")
+    check("Caught Pokémon" in page.inner_text("#pick-scroll") and page.query_selector(".pcard[data-id='58']") is not None, "고르기 화면 🎯 잡은 포켓몬에 가디가 생김")
     page.screenshot(path=str(OUT / "73-pick-collection.png"))
     page.goto(base + "?fast=1"); page.wait_for_timeout(300)
     page.click("[data-act=profiles]"); page.click("[data-act=prof-bag][data-id=kid]"); page.wait_for_timeout(200)  # 🎒 가방은 👤 프로필 안에
     page.screenshot(path=str(OUT / "74-bag.png"))
-    check("보관함" in page.inner_text(".modal") and "×2" in page.inner_text(".bag-list"), "가방 창: 볼 개수와 보관함")
+    check("Box" in page.inner_text(".modal") and "×2" in page.inner_text(".bag-list"), "가방 창: 볼 개수와 보관함")
     ctx.close()
 
     # ② 3번 다 놓침 (catch=0) → 도망, 볼 3개 다 씀
@@ -365,7 +369,7 @@ def scenario_v2(browser, base, errors):
     page.click("#btn-throw", force=True); wait_idle(page)
     page.click(".dest[data-move='new/3']", force=True)
     for _ in range(3): answer_quiz(page)
-    page.wait_for_function("() => document.querySelector('.bt-text') && document.querySelector('.bt-text').textContent.includes('볼이 없어요')", timeout=15000)
+    page.wait_for_function("() => document.querySelector('.bt-text') && document.querySelector('.bt-text').textContent.includes('No balls')", timeout=15000)
     check(page.query_selector(".bt-menu .bt-ballbtn") is None, "볼이 없으면 안내만 하고 볼 메뉴 없음")
     page.wait_for_selector(".battle", state="detached", timeout=15000)
     ctx.close()
@@ -373,7 +377,7 @@ def scenario_v2(browser, base, errors):
     # ④ 로켓단이 풀숲을 밟으면 쫓아냄
     ctx, page = ctx_page()
     page.goto(base + "?seed=2&force=1,3&spots=3:133&fast=1&catch=0"); page.wait_for_timeout(300)
-    page.click("text=로켓단 대결"); page.click("[data-act=set][data-field=pieces][data-value='2']")
+    page.click("[data-act=new-rocket]"); page.click("[data-act=set][data-field=pieces][data-value='2']")
     page.click("[data-act=to-pick]"); page.click("[data-act=pick-auto]"); page.click("#pick-next")
     page.wait_for_selector("#ri-go"); page.click("#ri-go"); wait_idle(page)
     page.click("#btn-throw", force=True); wait_idle(page)
@@ -386,7 +390,7 @@ def scenario_v2(browser, base, errors):
     # ⑤ 로켓단을 이기면 보물상자 — 가방에 볼이 들어가고, 새로고침해도 두 번 안 들어감
     ctx, page = ctx_page()
     page.goto(base + "?seed=2&fast=1&box=master,luxury,poke&noslot=1"); page.wait_for_timeout(300)
-    page.click("text=로켓단 대결"); page.click("[data-act=set][data-field=pieces][data-value='2']")
+    page.click("[data-act=new-rocket]"); page.click("[data-act=set][data-field=pieces][data-value='2']")
     page.click("[data-act=to-pick]"); page.click("[data-act=pick-auto]"); page.click("#pick-next")
     page.wait_for_selector("#ri-go"); page.click("#ri-go"); wait_idle(page)
     page.evaluate("""() => { const Y = window.__yut, s = Y.G.s;
@@ -406,32 +410,32 @@ def scenario_v2(browser, base, errors):
     check(page.query_selector(".win-btns.hidden") is not None, "상자 뒤 💰 돈 문제를 풀기 전에는 버튼이 숨어 있음")
     col0 = store(page, "d.collection.length")
     page.wait_for_selector(".quiz .qz-scene .cs-mon", timeout=15000)
-    check("포켓몬센터" in page.inner_text(".quiz .qz-title") and "손님" in page.inner_text(".quiz .cs-say"), "🏥 돈 문제 = 포켓몬센터에서 럭키의 계산 돕기 (계산대 그림 · 럭키 · 말풍선)")
+    check("Pokémon Center" in page.inner_text(".quiz .qz-title") and "customer" in page.inner_text(".quiz .cs-say"), "🏥 돈 문제 = 포켓몬센터에서 럭키의 계산 돕기 (계산대 그림 · 럭키 · 말풍선)")
     page.screenshot(path=str(OUT / "76a-center-quiz.png"))
     titles = []
     for k in range(3):
         page.wait_for_selector(".quiz .qz-choice:not([disabled])", timeout=20000)
         titles.append(page.inner_text(".quiz .qz-title"))
         answer_quiz(page, timeout=20000)
-    check(all(f"{k + 1}/3" in t for k, t in enumerate(titles)) and "유니크 10%" in titles[0] and "유니크 13%" in titles[1] and "유니크 16%" in titles[2],
+    check(all(f"{k + 1}/3" in t for k, t in enumerate(titles)) and "Unique 10%" in titles[0] and "Unique 13%" in titles[1] and "Unique 16%" in titles[2],
           "🏥 손님 세 명 (1/3 · 2/3 · 3/3), 맞힐 때마다 유니크 10 → 13 → 16%")
-    check("천 원 단위" in titles[0] and "+3%" in titles[0] and "천 원 단위" in titles[1] and "+3%" in titles[1] and "만 원 단위" in titles[2] and "+4%" in titles[2],
+    check("up to 1,000 won" in titles[0] and "+3%" in titles[0] and "up to 1,000 won" in titles[1] and "+3%" in titles[1] and "up to 10,000 won" in titles[2] and "+4%" in titles[2],
           "🏥 단계: ① 천 원 +3% · ② 천 원 +3% · ③ 만 원 +4%")
     page.wait_for_selector(".center-ov .cv-ball", timeout=15000)
     check(store(page, "JSON.stringify(d.lastGame.reward.bonus.odds)") == '{"c":40,"r":20,"u":20,"l":20}' and "20%" in page.inner_text(".center-ov"),
           "세 문제 다 맞히면 볼 속 확률 일반 40 · 레어 20 · 유니크 20 · 전설 20")
-    check("몬스터볼" in page.inner_text(".center-ov") and store(page, "d.lastGame.reward.bonus.opened") is False, "끝나면 🏥 포켓몬센터 화면에서 럭키가 몬스터볼을 줌 (아직 안 열림)")
+    check("Poké Ball" in page.inner_text(".center-ov") and store(page, "d.lastGame.reward.bonus.opened") is False, "끝나면 🏥 포켓몬센터 화면에서 럭키가 몬스터볼을 줌 (아직 안 열림)")
     vis = page.evaluate("() => { const b = document.querySelector('.center-ov .cv-ball').getBoundingClientRect(); return b.top >= 0 && b.bottom <= innerHeight; }")
     check(vis, "몬스터볼이 스크롤 없이 바로 보임 (상자 · 볼 목록은 뒤에 가려짐)")
     page.screenshot(path=str(OUT / "76b-center-ball.png"))
     page.click(".center-ov .cv-ball", force=True)
     page.wait_for_selector(".center-ov .cv-mon", timeout=15000)
-    check("짜잔" in page.inner_text(".center-ov"), "포켓몬센터 화면에서 볼을 열면 짜잔!")
+    check("Ta-da" in page.inner_text(".center-ov"), "포켓몬센터 화면에서 볼을 열면 짜잔!")
     page.click("[data-act=center-close]")
     page.wait_for_selector("#bonus-zone .bonus-mon", timeout=15000)
     page.wait_for_selector(".win-btns:not(.hidden)", timeout=5000)
     mon = store(page, "d.lastGame.reward.bonus.mon")
-    check(mon and "짜잔" in page.inner_text("#bonus-zone") and store(page, f"d.collection.some(x => x.id === {mon})"), f"몬스터볼을 열면 짜잔! 포켓몬이 나옴 ({mon}) · 보관함에")
+    check(mon and "Ta-da" in page.inner_text("#bonus-zone") and store(page, f"d.collection.some(x => x.id === {mon})"), f"몬스터볼을 열면 짜잔! 포켓몬이 나옴 ({mon}) · 보관함에")
     page.screenshot(path=str(OUT / "76-box-open.png"))
     col1 = store(page, "d.collection.length")
     page.reload(); page.wait_for_timeout(400)
@@ -441,7 +445,7 @@ def scenario_v2(browser, base, errors):
     # ⑥ 설정에서 "배틀 장면 건너뛰기" — 배틀 화면 없이 물리치고, 진 말은 집으로, 이긴 팀은 한 번 더
     ctx, page = ctx_page()
     page.goto(base + "?seed=2&spots=none&force=1,1"); page.wait_for_timeout(300)
-    page.click("text=가족 대결")
+    page.click("[data-act=new-family]")
     page.click("[data-act=set][data-field=pieces][data-value='2']")
     page.click("[data-act=set][data-field=battle][data-value='false']")
     page.screenshot(path=str(OUT / "77-setup-battle-skip.png"))
@@ -480,7 +484,7 @@ def scenario_v3(browser, base, errors):
     def start(page, query, mode="family", pieces=4, skills=True):
         page.goto(base + query + ("" if "luck=" in query else "&luck=1"))
         page.wait_for_timeout(300)
-        page.click("text=" + ("가족 대결" if mode == "family" else "로켓단 대결"))
+        page.click("[data-act=new-family]" if mode == "family" else "[data-act=new-rocket]")
         page.click(f"[data-act=set][data-field=pieces][data-value='{pieces}']")
         if not skills:
             page.click("[data-act=set][data-field=skills][data-value='false']")
@@ -516,9 +520,9 @@ def scenario_v3(browser, base, errors):
 
     # ① 설정: 두 대결 모두 ✨ 기술 켜기/끄기 (처음 게임 설정)
     ctx, page = ctx_page()
-    for mode in ("가족 대결", "로켓단 대결"):
+    for mode in ("family", "rocket"):
         page.goto(base + "?fast=1"); page.wait_for_timeout(250)
-        page.click("text=" + mode)
+        page.click("[data-act=new-" + mode + "]")
         on = page.query_selector("[data-act=set][data-field=skills][data-value='true'].on")
         off = page.query_selector("[data-act=set][data-field=skills][data-value='false']")
         check(on is not None and off is not None, f"{mode} 준비 화면에 ✨ 기술 켜기/끄기 (처음엔 켜짐)")
@@ -553,7 +557,7 @@ def scenario_v3(browser, base, errors):
     page.wait_for_selector("#dests .dest.skill-t", timeout=5000)
     rings = ev(page, "[...document.querySelectorAll('#dests .dest.skill-t')].map(d => +d.dataset.node)")
     check(rings == [9], f"파도타기: 밀 수 있는 상대 말만 반짝 ({rings})")
-    check(page.inner_text("#btn-skill") == "✖ 취소", "대상 고르는 중엔 ✖ 취소 버튼")
+    check(page.inner_text("#btn-skill") == "✖ Cancel", "대상 고르는 중엔 ✖ 취소 버튼")
     page.screenshot(path=str(OUT / "83-target.png"))
     measure(page, "기술 대상 고르기")
     page.click("#dests .dest.skill-t", force=True)
@@ -616,7 +620,7 @@ def scenario_v3(browser, base, errors):
     inject(page, "fresh(0, 'choose', [1]); Object.assign(s.pieces[0], { stage: 1 }); at(0, 9, 9)")
     page.click(".unit.can[data-node='9']", force=True)
     page.click(".dest[data-move='n9/1']", force=True)
-    page.wait_for_function("() => document.querySelector('#hint').textContent.includes('배웠다')", timeout=15000)
+    page.wait_for_function("() => document.querySelector('#hint').textContent.includes('learned')", timeout=15000)
     page.screenshot(path=str(OUT / "87-learn.png"))
     wait_idle(page)
     check(ev(page, "[s.pieces[0].stage, s.pieces[0].skill]") == [2, "nitro"], "10칸 → 마지막 모습 + 기술 배움")
@@ -678,10 +682,10 @@ def scenario_v3(browser, base, errors):
     ctx, page = ctx_page(390, 844)
     page.goto(base + "?fast=1"); page.wait_for_timeout(300)
     page.click("[data-act=help]"); page.wait_for_timeout(200)
-    check(page.query_selector(".help-tabs [data-tab=rules].on") is not None and "윷놀이 방법" in page.inner_text(".modal h2"), "📖 방법 · 도감 한 창 (처음엔 방법)")
+    check(page.query_selector(".help-tabs [data-tab=rules].on") is not None and "How to play" in page.inner_text(".modal h2"), "📖 방법 · 도감 한 창 (처음엔 방법)")
     page.click("[data-act=help-tab][data-tab=dex]"); page.wait_for_timeout(200)
     check(len(page.query_selector_all(".dex-card")) == 36, "기술 도감: 36개 (타입마다 2개)")
-    check(len(page.query_selector_all(".tchart .tc-row")) == 18 and "강해요" in page.inner_text(".tchart"), "기술 도감 아래 ⚔️ 타입 상성표 (18타입)")
+    check(len(page.query_selector_all(".tchart .tc-row")) == 18 and "Strong" in page.inner_text(".tchart"), "기술 도감 아래 ⚔️ 타입 상성표 (18타입)")
     page.evaluate("() => document.querySelector('.tchart').scrollIntoView()")
     page.screenshot(path=str(OUT / "91b-typechart.png"))
     page.screenshot(path=str(OUT / "91-skilldex.png"))
@@ -704,7 +708,7 @@ def scenario_v4(browser, base, errors):
     def start(page, query, mode="family", study=True):
         page.goto(base + query + ("" if "luck=" in query else "&luck=1"))
         page.wait_for_timeout(300)
-        page.click("text=" + ("가족 대결" if mode == "family" else "로켓단 대결"))
+        page.click("[data-act=new-family]" if mode == "family" else "[data-act=new-rocket]")
         page.click("[data-act=set][data-field=pieces][data-value='2']")
         if not study:
             page.click("[data-act=set][data-field=study][data-value='false']")
@@ -725,9 +729,9 @@ def scenario_v4(browser, base, errors):
 
     # ① 준비 화면: 두 대결 모두 🎓 공부 문제 켜기/끄기 (처음엔 켜짐)
     ctx, page = ctx_page()
-    for mode in ("가족 대결", "로켓단 대결"):
+    for mode in ("family", "rocket"):
         page.goto(base + "?fast=1"); page.wait_for_timeout(250)
-        page.click("text=" + mode)
+        page.click("[data-act=new-" + mode + "]")
         check(page.query_selector("[data-act=set][data-field=study][data-value='true'].on") is not None, f"{mode} 준비 화면에 🎓 공부 문제 켜기/끄기 (처음엔 켜짐)")
     ctx.close()
 
@@ -738,7 +742,7 @@ def scenario_v4(browser, base, errors):
     page.wait_for_selector(".quiz .clock", timeout=15000)
     page.wait_for_timeout(500)  # 튀어나오는 연출이 끝난 뒤에 잰다
     labels = page.eval_on_selector_all(".qz-choice", "e => e.map(x => x.textContent).sort()")
-    check(labels == ["3시 40분", "3시 8분", "4시 40분", "8시 15분"], f"시계 보기 4개 = 정답 + 아이가 하는 실수 ({labels})")
+    check(labels == ["3:08", "3:40", "4:40", "8:15"], f"시계 보기 4개 = 정답 + 아이가 하는 실수 ({labels})")
     measure(page, "🕐 시계 문제")
     page.screenshot(path=str(OUT / "93-clock.png"))
     t1 = page.inner_text(".quiz .qz-title")
@@ -749,10 +753,10 @@ def scenario_v4(browser, base, errors):
     page.wait_for_selector(".quiz .qz-choice:not([disabled])", timeout=15000)
     t3, a3 = page.inner_text(".quiz .qz-title"), page.inner_text(".quiz .qz-choice[data-ok]")
     answer_quiz(page)
-    m2 = int(re.search(r"(\d+)분", a2).group(1)); m3 = int(re.search(r"(\d+)분", a3).group(1))
-    check("1/3" in t1 and "2/3" in t2 and "15 · 30 · 45분" in t2 and m2 in (15, 30, 45) and "3/3" in t3 and "몇 시 몇 분" in t3 and m3 % 5 != 0,
+    m2 = int(re.search(r":(\d+)", a2).group(1)); m3 = int(re.search(r":(\d+)", a3).group(1))
+    check("1/3" in t1 and "2/3" in t2 and ":15 · :30 · :45" in t2 and m2 in (15, 30, 45) and "3/3" in t3 and "minute by minute" in t3 and m3 % 5 != 0,
           f"🕐 맞히면 다음 단계: ② 15·30·45분 ({a2}) → ③ 1분 단위 ({a3})")
-    check("유니크 10%" in t1 and "유니크 13%" in t2 and "유니크 16%" in t3, "맞힐 때마다 유니크·전설 10 → 13 → 16%")
+    check("Unique 10%" in t1 and "Unique 13%" in t2 and "Unique 16%" in t3, "맞힐 때마다 유니크·전설 10 → 13 → 16%")
     page.wait_for_selector(".bt-menu .bt-ballbtn", timeout=15000)
     check(ev(page, "window.__odds.slice(-1)[0]") == 20 and ev(page, "s.spots[0].id > 0"), "세 번 다 맞히면 전설 20%로 뽑고, 뽑은 포켓몬은 판에 저장")
     check(ev(page, "[d.study.clock.right, d.study.clock.total]") == [3, 3], "공부 기록: 시계 3/3")
@@ -766,17 +770,17 @@ def scenario_v4(browser, base, errors):
     page.click(".quiz .qz-choice:not([data-ok])")
     page.wait_for_selector(".quiz .qz-next:not([hidden])", timeout=15000)
     exp = page.inner_text(".qz-explain")
-    check("7" in exp and "25분" in exp and "정답은 7시 25분" in exp, "틀리면 풀이: 짧은 바늘 → 몇 시, 긴 바늘 → 몇 분")
+    check("7" in exp and "25 minutes" in exp and "It's 7:25" in exp, "틀리면 풀이: 짧은 바늘 → 몇 시, 긴 바늘 → 몇 분")
     measure(page, "🕐 시계 풀이 (낮은 가로 화면)")
     page.screenshot(path=str(OUT / "94-clock-explain.png"))
     page.click(".quiz .qz-next")
     page.wait_for_selector(".quiz .qz-choice:not([disabled])", timeout=15000)
     t2, a2 = page.inner_text(".quiz .qz-title"), page.inner_text(".quiz .qz-choice[data-ok]")
-    check("2/3" in t2 and "정각" in t2 and "분" not in a2, f"① 틀리면 같은 ① 단계의 다른 문제 (정각 {a2})")
+    check("2/3" in t2 and "o'clock" in t2 and "o'clock" in a2 and ":" not in a2, f"① 틀리면 같은 ① 단계의 다른 문제 (정각 {a2})")
     answer_quiz(page)
     page.wait_for_selector(".quiz .qz-choice:not([disabled])", timeout=15000)
     t3 = page.inner_text(".quiz .qz-title")
-    check("3/3" in t3 and "15 · 30 · 45분" in t3, "① 맞히면 마지막 기회는 ② 단계")
+    check("3/3" in t3 and ":15 · :30 · :45" in t3, "① 맞히면 마지막 기회는 ② 단계")
     answer_quiz(page, right=False)
     page.wait_for_selector(".bt-menu .bt-ballbtn", timeout=15000)
     check(ev(page, "window.__odds.slice(-1)[0]") == 13 and ev(page, "[d.study.clock.right, d.study.clock.total]") == [1, 3],
@@ -801,20 +805,20 @@ def scenario_v4(browser, base, errors):
     # ⑫ 💀 어려움: 준비 화면 칩 · 이기면 볼 4개 특별 상자
     ctx, page = ctx_page()
     page.goto(base + "?seed=2&fast=1&spots=none"); page.wait_for_timeout(300)
-    page.click("text=로켓단 대결")
+    page.click("[data-act=new-rocket]")
     page.click("[data-act=set][data-field=cpu][data-value='\"hard\"']")
-    check("볼 4개" in page.inner_text(".card"), "로켓단 세기에 💀 어려움 (이기면 볼 4개 안내)")
+    check("4 balls" in page.inner_text(".card"), "로켓단 세기에 💀 어려움 (이기면 볼 4개 안내)")
     page.click("[data-act=set][data-field=pieces][data-value='2']")
     page.click("[data-act=set][data-field=study][data-value='false']")
     page.click("[data-act=to-pick]"); page.click("[data-act=pick-auto]"); page.click("#pick-next")
-    page.wait_for_selector("#ri-go"); check("진심" in page.inner_text(".rocket-intro"), "어려움 등장 대사"); page.click("#ri-go"); wait_idle(page)
+    page.wait_for_selector("#ri-go"); check("No going easy" in page.inner_text(".rocket-intro"), "어려움 등장 대사"); page.click("#ri-go"); wait_idle(page)
     check(ev(page, "s.settings.cpuLevel") == "hard", "판에 어려움이 들어감")
     page.evaluate("""() => { const Y = window.__yut, s = Y.G.s; Object.assign(s.pieces[0], { state: 'done' });
       Object.assign(s.pieces[1], { state: 'board', route: 'OUT', step: 19, atGoal: false }); s.phase = 'choose'; s.pending = [3]; s.throwsLeft = 0; s.turn = 0; Y.Act['skill-cancel'](); }""")
     wait_idle(page)
     page.click(".dest.goal", force=True)
     page.wait_for_selector(".win-screen .chest", timeout=20000)
-    check(ev(page, "d.lastGame.reward.balls.length") == 4 and "특별 상자" in page.inner_text(".win-screen"), "어려움을 이기면 볼 4개 특별 상자")
+    check(ev(page, "d.lastGame.reward.balls.length") == 4 and "special chest" in page.inner_text(".win-screen"), "어려움을 이기면 볼 4개 특별 상자")
     page.click(".win-screen .chest", force=True)
     page.wait_for_function("() => document.querySelectorAll('#box-balls .ballchip').length === 4", timeout=15000)
     page.wait_for_selector(".win-btns:not(.hidden)", timeout=15000)
@@ -823,9 +827,9 @@ def scenario_v4(browser, base, errors):
 
     # ⑬ v6: 🎰 슬롯머신 · 😈 로켓단 무작위 · 진화형부터 · 💡 잡기 힌트 · 🎲 확률 막대 · 💧🔥 상성 · 🔤 영어
     ctx, page = ctx_page()
-    page.add_init_script("if (!localStorage.getItem('engmon_yut_v1')) localStorage.setItem('engmon_yut_v1', JSON.stringify({ collection: [{ id: 5, t: 1 }], bag: { poke: 3, great: 0, ultra: 0, luxury: 0, master: 0 } }));")
+    page.add_init_script("if (!localStorage.getItem('engmon_yut_en_v1')) localStorage.setItem('engmon_yut_en_v1', JSON.stringify({ collection: [{ id: 5, t: 1 }], bag: { poke: 3, great: 0, ultra: 0, luxury: 0, master: 0 } }));")
     page.goto(base + "?seed=2&spots=none&fast=1&force=2"); page.wait_for_timeout(300)
-    page.click("text=가족 대결"); page.click("[data-act=set][data-field=pieces][data-value='2']")
+    page.click("[data-act=new-family]"); page.click("[data-act=set][data-field=pieces][data-value='2']")
     page.click("[data-act=set][data-field=study][data-value='false']")
     page.click("[data-act=to-pick]")
     page.evaluate("() => { window.__yut.Setup.picks[0] = []; }")
@@ -849,7 +853,7 @@ def scenario_v4(browser, base, errors):
     wait_idle(page)
     page.click(".pchip.can", force=True)
     page.click(".dest[data-move='new/2']", force=True)
-    page.wait_for_function("() => document.querySelector('#hint').textContent.includes('잡을 수 있었어')", timeout=10000)
+    page.wait_for_function("() => document.querySelector('#hint').textContent.includes('could have knocked out')", timeout=10000)
     check(True, "💡 잡을 수 있었는데 다른 수를 두면 '앗, 저기 잡을 수 있었어!'")
     page.screenshot(path=str(OUT / "99h-missed.png"))
     wait_idle(page)
@@ -860,7 +864,7 @@ def scenario_v4(browser, base, errors):
     seen = []
     for k in range(2):
         page.goto(base + "?fast=1&spots=none"); page.wait_for_timeout(250)
-        page.click("text=로켓단 대결"); page.click("[data-act=set][data-field=study][data-value='false']")
+        page.click("[data-act=new-rocket]"); page.click("[data-act=set][data-field=study][data-value='false']")
         page.click("[data-act=to-pick]"); page.click("[data-act=pick-auto]"); page.click("#pick-next")
         page.wait_for_selector("#ri-go"); page.click("#ri-go")
         bag0 = sum(ev(page, "Object.values(d.bag)"))
@@ -884,7 +888,7 @@ def scenario_v4(browser, base, errors):
     page.click("#btn-skill"); page.click(".skill-item[data-act=skill-pick]")
     page.wait_for_selector(".modal .prob-bars", timeout=5000)
     bars = page.eval_on_selector_all(".modal .prob-bars div", "e => e.map(x => x.querySelector('b').textContent + x.querySelector('em').textContent)")
-    check("개35%" in bars and "걸35%" in bars and len(bars) == 6, f"미래예지에 확률 막대 ({bars})")
+    check("Gae35%" in bars and "Geol35%" in bars and len(bars) == 6, f"미래예지에 확률 막대 ({bars})")
     page.wait_for_timeout(300)
     page.screenshot(path=str(OUT / "99i-prob.png"))
     page.click("[data-act=close-modal]")
@@ -895,7 +899,7 @@ def scenario_v4(browser, base, errors):
     page.click(".unit.can[data-node='3']", force=True)
     page.click(".dest[data-move='n3/2']", force=True)
     page.wait_for_selector(".bt-stamp.super", timeout=20000)
-    check("불꽃" in page.inner_text(".bt-text") or "굉장" in page.inner_text(".bt-stage"), "💧 꼬부기가 🔥 파이리를 잡으면 '효과가 굉장했다!'")
+    check("Fire" in page.inner_text(".bt-text") or "super effective" in page.inner_text(".bt-stage"), "💧 꼬부기가 🔥 파이리를 잡으면 '효과가 굉장했다!'")
     page.screenshot(path=str(OUT / "99j-super.png"))
     while page.query_selector(".bt-skip"):
         page.click(".bt-skip", force=True); page.wait_for_timeout(200)
@@ -912,7 +916,7 @@ def scenario_v4(browser, base, errors):
     page.wait_for_selector(".modal .gift-pick", timeout=20000)
     page.wait_for_timeout(400)
     txt = page.inner_text(".modal")
-    check("니트로차지" in txt and "누구에게" in txt and len(page.query_selector_all(".modal .gift-pick")) == 1, "기술을 못 쓰고 골인하면 받을 팀원 고르기 (골인 안 한 팀원만)")
+    check("Flame Charge" in txt and "Who gets it" in txt and len(page.query_selector_all(".modal .gift-pick")) == 1, "기술을 못 쓰고 골인하면 받을 팀원 고르기 (골인 안 한 팀원만)")
     measure(page, "🎁 받을 팀원 고르기")
     page.screenshot(path=str(OUT / "99d-gift-choose.png"))
     page.click(".modal .gift-pick[data-to='1']")
@@ -930,23 +934,23 @@ def scenario_v4(browser, base, errors):
     check(ev(page, "[s.pieces[1].gift.used, s.pieces[1].used, window.__yut.Yut.posOf(s.pieces[1])]") == [True, False, 5], "받은 니트로차지를 쓰면 받은 것만 씀 (3 → 5)")
     page.click(".pchip[data-piece='1']")
     page.wait_for_selector(".modal .pi-skill", timeout=5000)
-    check("받은 기술" in page.inner_text(".modal"), "기술 보기 창에 받은 기술")
+    check("Gift move" in page.inner_text(".modal"), "기술 보기 창에 받은 기술")
     ctx.close()
 
     # ⑩ v8: 전설도 10칸 · 기술 성공 90% + 👑 전설 연출
     ctx, page = ctx_page()
-    page.add_init_script("if (!localStorage.getItem('engmon_yut_v1')) localStorage.setItem('engmon_yut_v1', JSON.stringify({ collection: [{ id: 150, t: 1 }] }));")
+    page.add_init_script("if (!localStorage.getItem('engmon_yut_en_v1')) localStorage.setItem('engmon_yut_en_v1', JSON.stringify({ collection: [{ id: 150, t: 1 }] }));")
     # 빠르게 모드에서는 배너가 0.2초만 떠서 기다리기로는 놓친다 — 뜨는 배너를 모두 적어 둔다
     page.add_init_script("window.__banners = []; new MutationObserver(ms => ms.forEach(m => m.addedNodes.forEach(n => { if (n.classList && n.classList.contains('banner') && n.classList.contains('legend')) window.__banners.push(n.textContent); }))).observe(document, { childList: true, subtree: true });")
     page.goto(base + "?seed=2&spots=none&fast=1&pools=nitro,nitro&luck=1")
     page.wait_for_timeout(300)
-    page.click("text=가족 대결"); page.click("[data-act=set][data-field=pieces][data-value='2']")
+    page.click("[data-act=new-family]"); page.click("[data-act=set][data-field=pieces][data-value='2']")
     page.click("[data-act=to-pick]")
     page.evaluate("() => { window.__yut.Setup.picks[0] = []; }")
     page.click(".pcard[data-id='150']"); page.click(".pcard[data-id='4']"); page.click("#pick-next")
     page.click("[data-act=pick-auto]"); page.click("#pick-next")
     wait_idle(page)
-    check(page.evaluate("() => window.__banners.some(t => t.includes('전설의'))"), "👑 전설: 판을 시작할 때 금빛 배너")
+    check(page.evaluate("() => window.__banners.some(t => t.includes('Legendary'))"), "👑 전설: 판을 시작할 때 금빛 배너")
     check(ev(page, "JSON.stringify(s.teams[0].need)") == "[10,10]" and ev(page, "s.pieces[0].skill") is None,
           "v8: 뮤츠(전설)도 10칸에 기술")
     check(page.evaluate("() => window.__banners.some(t => t.includes('90%'))"), "전설 배너에 '기술 성공 90%'")
@@ -955,11 +959,11 @@ def scenario_v4(browser, base, errors):
     check(page.query_selector("#units .unit.legend") is not None, "윷판 위 전설 말은 금빛 받침 + 👑")
     page.click("#btn-skill"); page.click(".skill-item[data-act=skill-pick]")
     crown = page.wait_for_selector(".cutin.legend .ci-crown", timeout=5000).text_content()  # 빠르게 모드라 0.3초 안에 닫힌다 — 바로 읽기
-    check("전설의 힘" in crown, "전설 기술 장면: 무지개 띠 + 👑 전설의 힘!")
+    check("Legendary power" in crown, "전설 기술 장면: 무지개 띠 + 👑 전설의 힘!")
     wait_idle(page)
     page.click(".pchip[data-piece='1']")
     page.wait_for_selector(".modal .pi-pool", timeout=5000)
-    check("10칸" in page.inner_text(".modal") and "레어" in page.inner_text(".modal"), "기술 보기 창: 희귀도와 남은 칸 (레어 10칸)")
+    check("10 spaces" in page.inner_text(".modal") and "Rare" in page.inner_text(".modal"), "기술 보기 창: 희귀도와 남은 칸 (레어 10칸)")
     ctx.close()
 
     # ⑧ 로켓단이 이겨도 위로 상자: 몬스터볼 1개 + 💰 돈 문제로 하나 더
@@ -970,7 +974,7 @@ def scenario_v4(browser, base, errors):
       Object.assign(s.pieces[3], { state: 'board', route: 'OUT', step: 19, atGoal: false }); s.phase = 'choose'; s.pending = [3]; s.throwsLeft = 0; s.turn = 1; }""")
     page.evaluate("() => window.__yut.Act['skill-cancel']()")  # 로켓단이 스스로 골인
     page.wait_for_selector(".win-screen .chest", timeout=30000)
-    check("위로 상자" in page.inner_text(".win-screen") and ev(page, "JSON.stringify(d.lastGame.reward.balls)") == '["poke"]', "로켓단이 이겨도 위로 상자 (몬스터볼 1개)")
+    check("gift chest" in page.inner_text(".win-screen") and ev(page, "JSON.stringify(d.lastGame.reward.balls)") == '["poke"]', "로켓단이 이겨도 위로 상자 (몬스터볼 1개)")
     page.screenshot(path=str(OUT / "98-lose-box.png"))
     page.click(".win-screen .chest", force=True)
     # 🏥 돈 문제도 틀리면 같은 단계: ① 틀림 → ① 다른 손님 맞힘(+3) → ② 틀림 = +3%만 (유니크·전설 13%)
@@ -982,11 +986,11 @@ def scenario_v4(browser, base, errors):
     answer_quiz(page, right=False, timeout=20000)
     page.wait_for_selector(".quiz .qz-choice:not([disabled])", timeout=20000)
     t2 = page.inner_text(".quiz .qz-title")
-    check("2/3" in t2 and "천 원 단위" in t2 and "+3%" in t2 and "한 번 더" in page.inner_text(".quiz .cs-say"), "🏥 ① 틀리면 ① 천 원 손님이 한 번 더")
+    check("2/3" in t2 and "up to 1,000 won" in t2 and "+3%" in t2 and "One more try" in page.inner_text(".quiz .cs-say"), "🏥 ① 틀리면 ① 천 원 손님이 한 번 더")
     answer_quiz(page, timeout=20000)
     page.wait_for_selector(".quiz .qz-choice:not([disabled])", timeout=20000)
     t3 = page.inner_text(".quiz .qz-title")
-    check("3/3" in t3 and "천 원 단위" in t3 and "2단계" in t3 and "+3%" in t3, "① 맞히면 마지막 기회는 ② 단계 (② 도 천 원 단위)")
+    check("3/3" in t3 and "up to 1,000 won" in t3 and "Level 2" in t3 and "+3%" in t3, "① 맞히면 마지막 기회는 ② 단계 (② 도 천 원 단위)")
     answer_quiz(page, right=False, timeout=20000)
     page.wait_for_selector(".center-ov .cv-ball", timeout=15000)
     check(ev(page, "JSON.stringify(d.lastGame.reward.bonus.odds)") == '{"c":47,"r":27,"u":13,"l":13}', "① 틀림 · ① 맞힘 · ② 틀림 → +3%만 (유니크·전설 13%)")
@@ -1003,14 +1007,14 @@ def scenario_v4(browser, base, errors):
     page.click(".pchip[data-piece='0']")
     page.wait_for_selector(".modal .pi-skill", timeout=5000)
     txt = page.inner_text(".modal")
-    check("니트로차지" in txt and "2칸" in txt, "내 포켓몬을 누르면 기술 이름·설명이 보임")
+    check("Flame Charge" in txt and "2 spaces" in txt, "내 포켓몬을 누르면 기술 이름·설명이 보임")
     page.wait_for_timeout(400)
     measure(page, "🔍 포켓몬·기술 보기")
     page.screenshot(path=str(OUT / "99-piece-info.png"))
     page.click("[data-act=close-modal]")
     page.click(".pchip[data-piece='3']")
     page.wait_for_selector(".modal .pi-skill", timeout=5000)
-    check("지진" in page.inner_text(".modal"), "상대 팀 포켓몬 기술도 볼 수 있음")
+    check("Earthquake" in page.inner_text(".modal"), "상대 팀 포켓몬 기술도 볼 수 있음")
     page.click("[data-act=close-modal]")
     ctx.close()
     ctx, page = ctx_page(390, 844)
@@ -1019,7 +1023,7 @@ def scenario_v4(browser, base, errors):
     page.wait_for_selector(".modal .pi-pool", timeout=5000)
     txt = page.inner_text(".modal")
     need = ev(page, "window.__yut.Yut.skillNeed(s, 0)")
-    check(f"{need}칸" in txt and "배워요" in txt and need == 10, f"아직 기술이 없으면 남은 칸({need}칸 — 스타팅은 모두 10칸)과 배울 수 있는 기술 후보")
+    check(f"{need} spaces" in txt and "learn one of these" in txt and need == 10, f"아직 기술이 없으면 남은 칸({need}칸 — 스타팅은 모두 10칸)과 배울 수 있는 기술 후보")
     check(ev(page, "JSON.stringify(s.teams.map(t => t.need))") == "[[10,10],[10,10]]", "스타팅 포켓몬은 세대와 상관없이 모두 10칸")
     page.wait_for_timeout(400)
     page.screenshot(path=str(OUT / "99-piece-info-phone.png"))
@@ -1031,7 +1035,7 @@ def scenario_v8(browser, base, errors):
     """v8: ✨ 기술 36개 (새 기술 쓰기·효과 표시) · 🎲 발동 확률 (성공 %·상성·실패하면 기술이 남음)."""
     def ctx_page(vw=1180, vh=820):
         ctx = browser.new_context(viewport={"width": vw, "height": vh}, has_touch=True)
-        ctx.add_init_script("localStorage.setItem('engmon_yut_v1', JSON.stringify({ settings: { study: false } }));")
+        ctx.add_init_script("localStorage.setItem('engmon_yut_en_v1', JSON.stringify({ settings: { study: false } }));")
         # 빠르게 모드에서는 안내가 금방 바뀐다 — 안내 칸에 뜬 글을 모두 적어 둔다
         ctx.add_init_script("window.__hints = []; window.__rolls = []; new MutationObserver(ms => ms.forEach(m => { const t = m.target; if (t && t.id === 'hint') window.__hints.push(t.textContent); if (t && t.classList && t.classList.contains('roll-res') && t.textContent) window.__rolls.push(t.textContent); })).observe(document, { childList: true, subtree: true });")
         page = ctx.new_page()
@@ -1042,7 +1046,7 @@ def scenario_v8(browser, base, errors):
     def start(page, query, pieces=4):
         page.goto(base + query)
         page.wait_for_timeout(300)
-        page.click("text=가족 대결")
+        page.click("[data-act=new-family]")
         page.click(f"[data-act=set][data-field=pieces][data-value='{pieces}']")
         page.click("[data-act=to-pick]")
         page.click("[data-act=pick-auto]"); page.click("#pick-next")
@@ -1085,9 +1089,9 @@ def scenario_v8(browser, base, errors):
     start(page, "?seed=2&spots=none&fast=1&early=1&luck=1&pools=icecharge,allyswitch,magnet,spike|nitro,nitro,nitro,nitro")
     inject(page, "reset(); fresh(0); at(0, 3); at(4, 10); at(5, 13)")
     label = use_on(page, "icecharge", 10)
-    check("얼리기" in label and "100%" in label, f"아이스차징 대상 말풍선에 성공 확률 ({label.strip()})")
+    check("Freeze" in label and "100%" in label, f"아이스차징 대상 말풍선에 성공 확률 ({label.strip()})")
     check(ev(page, "(s.pieces[4].fx || {}).freeze > 0 && s.teams[1].fx.chill > 0"), "아이스차징: 얼음 + 그 팀 윷이 작아짐")
-    check(page.evaluate("() => window.__rolls.some(t => t.includes('성공'))"), "🎲 확률 막대 → '성공! ✨'")
+    check(page.evaluate("() => window.__rolls.some(t => t.includes('Success'))"), "🎲 확률 막대 → '성공! ✨'")
     badge = page.query_selector("#units .unit[data-node='10'] .badge-s")
     check(badge is not None and "🧊" in badge.inner_text(), "얼은 말 모서리에 🧊")
     check("🧊" in (page.query_selector_all(".tcard")[1].inner_text() if len(page.query_selector_all(".tcard")) > 1 else ""), "상대 팀 카드에 🧊 (윷이 작아짐)")
@@ -1119,7 +1123,7 @@ def scenario_v8(browser, base, errors):
     inject(page, "reset(); fresh(0); at(0, 3); at(2, 5); s.teams[0].rar = ['c', 'c']; s.teams[1].types[0] = s.teams[1].paths[0].map(() => ['물'])")
     pick = open_skill(page, "flame")
     txt = pick.inner_text() if pick else ""
-    check("성공 60%" in txt and "상성" in txt, f"기술 창: 성공 확률 + 상성 안내 ({txt.splitlines()[-1] if txt else ''})")
+    check("Success 60%" in txt and "matchup" in txt, f"기술 창: 성공 확률 + 상성 안내 ({txt.splitlines()[-1] if txt else ''})")
     page.screenshot(path=str(OUT / "v8-3-chance-menu.png"))
     # 실패하는 난수를 골라 둔다
     page.evaluate("""() => { const Y = window.__yut, s = Y.G.s;
@@ -1136,8 +1140,8 @@ def scenario_v8(browser, base, errors):
         pass
     wait_idle(page)
     hints = page.evaluate("() => window.__hints.join(' | ')")
-    check("실패" in hints and "별로" in hints, "실패 안내 + '효과가 별로인 듯하다'")
-    check(page.evaluate("() => window.__rolls.some(t => t.includes('실패'))"), "🎲 확률 막대에서 바늘이 회색(실패)에 멈추고 '실패… 😵'")
+    check("missed" in hints and "not very effective" in hints, "실패 안내 + '효과가 별로인 듯하다'")
+    check(page.evaluate("() => window.__rolls.some(t => t.includes('Missed'))"), "🎲 확률 막대에서 바늘이 회색(실패)에 멈추고 '실패… 😵'")
     check(ev(page, "[s.pieces[0].used, s.pieces[2].state]") == [True, "board"], "실패: 기술이 사라짐 (쓴 것으로)")
     check(page.query_selector(".pchip[data-piece='0'] .sk.used") is not None, "실패한 말 칩에 ✓ (다 씀)")
     inject(page, "fresh(0)")
@@ -1161,7 +1165,7 @@ def scenario_v8(browser, base, errors):
     page.click(".dest[data-move='n8/1']", force=True)
     wait_idle(page)
     hints = page.evaluate("() => window.__hints.join(' | ')")
-    check("깼다" in hints or "쿨쿨" in hints, "상대 차례가 시작되면 '깼다!' 또는 '아직 쿨쿨…' (20%)")
+    check("woke up" in hints or "kept sleeping" in hints, "상대 차례가 시작되면 '깼다!' 또는 '아직 쿨쿨…' (20%)")
     ctx.close()
 
     # ④ 폰 크기: 기술 창 확률 줄이 넘치지 않음
@@ -1185,7 +1189,7 @@ def scenario_save(browser, base, errors):
 
     def mk(save):
         ctx = browser.new_context(viewport={"width": 1180, "height": 820}, has_touch=True)
-        ctx.add_init_script("if (!localStorage.getItem('engmon_yut_v1')) localStorage.setItem('engmon_yut_v1', " + json.dumps(json.dumps(save)) + ");")
+        ctx.add_init_script("if (!localStorage.getItem('engmon_yut_en_v1')) localStorage.setItem('engmon_yut_en_v1', " + json.dumps(json.dumps(save)) + ");")
         page = ctx.new_page()
         page.on("pageerror", lambda e: errors.append("pageerror: " + str(e)))
         page.on("console", lambda m: errors.append("console: " + m.text) if m.type == "error" and "ERR_" not in m.text else None)
@@ -1195,11 +1199,11 @@ def scenario_save(browser, base, errors):
 
     actx, a = mk({"collection": [{"id": 133, "t": 1}, {"id": 25, "t": 2}], "bag": {"poke": 5, "great": 1, "ultra": 0, "luxury": 0, "master": 0}, "stats": {"games": 4, "family": {"kid": 2}, "rocket": {"win": 1, "lose": 0}}})
     a.goto(base + q); a.wait_for_timeout(300)
-    check(ev(a, "P.kid.collection.map(x => x.id).join(',')") == "133,25" and ev(a, "P.kid.bag.poke") == 5 and ev(a, "P.kid.stats.family.win") == 2 and ev(a, "P.kid.name") == "꿈꾸는아이" and ev(a, "d.order.length") == 6,
+    check(ev(a, "P.kid.collection.map(x => x.id).join(',')") == "133,25" and ev(a, "P.kid.bag.poke") == 5 and ev(a, "P.kid.stats.family.win") == 2 and ev(a, "P.kid.name") == "Dreamer" and ev(a, "d.order.length") == 6,
           "👤 예전 기록(패드 하나)은 🧒 지온이 프로필로 · 가족 6명 프로필")
     a.click("[data-act=profiles]")
     a.wait_for_selector(".prof-card")
-    check(len(a.query_selector_all(".prof-card")) == 6 and "2마리" in a.inner_text(".prof-card[data-id=kid]"), "프로필 화면: 사람마다 캐릭터 · 포켓몬 수 · 볼 · 판 수")
+    check(len(a.query_selector_all(".prof-card")) == 6 and "2 Pokémon" in a.inner_text(".prof-card[data-id=kid]"), "프로필 화면: 사람마다 캐릭터 · 포켓몬 수 · 볼 · 판 수")
     measure(a, "👤 프로필 화면")
     a.screenshot(path=str(OUT / "s0-profiles.png"))
     # ✏️ 꾸미기: 캐릭터는 내 포켓몬 중에서 (잡은 이브이 포함)
@@ -1214,7 +1218,7 @@ def scenario_save(browser, base, errors):
     # ➕ 새 프로필: 이름 없이는 안 됨 → 이름 쓰고 만들기 (볼 3개 · 포켓몬 0)
     a.click("[data-act=prof-new]"); a.wait_for_selector("#prof-name")
     a.click("[data-act=prof-ok]")
-    check("이름" in a.inner_text("#prof-err"), "새 프로필: 이름을 써야 만들어짐")
+    check("name" in a.inner_text("#prof-err"), "새 프로필: 이름을 써야 만들어짐")
     a.fill("#prof-name", "하윤이"); a.click(".av-pick[data-id='4']"); a.click("[data-act=prof-ok]")
     a.wait_for_timeout(300)
     hid = ev(a, "d.order[d.order.length - 1]")
@@ -1223,11 +1227,11 @@ def scenario_save(browser, base, errors):
     a.click("[data-act=prof-save][data-id=kid]"); a.click("[data-act=save-on]")
     a.wait_for_selector(".modal .save-code b", timeout=10000)
     code = "".join(a.eval_on_selector_all(".modal .save-code b", "e => e.map(x => x.textContent)"))
-    check(len(code) == 6 and code.isdigit() and "사진" in a.inner_text(".modal"), f"💾 지온이 저장 켜기 → 코드 6자리 ({code}) + 사진 안내")
+    check(len(code) == 6 and code.isdigit() and "photo" in a.inner_text(".modal"), f"💾 지온이 저장 켜기 → 코드 6자리 ({code}) + 사진 안내")
     a.wait_for_timeout(500)
     measure(a, "💾 저장 코드 창")
     x = server(code)
-    check(x and x["id"] == "kid" and x["name"] == "꿈꾸는아이" and x["avatar"] == 133 and [c["id"] for c in x["collection"]] == [133, 25] and x["bag"]["poke"] == 5, "서버에 지온이 프로필(이름 · 캐릭터 · 포켓몬 · 볼)")
+    check(x and x["id"] == "kid" and x["name"] == "Dreamer" and x["avatar"] == 133 and [c["id"] for c in x["collection"]] == [133, 25] and x["bag"]["poke"] == 5, "서버에 지온이 프로필(이름 · 캐릭터 · 포켓몬 · 볼)")
     a.click("[data-act=close-modal]")
     check(code in a.inner_text(".prof-card[data-id=kid]"), "프로필 카드에 💾 코드")
     a.click(f"[data-act=prof-save][data-id='{hid}']"); a.click("[data-act=save-on]")
@@ -1244,15 +1248,15 @@ def scenario_save(browser, base, errors):
     rk = fdb.data.get("yutrank") or {}
     check(len(rk) == 2 and code not in rk and code2 not in rk and all("code" not in v and set(v) >= {"name", "mons", "legends", "wins"} for v in rk.values()),
           f"🥇 랭킹 서버엔 이름·캐릭터·숫자만 (저장 코드 없음) — {len(rk)}명")
-    kid_r = next(v for v in rk.values() if v["name"] == "꿈꾸는아이")
+    kid_r = next(v for v in rk.values() if v["name"] == "Dreamer")
     check(kid_r["mons"] == 3 and kid_r["avatar"] == 133, f"지온이 랭킹 숫자 (포켓몬 {kid_r['mons']} · 전설 {kid_r['legends']} · 승리 {kid_r['wins']})")
     fdb.data["yutrank"]["zzzzzzzzz1"] = {"name": "민준", "avatar": 25, "mons": 9, "legends": 2, "wins": 1, "updated": 1}
     fdb.data["yutrank"]["zzzzzzzzz2"] = {"name": "서아", "avatar": 1, "mons": 1, "legends": 0, "wins": 7, "updated": 1}
     a.click("[data-act=home]"); a.click("[data-act=rank]")
     a.wait_for_selector(".rank-row", timeout=10000)
     names = lambda: a.eval_on_selector_all(".rank-row .rk-name", "e => e.map(x => x.childNodes[0].textContent.trim())")
-    check(names()[:2] == ["민준", "꿈꾸는아이"] and "🥇" in a.inner_text(".rank-row.t1"), f"📕 포켓몬 수로 줄 세우기 {names()}")
-    check(len(a.query_selector_all(".rank-row.me")) == 2 and "엄마" not in a.inner_text("#rank-list") + a.inner_text("#rank-note") and "저장 코드를 켜면" in a.inner_text("#rank-note"),
+    check(names()[:2] == ["민준", "Dreamer"] and "🥇" in a.inner_text(".rank-row.t1"), f"📕 포켓몬 수로 줄 세우기 {names()}")
+    check(len(a.query_selector_all(".rank-row.me")) == 2 and "Mom" not in a.inner_text("#rank-list") + a.inner_text("#rank-note") and "Make a save code" in a.inner_text("#rank-note"),
           "우리 패드 프로필은 '우리' 표시 · 등록 안 한 사람은 이름도 안 보임")
     a.click("[data-act=rank-by][data-by=wins]"); a.wait_for_timeout(200)
     check(names()[0] == "서아", f"🏆 승리 수로 {names()}")
@@ -1270,15 +1274,15 @@ def scenario_save(browser, base, errors):
     for k in wrong: b.click(f"[data-act=save-key][data-k='{k}']")
     b.click("#save-fetch")
     b.wait_for_function("() => document.querySelector('#save-err').textContent.length > 0", timeout=10000)
-    check("없어요" in b.inner_text("#save-err"), "없는 코드면 '그런 저장이 없어요'")
+    check("no save" in b.inner_text("#save-err"), "없는 코드면 '그런 저장이 없어요'")
     for _ in range(6): b.click("[data-act=save-key][data-k='del']")
     for k in code: b.click(f"[data-act=save-key][data-k='{k}']")
     measure(b, "📥 불러오기 숫자판")
     b.click("#save-fetch")
     b.wait_for_selector("#confirm-in", timeout=10000)
-    check("사라지고" in b.inner_text(".modal") and "3마리" in b.inner_text(".modal"), "같은 프로필(지온이)이 있으면 '사라져요' 확인 + 미리 보기")
+    check("gone" in b.inner_text(".modal") and "3 Pokémon" in b.inner_text(".modal"), "같은 프로필(지온이)이 있으면 '사라져요' 확인 + 미리 보기")
     check(b.query_selector("#confirm-yes").is_disabled(), "글자를 쓰기 전엔 불러오기 버튼이 꺼짐")
-    b.fill("#confirm-in", "불러오기"); b.click("#confirm-yes")
+    b.fill("#confirm-in", "load"); b.click("#confirm-yes")
     b.wait_for_timeout(500)
     check(ev(b, "P.kid.collection.map(x => x.id).join(',')") == "133,25,7" and ev(b, "P.kid.bag.poke") == 4 and ev(b, "P.kid.avatar") == 133 and ev(b, "P.kid.cloud.code") == code,
           "불러오면 지온이가 저장된 기록·캐릭터로 바뀌고 같은 코드로 저장 켜짐")
@@ -1289,7 +1293,7 @@ def scenario_save(browser, base, errors):
     check(ev(b, "d.order.length") == 7 and ev(b, f"P['{hid}'].name") == "하윤이", "없는 프로필(하윤이)은 바로 생김")
     b.evaluate("() => { const S = window.__yut.Store; S.data.profiles.kid.bag.poke = 9; S.save(); }")
     b.wait_for_timeout(5200)
-    check(len([v for v in fdb.data["yutrank"].values() if v["name"] == "꿈꾸는아이"]) == 1, "다른 패드에서 불러와 저장해도 랭킹엔 한 줄 (같은 랭킹 번호)")
+    check(len([v for v in fdb.data["yutrank"].values() if v["name"] == "Dreamer"]) == 1, "다른 패드에서 불러와 저장해도 랭킹엔 한 줄 (같은 랭킹 번호)")
     b.screenshot(path=str(OUT / "s3-save-load.png"))
 
     # 두 패드의 지온이: 잡은 포켓몬은 합치고, 볼은 나중에 저장한 쪽
@@ -1306,7 +1310,7 @@ def scenario_save(browser, base, errors):
     b.wait_for_timeout(200)
     check(ev(b, "P.kid.cloud") is None, "저장 끄기")
     b.click(f"[data-act=prof-del][data-id='{hid}']")
-    b.wait_for_selector("#confirm-in"); b.fill("#confirm-in", "지우기"); b.click("#confirm-yes")
+    b.wait_for_selector("#confirm-in"); b.fill("#confirm-in", "delete"); b.click("#confirm-yes")
     b.wait_for_timeout(300)
     check(ev(b, f"!P['{hid}'] && d.order.length === 6"), "프로필 지우기 (글자를 써야)")
     actx.close(); bctx.close()
@@ -1314,22 +1318,22 @@ def scenario_save(browser, base, errors):
     # 👤 새 패드: 프로필은 지온이 하나 → 가족 대결 두 번째 팀은 ➕ 새 프로필로
     nctx, n = mk({})
     n.goto(base + "?fast=1&fam=0"); n.wait_for_timeout(300)
-    check(ev(n, "d.order.join(',')") == "kid" and ev(n, "P.kid.name") == "꿈꾸는아이", "👤 처음엔 프로필 하나 (꿈꾸는아이)")
-    n.click("text=가족 대결")
-    check("새 프로필" in n.inner_text(".card") and n.query_selector("[data-act=set][data-field=t1].on") is None, "가족 대결: 두 번째 팀이 없으면 ➕ 새 프로필 안내")
+    check(ev(n, "d.order.join(',')") == "kid" and ev(n, "P.kid.name") == "Dreamer", "👤 처음엔 프로필 하나 (꿈꾸는아이)")
+    n.click("[data-act=new-family]")
+    check("New profile" in n.inner_text(".card") and n.query_selector("[data-act=set][data-field=t1].on") is None, "가족 대결: 두 번째 팀이 없으면 ➕ 새 프로필 안내")
     n.click("[data-act=to-pick]"); n.wait_for_timeout(200)
     check(n.query_selector(".pcard") is None, "두 번째 팀 없이는 고르기로 안 넘어감")
     n.click("[data-act=prof-new][data-field=t1]"); n.wait_for_selector("#prof-name")
-    n.fill("#prof-name", "엄마"); n.click("[data-act=prof-ok]"); n.wait_for_timeout(300)
-    check(n.query_selector("[data-act=set][data-field=t1].on") is not None and "엄마" in n.inner_text("[data-act=set][data-field=t1].on"), "➕ 새 프로필로 만들면 두 번째 팀으로 바로 골라짐")
+    n.fill("#prof-name", "Mom"); n.click("[data-act=prof-ok]"); n.wait_for_timeout(300)
+    check(n.query_selector("[data-act=set][data-field=t1].on") is not None and "Mom" in n.inner_text("[data-act=set][data-field=t1].on"), "➕ 새 프로필로 만들면 두 번째 팀으로 바로 골라짐")
     n.click("[data-act=to-pick]"); n.wait_for_selector(".pcard", timeout=5000)
     check(True, "두 번째 팀이 생기면 고르기로")
     nctx.close()
     # 예전 버전 패드: 안 쓴 가족 프로필은 치우고, 쓴 프로필은 그대로
     old6 = {"profiles": {k: {"id": k, "name": nm, "avatar": 1, "collection": [], "bag": {"poke": 3}, "stats": {}, "study": {}} for k, nm in
-            [("kid", "지온이"), ("mom", "엄마"), ("dad", "아빠"), ("aunt", "이모"), ("grandma", "할머니"), ("grandpa", "할아버지")]}, "order": ["kid", "mom", "dad", "aunt", "grandma", "grandpa"]}
+            [("kid", "Jion"), ("mom", "Mom"), ("dad", "Dad"), ("aunt", "Aunt"), ("grandma", "Grandma"), ("grandpa", "Grandpa")]}, "order": ["kid", "mom", "dad", "aunt", "grandma", "grandpa"]}
     old6["profiles"]["dad"]["stats"] = {"games": 2, "family": {"win": 1, "lose": 1}}
-    old6["profiles"]["aunt"]["name"] = "고모"
+    old6["profiles"]["aunt"]["name"] = "Auntie"
     tctx, t = mk(old6)
     t.goto(base + "?fast=1&fam=0"); t.wait_for_timeout(300)
     check(ev(t, "d.order.join(',')") == "kid,dad,aunt", f"안 쓴 기본 프로필만 치움 (판을 한 아빠 · 이름을 바꾼 고모는 그대로) → {ev(t, 'd.order.join(",")')}")
@@ -1340,13 +1344,13 @@ def scenario_save(browser, base, errors):
     # 가족 대결: 팀 = 프로필, 상자·잡은 포켓몬은 그 팀 프로필에
     cctx, c = mk({"settings": {"study": False}})
     c.goto(base + "?fast=1&seed=2&spots=3:133&catch=1&force=3"); c.wait_for_timeout(300)
-    c.click("text=가족 대결")
+    c.click("[data-act=new-family]")
     check(len(c.query_selector_all("[data-act=set][data-field=t0].prof-chip")) == 6 and c.query_selector("[data-act=prof-new][data-field=t0]") is not None, "가족 대결 준비: 팀을 프로필로 고르기 (캐릭터 + ➕ 새 프로필)")
     c.click("[data-act=set][data-field=t0][data-value='\"dad\"']"); c.click("[data-act=set][data-field=t1][data-value='\"mom\"']")
     c.click("[data-act=set][data-field=pieces][data-value='2']")
     c.click("[data-act=to-pick]"); c.click("[data-act=pick-auto]"); c.click("#pick-next"); c.click("[data-act=pick-auto]"); c.click("#pick-next")
     wait_idle(c)
-    check(ev(c, "JSON.stringify(Y.G.s.teams.map(t => [t.key, t.name, t.avatar]))") == '[["dad","아빠",4],["mom","엄마",1]]', "판의 팀 = 프로필 이름 · 캐릭터")
+    check(ev(c, "JSON.stringify(Y.G.s.teams.map(t => [t.key, t.name, t.avatar]))") == '[["dad","Dad",4],["mom","Mom",1]]', "판의 팀 = 프로필 이름 · 캐릭터")
     check(c.query_selector("#teams .tcard .tn .av") is not None, "팀 카드 이름 옆에 캐릭터")
     c.evaluate("() => { const Y = window.__yut, s = Y.G.s; s.turn = 0; s.phase = 'choose'; s.pending = [3]; s.throwsLeft = 0; Y.Act['skill-cancel'](); }")
     wait_idle(c)
@@ -1366,11 +1370,11 @@ def scenario_land(browser, base, errors):
     """안드로이드 가로 화면(주소창·버튼줄 때문에 낮음): 윷 멍석이 늘 보이고, 패널이 위쪽 줄을 덮지 않음 (2026-10-02 사용자 제보: 가로에서 윷이 안 보임)."""
     for vw, vh in ((740, 340), (800, 360), (915, 380), (818, 757), (884, 700), (952, 628), (1024, 560), (1180, 650), (1280, 690)):
         ctx = browser.new_context(viewport={"width": vw, "height": vh}, has_touch=True, is_mobile=True)
-        ctx.add_init_script("localStorage.setItem('engmon_yut_v1', JSON.stringify({ settings: { study: false } }));")
+        ctx.add_init_script("localStorage.setItem('engmon_yut_en_v1', JSON.stringify({ settings: { study: false } }));")
         page = ctx.new_page()
         page.on("pageerror", lambda e: errors.append("pageerror: " + str(e)))
         page.goto(base + "?fast=1&seed=2&spots=none&first=0&force=4,2"); page.wait_for_timeout(300)
-        page.click("text=가족 대결"); page.click("[data-act=set][data-field=pieces][data-value='4']")
+        page.click("[data-act=new-family]"); page.click("[data-act=set][data-field=pieces][data-value='4']")
         page.click("[data-act=to-pick]"); page.click("[data-act=pick-auto]"); page.click("#pick-next"); page.click("[data-act=pick-auto]"); page.click("#pick-next")
         wait_idle(page)
         r = page.evaluate("""() => { const m = document.querySelector('.mat').getBoundingClientRect(), p = document.querySelector('.panel').getBoundingClientRect(),
@@ -1401,12 +1405,12 @@ def scenario_net(browser, base, errors):
     fdb = None if live else FakeFirebase()
     dburl = "" if live else fdb.start()
     if live:
-        base = "https://ian939.github.io/pokemon-yut/index.html"
+        base = "https://ian939.github.io/pokemon-yut-en/index.html"
     q = "?fast=1&seed=5&spots=3:133,12:25&catch=1" + ("&v=%d" % int(time.time()) if live else "&db=" + dburl)
 
     def mk(save):
         ctx = browser.new_context(viewport={"width": 1180, "height": 820}, has_touch=True)
-        ctx.add_init_script("if (!localStorage.getItem('engmon_yut_v1')) localStorage.setItem('engmon_yut_v1', " + json.dumps(json.dumps(save)) + ");")
+        ctx.add_init_script("if (!localStorage.getItem('engmon_yut_en_v1')) localStorage.setItem('engmon_yut_en_v1', " + json.dumps(json.dumps(save)) + ");")
         page = ctx.new_page()
         page.on("pageerror", lambda e: errors.append("pageerror: " + str(e)))
         page.on("console", lambda m: errors.append("console: " + m.text) if m.type == "error" and "ERR_" not in m.text else None)
@@ -1442,7 +1446,7 @@ def scenario_net(browser, base, errors):
           "👤 코드로 들어가기: 새 프로필을 만들면 바로 골라짐 (누른 코드는 그대로)")
     guest.click("#net-go")
     guest.wait_for_function("() => document.querySelector('#net-err').textContent.length > 0", timeout=10000)
-    check("없어요" in guest.inner_text("#net-err"), "없는 코드면 '그런 방이 없어요'")
+    check("no room" in guest.inner_text("#net-err"), "없는 코드면 '그런 방이 없어요'")
     for _ in range(4): guest.click("[data-act=net-key][data-k='del']")
     for d in code: guest.click(f"[data-act=net-key][data-k='{d}']")
     measure(guest, "🔢 코드 숫자판")
@@ -1450,7 +1454,7 @@ def scenario_net(browser, base, errors):
     guest.click("#net-go")
     # 방 만든 집: 친구가 들어오면 고르기
     host.wait_for_selector(".pcard", timeout=15000)
-    check("꿈꾸는아이" in host.inner_text(".bar h2"), "친구가 들어오면 방 만든 집부터 포켓몬 고르기")
+    check("Dreamer" in host.inner_text(".bar h2"), "친구가 들어오면 방 만든 집부터 포켓몬 고르기")
     host.click("[data-act=pick-auto]"); host.click("#pick-next")
     guest.wait_for_selector(".pcard", timeout=15000)
     taken = len(guest.query_selector_all(".pcard.taken"))
@@ -1475,14 +1479,14 @@ def scenario_net(browser, base, errors):
     host.screenshot(path=str(OUT / "n5-emote-pick.png"))
     host.click(".emote-pick .emo[data-k='good']")
     guest.wait_for_selector(".emote-pop[data-team='0']", timeout=15000)
-    check("잘했어" in guest.inner_text(".emote-pop[data-team='0']"), "친구네 패드에 '👍 잘했어!' (방 만든 집 카드 옆)")
+    check("Good job" in guest.inner_text(".emote-pop[data-team='0']"), "친구네 패드에 '👍 잘했어!' (방 만든 집 카드 옆)")
     guest.screenshot(path=str(OUT / "n6-emote-pop.png"))
     check(host.query_selector("#emote-btn").is_disabled(), "보낸 뒤 3초는 쉬기 (도배 막기)")
     host.wait_for_timeout(3200)
     check(not host.query_selector("#emote-btn").is_disabled(), "3초 뒤 다시 보낼 수 있음")
     guest.click("#emote-btn"); guest.click(".emote-pick .emo[data-k='huff']")
     host.wait_for_selector(".emote-pop[data-team='1']", timeout=15000)
-    check("두고 봐" in host.inner_text(".emote-pop[data-team='1']"), "방 만든 집 패드에 '😤 두고 봐!'")
+    check("Just wait" in host.inner_text(".emote-pop[data-team='1']"), "방 만든 집 패드에 '😤 두고 봐!'")
     same = False
     for _ in range(40):  # ⏱ 타이머가 그사이 저절로 둘 수 있어서 두 패드가 맞춰질 때까지
         if ev(host, "G.net.seq") == ev(guest, "G.net.seq") and not ev(host, "G.busy") and not ev(guest, "G.busy"):
@@ -1577,11 +1581,11 @@ def scenario_net(browser, base, errors):
         # 🔁 같은 친구와 한 판 더 — 같은 방에서 바로, 이번엔 친구네가 먼저 고른다
         host.click(".win-screen .chest", force=True)
         host.wait_for_selector(".win-btns:not(.hidden) [data-act=net-rematch]", timeout=20000)
-        check("같은 친구" in host.inner_text("[data-act=net-rematch]"), "친구 대결 끝 화면에 '🔁 같은 친구와 한 판 더'")
+        check("Rematch" in host.inner_text("[data-act=net-rematch]"), "친구 대결 끝 화면에 '🔁 같은 친구와 한 판 더'")
         host.click("[data-act=net-rematch]")
         guest.wait_for_selector(".pcard", timeout=20000)
         host.wait_for_selector(".net-wait", timeout=20000)
-        check("하윤이네" in guest.inner_text(".bar h2") and "먼저" in host.inner_text(".net-wait"), "한 판 더: 고르는 순서가 바뀜 (이번엔 친구네 먼저, 방 만든 집은 기다림)")
+        check("하윤이네" in guest.inner_text(".bar h2") and "first" in host.inner_text(".net-wait"), "한 판 더: 고르는 순서가 바뀜 (이번엔 친구네 먼저, 방 만든 집은 기다림)")
         guest.click("[data-act=pick-auto]"); guest.click("#pick-next")
         host.wait_for_selector(".pcard", timeout=20000)
         taken2 = len(host.query_selector_all(".pcard.taken"))
@@ -1616,7 +1620,7 @@ def scenario_net(browser, base, errors):
     for k in range(6):
         if not (act(host) or act(guest)): host.wait_for_timeout(200)
     guest.reload(); guest.wait_for_timeout(500)
-    check(guest.query_selector("[data-act=resume]") is not None and "친구 대결" in guest.inner_text("[data-act=resume]"), "새로고침하면 '🏠 친구 대결 이어하기'")
+    check(guest.query_selector("[data-act=resume]") is not None and "Friend Battle" in guest.inner_text("[data-act=resume]"), "새로고침하면 '🏠 친구 대결 이어하기'")
     guest.click("[data-act=resume]"); wait_idle(guest, 30000)
     guest.wait_for_timeout(1500)
     for k in range(8):
@@ -1667,7 +1671,7 @@ def main():
 
         # ---------- 1. 가족 대결 (가로 패드) ----------
         ctx = browser.new_context(viewport={"width": 1180, "height": 820}, device_scale_factor=1, has_touch=True)
-        ctx.add_init_script("if (!localStorage.getItem('engmon_yut_v1')) localStorage.setItem('engmon_yut_v1', " + json.dumps(YUT_SAVE) + ");")
+        ctx.add_init_script("if (!localStorage.getItem('engmon_yut_en_v1')) localStorage.setItem('engmon_yut_en_v1', " + json.dumps(YUT_SAVE) + ");")
         page = ctx.new_page()
         page.on("console", lambda m: errors.append("console: " + m.text) if m.type == "error" else None)
         page.on("pageerror", lambda e: errors.append("pageerror: " + str(e)))
@@ -1683,7 +1687,7 @@ def main():
         page.wait_for_timeout(600)
         page.screenshot(path=str(OUT / "01-home.png"))
         measure(page, "처음 화면")
-        page.click("text=가족 대결")
+        page.click("[data-act=new-family]")
         page.screenshot(path=str(OUT / "02-setup.png"))
         measure(page, "준비 화면")
         page.click("[data-act=to-pick]")
@@ -1705,7 +1709,7 @@ def main():
         check(page.query_selector(".pcard[data-id='133']") is None, "👤 두 번째 팀(엄마) 명단엔 지온이가 잡은 포켓몬이 없음")
         # 같은 가족 두 마리 막기: 스타팅 파이리(4)와 잡은 리자드(5)
         page.goto(base + "?fast=1&seed=12"); page.wait_for_timeout(300)
-        page.click("text=가족 대결"); page.click("[data-act=to-pick]")
+        page.click("[data-act=new-family]"); page.click("[data-act=to-pick]")
         page.evaluate("() => { window.__yut.Setup.picks[0] = []; }")
         page.click(".pcard[data-id='4']")
         page.click(".pcard[data-id='5']", force=True)
@@ -1761,18 +1765,18 @@ def main():
         page.route(re.compile(r".*/index\.html\?v=\d+$"), lambda route: route.fulfill(status=200, body=newer, content_type="text/html; charset=utf-8"))
         page.goto(base + "?fast=1")
         page.wait_for_timeout(1200)
-        check(page.query_selector("text=새 버전이 나왔어요") is not None, "서버 파일이 새 버전이면 알림이 뜸")
+        check(page.query_selector("text=🎁 New version!") is not None, "서버 파일이 새 버전이면 알림이 뜸")
         page.screenshot(path=str(OUT / "20-update.png"))
         page.click("[data-act=close-modal]")
-        check(page.query_selector("#upd-btn") is not None and "새 버전" in page.inner_text(".ver"), "'나중에' 해도 처음 화면에 🎁 새 버전으로 바꾸기 버튼이 남음")
+        check(page.query_selector("#upd-btn") is not None and "new v" in page.inner_text(".ver"), "'나중에' 해도 처음 화면에 🎁 새 버전으로 바꾸기 버튼이 남음")
         # 판 중에는 알림 창을 띄우지 않고, 처음 화면으로 오면 알려 줌 (탭을 계속 열어 둔 패드)
         page.evaluate("() => { Update.ver = null; Update.told = null; }")
-        page.click("text=가족 대결"); page.click("[data-act=to-pick]"); page.click("[data-act=pick-auto]"); page.click("#pick-next"); page.click("[data-act=pick-auto]"); page.click("#pick-next")
+        page.click("[data-act=new-family]"); page.click("[data-act=to-pick]"); page.click("[data-act=pick-auto]"); page.click("#pick-next"); page.click("[data-act=pick-auto]"); page.click("#pick-next")
         wait_idle(page)
         page.evaluate("() => checkUpdate(true)"); page.wait_for_timeout(800)
-        check(page.query_selector("text=새 버전이 나왔어요") is None, "판 중에는 새 버전 알림 창이 안 뜸 (놀이 방해 안 함)")
+        check(page.query_selector("text=🎁 New version!") is None, "판 중에는 새 버전 알림 창이 안 뜸 (놀이 방해 안 함)")
         page.click("[data-act=pause]"); page.click("[data-act=pause-home]"); page.wait_for_timeout(800)
-        check(page.query_selector("text=새 버전이 나왔어요") is not None, "판을 나와 처음 화면에 오면 새 버전 알림")
+        check(page.query_selector("text=🎁 New version!") is not None, "판을 나와 처음 화면에 오면 새 버전 알림")
         page.unroute(re.compile(r".*/index\.html\?v=\d+$"))
         ctx.close()
 
@@ -1784,7 +1788,7 @@ def main():
         page.goto(base + "?fast=1&seed=7")
         page.wait_for_timeout(400)
         page.screenshot(path=str(OUT / "30-home-portrait.png"))
-        page.click("text=로켓단 대결")
+        page.click("[data-act=new-rocket]")
         page.click("[data-act=set][data-field=cpu][data-value='\"normal\"']")
         page.click("[data-act=to-pick]")
         page.click("[data-act=pick-auto]")
@@ -1810,7 +1814,7 @@ def main():
         page.wait_for_timeout(400)
         page.screenshot(path=str(OUT / "40-phone-home.png"))
         measure(page, "폰 처음 화면")
-        page.click("text=가족 대결")
+        page.click("[data-act=new-family]")
         page.click("[data-act=to-pick]")
         check(page.query_selector(".empty-grid") is not None, "잡은 포켓몬이 없으면 ❓ 풀숲 안내")
         page.screenshot(path=str(OUT / "41-phone-nodex.png"))

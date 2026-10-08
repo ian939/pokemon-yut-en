@@ -908,6 +908,24 @@
 "text": "99",
 "voice": "en-US-AnaNeural"
 },
+"a poke ball flies out by itself": {
+"clip": [
+0.103,
+2.526
+],
+"file": "92044c4999.mp3",
+"text": "A Poké Ball flies out by itself!",
+"voice": "en-US-AnaNeural"
+},
+"a wild": {
+"clip": [
+0.101,
+0.75
+],
+"file": "0d8a5ddee8.mp3",
+"text": "A wild",
+"voice": "en-US-AnaNeural"
+},
 "abomasnow": {
 "clip": [
 0.102,
@@ -935,6 +953,15 @@
 "text": "Absol",
 "voice": "en-US-AnaNeural"
 },
+"absorb": {
+"clip": [
+0.103,
+0.711
+],
+"file": "5185afb632.mp3",
+"text": "Absorb",
+"voice": "en-US-AnaNeural"
+},
 "accelgor": {
 "clip": [
 0.103,
@@ -951,6 +978,15 @@
 ],
 "file": "e39356e67d.mp3",
 "text": "Aegislash",
+"voice": "en-US-AnaNeural"
+},
+"aeroblast": {
+"clip": [
+0.103,
+1.013
+],
+"file": "74e27eb8d3.mp3",
+"text": "Aeroblast",
 "voice": "en-US-AnaNeural"
 },
 "aerodactyl": {
@@ -971,6 +1007,15 @@
 "text": "Aggron",
 "voice": "en-US-AnaNeural"
 },
+"agility": {
+"clip": [
+0.102,
+0.776
+],
+"file": "841d806fd1.mp3",
+"text": "Agility",
+"voice": "en-US-AnaNeural"
+},
 "aipom": {
 "clip": [
 0.101,
@@ -978,6 +1023,15 @@
 ],
 "file": "613cf8a90c.mp3",
 "text": "Aipom",
+"voice": "en-US-AnaNeural"
+},
+"air slash": {
+"clip": [
+0.103,
+0.974
+],
+"file": "3e4ced1f1e.mp3",
+"text": "Air Slash",
 "voice": "en-US-AnaNeural"
 },
 "alakazam": {
@@ -996,6 +1050,15 @@
 ],
 "file": "fc52f9092b.mp3",
 "text": "Alcremie",
+"voice": "en-US-AnaNeural"
+},
+"ally switch": {
+"clip": [
+0.103,
+1.039
+],
+"file": "39ea8b88c0.mp3",
+"text": "Ally Switch",
 "voice": "en-US-AnaNeural"
 },
 "alomomola": {
@@ -1052,6 +1115,15 @@
 "text": "Ampharos",
 "voice": "en-US-AnaNeural"
 },
+"ancient power": {
+"clip": [
+0.103,
+1.118
+],
+"file": "f03890b886.mp3",
+"text": "Ancient Power",
+"voice": "en-US-AnaNeural"
+},
 "annihilape": {
 "clip": [
 0.102,
@@ -1068,6 +1140,15 @@
 ],
 "file": "f4f9446d46.mp3",
 "text": "Anorith",
+"voice": "en-US-AnaNeural"
+},
+"appeared": {
+"clip": [
+0.103,
+0.684
+],
+"file": "5e08e76c66.mp3",
+"text": "appeared!",
 "voice": "en-US-AnaNeural"
 },
 "appletun": {
@@ -1196,6 +1277,15 @@
 "text": "Ariados",
 "voice": "en-US-AnaNeural"
 },
+"arm thrust": {
+"clip": [
+0.103,
+1.039
+],
+"file": "4a8ec0989a.mp3",
+"text": "Arm Thrust",
+"voice": "en-US-AnaNeural"
+},
 "armaldo": {
 "clip": [
 0.103,
@@ -1250,6 +1340,24 @@
 "text": "Articuno",
 "voice": "en-US-AnaNeural"
 },
+"astonish": {
+"clip": [
+0.101,
+0.974
+],
+"file": "88e69b49b6.mp3",
+"text": "Astonish",
+"voice": "en-US-AnaNeural"
+},
+"attract": {
+"clip": [
+0.101,
+0.803
+],
+"file": "304ef28c6e.mp3",
+"text": "Attract",
+"voice": "en-US-AnaNeural"
+},
 "audino": {
 "clip": [
 0.101,
@@ -1257,6 +1365,33 @@
 ],
 "file": "e1b95db18b.mp3",
 "text": "Audino",
+"voice": "en-US-AnaNeural"
+},
+"aunt": {
+"clip": [
+0.103,
+0.5
+],
+"file": "3824bbe9ba.mp3",
+"text": "Aunt",
+"voice": "en-US-AnaNeural"
+},
+"aurora beam": {
+"clip": [
+0.103,
+0.987
+],
+"file": "2f550c69fb.mp3",
+"text": "Aurora Beam",
+"voice": "en-US-AnaNeural"
+},
+"aurora veil": {
+"clip": [
+0.103,
+1.013
+],
+"file": "ff96291280.mp3",
+"text": "Aurora Veil",
 "voice": "en-US-AnaNeural"
 },
 "aurorus": {
@@ -1313,6 +1448,33 @@
 "text": "Azurill",
 "voice": "en-US-AnaNeural"
 },
+"back do": {
+"clip": [
+0.103,
+0.711
+],
+"file": "92fdbc3cca.mp3",
+"text": "Back-do!",
+"voice": "en-US-AnaNeural"
+},
+"back do back one space": {
+"clip": [
+0.103,
+2.989
+],
+"file": "528c1c281f.mp3",
+"text": "Back-do! Back one space!",
+"voice": "en-US-AnaNeural"
+},
+"back one": {
+"clip": [
+0.103,
+0.763
+],
+"file": "22a228ad31.mp3",
+"text": "Back one",
+"voice": "en-US-AnaNeural"
+},
 "bagon": {
 "clip": [
 0.103,
@@ -1367,6 +1529,15 @@
 "text": "Barraskewda",
 "voice": "en-US-AnaNeural"
 },
+"barrier": {
+"clip": [
+0.103,
+0.671
+],
+"file": "fa9c8ab925.mp3",
+"text": "Barrier",
+"voice": "en-US-AnaNeural"
+},
 "basculegion": {
 "clip": [
 0.103,
@@ -1419,6 +1590,15 @@
 ],
 "file": "968cc0d653.mp3",
 "text": "Beartic",
+"voice": "en-US-AnaNeural"
+},
+"beat team rocket to get more": {
+"clip": [
+0.103,
+2.026
+],
+"file": "3cc8257904.mp3",
+"text": "Beat Team Rocket to get more!",
 "voice": "en-US-AnaNeural"
 },
 "beautifly": {
@@ -1529,6 +1709,15 @@
 "text": "Binacle",
 "voice": "en-US-AnaNeural"
 },
+"bind": {
+"clip": [
+0.103,
+0.592
+],
+"file": "128477f503.mp3",
+"text": "Bind",
+"voice": "en-US-AnaNeural"
+},
 "bisharp": {
 "clip": [
 0.103,
@@ -1536,6 +1725,15 @@
 ],
 "file": "971055ac55.mp3",
 "text": "Bisharp",
+"voice": "en-US-AnaNeural"
+},
+"bite": {
+"clip": [
+0.103,
+0.474
+],
+"file": "ed735d5541.mp3",
+"text": "Bite",
 "voice": "en-US-AnaNeural"
 },
 "blacephalon": {
@@ -1554,6 +1752,15 @@
 ],
 "file": "3b8cc476a0.mp3",
 "text": "Blastoise",
+"voice": "en-US-AnaNeural"
+},
+"blaze kick": {
+"clip": [
+0.103,
+0.934
+],
+"file": "2c5b62583a.mp3",
+"text": "Blaze Kick",
 "voice": "en-US-AnaNeural"
 },
 "blaziken": {
@@ -1592,6 +1799,24 @@
 "text": "Blitzle",
 "voice": "en-US-AnaNeural"
 },
+"blizzard": {
+"clip": [
+0.103,
+0.697
+],
+"file": "a03490c03e.mp3",
+"text": "Blizzard",
+"voice": "en-US-AnaNeural"
+},
+"body slam": {
+"clip": [
+0.103,
+1.026
+],
+"file": "469b4c37a6.mp3",
+"text": "Body Slam",
+"voice": "en-US-AnaNeural"
+},
 "boldore": {
 "clip": [
 0.103,
@@ -1619,6 +1844,15 @@
 "text": "Bombirdier",
 "voice": "en-US-AnaNeural"
 },
+"bonemerang": {
+"clip": [
+0.103,
+0.842
+],
+"file": "20025f16ad.mp3",
+"text": "Bonemerang",
+"voice": "en-US-AnaNeural"
+},
 "bonsly": {
 "clip": [
 0.103,
@@ -1626,6 +1860,15 @@
 ],
 "file": "88ad38b53b.mp3",
 "text": "Bonsly",
+"voice": "en-US-AnaNeural"
+},
+"boomburst": {
+"clip": [
+0.103,
+0.921
+],
+"file": "6fde6ec417.mp3",
+"text": "Boomburst",
 "voice": "en-US-AnaNeural"
 },
 "bouffalant": {
@@ -1736,6 +1979,24 @@
 "text": "Bruxish",
 "voice": "en-US-AnaNeural"
 },
+"bubble": {
+"clip": [
+0.103,
+0.526
+],
+"file": "a3fa9e0b6b.mp3",
+"text": "Bubble",
+"voice": "en-US-AnaNeural"
+},
+"bubble beam": {
+"clip": [
+0.103,
+0.842
+],
+"file": "584bf3c613.mp3",
+"text": "Bubble Beam",
+"voice": "en-US-AnaNeural"
+},
 "budew": {
 "clip": [
 0.103,
@@ -1761,6 +2022,15 @@
 ],
 "file": "164e304dae.mp3",
 "text": "Bulbasaur",
+"voice": "en-US-AnaNeural"
+},
+"bulk up": {
+"clip": [
+0.103,
+0.684
+],
+"file": "91d5f6f116.mp3",
+"text": "Bulk Up",
 "voice": "en-US-AnaNeural"
 },
 "buneary": {
@@ -1826,6 +2096,15 @@
 "text": "Cacturne",
 "voice": "en-US-AnaNeural"
 },
+"calm mind": {
+"clip": [
+0.103,
+0.908
+],
+"file": "b03b62452d.mp3",
+"text": "Calm Mind",
+"voice": "en-US-AnaNeural"
+},
 "calyrex": {
 "clip": [
 0.103,
@@ -1835,6 +2114,15 @@
 "text": "Calyrex",
 "voice": "en-US-AnaNeural"
 },
+"came out": {
+"clip": [
+0.103,
+0.671
+],
+"file": "7c2f744211.mp3",
+"text": "came out!",
+"voice": "en-US-AnaNeural"
+},
 "camerupt": {
 "clip": [
 0.103,
@@ -1842,6 +2130,33 @@
 ],
 "file": "e7f2e0960e.mp3",
 "text": "Camerupt",
+"voice": "en-US-AnaNeural"
+},
+"can't move for 1 turn": {
+"clip": [
+0.103,
+1.816
+],
+"file": "7be6b057fc.mp3",
+"text": "can't move for 1 turn!",
+"voice": "en-US-AnaNeural"
+},
+"can't move next turn": {
+"clip": [
+0.103,
+1.605
+],
+"file": "092e1c033d.mp3",
+"text": "can't move next turn!",
+"voice": "en-US-AnaNeural"
+},
+"can't use moves for 3 turns": {
+"clip": [
+0.103,
+2.5
+],
+"file": "553ef49ecc.mp3",
+"text": "can't use moves for 3 turns!",
 "voice": "en-US-AnaNeural"
 },
 "capsakid": {
@@ -2258,6 +2573,15 @@
 "text": "Clodsire",
 "voice": "en-US-AnaNeural"
 },
+"close combat": {
+"clip": [
+0.103,
+1.132
+],
+"file": "9f4c398134.mp3",
+"text": "Close Combat",
+"voice": "en-US-AnaNeural"
+},
 "cloyster": {
 "clip": [
 0.103,
@@ -2294,6 +2618,15 @@
 "text": "Cofagrigus",
 "voice": "en-US-AnaNeural"
 },
+"coin toss who goes first": {
+"clip": [
+0.103,
+3.029
+],
+"file": "f9dade597d.mp3",
+"text": "Coin toss! Who goes first?",
+"voice": "en-US-AnaNeural"
+},
 "combee": {
 "clip": [
 0.103,
@@ -2321,6 +2654,24 @@
 "text": "Comfey",
 "voice": "en-US-AnaNeural"
 },
+"common": {
+"clip": [
+0.103,
+0.632
+],
+"file": "9efab2399c.mp3",
+"text": "Common",
+"voice": "en-US-AnaNeural"
+},
+"confusion": {
+"clip": [
+0.103,
+0.934
+],
+"file": "c52e29d93f.mp3",
+"text": "Confusion",
+"voice": "en-US-AnaNeural"
+},
 "conkeldurr": {
 "clip": [
 0.103,
@@ -2346,6 +2697,15 @@
 ],
 "file": "e7392bcc08.mp3",
 "text": "Corphish",
+"voice": "en-US-AnaNeural"
+},
+"correct": {
+"clip": [
+0.103,
+0.711
+],
+"file": "e5d7cffe25.mp3",
+"text": "Correct!",
 "voice": "en-US-AnaNeural"
 },
 "corsola": {
@@ -2400,6 +2760,15 @@
 ],
 "file": "ac2b57f181.mp3",
 "text": "Cottonee",
+"voice": "en-US-AnaNeural"
+},
+"counter": {
+"clip": [
+0.103,
+0.671
+],
+"file": "886bb73b31.mp3",
+"text": "Counter",
 "voice": "en-US-AnaNeural"
 },
 "crabominable": {
@@ -2501,6 +2870,24 @@
 "text": "Croconaw",
 "voice": "en-US-AnaNeural"
 },
+"cross chop": {
+"clip": [
+0.103,
+0.908
+],
+"file": "425ff55830.mp3",
+"text": "Cross Chop",
+"voice": "en-US-AnaNeural"
+},
+"crunch": {
+"clip": [
+0.103,
+0.645
+],
+"file": "29b2c5160d.mp3",
+"text": "Crunch",
+"voice": "en-US-AnaNeural"
+},
 "crustle": {
 "clip": [
 0.103,
@@ -2555,6 +2942,15 @@
 "text": "Cursola",
 "voice": "en-US-AnaNeural"
 },
+"cute but sneaky we are team rocket meow": {
+"clip": [
+0.103,
+3.897
+],
+"file": "30567f4a72.mp3",
+"text": "Cute but sneaky! We are Team Rocket, meow!",
+"voice": "en-US-GuyNeural"
+},
 "cutiefly": {
 "clip": [
 0.103,
@@ -2589,6 +2985,15 @@
 ],
 "file": "a920579f79.mp3",
 "text": "Dachsbun",
+"voice": "en-US-AnaNeural"
+},
+"dad": {
+"clip": [
+0.103,
+0.487
+],
+"file": "df3939f119.mp3",
+"text": "Dad",
 "voice": "en-US-AnaNeural"
 },
 "darkrai": {
@@ -2699,6 +3104,15 @@
 "text": "Deoxys",
 "voice": "en-US-AnaNeural"
 },
+"destiny bond": {
+"clip": [
+0.103,
+1.158
+],
+"file": "c5c4801f32.mp3",
+"text": "Destiny Bond",
+"voice": "en-US-AnaNeural"
+},
 "dewgong": {
 "clip": [
 0.103,
@@ -2753,6 +3167,15 @@
 "text": "Diancie",
 "voice": "en-US-AnaNeural"
 },
+"dig": {
+"clip": [
+0.103,
+0.434
+],
+"file": "1534477b31.mp3",
+"text": "Dig",
+"voice": "en-US-AnaNeural"
+},
 "diggersby": {
 "clip": [
 0.103,
@@ -2780,6 +3203,15 @@
 "text": "Dipplin",
 "voice": "en-US-AnaNeural"
 },
+"discharge": {
+"clip": [
+0.103,
+0.895
+],
+"file": "7084c38f17.mp3",
+"text": "Discharge",
+"voice": "en-US-AnaNeural"
+},
 "ditto": {
 "clip": [
 0.103,
@@ -2787,6 +3219,33 @@
 ],
 "file": "13d9173fd8.mp3",
 "text": "Ditto",
+"voice": "en-US-AnaNeural"
+},
+"do": {
+"clip": [
+0.103,
+0.434
+],
+"file": "d4579b2688.mp3",
+"text": "Do!",
+"voice": "en-US-AnaNeural"
+},
+"do and back do become gae": {
+"clip": [
+0.103,
+1.987
+],
+"file": "76d49664e6.mp3",
+"text": "Do and Back-do become Gae!",
+"voice": "en-US-AnaNeural"
+},
+"do one space": {
+"clip": [
+0.103,
+2.371
+],
+"file": "74837f763b.mp3",
+"text": "Do! One space!",
 "voice": "en-US-AnaNeural"
 },
 "dodrio": {
@@ -2852,6 +3311,24 @@
 "text": "Doublade",
 "voice": "en-US-AnaNeural"
 },
+"double kick": {
+"clip": [
+0.103,
+0.855
+],
+"file": "4e22312311.mp3",
+"text": "Double Kick",
+"voice": "en-US-AnaNeural"
+},
+"draco meteor": {
+"clip": [
+0.103,
+1.171
+],
+"file": "d3f81dacf6.mp3",
+"text": "Draco Meteor",
+"voice": "en-US-AnaNeural"
+},
 "dracovish": {
 "clip": [
 0.103,
@@ -2886,6 +3363,42 @@
 ],
 "file": "f5416cda9d.mp3",
 "text": "Dragapult",
+"voice": "en-US-AnaNeural"
+},
+"dragon ascent": {
+"clip": [
+0.103,
+1.145
+],
+"file": "68a288660c.mp3",
+"text": "Dragon Ascent",
+"voice": "en-US-AnaNeural"
+},
+"dragon breath": {
+"clip": [
+0.103,
+1.066
+],
+"file": "01cdd19b04.mp3",
+"text": "Dragon Breath",
+"voice": "en-US-AnaNeural"
+},
+"dragon dance": {
+"clip": [
+0.103,
+1.184
+],
+"file": "f6c367ca8e.mp3",
+"text": "Dragon Dance",
+"voice": "en-US-AnaNeural"
+},
+"dragon rage": {
+"clip": [
+0.103,
+1.132
+],
+"file": "95852150a0.mp3",
+"text": "Dragon Rage",
 "voice": "en-US-AnaNeural"
 },
 "dragonair": {
@@ -2942,6 +3455,15 @@
 "text": "Dratini",
 "voice": "en-US-AnaNeural"
 },
+"dreamer": {
+"clip": [
+0.103,
+0.658
+],
+"file": "170b77ad8c.mp3",
+"text": "Dreamer",
+"voice": "en-US-AnaNeural"
+},
 "drednaw": {
 "clip": [
 0.103,
@@ -2985,6 +3507,15 @@
 ],
 "file": "881cb9ae49.mp3",
 "text": "Drilbur",
+"voice": "en-US-AnaNeural"
+},
+"drill peck": {
+"clip": [
+0.103,
+0.895
+],
+"file": "11678d702e.mp3",
+"text": "Drill Peck",
 "voice": "en-US-AnaNeural"
 },
 "drizzile": {
@@ -3131,6 +3662,24 @@
 "text": "Dwebble",
 "voice": "en-US-AnaNeural"
 },
+"earth power": {
+"clip": [
+0.103,
+0.908
+],
+"file": "a209736958.mp3",
+"text": "Earth Power",
+"voice": "en-US-AnaNeural"
+},
+"earthquake": {
+"clip": [
+0.103,
+0.803
+],
+"file": "e9ad9c2394.mp3",
+"text": "Earthquake",
+"voice": "en-US-AnaNeural"
+},
 "eelektrik": {
 "clip": [
 0.101,
@@ -3156,6 +3705,15 @@
 ],
 "file": "640ed62b7d.mp3",
 "text": "Eevee",
+"voice": "en-US-AnaNeural"
+},
+"egg bomb": {
+"clip": [
+0.103,
+0.763
+],
+"file": "525a151c08.mp3",
+"text": "Egg Bomb",
 "voice": "en-US-AnaNeural"
 },
 "eiscue": {
@@ -3239,6 +3797,15 @@
 "text": "Elgyem",
 "voice": "en-US-AnaNeural"
 },
+"ember": {
+"clip": [
+0.103,
+0.553
+],
+"file": "98e89bbbb4.mp3",
+"text": "Ember",
+"voice": "en-US-AnaNeural"
+},
 "emboar": {
 "clip": [
 0.102,
@@ -3284,6 +3851,15 @@
 "text": "Entei",
 "voice": "en-US-AnaNeural"
 },
+"eruption": {
+"clip": [
+0.101,
+0.803
+],
+"file": "0f0fa788da.mp3",
+"text": "Eruption",
+"voice": "en-US-AnaNeural"
+},
 "escavalier": {
 "clip": [
 0.102,
@@ -3327,6 +3903,15 @@
 ],
 "file": "36bf1b1d0a.mp3",
 "text": "Eternatus",
+"voice": "en-US-AnaNeural"
+},
+"evolved into": {
+"clip": [
+0.101,
+1.224
+],
+"file": "489e341f55.mp3",
+"text": "evolved into",
 "voice": "en-US-AnaNeural"
 },
 "excadrill": {
@@ -3410,6 +3995,15 @@
 "text": "Feebas",
 "voice": "en-US-AnaNeural"
 },
+"fell asleep": {
+"clip": [
+0.102,
+0.947
+],
+"file": "89ecfbad5e.mp3",
+"text": "fell asleep!",
+"voice": "en-US-AnaNeural"
+},
 "fennekin": {
 "clip": [
 0.102,
@@ -3482,6 +4076,42 @@
 "text": "Finneon",
 "voice": "en-US-AnaNeural"
 },
+"fire beats grass": {
+"clip": [
+0.102,
+1.539
+],
+"file": "d18ad2b194.mp3",
+"text": "Fire beats Grass!",
+"voice": "en-US-AnaNeural"
+},
+"fire blast": {
+"clip": [
+0.103,
+1.145
+],
+"file": "42e11696ad.mp3",
+"text": "Fire Blast",
+"voice": "en-US-AnaNeural"
+},
+"fire punch": {
+"clip": [
+0.102,
+1.118
+],
+"file": "b81ba74587.mp3",
+"text": "Fire Punch",
+"voice": "en-US-AnaNeural"
+},
+"five": {
+"clip": [
+0.102,
+0.579
+],
+"file": "30056e1cab.mp3",
+"text": "Five",
+"voice": "en-US-AnaNeural"
+},
 "flaaffy": {
 "clip": [
 0.103,
@@ -3498,6 +4128,24 @@
 ],
 "file": "d6ce58c9fa.mp3",
 "text": "Flabébé",
+"voice": "en-US-AnaNeural"
+},
+"flame charge": {
+"clip": [
+0.103,
+1.158
+],
+"file": "3936d04d3a.mp3",
+"text": "Flame Charge",
+"voice": "en-US-AnaNeural"
+},
+"flamethrower": {
+"clip": [
+0.102,
+1.066
+],
+"file": "d4392034ed.mp3",
+"text": "Flamethrower",
 "voice": "en-US-AnaNeural"
 },
 "flamigo": {
@@ -3599,6 +4247,15 @@
 "text": "Flutter Mane",
 "voice": "en-US-AnaNeural"
 },
+"fly": {
+"clip": [
+0.103,
+0.553
+],
+"file": "af17bc3b4a.mp3",
+"text": "Fly",
+"voice": "en-US-AnaNeural"
+},
 "flygon": {
 "clip": [
 0.102,
@@ -3635,6 +4292,15 @@
 "text": "Forretress",
 "voice": "en-US-AnaNeural"
 },
+"four": {
+"clip": [
+0.103,
+0.513
+],
+"file": "8cbad96ace.mp3",
+"text": "Four",
+"voice": "en-US-AnaNeural"
+},
 "fraxure": {
 "clip": [
 0.103,
@@ -3642,6 +4308,15 @@
 ],
 "file": "dc0f1f8997.mp3",
 "text": "Fraxure",
+"voice": "en-US-AnaNeural"
+},
+"friend": {
+"clip": [
+0.103,
+0.605
+],
+"file": "3af00c6cad.mp3",
+"text": "Friend",
 "voice": "en-US-AnaNeural"
 },
 "frigibax": {
@@ -3698,6 +4373,15 @@
 "text": "Frosmoth",
 "voice": "en-US-AnaNeural"
 },
+"froze": {
+"clip": [
+0.103,
+0.711
+],
+"file": "43b9f1587f.mp3",
+"text": "froze!",
+"voice": "en-US-AnaNeural"
+},
 "fuecoco": {
 "clip": [
 0.103,
@@ -3725,6 +4409,15 @@
 "text": "Furret",
 "voice": "en-US-AnaNeural"
 },
+"future sight": {
+"clip": [
+0.102,
+0.987
+],
+"file": "e79bb82be3.mp3",
+"text": "Future Sight",
+"voice": "en-US-AnaNeural"
+},
 "gabite": {
 "clip": [
 0.103,
@@ -3732,6 +4425,24 @@
 ],
 "file": "2e30ce2f40.mp3",
 "text": "Gabite",
+"voice": "en-US-AnaNeural"
+},
+"gae": {
+"clip": [
+0.103,
+0.421
+],
+"file": "42efab72ae.mp3",
+"text": "Gae",
+"voice": "en-US-AnaNeural"
+},
+"gae two spaces": {
+"clip": [
+0.103,
+2.476
+],
+"file": "8b3bf09d55.mp3",
+"text": "Gae! Two spaces!",
 "voice": "en-US-AnaNeural"
 },
 "gallade": {
@@ -3831,6 +4542,24 @@
 ],
 "file": "96bc98605a.mp3",
 "text": "Geodude",
+"voice": "en-US-AnaNeural"
+},
+"geol": {
+"clip": [
+0.103,
+0.882
+],
+"file": "5049aebee8.mp3",
+"text": "Geol",
+"voice": "en-US-AnaNeural"
+},
+"geol three spaces": {
+"clip": [
+0.103,
+3.028
+],
+"file": "da26d15448.mp3",
+"text": "Geol! Three spaces!",
 "voice": "en-US-AnaNeural"
 },
 "gholdengo": {
@@ -3968,6 +4697,24 @@
 "text": "Gloom",
 "voice": "en-US-AnaNeural"
 },
+"go": {
+"clip": [
+0.103,
+0.434
+],
+"file": "34d1f91fb2.mp3",
+"text": "Go!",
+"voice": "en-US-AnaNeural"
+},
+"goes first": {
+"clip": [
+0.103,
+1.0
+],
+"file": "920b6eb09b.mp3",
+"text": "goes first!",
+"voice": "en-US-AnaNeural"
+},
 "gogoat": {
 "clip": [
 0.103,
@@ -4076,6 +4823,60 @@
 "text": "Gossifleur",
 "voice": "en-US-AnaNeural"
 },
+"got": {
+"clip": [
+0.103,
+0.474
+],
+"file": "4a1a272961.mp3",
+"text": "got",
+"voice": "en-US-AnaNeural"
+},
+"got confused": {
+"clip": [
+0.103,
+1.197
+],
+"file": "8a54bcc03f.mp3",
+"text": "got confused!",
+"voice": "en-US-AnaNeural"
+},
+"got tired": {
+"clip": [
+0.103,
+0.947
+],
+"file": "f8a0ca0a91.mp3",
+"text": "got tired…",
+"voice": "en-US-AnaNeural"
+},
+"got weaker": {
+"clip": [
+0.103,
+0.895
+],
+"file": "6528286b01.mp3",
+"text": "got weaker!",
+"voice": "en-US-AnaNeural"
+},
+"got zapped": {
+"clip": [
+0.103,
+0.908
+],
+"file": "796b7dd635.mp3",
+"text": "got zapped!",
+"voice": "en-US-AnaNeural"
+},
+"gotcha": {
+"clip": [
+0.103,
+0.618
+],
+"file": "21840c1a3e.mp3",
+"text": "Gotcha!",
+"voice": "en-US-AnaNeural"
+},
 "gothita": {
 "clip": [
 0.103,
@@ -4139,6 +4940,24 @@
 "text": "Granbull",
 "voice": "en-US-AnaNeural"
 },
+"grandma": {
+"clip": [
+0.103,
+0.579
+],
+"file": "a5d19cdd5f.mp3",
+"text": "Grandma",
+"voice": "en-US-AnaNeural"
+},
+"grandpa": {
+"clip": [
+0.103,
+0.632
+],
+"file": "224c1c878d.mp3",
+"text": "Grandpa",
+"voice": "en-US-AnaNeural"
+},
 "grapploct": {
 "clip": [
 0.103,
@@ -4148,6 +4967,15 @@
 "text": "Grapploct",
 "voice": "en-US-AnaNeural"
 },
+"grass beats water": {
+"clip": [
+0.103,
+1.382
+],
+"file": "d7c764ec1d.mp3",
+"text": "Grass beats Water!",
+"voice": "en-US-AnaNeural"
+},
 "graveler": {
 "clip": [
 0.103,
@@ -4155,6 +4983,15 @@
 ],
 "file": "c648a20fba.mp3",
 "text": "Graveler",
+"voice": "en-US-AnaNeural"
+},
+"great ball": {
+"clip": [
+0.103,
+0.842
+],
+"file": "fc059c3ab0.mp3",
+"text": "Great Ball",
 "voice": "en-US-AnaNeural"
 },
 "great tusk": {
@@ -4247,6 +5084,15 @@
 "text": "Grovyle",
 "voice": "en-US-AnaNeural"
 },
+"growl": {
+"clip": [
+0.103,
+0.592
+],
+"file": "f8c7b9e0a8.mp3",
+"text": "Growl",
+"voice": "en-US-AnaNeural"
+},
 "growlithe": {
 "clip": [
 0.103,
@@ -4254,6 +5100,15 @@
 ],
 "file": "5b87c58c1f.mp3",
 "text": "Growlithe",
+"voice": "en-US-AnaNeural"
+},
+"growth": {
+"clip": [
+0.103,
+0.592
+],
+"file": "5ff58d62c1.mp3",
+"text": "Growth",
 "voice": "en-US-AnaNeural"
 },
 "grubbin": {
@@ -4272,6 +5127,15 @@
 ],
 "file": "73660fb8ec.mp3",
 "text": "Grumpig",
+"voice": "en-US-AnaNeural"
+},
+"guillotine": {
+"clip": [
+0.103,
+0.789
+],
+"file": "0354923c49.mp3",
+"text": "Guillotine",
 "voice": "en-US-AnaNeural"
 },
 "gulpin": {
@@ -4299,6 +5163,15 @@
 ],
 "file": "c034dfa32e.mp3",
 "text": "Gurdurr",
+"voice": "en-US-AnaNeural"
+},
+"gust": {
+"clip": [
+0.103,
+0.579
+],
+"file": "a98c4bbeba.mp3",
+"text": "Gust",
 "voice": "en-US-AnaNeural"
 },
 "guzzlord": {
@@ -4335,6 +5208,15 @@
 ],
 "file": "398a2ee4b7.mp3",
 "text": "Happiny",
+"voice": "en-US-AnaNeural"
+},
+"harden": {
+"clip": [
+0.103,
+0.658
+],
+"file": "50e1f33e19.mp3",
+"text": "Harden",
 "voice": "en-US-AnaNeural"
 },
 "hariyama": {
@@ -4400,6 +5282,33 @@
 "text": "Haxorus",
 "voice": "en-US-AnaNeural"
 },
+"headbutt": {
+"clip": [
+0.103,
+0.671
+],
+"file": "a5093b7ab7.mp3",
+"text": "Headbutt",
+"voice": "en-US-AnaNeural"
+},
+"heads": {
+"clip": [
+0.103,
+0.605
+],
+"file": "0c7ad6d537.mp3",
+"text": "Heads!",
+"voice": "en-US-AnaNeural"
+},
+"heart stamp": {
+"clip": [
+0.102,
+1.013
+],
+"file": "76a945da3a.mp3",
+"text": "Heart Stamp",
+"voice": "en-US-AnaNeural"
+},
 "heatmor": {
 "clip": [
 0.103,
@@ -4452,6 +5361,24 @@
 ],
 "file": "704d73c538.mp3",
 "text": "Herdier",
+"voice": "en-US-AnaNeural"
+},
+"hid underground": {
+"clip": [
+0.103,
+1.237
+],
+"file": "8286cdcae5.mp3",
+"text": "hid underground!",
+"voice": "en-US-AnaNeural"
+},
+"hidden power": {
+"clip": [
+0.103,
+1.0
+],
+"file": "a870aa482c.mp3",
+"text": "Hidden Power",
 "voice": "en-US-AnaNeural"
 },
 "hippopotas": {
@@ -4553,6 +5480,24 @@
 "text": "Hoppip",
 "voice": "en-US-AnaNeural"
 },
+"horn attack": {
+"clip": [
+0.103,
+0.947
+],
+"file": "08fd82065f.mp3",
+"text": "Horn Attack",
+"voice": "en-US-AnaNeural"
+},
+"horn drill": {
+"clip": [
+0.102,
+0.947
+],
+"file": "67af23d0ba.mp3",
+"text": "Horn Drill",
+"voice": "en-US-AnaNeural"
+},
 "horsea": {
 "clip": [
 0.103,
@@ -4589,6 +5534,15 @@
 "text": "Houndstone",
 "voice": "en-US-AnaNeural"
 },
+"how much is it in all": {
+"clip": [
+0.103,
+1.316
+],
+"file": "2d8ef3d186.mp3",
+"text": "How much is it in all?",
+"voice": "en-US-AnaNeural"
+},
 "huntail": {
 "clip": [
 0.102,
@@ -4616,6 +5570,33 @@
 "text": "Hydreigon",
 "voice": "en-US-AnaNeural"
 },
+"hydro pump": {
+"clip": [
+0.103,
+1.053
+],
+"file": "df3d92299d.mp3",
+"text": "Hydro Pump",
+"voice": "en-US-AnaNeural"
+},
+"hyper beam": {
+"clip": [
+0.103,
+0.895
+],
+"file": "d126ef491b.mp3",
+"text": "Hyper Beam",
+"voice": "en-US-AnaNeural"
+},
+"hyper fang": {
+"clip": [
+0.103,
+0.961
+],
+"file": "6a268e5ef1.mp3",
+"text": "Hyper Fang",
+"voice": "en-US-AnaNeural"
+},
 "hypno": {
 "clip": [
 0.103,
@@ -4623,6 +5604,42 @@
 ],
 "file": "ec1d72e232.mp3",
 "text": "Hypno",
+"voice": "en-US-AnaNeural"
+},
+"hypnosis": {
+"clip": [
+0.103,
+1.039
+],
+"file": "3f14135bbb.mp3",
+"text": "Hypnosis",
+"voice": "en-US-AnaNeural"
+},
+"ice beam": {
+"clip": [
+0.103,
+0.829
+],
+"file": "4186d783bf.mp3",
+"text": "Ice Beam",
+"voice": "en-US-AnaNeural"
+},
+"icicle spear": {
+"clip": [
+0.103,
+1.105
+],
+"file": "af9ec4d3a6.mp3",
+"text": "Icicle Spear",
+"voice": "en-US-AnaNeural"
+},
+"icy wind": {
+"clip": [
+0.103,
+1.0
+],
+"file": "6d9170057a.mp3",
+"text": "Icy Wind",
 "voice": "en-US-AnaNeural"
 },
 "igglybuff": {
@@ -4697,6 +5714,15 @@
 "text": "Inteleon",
 "voice": "en-US-AnaNeural"
 },
+"into your bag": {
+"clip": [
+0.103,
+1.079
+],
+"file": "f2578af38f.mp3",
+"text": "Into your Bag!",
+"voice": "en-US-AnaNeural"
+},
 "iron boulder": {
 "clip": [
 0.103,
@@ -4724,6 +5750,15 @@
 "text": "Iron Crown",
 "voice": "en-US-AnaNeural"
 },
+"iron defense": {
+"clip": [
+0.103,
+1.197
+],
+"file": "50906e71c6.mp3",
+"text": "Iron Defense",
+"voice": "en-US-AnaNeural"
+},
 "iron hands": {
 "clip": [
 0.103,
@@ -4731,6 +5766,15 @@
 ],
 "file": "60af55f3f7.mp3",
 "text": "Iron Hands",
+"voice": "en-US-AnaNeural"
+},
+"iron head": {
+"clip": [
+0.103,
+0.829
+],
+"file": "a4616d516e.mp3",
+"text": "Iron Head",
 "voice": "en-US-AnaNeural"
 },
 "iron jugulis": {
@@ -4760,6 +5804,15 @@
 "text": "Iron Moth",
 "voice": "en-US-AnaNeural"
 },
+"iron tail": {
+"clip": [
+0.103,
+0.947
+],
+"file": "282730762f.mp3",
+"text": "Iron Tail",
+"voice": "en-US-AnaNeural"
+},
 "iron thorns": {
 "clip": [
 0.103,
@@ -4785,6 +5838,42 @@
 ],
 "file": "2d88614f3d.mp3",
 "text": "Iron Valiant",
+"voice": "en-US-AnaNeural"
+},
+"is ours now meow": {
+"clip": [
+0.103,
+1.447
+],
+"file": "2bd1f0dc96.mp3",
+"text": "is ours now, meow!",
+"voice": "en-US-GuyNeural"
+},
+"it's okay help me again next time": {
+"clip": [
+0.103,
+3.424
+],
+"file": "018dd436f7.mp3",
+"text": "It's okay! Help me again next time!",
+"voice": "en-US-AnaNeural"
+},
+"it's raining": {
+"clip": [
+0.103,
+0.921
+],
+"file": "ca61ca5a8c.mp3",
+"text": "It's raining!",
+"voice": "en-US-AnaNeural"
+},
+"it's super effective": {
+"clip": [
+0.103,
+1.513
+],
+"file": "7877670e43.mp3",
+"text": "It's super effective!",
 "voice": "en-US-AnaNeural"
 },
 "ivysaur": {
@@ -4821,6 +5910,15 @@
 ],
 "file": "805a69c06e.mp3",
 "text": "Jigglypuff",
+"voice": "en-US-AnaNeural"
+},
+"jion": {
+"clip": [
+0.103,
+0.605
+],
+"file": "04c9e42bc2.mp3",
+"text": "Jion",
 "voice": "en-US-AnaNeural"
 },
 "jirachi": {
@@ -4911,6 +6009,15 @@
 ],
 "file": "3d25dbfbb8.mp3",
 "text": "Kangaskhan",
+"voice": "en-US-AnaNeural"
+},
+"karate chop": {
+"clip": [
+0.103,
+1.013
+],
+"file": "a658e7a828.mp3",
+"text": "Karate Chop",
 "voice": "en-US-AnaNeural"
 },
 "karrablast": {
@@ -5046,6 +6153,15 @@
 ],
 "file": "04f4a029f9.mp3",
 "text": "Klinklang",
+"voice": "en-US-AnaNeural"
+},
+"knocked out": {
+"clip": [
+0.103,
+0.789
+],
+"file": "0dd6ff457d.mp3",
+"text": "Knocked out!",
 "voice": "en-US-AnaNeural"
 },
 "koffing": {
@@ -5237,6 +6353,15 @@
 "text": "Latios",
 "voice": "en-US-AnaNeural"
 },
+"leaf blade": {
+"clip": [
+0.103,
+0.947
+],
+"file": "6019a1a872.mp3",
+"text": "Leaf Blade",
+"voice": "en-US-AnaNeural"
+},
 "leafeon": {
 "clip": [
 0.103,
@@ -5244,6 +6369,15 @@
 ],
 "file": "bb6a9e8b25.mp3",
 "text": "Leafeon",
+"voice": "en-US-AnaNeural"
+},
+"learned": {
+"clip": [
+0.103,
+0.658
+],
+"file": "34f8ba5397.mp3",
+"text": "learned",
 "voice": "en-US-AnaNeural"
 },
 "leavanny": {
@@ -5280,6 +6414,33 @@
 ],
 "file": "3f8adedeaa.mp3",
 "text": "Ledyba",
+"voice": "en-US-AnaNeural"
+},
+"legendary": {
+"clip": [
+0.103,
+0.947
+],
+"file": "11159fde95.mp3",
+"text": "Legendary",
+"voice": "en-US-AnaNeural"
+},
+"legendary pokemon": {
+"clip": [
+0.103,
+1.658
+],
+"file": "903c3d49b4.mp3",
+"text": "Legendary Pokémon!",
+"voice": "en-US-AnaNeural"
+},
+"lick": {
+"clip": [
+0.103,
+0.474
+],
+"file": "c622302899.mp3",
+"text": "Lick",
 "voice": "en-US-AnaNeural"
 },
 "lickilicky": {
@@ -5480,6 +6641,15 @@
 "text": "Lurantis",
 "voice": "en-US-AnaNeural"
 },
+"luster purge": {
+"clip": [
+0.103,
+1.132
+],
+"file": "524ee36f37.mp3",
+"text": "Luster Purge",
+"voice": "en-US-AnaNeural"
+},
 "luvdisc": {
 "clip": [
 0.103,
@@ -5507,6 +6677,15 @@
 "text": "Luxray",
 "voice": "en-US-AnaNeural"
 },
+"luxury ball": {
+"clip": [
+0.103,
+1.105
+],
+"file": "9d42048382.mp3",
+"text": "Luxury Ball",
+"voice": "en-US-AnaNeural"
+},
 "lycanroc": {
 "clip": [
 0.103,
@@ -5523,6 +6702,15 @@
 ],
 "file": "bbb3ce8dc4.mp3",
 "text": "Mabosstiff",
+"voice": "en-US-AnaNeural"
+},
+"mach punch": {
+"clip": [
+0.103,
+0.974
+],
+"file": "e311f75214.mp3",
+"text": "Mach Punch",
 "voice": "en-US-AnaNeural"
 },
 "machamp": {
@@ -5552,6 +6740,15 @@
 "text": "Machop",
 "voice": "en-US-AnaNeural"
 },
+"made it home": {
+"clip": [
+0.103,
+0.947
+],
+"file": "653063c665.mp3",
+"text": "made it home!",
+"voice": "en-US-AnaNeural"
+},
 "magby": {
 "clip": [
 0.103,
@@ -5577,6 +6774,15 @@
 ],
 "file": "b3d501eab7.mp3",
 "text": "Magearna",
+"voice": "en-US-AnaNeural"
+},
+"magical leaf": {
+"clip": [
+0.103,
+1.145
+],
+"file": "6237f6c890.mp3",
+"text": "Magical Leaf",
 "voice": "en-US-AnaNeural"
 },
 "magikarp": {
@@ -5613,6 +6819,15 @@
 ],
 "file": "8f48f990ad.mp3",
 "text": "Magnemite",
+"voice": "en-US-AnaNeural"
+},
+"magnet pull": {
+"clip": [
+0.103,
+1.053
+],
+"file": "8026747021.mp3",
+"text": "Magnet Pull",
 "voice": "en-US-AnaNeural"
 },
 "magneton": {
@@ -5795,6 +7010,15 @@
 "text": "Masquerain",
 "voice": "en-US-AnaNeural"
 },
+"master ball": {
+"clip": [
+0.103,
+0.987
+],
+"file": "382dcefd54.mp3",
+"text": "Master Ball",
+"voice": "en-US-AnaNeural"
+},
 "maushold": {
 "clip": [
 0.103,
@@ -5829,6 +7053,33 @@
 ],
 "file": "7e5ba67263.mp3",
 "text": "Meditite",
+"voice": "en-US-AnaNeural"
+},
+"mega kick": {
+"clip": [
+0.103,
+0.895
+],
+"file": "59cb39e2af.mp3",
+"text": "Mega Kick",
+"voice": "en-US-AnaNeural"
+},
+"mega punch": {
+"clip": [
+0.103,
+1.026
+],
+"file": "72866d7532.mp3",
+"text": "Mega Punch",
+"voice": "en-US-AnaNeural"
+},
+"megahorn": {
+"clip": [
+0.103,
+0.934
+],
+"file": "1a74326577.mp3",
+"text": "Megahorn",
 "voice": "en-US-AnaNeural"
 },
 "meganium": {
@@ -5912,6 +7163,15 @@
 "text": "Metagross",
 "voice": "en-US-AnaNeural"
 },
+"metal claw": {
+"clip": [
+0.103,
+0.947
+],
+"file": "aabcf18be8.mp3",
+"text": "Metal Claw",
+"voice": "en-US-AnaNeural"
+},
 "metang": {
 "clip": [
 0.103,
@@ -5928,6 +7188,15 @@
 ],
 "file": "4ad0fd71bf.mp3",
 "text": "Metapod",
+"voice": "en-US-AnaNeural"
+},
+"metronome": {
+"clip": [
+0.103,
+0.868
+],
+"file": "ceec19b937.mp3",
+"text": "Metronome",
 "voice": "en-US-AnaNeural"
 },
 "mew": {
@@ -6011,6 +7280,15 @@
 "text": "Mime Jr.",
 "voice": "en-US-AnaNeural"
 },
+"mimic": {
+"clip": [
+0.103,
+0.658
+],
+"file": "512722c4e7.mp3",
+"text": "Mimic",
+"voice": "en-US-AnaNeural"
+},
 "mimikyu": {
 "clip": [
 0.103,
@@ -6074,6 +7352,33 @@
 "text": "Mismagius",
 "voice": "en-US-AnaNeural"
 },
+"mist ball": {
+"clip": [
+0.103,
+0.868
+],
+"file": "4ee0b30530.mp3",
+"text": "Mist Ball",
+"voice": "en-US-AnaNeural"
+},
+"mo": {
+"clip": [
+0.101,
+0.566
+],
+"file": "27c9d5187c.mp3",
+"text": "Mo",
+"voice": "en-US-AnaNeural"
+},
+"mo five spaces throw again": {
+"clip": [
+0.101,
+4.517
+],
+"file": "4269866399.mp3",
+"text": "Mo! Five spaces. Throw again!",
+"voice": "en-US-AnaNeural"
+},
 "moltres": {
 "clip": [
 0.103,
@@ -6083,6 +7388,15 @@
 "text": "Moltres",
 "voice": "en-US-AnaNeural"
 },
+"mom": {
+"clip": [
+0.103,
+0.539
+],
+"file": "bd1d7b0809.mp3",
+"text": "Mom",
+"voice": "en-US-AnaNeural"
+},
 "monferno": {
 "clip": [
 0.103,
@@ -6090,6 +7404,24 @@
 ],
 "file": "81f4481a5a.mp3",
 "text": "Monferno",
+"voice": "en-US-AnaNeural"
+},
+"moonblast": {
+"clip": [
+0.103,
+1.0
+],
+"file": "6d8f6d7e12.mp3",
+"text": "Moonblast",
+"voice": "en-US-AnaNeural"
+},
+"moonlight": {
+"clip": [
+0.103,
+0.737
+],
+"file": "55f55cb70c.mp3",
+"text": "Moonlight",
 "voice": "en-US-AnaNeural"
 },
 "morelull": {
@@ -6128,6 +7460,15 @@
 "text": "Mothim",
 "voice": "en-US-AnaNeural"
 },
+"moves work 90 of the time": {
+"clip": [
+0.103,
+2.605
+],
+"file": "07562dff9a.mp3",
+"text": "Moves work 90% of the time!",
+"voice": "en-US-AnaNeural"
+},
 "mr mime": {
 "clip": [
 0.103,
@@ -6144,6 +7485,15 @@
 ],
 "file": "100e75087e.mp3",
 "text": "Mr. Rime",
+"voice": "en-US-AnaNeural"
+},
+"mud slap": {
+"clip": [
+0.103,
+0.868
+],
+"file": "5a5d596bbe.mp3",
+"text": "Mud-Slap",
 "voice": "en-US-AnaNeural"
 },
 "mudbray": {
@@ -6272,6 +7622,33 @@
 "text": "Necrozma",
 "voice": "en-US-AnaNeural"
 },
+"needle arm": {
+"clip": [
+0.103,
+1.0
+],
+"file": "fdf758b889.mp3",
+"text": "Needle Arm",
+"voice": "en-US-AnaNeural"
+},
+"next customer": {
+"clip": [
+0.103,
+1.211
+],
+"file": "4e91a5a7d0.mp3",
+"text": "Next customer!",
+"voice": "en-US-AnaNeural"
+},
+"next throw": {
+"clip": [
+0.103,
+0.947
+],
+"file": "304a59e241.mp3",
+"text": "next throw:",
+"voice": "en-US-AnaNeural"
+},
 "nickit": {
 "clip": [
 0.103,
@@ -6326,6 +7703,15 @@
 "text": "Nidorino",
 "voice": "en-US-AnaNeural"
 },
+"night shade": {
+"clip": [
+0.103,
+0.868
+],
+"file": "1f9da7de7b.mp3",
+"text": "Night Shade",
+"voice": "en-US-AnaNeural"
+},
 "nihilego": {
 "clip": [
 0.103,
@@ -6360,6 +7746,15 @@
 ],
 "file": "a0b10fd1a4.mp3",
 "text": "Ninjask",
+"voice": "en-US-AnaNeural"
+},
+"no balls in your bag": {
+"clip": [
+0.103,
+1.553
+],
+"file": "5fd2cde48b.mp3",
+"text": "No balls in your Bag!",
 "voice": "en-US-AnaNeural"
 },
 "noctowl": {
@@ -6425,6 +7820,15 @@
 "text": "Nymble",
 "voice": "en-US-AnaNeural"
 },
+"o'clock": {
+"clip": [
+0.101,
+0.711
+],
+"file": "43860ebfc1.mp3",
+"text": "o'clock",
+"voice": "en-US-AnaNeural"
+},
 "obstagoon": {
 "clip": [
 0.101,
@@ -6459,6 +7863,24 @@
 ],
 "file": "08cba8cc0f.mp3",
 "text": "Ogerpon",
+"voice": "en-US-AnaNeural"
+},
+"oh": {
+"clip": [
+0.101,
+0.342
+],
+"file": "c7218260ef.mp3",
+"text": "oh",
+"voice": "en-US-AnaNeural"
+},
+"oh no it missed": {
+"clip": [
+0.103,
+1.632
+],
+"file": "287e08c0ca.mp3",
+"text": "Oh no, it missed!",
 "voice": "en-US-AnaNeural"
 },
 "oinkologne": {
@@ -6497,6 +7919,24 @@
 "text": "Omastar",
 "voice": "en-US-AnaNeural"
 },
+"one": {
+"clip": [
+0.103,
+0.487
+],
+"file": "f97c5d2994.mp3",
+"text": "One",
+"voice": "en-US-AnaNeural"
+},
+"one more try": {
+"clip": [
+0.103,
+1.132
+],
+"file": "fdc0a8b7e7.mp3",
+"text": "One more try!",
+"voice": "en-US-AnaNeural"
+},
 "onix": {
 "clip": [
 0.103,
@@ -6504,6 +7944,15 @@
 ],
 "file": "fd96a4e3eb.mp3",
 "text": "Onix",
+"voice": "en-US-AnaNeural"
+},
+"oops let's look together": {
+"clip": [
+0.101,
+2.754
+],
+"file": "5f077c7153.mp3",
+"text": "Oops! Let's look together!",
 "voice": "en-US-AnaNeural"
 },
 "oranguru": {
@@ -6533,6 +7982,15 @@
 "text": "Oricorio",
 "voice": "en-US-AnaNeural"
 },
+"origin pulse": {
+"clip": [
+0.103,
+1.184
+],
+"file": "bc17697e7c.mp3",
+"text": "Origin Pulse",
+"voice": "en-US-AnaNeural"
+},
 "orthworm": {
 "clip": [
 0.103,
@@ -6549,6 +8007,15 @@
 ],
 "file": "a419ff1163.mp3",
 "text": "Oshawott",
+"voice": "en-US-AnaNeural"
+},
+"outrage": {
+"clip": [
+0.103,
+0.776
+],
+"file": "55d2d9c3fb.mp3",
+"text": "Outrage",
 "voice": "en-US-AnaNeural"
 },
 "overqwil": {
@@ -6722,6 +8189,15 @@
 "text": "Pawniard",
 "voice": "en-US-AnaNeural"
 },
+"pay day": {
+"clip": [
+0.103,
+0.697
+],
+"file": "f70a43e6b2.mp3",
+"text": "Pay Day",
+"voice": "en-US-AnaNeural"
+},
 "pecharunt": {
 "clip": [
 0.103,
@@ -6729,6 +8205,15 @@
 ],
 "file": "0b3ef3b1cc.mp3",
 "text": "Pecharunt",
+"voice": "en-US-AnaNeural"
+},
+"peck": {
+"clip": [
+0.103,
+0.487
+],
+"file": "848e1c8c31.mp3",
+"text": "Peck",
 "voice": "en-US-AnaNeural"
 },
 "pelipper": {
@@ -6756,6 +8241,15 @@
 ],
 "file": "40c47a2077.mp3",
 "text": "Persian",
+"voice": "en-US-AnaNeural"
+},
+"petal dance": {
+"clip": [
+0.103,
+1.039
+],
+"file": "afc66badde.mp3",
+"text": "Petal Dance",
 "voice": "en-US-AnaNeural"
 },
 "petilil": {
@@ -6810,6 +8304,15 @@
 ],
 "file": "c314f394a2.mp3",
 "text": "Pichu",
+"voice": "en-US-AnaNeural"
+},
+"pick a piece to swap": {
+"clip": [
+0.103,
+1.434
+],
+"file": "521d6a24da.mp3",
+"text": "Pick a piece to swap!",
 "voice": "en-US-AnaNeural"
 },
 "pidgeot": {
@@ -6884,6 +8387,15 @@
 "text": "Piloswine",
 "voice": "en-US-AnaNeural"
 },
+"pin missile": {
+"clip": [
+0.103,
+0.895
+],
+"file": "d92100fe09.mp3",
+"text": "Pin Missile",
+"voice": "en-US-AnaNeural"
+},
 "pincurchin": {
 "clip": [
 0.103,
@@ -6920,6 +8432,15 @@
 "text": "Piplup",
 "voice": "en-US-AnaNeural"
 },
+"please help chansey count": {
+"clip": [
+0.103,
+1.75
+],
+"file": "ebdf49257a.mp3",
+"text": "Please help Chansey count.",
+"voice": "en-US-AnaNeural"
+},
 "plusle": {
 "clip": [
 0.103,
@@ -6936,6 +8457,60 @@
 ],
 "file": "e72899a2bd.mp3",
 "text": "Poipole",
+"voice": "en-US-AnaNeural"
+},
+"poison fang": {
+"clip": [
+0.103,
+1.026
+],
+"file": "52d1080637.mp3",
+"text": "Poison Fang",
+"voice": "en-US-AnaNeural"
+},
+"poison gas": {
+"clip": [
+0.103,
+1.079
+],
+"file": "8f435c5be0.mp3",
+"text": "Poison Gas",
+"voice": "en-US-AnaNeural"
+},
+"poison jab": {
+"clip": [
+0.103,
+0.987
+],
+"file": "ed7367d529.mp3",
+"text": "Poison Jab",
+"voice": "en-US-AnaNeural"
+},
+"poison powder": {
+"clip": [
+0.103,
+1.132
+],
+"file": "8f0bf7026c.mp3",
+"text": "Poison Powder",
+"voice": "en-US-AnaNeural"
+},
+"poison sting": {
+"clip": [
+0.103,
+1.066
+],
+"file": "9cff542bcd.mp3",
+"text": "Poison Sting",
+"voice": "en-US-AnaNeural"
+},
+"poke ball": {
+"clip": [
+0.103,
+0.829
+],
+"file": "669f74fa42.mp3",
+"text": "Poké Ball",
 "voice": "en-US-AnaNeural"
 },
 "politoed": {
@@ -7046,6 +8621,42 @@
 "text": "Porygon2",
 "voice": "en-US-AnaNeural"
 },
+"powder snow": {
+"clip": [
+0.103,
+0.987
+],
+"file": "07ebb74451.mp3",
+"text": "Powder Snow",
+"voice": "en-US-AnaNeural"
+},
+"powered up": {
+"clip": [
+0.103,
+0.803
+],
+"file": "7e5fe697f7.mp3",
+"text": "powered up!",
+"voice": "en-US-AnaNeural"
+},
+"precipice blades": {
+"clip": [
+0.103,
+1.368
+],
+"file": "218968cd44.mp3",
+"text": "Precipice Blades",
+"voice": "en-US-AnaNeural"
+},
+"present": {
+"clip": [
+0.103,
+0.697
+],
+"file": "47ed49958e.mp3",
+"text": "Present",
+"voice": "en-US-AnaNeural"
+},
 "primarina": {
 "clip": [
 0.103,
@@ -7082,6 +8693,33 @@
 "text": "Probopass",
 "voice": "en-US-AnaNeural"
 },
+"psybeam": {
+"clip": [
+0.103,
+0.776
+],
+"file": "10d09a1b2d.mp3",
+"text": "Psybeam",
+"voice": "en-US-AnaNeural"
+},
+"psychic": {
+"clip": [
+0.103,
+0.737
+],
+"file": "8e4790e2cd.mp3",
+"text": "Psychic",
+"voice": "en-US-AnaNeural"
+},
+"psycho boost": {
+"clip": [
+0.103,
+1.158
+],
+"file": "bec6a29939.mp3",
+"text": "Psycho Boost",
+"voice": "en-US-AnaNeural"
+},
 "psyduck": {
 "clip": [
 0.103,
@@ -7089,6 +8727,15 @@
 ],
 "file": "adacde58a4.mp3",
 "text": "Psyduck",
+"voice": "en-US-AnaNeural"
+},
+"psywave": {
+"clip": [
+0.103,
+0.789
+],
+"file": "0d77ea89d9.mp3",
+"text": "Psywave",
 "voice": "en-US-AnaNeural"
 },
 "pumpkaboo": {
@@ -7181,6 +8828,15 @@
 "text": "Quaxwell",
 "voice": "en-US-AnaNeural"
 },
+"quick attack": {
+"clip": [
+0.103,
+0.921
+],
+"file": "6e7c71e527.mp3",
+"text": "Quick Attack",
+"voice": "en-US-AnaNeural"
+},
 "quilava": {
 "clip": [
 0.103,
@@ -7226,6 +8882,15 @@
 "text": "Rabsca",
 "voice": "en-US-AnaNeural"
 },
+"rage": {
+"clip": [
+0.103,
+0.566
+],
+"file": "f1661c9daa.mp3",
+"text": "Rage",
+"voice": "en-US-AnaNeural"
+},
 "raging bolt": {
 "clip": [
 0.103,
@@ -7251,6 +8916,15 @@
 ],
 "file": "163794029d.mp3",
 "text": "Raikou",
+"voice": "en-US-AnaNeural"
+},
+"rain dance": {
+"clip": [
+0.103,
+1.053
+],
+"file": "032ab755fe.mp3",
+"text": "Rain Dance",
 "voice": "en-US-AnaNeural"
 },
 "ralts": {
@@ -7280,6 +8954,15 @@
 "text": "Rapidash",
 "voice": "en-US-AnaNeural"
 },
+"rare": {
+"clip": [
+0.103,
+0.487
+],
+"file": "a7a1899518.mp3",
+"text": "Rare",
+"voice": "en-US-AnaNeural"
+},
 "raticate": {
 "clip": [
 0.103,
@@ -7305,6 +8988,15 @@
 ],
 "file": "5e58d6627a.mp3",
 "text": "Rayquaza",
+"voice": "en-US-AnaNeural"
+},
+"razor leaf": {
+"clip": [
+0.103,
+0.987
+],
+"file": "1c28883e52.mp3",
+"text": "Razor Leaf",
 "voice": "en-US-AnaNeural"
 },
 "regice": {
@@ -7478,6 +9170,24 @@
 "text": "Roaring Moon",
 "voice": "en-US-AnaNeural"
 },
+"rock slide": {
+"clip": [
+0.103,
+1.0
+],
+"file": "adb3ec1104.mp3",
+"text": "Rock Slide",
+"voice": "en-US-AnaNeural"
+},
+"rock smash": {
+"clip": [
+0.103,
+1.026
+],
+"file": "68e4878ecb.mp3",
+"text": "Rock Smash",
+"voice": "en-US-AnaNeural"
+},
 "rockruff": {
 "clip": [
 0.103,
@@ -7494,6 +9204,15 @@
 ],
 "file": "fd41ffbde2.mp3",
 "text": "Roggenrola",
+"voice": "en-US-AnaNeural"
+},
+"rollout": {
+"clip": [
+0.103,
+0.684
+],
+"file": "2d8a0e9f60.mp3",
+"text": "Rollout",
 "voice": "en-US-AnaNeural"
 },
 "rolycoly": {
@@ -7575,6 +9294,24 @@
 ],
 "file": "b71f5f5b68.mp3",
 "text": "Sableye",
+"voice": "en-US-AnaNeural"
+},
+"sacred fire": {
+"clip": [
+0.103,
+1.184
+],
+"file": "0eb49f294f.mp3",
+"text": "Sacred Fire",
+"voice": "en-US-AnaNeural"
+},
+"safe for 2 turns": {
+"clip": [
+0.103,
+1.684
+],
+"file": "2f00f78bc8.mp3",
+"text": "Safe for 2 turns!",
 "voice": "en-US-AnaNeural"
 },
 "salamence": {
@@ -7667,6 +9404,15 @@
 "text": "Sandygast",
 "voice": "en-US-AnaNeural"
 },
+"save is on ask a grown up to take a photo of the code": {
+"clip": [
+0.103,
+4.805
+],
+"file": "00d473ad6c.mp3",
+"text": "Save is on! Ask a grown-up to take a photo of the code!",
+"voice": "en-US-AnaNeural"
+},
 "sawk": {
 "clip": [
 0.103,
@@ -7755,6 +9501,15 @@
 ],
 "file": "8886f5f6c3.mp3",
 "text": "Scraggy",
+"voice": "en-US-AnaNeural"
+},
+"scratch": {
+"clip": [
+0.103,
+0.763
+],
+"file": "989dd07400.mp3",
+"text": "Scratch",
 "voice": "en-US-AnaNeural"
 },
 "scream tail": {
@@ -7872,6 +9627,33 @@
 ],
 "file": "44b58ad0a0.mp3",
 "text": "Sewaddle",
+"voice": "en-US-AnaNeural"
+},
+"shadow ball": {
+"clip": [
+0.103,
+1.026
+],
+"file": "61326938e9.mp3",
+"text": "Shadow Ball",
+"voice": "en-US-AnaNeural"
+},
+"shadow claw": {
+"clip": [
+0.103,
+1.039
+],
+"file": "49d5de79d5.mp3",
+"text": "Shadow Claw",
+"voice": "en-US-AnaNeural"
+},
+"shadow punch": {
+"clip": [
+0.103,
+1.145
+],
+"file": "8864f227ae.mp3",
+"text": "Shadow Punch",
 "voice": "en-US-AnaNeural"
 },
 "sharpedo": {
@@ -8018,6 +9800,15 @@
 "text": "Sigilyph",
 "voice": "en-US-AnaNeural"
 },
+"signal beam": {
+"clip": [
+0.103,
+1.026
+],
+"file": "bfa83003c6.mp3",
+"text": "Signal Beam",
+"voice": "en-US-AnaNeural"
+},
 "silcoon": {
 "clip": [
 0.103,
@@ -8045,6 +9836,15 @@
 "text": "Silvally",
 "voice": "en-US-AnaNeural"
 },
+"silver wind": {
+"clip": [
+0.103,
+1.118
+],
+"file": "7778521ec1.mp3",
+"text": "Silver Wind",
+"voice": "en-US-AnaNeural"
+},
 "simipour": {
 "clip": [
 0.103,
@@ -8070,6 +9870,15 @@
 ],
 "file": "da93a1d361.mp3",
 "text": "Simisear",
+"voice": "en-US-AnaNeural"
+},
+"sing": {
+"clip": [
+0.103,
+0.539
+],
+"file": "db853ec3ec.mp3",
+"text": "Sing",
 "voice": "en-US-AnaNeural"
 },
 "sinistcha": {
@@ -8124,6 +9933,15 @@
 ],
 "file": "3af514e86a.mp3",
 "text": "Skeledirge",
+"voice": "en-US-AnaNeural"
+},
+"sketch": {
+"clip": [
+0.103,
+0.711
+],
+"file": "834feae744.mp3",
+"text": "Sketch",
 "voice": "en-US-AnaNeural"
 },
 "skiddo": {
@@ -8207,6 +10025,24 @@
 "text": "Slakoth",
 "voice": "en-US-AnaNeural"
 },
+"slash": {
+"clip": [
+0.103,
+0.724
+],
+"file": "9fbbaa4cc5.mp3",
+"text": "Slash",
+"voice": "en-US-AnaNeural"
+},
+"sleep powder": {
+"clip": [
+0.103,
+1.066
+],
+"file": "bcfde0236d.mp3",
+"text": "Sleep Powder",
+"voice": "en-US-AnaNeural"
+},
 "sliggoo": {
 "clip": [
 0.103,
@@ -8252,6 +10088,24 @@
 "text": "Slowpoke",
 "voice": "en-US-AnaNeural"
 },
+"sludge": {
+"clip": [
+0.103,
+0.684
+],
+"file": "2ccd23d1cd.mp3",
+"text": "Sludge",
+"voice": "en-US-AnaNeural"
+},
+"sludge bomb": {
+"clip": [
+0.103,
+1.066
+],
+"file": "d617f94c9b.mp3",
+"text": "Sludge Bomb",
+"voice": "en-US-AnaNeural"
+},
 "slugma": {
 "clip": [
 0.103,
@@ -8295,6 +10149,15 @@
 ],
 "file": "7069c5b37a.mp3",
 "text": "Smoochum",
+"voice": "en-US-AnaNeural"
+},
+"snatch": {
+"clip": [
+0.103,
+0.724
+],
+"file": "b99192df2a.mp3",
+"text": "Snatch",
 "voice": "en-US-AnaNeural"
 },
 "sneasel": {
@@ -8378,6 +10241,24 @@
 "text": "Sobble",
 "voice": "en-US-AnaNeural"
 },
+"soft boiled": {
+"clip": [
+0.103,
+1.053
+],
+"file": "c56e11a8fe.mp3",
+"text": "Soft-Boiled",
+"voice": "en-US-AnaNeural"
+},
+"solar beam": {
+"clip": [
+0.103,
+1.013
+],
+"file": "74bb5bbbb8.mp3",
+"text": "Solar Beam",
+"voice": "en-US-AnaNeural"
+},
 "solgaleo": {
 "clip": [
 0.103,
@@ -8403,6 +10284,24 @@
 ],
 "file": "15d7541489.mp3",
 "text": "Solrock",
+"voice": "en-US-AnaNeural"
+},
+"sonic boom": {
+"clip": [
+0.103,
+1.053
+],
+"file": "a6f7ee8df0.mp3",
+"text": "Sonic Boom",
+"voice": "en-US-AnaNeural"
+},
+"spark": {
+"clip": [
+0.103,
+0.697
+],
+"file": "98f11b7a78.mp3",
+"text": "Spark",
 "voice": "en-US-AnaNeural"
 },
 "spearow": {
@@ -8441,6 +10340,15 @@
 "text": "Spheal",
 "voice": "en-US-AnaNeural"
 },
+"spider web": {
+"clip": [
+0.103,
+0.961
+],
+"file": "6a450617db.mp3",
+"text": "Spider Web",
+"voice": "en-US-AnaNeural"
+},
 "spidops": {
 "clip": [
 0.103,
@@ -8477,6 +10385,24 @@
 "text": "Spiritomb",
 "voice": "en-US-AnaNeural"
 },
+"spite": {
+"clip": [
+0.103,
+0.605
+],
+"file": "33495cf3bb.mp3",
+"text": "Spite",
+"voice": "en-US-AnaNeural"
+},
+"splash": {
+"clip": [
+0.103,
+0.803
+],
+"file": "cbead73389.mp3",
+"text": "Splash",
+"voice": "en-US-AnaNeural"
+},
 "spoink": {
 "clip": [
 0.103,
@@ -8484,6 +10410,15 @@
 ],
 "file": "65265a7d77.mp3",
 "text": "Spoink",
+"voice": "en-US-AnaNeural"
+},
+"spore": {
+"clip": [
+0.103,
+0.645
+],
+"file": "7c4d45d500.mp3",
+"text": "Spore",
 "voice": "en-US-AnaNeural"
 },
 "sprigatito": {
@@ -8520,6 +10455,15 @@
 ],
 "file": "7577f85991.mp3",
 "text": "Squirtle",
+"voice": "en-US-AnaNeural"
+},
+"stacked let's go together": {
+"clip": [
+0.103,
+2.897
+],
+"file": "46eec54399.mp3",
+"text": "Stacked! Let's go together!",
 "voice": "en-US-AnaNeural"
 },
 "stakataka": {
@@ -8585,6 +10529,24 @@
 "text": "Staryu",
 "voice": "en-US-AnaNeural"
 },
+"stealth rock": {
+"clip": [
+0.103,
+1.039
+],
+"file": "1b2d0abb7d.mp3",
+"text": "Stealth Rock",
+"voice": "en-US-AnaNeural"
+},
+"steel wing": {
+"clip": [
+0.103,
+0.961
+],
+"file": "455ad30d3b.mp3",
+"text": "Steel Wing",
+"voice": "en-US-AnaNeural"
+},
 "steelix": {
 "clip": [
 0.103,
@@ -8603,6 +10565,24 @@
 "text": "Steenee",
 "voice": "en-US-AnaNeural"
 },
+"sticky web": {
+"clip": [
+0.103,
+0.947
+],
+"file": "7a5921b3b2.mp3",
+"text": "Sticky Web",
+"voice": "en-US-AnaNeural"
+},
+"stone edge": {
+"clip": [
+0.103,
+1.013
+],
+"file": "b0b5576d97.mp3",
+"text": "Stone Edge",
+"voice": "en-US-AnaNeural"
+},
 "stonjourner": {
 "clip": [
 0.103,
@@ -8619,6 +10599,15 @@
 ],
 "file": "8c95770a1f.mp3",
 "text": "Stoutland",
+"voice": "en-US-AnaNeural"
+},
+"string shot": {
+"clip": [
+0.103,
+1.013
+],
+"file": "8c9ccb18a2.mp3",
+"text": "String Shot",
 "voice": "en-US-AnaNeural"
 },
 "stufful": {
@@ -8684,6 +10673,24 @@
 "text": "Sunkern",
 "voice": "en-US-AnaNeural"
 },
+"supersonic": {
+"clip": [
+0.103,
+1.105
+],
+"file": "f07956290b.mp3",
+"text": "Supersonic",
+"voice": "en-US-AnaNeural"
+},
+"surf": {
+"clip": [
+0.103,
+0.632
+],
+"file": "353c877369.mp3",
+"text": "Surf",
+"voice": "en-US-AnaNeural"
+},
 "surskit": {
 "clip": [
 0.103,
@@ -8738,6 +10745,15 @@
 "text": "Swanna",
 "voice": "en-US-AnaNeural"
 },
+"sweet kiss": {
+"clip": [
+0.103,
+1.053
+],
+"file": "cf5c9bf0ae.mp3",
+"text": "Sweet Kiss",
+"voice": "en-US-AnaNeural"
+},
 "swellow": {
 "clip": [
 0.103,
@@ -8745,6 +10761,15 @@
 ],
 "file": "672876030f.mp3",
 "text": "Swellow",
+"voice": "en-US-AnaNeural"
+},
+"swift": {
+"clip": [
+0.103,
+0.711
+],
+"file": "818056dbd7.mp3",
+"text": "Swift",
 "voice": "en-US-AnaNeural"
 },
 "swinub": {
@@ -8783,6 +10808,24 @@
 "text": "Sylveon",
 "voice": "en-US-AnaNeural"
 },
+"ta da": {
+"clip": [
+0.103,
+0.592
+],
+"file": "9a9f6bd2e6.mp3",
+"text": "Ta-da!",
+"voice": "en-US-AnaNeural"
+},
+"tackle": {
+"clip": [
+0.103,
+0.618
+],
+"file": "fea34faaf5.mp3",
+"text": "Tackle",
+"voice": "en-US-AnaNeural"
+},
 "tadbulb": {
 "clip": [
 0.103,
@@ -8799,6 +10842,42 @@
 ],
 "file": "a3c61697fc.mp3",
 "text": "Taillow",
+"voice": "en-US-AnaNeural"
+},
+"tails": {
+"clip": [
+0.103,
+0.697
+],
+"file": "497d34ee24.mp3",
+"text": "Tails!",
+"voice": "en-US-AnaNeural"
+},
+"tailwind": {
+"clip": [
+0.103,
+0.816
+],
+"file": "2a8c49fd40.mp3",
+"text": "Tailwind",
+"voice": "en-US-AnaNeural"
+},
+"take a break": {
+"clip": [
+0.103,
+0.934
+],
+"file": "b5c8100625.mp3",
+"text": "Take a break!",
+"voice": "en-US-AnaNeural"
+},
+"take down": {
+"clip": [
+0.103,
+0.842
+],
+"file": "3a1958aaa6.mp3",
+"text": "Take Down",
 "voice": "en-US-AnaNeural"
 },
 "talonflame": {
@@ -8900,6 +10979,60 @@
 "text": "Tauros",
 "voice": "en-US-AnaNeural"
 },
+"team rocket lost again meow": {
+"clip": [
+0.103,
+1.974
+],
+"file": "0d93e629f2.mp3",
+"text": "Team Rocket lost again, meow!",
+"voice": "en-US-GuyNeural"
+},
+"team rocket threw a net meow": {
+"clip": [
+0.103,
+1.974
+],
+"file": "3f5c2e68a1.mp3",
+"text": "Team Rocket threw a net, meow!",
+"voice": "en-US-GuyNeural"
+},
+"team rocket wins meow": {
+"clip": [
+0.103,
+1.763
+],
+"file": "01d4de1fe9.mp3",
+"text": "Team Rocket wins, meow!",
+"voice": "en-US-GuyNeural"
+},
+"team rocket won the battle meow": {
+"clip": [
+0.103,
+2.079
+],
+"file": "c828eb8a14.mp3",
+"text": "Team Rocket won the battle, meow!",
+"voice": "en-US-GuyNeural"
+},
+"team rocket's capsule machine who will come out meow": {
+"clip": [
+0.103,
+4.2
+],
+"file": "5f3e977cc8.mp3",
+"text": "Team Rocket's capsule machine! Who will come out, meow?",
+"voice": "en-US-GuyNeural"
+},
+"team rocket's turn meow": {
+"clip": [
+0.103,
+1.75
+],
+"file": "0b815fd2d2.mp3",
+"text": "Team Rocket's turn, meow!",
+"voice": "en-US-GuyNeural"
+},
 "teddiursa": {
 "clip": [
 0.103,
@@ -8907,6 +11040,15 @@
 ],
 "file": "be71b00003.mp3",
 "text": "Teddiursa",
+"voice": "en-US-AnaNeural"
+},
+"teleport": {
+"clip": [
+0.103,
+0.789
+],
+"file": "52745414cd.mp3",
+"text": "Teleport",
 "voice": "en-US-AnaNeural"
 },
 "tentacool": {
@@ -8954,6 +11096,42 @@
 "text": "Terrakion",
 "voice": "en-US-AnaNeural"
 },
+"thank you this poke ball is for you tap to open it": {
+"clip": [
+0.103,
+5.529
+],
+"file": "e5fcbda811.mp3",
+"text": "Thank you! This Poké Ball is for you. Tap to open it!",
+"voice": "en-US-AnaNeural"
+},
+"the grass is shaking": {
+"clip": [
+0.103,
+1.487
+],
+"file": "976211172a.mp3",
+"text": "The grass is shaking!",
+"voice": "en-US-AnaNeural"
+},
+"the net broke meow": {
+"clip": [
+0.103,
+1.513
+],
+"file": "51201ca3d7.mp3",
+"text": "The net broke, meow!",
+"voice": "en-US-GuyNeural"
+},
+"these are our pokemon this game meow": {
+"clip": [
+0.103,
+2.434
+],
+"file": "bb34ab11c5.mp3",
+"text": "These are our Pokémon this game, meow!",
+"voice": "en-US-GuyNeural"
+},
 "thievul": {
 "clip": [
 0.102,
@@ -8963,6 +11141,15 @@
 "text": "Thievul",
 "voice": "en-US-AnaNeural"
 },
+"three": {
+"clip": [
+0.103,
+0.487
+],
+"file": "35d6d33467.mp3",
+"text": "Three",
+"voice": "en-US-AnaNeural"
+},
 "throh": {
 "clip": [
 0.102,
@@ -8970,6 +11157,42 @@
 ],
 "file": "056b91d375.mp3",
 "text": "Throh",
+"voice": "en-US-AnaNeural"
+},
+"thunder": {
+"clip": [
+0.102,
+0.658
+],
+"file": "5c7686c028.mp3",
+"text": "Thunder",
+"voice": "en-US-AnaNeural"
+},
+"thunder punch": {
+"clip": [
+0.102,
+1.092
+],
+"file": "3335019d16.mp3",
+"text": "Thunder Punch",
+"voice": "en-US-AnaNeural"
+},
+"thunder shock": {
+"clip": [
+0.102,
+1.013
+],
+"file": "7c0680774b.mp3",
+"text": "Thunder Shock",
+"voice": "en-US-AnaNeural"
+},
+"thunderbolt": {
+"clip": [
+0.102,
+0.921
+],
+"file": "084fbcb062.mp3",
+"text": "Thunderbolt",
 "voice": "en-US-AnaNeural"
 },
 "thundurus": {
@@ -9179,6 +11402,24 @@
 "text": "Toxel",
 "voice": "en-US-AnaNeural"
 },
+"toxic": {
+"clip": [
+0.103,
+0.75
+],
+"file": "15037c1b51.mp3",
+"text": "Toxic!",
+"voice": "en-US-AnaNeural"
+},
+"toxic spikes": {
+"clip": [
+0.103,
+1.303
+],
+"file": "ea73bbbb0a.mp3",
+"text": "Toxic Spikes",
+"voice": "en-US-AnaNeural"
+},
 "toxicroak": {
 "clip": [
 0.103,
@@ -9206,6 +11447,15 @@
 "text": "Tranquill",
 "voice": "en-US-AnaNeural"
 },
+"transform": {
+"clip": [
+0.103,
+0.921
+],
+"file": "d825c53d89.mp3",
+"text": "Transform",
+"voice": "en-US-AnaNeural"
+},
 "trapinch": {
 "clip": [
 0.103,
@@ -9231,6 +11481,24 @@
 ],
 "file": "57d3649359.mp3",
 "text": "Trevenant",
+"voice": "en-US-AnaNeural"
+},
+"tri attack": {
+"clip": [
+0.103,
+0.961
+],
+"file": "6a364955b6.mp3",
+"text": "Tri Attack",
+"voice": "en-US-AnaNeural"
+},
+"triple kick": {
+"clip": [
+0.103,
+0.908
+],
+"file": "0a296017bb.mp3",
+"text": "Triple Kick",
 "voice": "en-US-AnaNeural"
 },
 "tropius": {
@@ -9285,6 +11553,33 @@
 ],
 "file": "3adda7130f.mp3",
 "text": "Turtwig",
+"voice": "en-US-AnaNeural"
+},
+"twineedle": {
+"clip": [
+0.103,
+0.842
+],
+"file": "83031a68e1.mp3",
+"text": "Twineedle",
+"voice": "en-US-AnaNeural"
+},
+"twister": {
+"clip": [
+0.103,
+0.711
+],
+"file": "e2a874aaa3.mp3",
+"text": "Twister",
+"voice": "en-US-AnaNeural"
+},
+"two": {
+"clip": [
+0.103,
+0.408
+],
+"file": "b8a9f715db.mp3",
+"text": "Two",
 "voice": "en-US-AnaNeural"
 },
 "tympole": {
@@ -9359,6 +11654,24 @@
 "text": "Tyrunt",
 "voice": "en-US-AnaNeural"
 },
+"u turn": {
+"clip": [
+0.103,
+0.776
+],
+"file": "d7ff0f6246.mp3",
+"text": "U-turn",
+"voice": "en-US-AnaNeural"
+},
+"ultra ball": {
+"clip": [
+0.103,
+0.908
+],
+"file": "d199488dea.mp3",
+"text": "Ultra Ball",
+"voice": "en-US-AnaNeural"
+},
 "umbreon": {
 "clip": [
 0.103,
@@ -9375,6 +11688,15 @@
 ],
 "file": "381a3eb176.mp3",
 "text": "Unfezant",
+"voice": "en-US-AnaNeural"
+},
+"unique": {
+"clip": [
+0.103,
+0.658
+],
+"file": "673eb027e9.mp3",
+"text": "Unique",
 "voice": "en-US-AnaNeural"
 },
 "unown": {
@@ -9411,6 +11733,24 @@
 ],
 "file": "84bb13e3a4.mp3",
 "text": "Urshifu",
+"voice": "en-US-AnaNeural"
+},
+"use it as a piece now": {
+"clip": [
+0.103,
+1.447
+],
+"file": "0fefd05155.mp3",
+"text": "Use it as a piece now?",
+"voice": "en-US-AnaNeural"
+},
+"used": {
+"clip": [
+0.103,
+0.632
+],
+"file": "1aec9c5d06.mp3",
+"text": "used",
 "voice": "en-US-AnaNeural"
 },
 "uxie": {
@@ -9575,6 +11915,15 @@
 "text": "Vileplume",
 "voice": "en-US-AnaNeural"
 },
+"vine whip": {
+"clip": [
+0.103,
+0.816
+],
+"file": "e4f0904c05.mp3",
+"text": "Vine Whip",
+"voice": "en-US-AnaNeural"
+},
 "virizion": {
 "clip": [
 0.103,
@@ -9582,6 +11931,15 @@
 ],
 "file": "8ca4549cdd.mp3",
 "text": "Virizion",
+"voice": "en-US-AnaNeural"
+},
+"vise grip": {
+"clip": [
+0.103,
+0.855
+],
+"file": "744a92b192.mp3",
+"text": "Vise Grip",
 "voice": "en-US-AnaNeural"
 },
 "vivillon": {
@@ -9692,6 +12050,15 @@
 "text": "Wartortle",
 "voice": "en-US-AnaNeural"
 },
+"was caught": {
+"clip": [
+0.103,
+0.763
+],
+"file": "87da75f243.mp3",
+"text": "was caught!",
+"voice": "en-US-AnaNeural"
+},
 "watchog": {
 "clip": [
 0.103,
@@ -9701,6 +12068,24 @@
 "text": "Watchog",
 "voice": "en-US-AnaNeural"
 },
+"water beats fire": {
+"clip": [
+0.103,
+1.408
+],
+"file": "be6c3ce195.mp3",
+"text": "Water beats Fire!",
+"voice": "en-US-AnaNeural"
+},
+"water gun": {
+"clip": [
+0.103,
+0.895
+],
+"file": "de99b1d4ad.mp3",
+"text": "Water Gun",
+"voice": "en-US-AnaNeural"
+},
 "wattrel": {
 "clip": [
 0.103,
@@ -9708,6 +12093,24 @@
 ],
 "file": "977cfef292.mp3",
 "text": "Wattrel",
+"voice": "en-US-AnaNeural"
+},
+"we let it go meow": {
+"clip": [
+0.103,
+1.618
+],
+"file": "c688179619.mp3",
+"text": "We let it go, meow!",
+"voice": "en-US-GuyNeural"
+},
+"weather ball": {
+"clip": [
+0.103,
+0.842
+],
+"file": "3addd0f4e6.mp3",
+"text": "Weather Ball",
 "voice": "en-US-AnaNeural"
 },
 "weavile": {
@@ -9746,6 +12149,24 @@
 "text": "Weezing",
 "voice": "en-US-AnaNeural"
 },
+"welcome to the pokemon center": {
+"clip": [
+0.103,
+2.184
+],
+"file": "5863f1edc0.mp3",
+"text": "Welcome to the Pokémon Center!",
+"voice": "en-US-AnaNeural"
+},
+"what time is it": {
+"clip": [
+0.103,
+1.013
+],
+"file": "a3d9a2f1f0.mp3",
+"text": "What time is it?",
+"voice": "en-US-AnaNeural"
+},
 "whimsicott": {
 "clip": [
 0.103,
@@ -9782,6 +12203,15 @@
 "text": "Whismur",
 "voice": "en-US-AnaNeural"
 },
+"who gets this move": {
+"clip": [
+0.103,
+1.224
+],
+"file": "551f9f788c.mp3",
+"text": "Who gets this move?",
+"voice": "en-US-AnaNeural"
+},
 "wigglytuff": {
 "clip": [
 0.103,
@@ -9800,6 +12230,15 @@
 "text": "Wiglett",
 "voice": "en-US-AnaNeural"
 },
+"wild charge": {
+"clip": [
+0.103,
+1.145
+],
+"file": "44b9ce2f8e.mp3",
+"text": "Wild Charge",
+"voice": "en-US-AnaNeural"
+},
 "wimpod": {
 "clip": [
 0.103,
@@ -9807,6 +12246,15 @@
 ],
 "file": "90e853314f.mp3",
 "text": "Wimpod",
+"voice": "en-US-AnaNeural"
+},
+"wing attack": {
+"clip": [
+0.103,
+0.908
+],
+"file": "e2e6242ee4.mp3",
+"text": "Wing Attack",
 "voice": "en-US-AnaNeural"
 },
 "wingull": {
@@ -9818,6 +12266,24 @@
 "text": "Wingull",
 "voice": "en-US-AnaNeural"
 },
+"wins": {
+"clip": [
+0.103,
+0.645
+],
+"file": "82f040d643.mp3",
+"text": "wins!",
+"voice": "en-US-AnaNeural"
+},
+"wish": {
+"clip": [
+0.103,
+0.539
+],
+"file": "27e76ef6b6.mp3",
+"text": "Wish",
+"voice": "en-US-AnaNeural"
+},
 "wishiwashi": {
 "clip": [
 0.103,
@@ -9825,6 +12291,15 @@
 ],
 "file": "21ae9fa11f.mp3",
 "text": "Wishiwashi",
+"voice": "en-US-AnaNeural"
+},
+"withdraw": {
+"clip": [
+0.103,
+0.711
+],
+"file": "449614e283.mp3",
+"text": "Withdraw",
 "voice": "en-US-AnaNeural"
 },
 "wo chien": {
@@ -9980,6 +12455,42 @@
 "text": "Yanmega",
 "voice": "en-US-AnaNeural"
 },
+"yawn": {
+"clip": [
+0.103,
+0.539
+],
+"file": "0652cdefcf.mp3",
+"text": "Yawn",
+"voice": "en-US-AnaNeural"
+},
+"yay you knocked out": {
+"clip": [
+0.103,
+2.397
+],
+"file": "b8129463a2.mp3",
+"text": "Yay! You knocked out",
+"voice": "en-US-AnaNeural"
+},
+"you knocked out": {
+"clip": [
+0.103,
+1.0
+],
+"file": "a949bcc613.mp3",
+"text": "You knocked out",
+"voice": "en-US-AnaNeural"
+},
+"your turn": {
+"clip": [
+0.103,
+0.868
+],
+"file": "54817fca5c.mp3",
+"text": "your turn!",
+"voice": "en-US-AnaNeural"
+},
 "yungoos": {
 "clip": [
 0.103,
@@ -9987,6 +12498,24 @@
 ],
 "file": "97f2e83e72.mp3",
 "text": "Yungoos",
+"voice": "en-US-AnaNeural"
+},
+"yut": {
+"clip": [
+0.103,
+0.487
+],
+"file": "ed7d52625b.mp3",
+"text": "Yut",
+"voice": "en-US-AnaNeural"
+},
+"yut four spaces throw again": {
+"clip": [
+0.103,
+4.332
+],
+"file": "6bd7f84d02.mp3",
+"text": "Yut! Four spaces. Throw again!",
 "voice": "en-US-AnaNeural"
 },
 "yveltal": {
@@ -10023,6 +12552,15 @@
 ],
 "file": "65912eaac1.mp3",
 "text": "Zangoose",
+"voice": "en-US-AnaNeural"
+},
+"zap cannon": {
+"clip": [
+0.103,
+1.04
+],
+"file": "4f4c0b83c2.mp3",
+"text": "Zap Cannon",
 "voice": "en-US-AnaNeural"
 },
 "zapdos": {
