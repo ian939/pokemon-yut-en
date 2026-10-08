@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
@@ -1010,6 +1010,7 @@ body.coining .tcard.active { border-color: var(--ink) !important; box-shadow: va
 
 <script src="data/pokemon.js"></script>
 <script src="yut-rules.js"></script>
+<script src="assets/voice/voice.js"></script>
 <script>
 "use strict";
 /* ================================================================
@@ -1133,14 +1134,11 @@ const sleep = ms => new Promise(r => setTimeout(r, ms * SPEED));
 const pct = v => ((v + 14) / 128 * 100).toFixed(3) + "%";   // 윷판 좌표(−14~114) → %
 const plain = s => String(s).replace(/[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE0F}\u{200D}]/gu, "").trim();
 const emojiOf = name => String(name).split(" ")[0];
-function josa(word, pair) {
-  const [a, b] = pair.split("/");
-  const c = String(word).trim().slice(-1).charCodeAt(0);
-  if (!(c >= 0xAC00 && c <= 0xD7A3)) return word + b;
-  const jong = (c - 0xAC00) % 28;
-  if (pair === "으로/로") return word + (jong === 0 || jong === 8 ? "로" : "으로");
-  return word + (jong > 0 ? a : b);
-}
+// 영어판: 한국어 조사는 붙이지 않는다 (남은 josa() 호출이 있어도 낱말만 돌려준다)
+function josa(word) { return String(word); }
+// 타입은 안쪽 값(규칙·상성표·색 열쇠)이 한국어 그대로 — 화면에 보일 때만 영어로
+const TYPE_EN = { "노말": "Normal", "불꽃": "Fire", "물": "Water", "풀": "Grass", "전기": "Electric", "얼음": "Ice", "격투": "Fighting", "독": "Poison", "땅": "Ground", "비행": "Flying", "에스퍼": "Psychic", "벌레": "Bug", "바위": "Rock", "고스트": "Ghost", "드래곤": "Dragon", "악": "Dark", "강철": "Steel", "페어리": "Fairy" };
+const typeName = t => String(t).split("·").map(x => TYPE_EN[x] || x).join("/");
 
 const nameOf = id => D.names[id - 1] || "???";
 const collectionIds = pid => ((Store.prof(pid) || {}).collection || []).map(x => x.id); // 👤 프로필의 보관함 (없으면 지금 프로필)
@@ -1178,10 +1176,11 @@ function sprFail(img) { img.onerror = null; img.src = "assets/items/poke-ball.pn
 function artFail(img, id) { img.onerror = null; img.src = frontUrl(id); img.classList.add("pix"); }
 
 /* ================================================================
-   저장 (윷놀이 전용) — engmon_yut_v1
+   저장 (윷놀이 영어판 전용) — engmon_yut_en_v1 (한국어판 engmon_yut_v1 은 처음 한 번 읽기만)
 ================================================================ */
 const Store = {
-  KEY: "engmon_yut_v1",
+  KEY: "engmon_yut_en_v1",
+  KO_KEY: "engmon_yut_v1", // 한국어판 저장 (읽기만 한다)
   data: null,
   warned: false,
   defaults() {
@@ -1202,6 +1201,15 @@ const Store = {
     let raw = null;
     try {
       raw = JSON.parse(localStorage.getItem(this.KEY));
+      // 🇰🇷 처음 열면 한국어판(같은 주소 ian939.github.io 라 저장을 읽을 수 있다)의 프로필·포켓몬·볼을 한 번 가져온다 — 하던 판은 빼고
+      if (!raw && Q.get("fresh") !== "1") {
+        const ko = JSON.parse(localStorage.getItem(this.KO_KEY));
+        if (ko && typeof ko === "object" && ko.profiles) {
+          // 💾 저장 코드는 가져오지 않는다 — 두 판이 같은 코드에 번갈아 쓰면 기록이 엉킨다 (영어판은 새 코드를 따로 켠다)
+          Object.values(ko.profiles).forEach(p => { if (p) p.cloud = null; });
+          raw = Object.assign({}, ko, { game: null, lastGame: null, fromKo: true });
+        }
+      }
       if (raw && typeof raw === "object") {
         Object.assign(d, raw);
         delete d.familyDex; // 옛 버전(잉글리시몬 가족 도감 읽기)이 남긴 것
@@ -1366,44 +1374,109 @@ const SFX = {
   clang() { this.tone(1200, 0.12, "square", 0, 0.12); this.tone(1800, 0.2, "triangle", 0.04, 0.1); this.tone(600, 0.2, "square", 0.1, 0.08); },
   thud() { this.tone(110, 0.2, "square", 0, 0.2); this.tone(80, 0.25, "sine", 0.06, 0.2); },
 };
+/* 🔊 영어로 읽어 주기 (영어판) — Edge TTS 로 미리 녹음한 mp3 (assets/voice/, tools/gen-voice.py) 를 먼저 쓰고,
+   녹음이 없는 말(사람 이름처럼 직접 쓴 글자)만 브라우저 목소리로 읽는다 (한글이면 한국어 목소리).
+   TTS.say(글 또는 [조각, 조각…]) — 하던 말을 끊고 새로 읽는다. 문장 전체가 녹음돼 있으면 그것을, 아니면 조각마다 이어서.
+   TTS.sayEn(글) — 하던 말 뒤에 이어서 읽는다.
+   녹음할 말 모으기: TTS.say( … ) 안의 글자와 vo("…") 로 감싼 글자 + 포켓몬·기술·볼 이름 (gen-voice.py 가 찾는다) */
+const vo = s => s; // 녹음해 둘 문장 표시 (gen-voice.py 가 찾는다) — 하는 일은 없음
 const TTS = {
-  voice: null, voicesLoaded: false,
+  en: null, ko: null, voicesLoaded: false,
+  seq: 0, chain: Promise.resolve(), live: [], bufs: {},
   init() {
     if (!("speechSynthesis" in window)) return;
     const pick = () => {
       const vs = speechSynthesis.getVoices();
       this.voicesLoaded = vs.length > 0;
-      this.voice = vs.find(v => /^ko/i.test(v.lang)) || null;
+      this.en = vs.find(v => /^en(-|_)US/i.test(v.lang)) || vs.find(v => /^en/i.test(v.lang)) || null;
+      this.ko = vs.find(v => /^ko/i.test(v.lang)) || null;
     };
     pick();
     speechSynthesis.onvoiceschanged = pick;
   },
-  say(text) {
-    if (Store.data.sound === false || !("speechSynthesis" in window)) return;
-    if (this.voicesLoaded && !this.voice) return; // 한국어 목소리가 없으면 읽지 않는다 (엉뚱한 발음 방지)
-    try {
-      speechSynthesis.cancel();
-      const u = new SpeechSynthesisUtterance(plain(text));
-      u.lang = "ko-KR";
-      if (this.voice) u.voice = this.voice;
-      u.rate = 0.95; u.pitch = 1.1;
-      speechSynthesis.speak(u);
-    } catch (e) {}
+  // 녹음 찾기 열쇠 — gen-voice.py 의 key() 와 똑같이 유지
+  key(s) {
+    return plain(s).replace(/♀/g, " female").replace(/♂/g, " male").normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase().replace(/[’‘`]/g, "'").replace(/[^a-z0-9'\uac00-\ud7a3]+/g, " ").trim();
   },
-  // 영어 한 마디 — 한국어 다음에 이어서 (끊지 않고 줄 세움), 영어 목소리로
-  sayEn(text) {
-    if (Store.data.sound === false || !("speechSynthesis" in window)) return;
-    try {
-      const v = speechSynthesis.getVoices().find(x => /^en(-|_)?(US|GB)?/i.test(x.lang));
-      if (this.voicesLoaded && !v) return;
-      const u = new SpeechSynthesisUtterance(text);
-      u.lang = "en-US";
-      if (v) u.voice = v;
-      u.rate = 0.9;
-      speechSynthesis.speak(u);
-    } catch (e) {}
+  clip(text) { const V = window.VOICE || {}; return V[this.key(text)] || null; },
+  say(text) { this.stop(); this.queue(text); },
+  sayEn(text) { this.queue(text); },
+  queue(text) {
+    if (Store.data.sound === false) return;
+    const parts = (Array.isArray(text) ? text : [text]).map(p => plain(p)).filter(p => this.key(p));
+    if (!parts.length) return;
+    const whole = parts.join(" ");
+    const items = (this.clip(whole) ? [whole] : parts).map(p => ({ text: p, clip: this.clip(p) }));
+    items.forEach(it => { if (it.clip) this.load(it.clip[0]).catch(() => {}); }); // 미리 받아 두면 조각 사이가 덜 끊긴다
+    const my = this.seq;
+    this.chain = this.chain.then(async () => {
+      for (const it of items) {
+        if (my !== this.seq) return;
+        try { await (it.clip ? this.playClip(it.clip, my) : this.synth(it.text, my)); } catch (e) { /* 하나 못 읽어도 다음으로 */ }
+      }
+    });
   },
-  stop() { try { speechSynthesis.cancel(); } catch (e) {} },
+  load(file) {
+    if (!this.bufs[file]) {
+      this.bufs[file] = fetch("assets/voice/" + file).then(r => { if (!r.ok) throw new Error(r.status); return r.arrayBuffer(); })
+        .then(b => new Promise((ok, bad) => { const p = SFX.ctx.decodeAudioData(b, ok, bad); if (p && p.then) p.then(ok, bad); }));
+      this.bufs[file].catch(() => { delete this.bufs[file]; });
+    }
+    return this.bufs[file];
+  },
+  // clip = [파일, 말 시작(초), 길이(초)] — 앞뒤 빈 소리는 잘라서 조각이 자연스럽게 이어지게
+  async playClip(c, my) {
+    if (!SFX.ensure()) return;
+    let buf = null;
+    try { buf = await this.load(c[0]); } catch (e) { return this.playTag(c, my); } // file:// 처럼 fetch 가 안 되면 <audio> 로
+    if (my !== this.seq) return;
+    await new Promise(done => {
+      const src = SFX.ctx.createBufferSource();
+      src.buffer = buf;
+      src.connect(SFX.ctx.destination);
+      src.onended = () => { this.live = this.live.filter(x => x !== src); done(); };
+      this.live.push(src);
+      const start = Math.max(0, (c[1] || 0) - 0.05);
+      src.start(0, start, Math.min(buf.duration - start, (c[2] || buf.duration) + 0.12));
+    });
+  },
+  playTag(c, my) {
+    return new Promise(done => {
+      try {
+        const a = new Audio("assets/voice/" + c[0]);
+        const fin = () => { a.pause(); this.live = this.live.filter(x => x !== a); done(); };
+        a.onended = fin; a.onerror = fin;
+        a.ontimeupdate = () => { if (my !== this.seq || a.currentTime >= (c[1] || 0) + (c[2] || 99) + 0.12) fin(); };
+        this.live.push(a);
+        a.play().catch(fin);
+      } catch (e) { done(); }
+    });
+  },
+  synth(text, my) {
+    return new Promise(done => {
+      if (!("speechSynthesis" in window) || my !== this.seq) return done();
+      const ko = /[\uac00-\ud7a3]/.test(text);
+      const v = ko ? this.ko : this.en;
+      if (this.voicesLoaded && !v) return done(); // 맞는 목소리가 없으면 읽지 않는다 (엉뚱한 발음 방지)
+      try {
+        const u = new SpeechSynthesisUtterance(text);
+        u.lang = ko ? "ko-KR" : "en-US";
+        if (v) u.voice = v;
+        u.rate = ko ? 0.95 : 0.9;
+        const t = setTimeout(done, 600 + text.length * 120); // onend 가 안 오는 기기 대비
+        u.onend = u.onerror = () => { clearTimeout(t); done(); };
+        speechSynthesis.speak(u);
+      } catch (e) { done(); }
+    });
+  },
+  stop() {
+    this.seq++;
+    this.live.forEach(x => { try { x.stop ? x.stop() : x.pause(); } catch (e) {} });
+    this.live = [];
+    this.chain = Promise.resolve();
+    try { speechSynthesis.cancel(); } catch (e) {}
+  },
 };
 const Cry = {
   a: null,
