@@ -7,12 +7,12 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="포켓몬 윷놀이">
+<meta name="apple-mobile-web-app-title" content="Pokémon Yutnori">
 <meta name="theme-color" content="#5bb8ff">
 <link rel="icon" href="assets/ui/icon-180.png">
 <link rel="apple-touch-icon" href="assets/ui/icon-180.png">
 <link rel="manifest" href="manifest.webmanifest">
-<title>포켓몬 윷놀이</title>
+<title>Pokémon Yutnori</title>
 <!--
   포켓몬 윷놀이 — 스타팅 포켓몬 + ❓ 풀숲에서 잡은 포켓몬이 말이 되는 가족 윷놀이 (개인·가정용 비상업 팬 프로젝트)
   - 규칙: yut-rules.js · 데이터: data/pokemon.js (tools 로 생성) · 그림: assets/
@@ -1031,19 +1031,19 @@ const CAST = {
 };
 const LOCAL_ART = new Set([].concat(Object.values(CAST.yut), CAST.rocket).map(Number));
 const RES = {
-  "-1": { name: "빽도", animal: "", emoji: "↩️", steps: "뒤로 1칸", say: "빽도! 뒤로 한 칸", en: "Back one" },
-  1: { name: "도", animal: "돼지", emoji: "🐷", steps: "1칸", say: "도! 한 칸", en: "One" },
-  2: { name: "개", animal: "개", emoji: "🐶", steps: "2칸", say: "개! 두 칸", en: "Two" },
-  3: { name: "걸", animal: "양", emoji: "🐑", steps: "3칸", say: "걸! 세 칸", en: "Three" },
-  4: { name: "윷", animal: "소", emoji: "🐮", steps: "4칸", say: "윷! 네 칸, 한 번 더!", en: "Four" },
-  5: { name: "모", animal: "말", emoji: "🐴", steps: "5칸", say: "모! 다섯 칸, 한 번 더!", en: "Five" },
+  "-1": { name: "Back-do", animal: "", emoji: "↩️", steps: "back 1", say: vo("Back-do! Back one space!"), en: vo("Back one") },
+  1: { name: "Do", animal: "pig", emoji: "🐷", steps: "1 space", say: vo("Do! One space!"), en: vo("One") },
+  2: { name: "Gae", animal: "dog", emoji: "🐶", steps: "2 spaces", say: vo("Gae! Two spaces!"), en: vo("Two") },
+  3: { name: "Geol", animal: "sheep", emoji: "🐑", steps: "3 spaces", say: vo("Geol! Three spaces!"), en: vo("Three") },
+  4: { name: "Yut", animal: "cow", emoji: "🐮", steps: "4 spaces", say: vo("Yut! Four spaces. Throw again!"), en: vo("Four") },
+  5: { name: "Mo", animal: "horse", emoji: "🐴", steps: "5 spaces", say: vo("Mo! Five spaces. Throw again!"), en: vo("Five") },
 };
 const MEMBERS = [
-  { key: "kid", name: "🧒 지온이" }, { key: "mom", name: "👩 엄마" }, { key: "dad", name: "👨 아빠" },
-  { key: "aunt", name: "👱‍♀️ 이모" }, { key: "grandma", name: "👵 할머니" }, { key: "grandpa", name: "👴 할아버지" },
+  { key: "kid", name: "🧒 Jion" }, { key: "mom", name: "👩 Mom" }, { key: "dad", name: "👨 Dad" },
+  { key: "aunt", name: "👱‍♀️ Aunt" }, { key: "grandma", name: "👵 Grandma" }, { key: "grandpa", name: "👴 Grandpa" },
 ];
 // 👤 프로필 기본 캐릭터 = 스타팅 포켓몬 (내 포켓몬 중에서 바꿀 수 있다)
-const DEFAULT_NAME = "꿈꾸는아이"; // 처음 만들어지는 프로필 이름 (사용자 요청 2026-10-02) — ✏️ 꾸미기에서 바꾼다
+const DEFAULT_NAME = "Dreamer"; // 처음 만들어지는 프로필 이름 (사용자 요청 2026-10-02) — ✏️ 꾸미기에서 바꾼다
 const DEFAULT_AV = { kid: 7, mom: 1, dad: 4, aunt: 152, grandma: 155, grandpa: 158 };
 const newStats = () => ({ games: 0, family: { win: 0, lose: 0 }, rocket: { win: 0, lose: 0 }, net: { win: 0, lose: 0 }, boxes: 0, wildSeen: 0, wildCaught: 0 });
 const newBag = () => ({ poke: 3, great: 0, ultra: 0, luxury: 0, master: 0 }); // 처음 선물 몬스터볼 3개
@@ -1051,7 +1051,7 @@ function blankProfile(id, name, avatar) { return { id, name, avatar, collection:
 function normProfile(p, id) {
   const o = blankProfile(id, "", 25);
   if (!p || typeof p !== "object") p = {};
-  o.name = String(p.name || "").trim().slice(0, 8) || "친구";
+  o.name = String(p.name || "").trim().slice(0, 8) || "Friend";
   o.avatar = Number(p.avatar) >= 1 && Number(p.avatar) <= 1025 ? Number(p.avatar) : 25;
   Object.assign(o.bag, p.bag || {});
   Object.keys(o.bag).forEach(k => { o.bag[k] = Math.max(0, Math.floor(Number(o.bag[k]) || 0)); });
@@ -1066,48 +1066,48 @@ function normProfile(p, id) {
 }
 const avHtml = (id, cls) => '<span class="av' + (cls ? " " + cls : "") + '">' + spr(id) + "</span>";
 const TEAM_COLORS = ["#e5484d", "#2f6fd6"]; // 오방색 적(첫 팀) · 청(두 번째 팀)
-const ROCKET_TEAM = { key: "rocket", name: "😈 로켓단", color: "#7a4fb5" };
+const ROCKET_TEAM = { key: "rocket", name: "😈 Team Rocket", color: "#7a4fb5" };
 // ✨ 기술 36개 (v8, 타입마다 2개) — 화면에 보이는 한 줄 설명 (규칙은 yut-rules.js 의 SKILLS)
 const SKILL_UI = {
-  metronome: { emoji: "👆", desc: "무슨 기술이 나올까? 다른 기술 하나가 무작위로!" },
-  wish: { emoji: "🌠", desc: "윷을 던지는 대신 원하는 결과를 골라요" },
-  nitro: { emoji: "🔥", desc: "지금 바로 2칸 앞으로!" },
-  flame: { emoji: "🔥", desc: "앞쪽 3칸 안의 상대 말을 물리쳐요!" },
-  surf: { emoji: "🌊", desc: "상대 말 하나를 2칸 뒤로 밀어요" },
-  rain: { emoji: "🌧️", desc: "우리 차례 세 번 동안 비! 도·빽도가 나오면 개로" },
-  growth: { emoji: "🌱", desc: "윷 결과 하나를 한 단계 크게! (개→걸)" },
-  sleep: { emoji: "💤", desc: "상대 말 하나가 쿨쿨 — 두 번 못 움직여요 (깰 수도 있어요!)" },
-  discharge: { emoji: "⚡", desc: "상대 말이 모두 한 번 못 움직여요" },
-  wildcharge: { emoji: "🏃", desc: "바로 3칸 앞으로 돌진! 대신 다음 차례엔 쉬어요" },
-  veil: { emoji: "❄️", desc: "얼음 장막! 상대 차례 두 번 동안 안 잡히고 기술도 안 맞아요" },
-  icecharge: { emoji: "🧊", desc: "상대 말 하나를 얼려요! 다음엔 그 팀 윷도 작게 (빽도·도·개만)" },
-  bulkup: { emoji: "💪", desc: "힘을 모아요! 다음 두 번은 1칸씩 더 가요" },
-  poisonjab: { emoji: "🧪", desc: "상대 말 하나가 두 번 동안 1칸씩 덜 가요" },
-  dig: { emoji: "🕳️", desc: "땅속에 숨어요! 한 번 안 잡히고, 다음엔 1칸 더" },
-  stoneedge: { emoji: "🗿", desc: "가장 앞선 상대 말을 3칸 뒤로!" },
-  outrage: { emoji: "🐲", desc: "앞쪽 2칸 안의 상대를 모두 물리쳐요! 대신 두 번 쉬어요" },
-  spike: { emoji: "🟣", desc: "빈 칸에 독 압정! 상대가 멈추면 한 번 못 움직여요" },
-  magnet: { emoji: "🧲", desc: "뒤에 있는 우리 말을 끌어와 업어요" },
-  kiss: { emoji: "💋", desc: "상대 말 하나가 헷갈려서, 다음엔 뒤로 가요" },
-  counter: { emoji: "🥊", desc: "우리 팀에 온 방해 기술을 되돌려요" },
-  toxic: { emoji: "☠️", desc: "상대의 다음 윷이 빽도가 돼요" },
-  quake: { emoji: "🌋", desc: "상대 말이 모두 한 칸씩 뒤로!" },
-  fly: { emoji: "🦅", desc: "앞쪽의 가장 가까운 모서리로 날아가요" },
-  tailwind: { emoji: "🍃", desc: "우리 말이 모두 한 칸씩 앞으로" },
-  future: { emoji: "🔮", desc: "던지기 전에 결과를 맞혀 봐요. 맞히면 한 번 더!" },
-  allyswitch: { emoji: "🔄", desc: "우리 말과 상대 말이 자리를 바꿔요" },
-  uturn: { emoji: "↩️", desc: "이번엔 뒤로 갈 수도 있어요" },
-  web: { emoji: "🕸️", desc: "빈 칸에 거미줄! 상대가 지나가다 걸려서 멈춰요" },
-  rock: { emoji: "🪨", desc: "빈 칸에 뾰족 바위! 상대가 거기 멈추면 집으로" },
-  spite: { emoji: "🔒", desc: "상대 팀이 세 번 동안 기술을 못 써요" },
-  bond: { emoji: "👻", desc: "이 말이 잡히면 잡은 상대도 같이 집으로!" },
-  ddance: { emoji: "🐉", desc: "한 칸 앞으로 + 한 번 더 던지기!" },
-  snatch: { emoji: "😈", desc: "상대 기술을 빼앗아 와요" },
-  iron: { emoji: "🛡️", desc: "잡으러 온 상대를 튕겨 내요!" },
-  moon: { emoji: "🌙", desc: "잡혀도 집 대신 한 칸 뒤로만" },
+  metronome: { emoji: "👆", desc: "Which move will it be? A random move!" },
+  wish: { emoji: "🌠", desc: "No throw. Pick the result you want!" },
+  nitro: { emoji: "🔥", desc: "Go 2 spaces forward right now!" },
+  flame: { emoji: "🔥", desc: "Knock out an enemy up to 3 spaces ahead!" },
+  surf: { emoji: "🌊", desc: "Push one enemy piece back 2 spaces." },
+  rain: { emoji: "🌧️", desc: "Rain for your next 3 turns! Do or Back-do becomes Gae." },
+  growth: { emoji: "🌱", desc: "Make one result one step bigger! (Gae→Geol)" },
+  sleep: { emoji: "💤", desc: "One enemy piece falls asleep. It can't move 2 times. (It may wake up!)" },
+  discharge: { emoji: "⚡", desc: "All enemy pieces can't move 1 time." },
+  wildcharge: { emoji: "🏃", desc: "Charge 3 spaces forward now! But rest next turn." },
+  veil: { emoji: "❄️", desc: "Ice wall! For 2 enemy turns, no one can knock you out or hit you with moves." },
+  icecharge: { emoji: "🧊", desc: "Freeze one enemy piece! Their next throw is small too (Back-do, Do, Gae only)." },
+  bulkup: { emoji: "💪", desc: "Power up! Go 1 extra space your next 2 times." },
+  poisonjab: { emoji: "🧪", desc: "One enemy piece goes 1 space less, 2 times." },
+  dig: { emoji: "🕳️", desc: "Hide underground! Safe 1 time, then go 1 extra space." },
+  stoneedge: { emoji: "🗿", desc: "Push the front enemy piece back 3 spaces!" },
+  outrage: { emoji: "🐲", desc: "Knock out all enemies up to 2 spaces ahead! But rest 2 turns." },
+  spike: { emoji: "🟣", desc: "Poison spikes on an empty space! An enemy that stops there can't move 1 time." },
+  magnet: { emoji: "🧲", desc: "Pull up your piece from behind and stack!" },
+  kiss: { emoji: "💋", desc: "One enemy piece gets confused and goes backward next time." },
+  counter: { emoji: "🥊", desc: "Bounce back a move used on your team." },
+  toxic: { emoji: "☠️", desc: "The enemy's next throw becomes Back-do." },
+  quake: { emoji: "🌋", desc: "All enemy pieces go back 1 space!" },
+  fly: { emoji: "🦅", desc: "Fly to the nearest corner ahead." },
+  tailwind: { emoji: "🍃", desc: "All your pieces go 1 space forward." },
+  future: { emoji: "🔮", desc: "Guess the result before you throw. Right? Throw again!" },
+  allyswitch: { emoji: "🔄", desc: "Your piece and an enemy piece swap places." },
+  uturn: { emoji: "↩️", desc: "This time you can go backward too." },
+  web: { emoji: "🕸️", desc: "Sticky web on an empty space! An enemy passing by gets stuck." },
+  rock: { emoji: "🪨", desc: "Sharp rocks on an empty space! An enemy that stops there goes home." },
+  spite: { emoji: "🔒", desc: "The other team can't use moves for 3 turns." },
+  bond: { emoji: "👻", desc: "If this piece is knocked out, the attacker goes home too!" },
+  ddance: { emoji: "🐉", desc: "Go 1 space forward + throw again!" },
+  snatch: { emoji: "😈", desc: "Steal a move from the other team." },
+  iron: { emoji: "🛡️", desc: "Bounce away an enemy that attacks you!" },
+  moon: { emoji: "🌙", desc: "If knocked out, go back just 1 space, not home." },
 };
 const TYPE_ORDER = ["노말", "불꽃", "물", "풀", "전기", "얼음", "격투", "독", "땅", "비행", "에스퍼", "벌레", "바위", "고스트", "드래곤", "악", "강철", "페어리"];
-const TARGET_LABEL = { flame: "🔥 물리치기", surf: "🌊 밀기", sleep: "💤 재우기", snatch: "😈 빼앗기", allyswitch: "🔄 바꾸기", icecharge: "🧊 얼리기", poisonjab: "🧪 찌르기", kiss: "💋 키스", magnet: "🧲 끌어오기", rock: "🪨", web: "🕸️", spike: "🟣" };
+const TARGET_LABEL = { flame: "🔥 Knock out", surf: "🌊 Push", sleep: "💤 Sleep", snatch: "😈 Steal", allyswitch: "🔄 Swap", icecharge: "🧊 Freeze", poisonjab: "🧪 Jab", kiss: "💋 Kiss", magnet: "🧲 Pull", rock: "🪨", web: "🕸️", spike: "🟣" };
 const TRAP_EMOJI = { rock: "🪨", web: "🕸️", spike: "🟣" };
 const ROCKET_NET = 0.6; // 로켓단 그물이 잡을 확률 (한 번)
 // 😈 로켓단 말은 판마다 무작위 — 전설이 아닌 진화 1단계 포켓몬 중에서, 지온이가 가진 가족은 빼고 (여러 타입의 기술을 겪어 보게, 사용자 요청 2026-09-28)
@@ -1149,7 +1149,7 @@ const rosterIds = pid => STARTERS.concat(caughtOnly(pid));                      
 const ownedSet = pid => new Set(rosterIds(pid));
 const bagTotal = pid => Yut.Rewards.BALLS.reduce((t, b) => t + (((Store.prof(pid) || {}).bag || {})[b] || 0), 0);
 const typesOf = id => String(D.types[id - 1] || "노말").split("·");
-const moveOf = id => D.moves[id] || D.typeMove[typesOf(id)[0]] || "몸통박치기";
+const moveOf = id => D.moves[id] || D.typeMove[typesOf(id)[0]] || "Tackle";
 const fxOf = id => D.typeFx[typesOf(id)[0]] || "💥";
 const rarityOf = id => D.rarity[id] || "c";
 const frontUrl = id => "assets/sprites/front/" + id + ".png";
@@ -1283,7 +1283,7 @@ const Store = {
     try { cloudSchedule(); } catch (e) { /* 아직 준비 전 */ }
     try { localStorage.setItem(this.KEY, JSON.stringify(this.data)); }
     catch (e) {
-      if (!this.warned) { this.warned = true; toast("저장이 안 되는 환경이에요. 창을 닫으면 판이 사라져요 🥲", 3200); }
+      if (!this.warned) { this.warned = true; toast("Can't save here. If you close this page, the game is lost 🥲", 3200); }
     }
   },
 };
@@ -1379,7 +1379,7 @@ const SFX = {
    TTS.say(글 또는 [조각, 조각…]) — 하던 말을 끊고 새로 읽는다. 문장 전체가 녹음돼 있으면 그것을, 아니면 조각마다 이어서.
    TTS.sayEn(글) — 하던 말 뒤에 이어서 읽는다.
    녹음할 말 모으기: TTS.say( … ) 안의 글자와 vo("…") 로 감싼 글자 + 포켓몬·기술·볼 이름 (gen-voice.py 가 찾는다) */
-const vo = s => s; // 녹음해 둘 문장 표시 (gen-voice.py 가 찾는다) — 하는 일은 없음
+function vo(s) { return s; } // 녹음해 둘 문장 표시 (gen-voice.py 가 찾는다) — 하는 일은 없음. const 가 아닌 함수 선언 = 위쪽 RES 에서도 쓸 수 있다
 const TTS = {
   en: null, ko: null, voicesLoaded: false,
   seq: 0, chain: Promise.resolve(), live: [], bufs: {},
@@ -1607,7 +1607,7 @@ function showScreen(name) {
   app.appendChild(sec);
   Screens[name](sec);
 }
-const soundLabel = () => Store.data.sound === false ? "🔇 소리 꺼짐" : "🔊 소리 켜짐";
+const soundLabel = () => Store.data.sound === false ? "🔇 Sound off" : "🔊 Sound on";
 
 /* ---------- 처음 ---------- */
 Screens.home = sec => {
@@ -1615,19 +1615,19 @@ Screens.home = sec => {
   const resume = g && g.phase !== "over";
   sec.innerHTML =
     '<div class="inner">' +
-      '<h1 class="logo"><small>포켓몬</small>윷놀이</h1>' +
+      '<h1 class="logo"><small>Pokémon</small>Yutnori</h1>' +
       '<div class="cast">' + [1, 2, 3, 4, 5].map((r, i) =>
         '<div class="c" style="--i:' + i + '"><img src="' + artUrl(CAST.yut[r]) + '" alt="' + esc(nameOf(CAST.yut[r])) + '" draggable="false"><b>' + RES[r].name + "</b></div>").join("") + "</div>" +
       '<div class="menu">' +
-        (resume ? '<button class="btn big gold cursor" data-act="resume">' + (g.settings.mode === "net" ? "🏠 친구 대결 이어하기" : "이어하기") + "<small>" + esc(g.teams.map(t => t.name).join("  vs  ")) + "</small></button>" : "") +
-        '<button class="btn big red' + (resume ? "" : " cursor") + '" data-act="new-family">👨‍👩‍👧 가족 대결</button>' +
-        '<button class="btn big violet" data-act="new-rocket">😈 로켓단 대결</button>' +
-        '<button class="btn big blue" data-act="new-net">🏠 친구 대결</button>' +
+        (resume ? '<button class="btn big gold cursor" data-act="resume">' + (g.settings.mode === "net" ? "🏠 Continue Friend Battle" : "Continue") + "<small>" + esc(g.teams.map(t => t.name).join("  vs  ")) + "</small></button>" : "") +
+        '<button class="btn big red' + (resume ? "" : " cursor") + '" data-act="new-family">👨‍👩‍👧 Family Game</button>' +
+        '<button class="btn big violet" data-act="new-rocket">😈 vs Team Rocket</button>' +
+        '<button class="btn big blue" data-act="new-net">🏠 Friend Battle</button>' +
       "</div>" +
       '<div class="menu-small">' +
-        '<button class="btn ghost" data-act="help">📖 방법 · 도감</button>' +
-        '<button class="btn ghost" data-act="rank">🥇 랭킹</button>' +
-        '<button class="btn ghost" data-act="profiles" id="prof-btn">👤 프로필 · 설정</button>' +
+        '<button class="btn ghost" data-act="help">📖 How to play · Pokédex</button>' +
+        '<button class="btn ghost" data-act="rank">🥇 Ranking</button>' +
+        '<button class="btn ghost" data-act="profiles" id="prof-btn">👤 Profile · Settings</button>' +
       "</div>" +
     "</div>" +
     '<footer class="ver">v' + APP_VERSION + "</footer>";
@@ -1649,30 +1649,30 @@ function memberChips(field) {
   const other = field === "t0" ? Setup.t1 : Setup.t0;
   const color = field === "t0" ? TEAM_COLORS[0] : TEAM_COLORS[1];
   return Store.data.order.map(id => { const p = Store.data.profiles[id]; return chipHtml(field, id, p.name, color, Setup.mode === "family" && id === other, avHtml(p.avatar)); }).join("") +
-    '<button class="chip plain add-prof" data-act="prof-new" data-field="' + field + '">➕ 새 프로필</button>';
+    '<button class="chip plain add-prof" data-act="prof-new" data-field="' + field + '">➕ New profile</button>';
 }
 Screens.setup = sec => {
   const fam = Setup.mode === "family", net = Setup.mode === "net";
   sec.innerHTML =
-    '<header class="bar"><button class="btn icon" data-act="' + (net ? "new-net" : "home") + '" aria-label="뒤로">←</button><h2>' +
-      (net ? "🏠 방 만들기" : fam ? "👨‍👩‍👧 가족 대결 준비" : "😈 로켓단 대결 준비") + '</h2><span class="side"></span></header>' +
+    '<header class="bar"><button class="btn icon" data-act="' + (net ? "new-net" : "home") + '" aria-label="Back">←</button><h2>' +
+      (net ? "🏠 Make a room" : fam ? "👨‍👩‍👧 Family Game setup" : "😈 vs Team Rocket setup") + '</h2><span class="side"></span></header>' +
     '<div class="scroll"><div class="card">' +
-      "<h3>" + (fam ? "첫 번째 팀" : "우리 팀") + '</h3><div class="chips">' + memberChips("t0") + "</div>" +
-      (net ? '<p class="note">🏠 친구네 팀은 친구 패드에서 이름을 써서 들어와요. 판 설정은 방을 만든 집이 정해요.</p>'
-      : fam ? '<h3>두 번째 팀</h3><div class="chips">' + memberChips("t1") + "</div>" + (Store.data.order.length < 2 ? '<p class="note">👤 같이 할 사람의 프로필을 <b>➕ 새 프로필</b>로 만들어 주세요</p>' : "")
-           : '<h3>로켓단 세기</h3><div class="chips">' + chipHtml("cpu", "easy", "🌱 쉬움") + chipHtml("cpu", "normal", "🔥 보통") + chipHtml("cpu", "hard", "💀 어려움") + "</div>" +
-             '<p class="note">' + (Setup.cpu === "hard" ? "💀 로켓단이 늘 가장 좋은 수를 두고 기술도 아끼지 않아요. 이기면 🎁 볼 4개 + 좋은 볼이 더 잘 나와요!" : Setup.cpu === "normal" ? "🔥 로켓단이 절반은 똑똑하게 둬요. 이기면 🎁 볼 3개" : "🌱 로켓단이 아무 데나 둬요. 이기면 🎁 볼 3개") + "</p>") +
-      '<h3>말 개수</h3><div class="chips">' + [2, 3, 4].map(n => chipHtml("pieces", n, n + "개")).join("") + "</div>" +
-      '<h3>빽도 (뒤로 한 칸)</h3><div class="chips">' + chipHtml("backdo", true, "↩️ 켜기") + chipHtml("backdo", false, "끄기") + "</div>" +
-      '<h3>✨ 포켓몬 기술</h3><div class="chips">' + chipHtml("skills", true, "✨ 켜기") + chipHtml("skills", false, "끄기") + "</div>" +
-      '<p class="note">' + (Setup.skills ? "5칸마다 진화하고, 10칸 가면 기술을 하나 배워요! 🎲 기술은 확률로 성공 — 일반 60% · 레어 70% · 유니크 80% · 👑 전설 90% (상대에게 거는 기술은 상성 ±10%). 말마다 한 판에 한 번." : "기술 없이 윷놀이 규칙만으로 해요.") + "</p>" +
-      '<h3>🎓 공부 문제 (시계·돈)</h3><div class="chips">' + chipHtml("study", true, "🎓 켜기") + chipHtml("study", false, "끄기") + "</div>" +
-      '<p class="note">' + (Setup.study ? "❓ 풀숲에서 🕐 시계 문제 세 번(정각 → 15·30·45분 → 몇 시 몇 분) — 맞힐수록 유니크·전설이 잘 나와요. 로켓단 대결이 끝나면 🏥 포켓몬센터에서 세 손님 계산(천 · 만 · 십만 원)을 돕고 몬스터볼을 받아요 — 맞힐수록 유니크·전설이 잘 나와요!" : "문제 없이 놀아요.") + "</p>" +
-      '<h3>배틀 장면 (잡을 때 모습)</h3><div class="chips">' + chipHtml("battle", true, "⚔️ 보기") + chipHtml("battle", false, "⏭ 건너뛰기") + "</div>" +
-      (net ? '<h3>⏱ 차례 타이머</h3><div class="chips">' + chipHtml("timer", 20, "20초") + chipHtml("timer", 10, "10초") + chipHtml("timer", 0, "없음") + "</div>" +
-        '<p class="note">' + (Setup.timer ? "내 차례에 " + Setup.timer + "초 안에 안 하면 저절로 던지고 가장 좋은 칸으로 가요 (친구가 오래 기다리지 않게). ❓ 풀숲에서는 몬스터볼이 저절로 던져져요 (70%)" : "시간 제한 없이 해요. ❓ 풀숲에서는 몬스터볼이 저절로 던져져요 (70%)") + "</p>" : "") +
+      "<h3>" + (fam ? "Team 1" : "Your team") + '</h3><div class="chips">' + memberChips("t0") + "</div>" +
+      (net ? '<p class="note">🏠 Your friend joins from their own pad by typing a name. The room maker picks the game settings.</p>'
+      : fam ? '<h3>Team 2</h3><div class="chips">' + memberChips("t1") + "</div>" + (Store.data.order.length < 2 ? '<p class="note">👤 Make a profile for the other player with <b>➕ New profile</b></p>' : "")
+           : '<h3>Team Rocket level</h3><div class="chips">' + chipHtml("cpu", "easy", "🌱 Easy") + chipHtml("cpu", "normal", "🔥 Normal") + chipHtml("cpu", "hard", "💀 Hard") + "</div>" +
+             '<p class="note">' + (Setup.cpu === "hard" ? "💀 Team Rocket always plays its best and uses lots of moves. Win to get 🎁 4 balls, and good balls come more often!" : Setup.cpu === "normal" ? "🔥 Team Rocket plays smart half the time. Win to get 🎁 3 balls." : "🌱 Team Rocket just plays anywhere. Win to get 🎁 3 balls.") + "</p>") +
+      '<h3>Pieces</h3><div class="chips">' + [2, 3, 4].map(n => chipHtml("pieces", n, String(n))).join("") + "</div>" +
+      '<h3>Back-do (back 1)</h3><div class="chips">' + chipHtml("backdo", true, "↩️ On") + chipHtml("backdo", false, "Off") + "</div>" +
+      '<h3>✨ Pokémon Moves</h3><div class="chips">' + chipHtml("skills", true, "✨ On") + chipHtml("skills", false, "Off") + "</div>" +
+      '<p class="note">' + (Setup.skills ? "Evolve every 5 spaces, and learn a Move after 10 spaces! 🎲 Moves work by chance: Common 60% · Rare 70% · Unique 80% · 👑 Legendary 90% (moves on the other team: type matchup ±10%). Each piece can use its Move once a game." : "Play plain yutnori, with no Moves.") + "</p>" +
+      '<h3>🎓 Quizzes (clock · money)</h3><div class="chips">' + chipHtml("study", true, "🎓 On") + chipHtml("study", false, "Off") + "</div>" +
+      '<p class="note">' + (Setup.study ? "❓ In the tall grass: 3 🕐 clock quizzes (3 o'clock → 3:15 · 3:30 · 3:45 → 3:42). More right answers = more Unique and Legendary Pokémon. After a Team Rocket game, help Chansey at the 🏥 Pokémon Center with 3 customers (1,000 · 10,000 · 100,000 won) and get Poké Balls. More right answers, better balls!" : "Play with no quizzes.") + "</p>" +
+      '<h3>Battle scenes (knock outs)</h3><div class="chips">' + chipHtml("battle", true, "⚔️ Show") + chipHtml("battle", false, "⏭ Skip") + "</div>" +
+      (net ? '<h3>⏱ Turn timer</h3><div class="chips">' + chipHtml("timer", 20, "20 sec") + chipHtml("timer", 10, "10 sec") + chipHtml("timer", 0, "None") + "</div>" +
+        '<p class="note">' + (Setup.timer ? "If you don't play within " + Setup.timer + " seconds, the game throws for you and picks the best space (so your friend doesn't wait long). ❓ In the tall grass, a Poké Ball is thrown for you (70%)." : "No time limit. ❓ In the tall grass, a Poké Ball is thrown for you (70%).") + "</p>" : "") +
     "</div>" +
-    '<div class="card-actions">' + (net ? '<button class="btn big green cursor" data-act="net-create">🏠 방 만들고 코드 받기</button>' : '<button class="btn big green cursor" data-act="to-pick">포켓몬 고르러 가기</button>') + "</div></div>";
+    '<div class="card-actions">' + (net ? '<button class="btn big green cursor" data-act="net-create">🏠 Make a room & get a code</button>' : '<button class="btn big green cursor" data-act="to-pick">Choose Pokémon</button>') + "</div></div>";
 };
 
 /* ---------- 포켓몬 고르기 — 스타팅 포켓몬 + ❓ 풀숲에서 잡은 포켓몬 (잡은 순서대로) ---------- */
@@ -1692,8 +1692,8 @@ function slotHtml(id, k) {
   const L = lineShow(id);
   const evo = L.path.length > 1 || L.more
     ? L.path.map(p => '<span class="mini">' + spr(p) + "</span>").join("<i>›</i>") + (L.more ? "<i>›</i><b>?</b>" : "")
-    : "진화 없음 ✨";
-  return '<button class="slot filled" data-act="slot-remove" data-k="' + k + '" aria-label="' + esc(nameOf(id)) + ' 빼기">' +
+    : "No evolution ✨";
+  return '<button class="slot filled" data-act="slot-remove" data-k="' + k + '" aria-label="Remove ' + esc(nameOf(id)) + '">' +
     '<span class="pic">' + spr(id) + '</span><span class="nm">' + esc(nameOf(id)) + '</span><span class="evo">' + evo + '</span><span class="x">✕</span></button>';
 }
 function takenBy(id) {
@@ -1720,17 +1720,17 @@ Screens.pick = sec => {
   const last = Setup.mode === "rocket" || Setup.mode === "net" || ti === 1;
   const caught = caughtOnly(); // 잡은 순서대로 (먼저 잡은 것부터)
   sec.innerHTML =
-    '<header class="bar"><button class="btn icon" data-act="pick-back" aria-label="뒤로">←</button><h2>' + esc(member.name) + ' 팀 포켓몬 고르기</h2><span class="side" id="pick-count"></span></header>' +
+    '<header class="bar"><button class="btn icon" data-act="pick-back" aria-label="Back">←</button><h2>' + esc(member.name) + ': Pick Pokémon</h2><span class="side" id="pick-count"></span></header>' +
     '<div class="slots" id="slots"></div>' +
-    '<div class="pick-actions"><button class="btn" data-act="pick-auto">🎲 알아서 골라 줘</button><button class="btn green" data-act="pick-next" id="pick-next">' + (last ? "시작!" : "다음 팀") + "</button></div>" +
+    '<div class="pick-actions"><button class="btn" data-act="pick-auto">🎲 Pick for me</button><button class="btn green" data-act="pick-next" id="pick-next">' + (last ? "Start!" : "Next team") + "</button></div>" +
     '<div class="scroll" id="pick-scroll"><div class="grid-wrap">' +
-      '<h3 class="sec-title lead">📕 내 포켓몬 <small>' + (STARTERS.length + caught.length) + "마리 — " + (Setup.skills ? "5칸마다 진화하고, 기술도 배워요! " : "5칸마다 진화해요! ") + "한 가족에서 한 마리씩</small></h3>" +
-      '<h3 class="sec-title">🌱 스타팅 포켓몬 <small>' + STARTERS.length + "마리</small></h3>" +
+      '<h3 class="sec-title lead">📕 My Pokémon <small>' + (STARTERS.length + caught.length) + " — " + (Setup.skills ? "They evolve every 5 spaces and learn Moves! " : "They evolve every 5 spaces! ") + "One from each family</small></h3>" +
+      '<h3 class="sec-title">🌱 Starter Pokémon <small>' + STARTERS.length + "</small></h3>" +
       '<div class="grid">' + STARTERS.map(cardHtml).join("") + "</div>" +
-      '<h3 class="sec-title">🎯 잡은 포켓몬 <small>' + caught.length + "마리 · 잡은 순서대로</small></h3>" +
+      '<h3 class="sec-title">🎯 Caught Pokémon <small>' + caught.length + " · in the order you caught them</small></h3>" +
       (caught.length
         ? '<div class="grid">' + caught.map(cardHtml).join("") + "</div>"
-        : '<div class="grid empty-grid">🌿 윷판의 <b>❓ 풀숲</b>에서 포켓몬을 잡으면 여기에 하나씩 늘어나요!</div>') +
+        : '<div class="grid empty-grid">🌿 Catch Pokémon in the <b>❓ tall grass</b> on the board, and they show up here!</div>') +
     "</div></div>";
   updatePick();
 };
@@ -1781,11 +1781,11 @@ const unitAt = (team, node) => $('#units .unit[data-team="' + team + '"][data-no
 
 Screens.game = sec => {
   sec.innerHTML =
-    '<header class="bar"><button class="btn icon" data-act="pause" aria-label="잠깐 쉬기">⏸</button>' +
+    '<header class="bar"><button class="btn icon" data-act="pause" aria-label="Pause">⏸</button>' +
       '<div class="turn-pill" id="turn-pill"></div>' +
-      '<button class="btn icon bagchip" data-act="bag" aria-label="가방">🎒<i id="bag-n"></i></button>' +
-      (netOn() ? '<button class="btn icon emote-btn" data-act="emote" id="emote-btn" aria-label="감정 표현">💬</button>' : "") +
-      '<button class="btn icon" data-act="sound-game" id="sound-icon" aria-label="소리">' + (Store.data.sound === false ? "🔇" : "🔊") + "</button></header>" +
+      '<button class="btn icon bagchip" data-act="bag" aria-label="Bag">🎒<i id="bag-n"></i></button>' +
+      (netOn() ? '<button class="btn icon emote-btn" data-act="emote" id="emote-btn" aria-label="Emotes">💬</button>' : "") +
+      '<button class="btn icon" data-act="sound-game" id="sound-icon" aria-label="Sound">' + (Store.data.sound === false ? "🔇" : "🔊") + "</button></header>" +
     '<div class="game-main">' +
       '<div class="board-wrap"><div class="board" id="board"></div></div>' +
       '<aside class="panel">' +
@@ -1793,8 +1793,8 @@ Screens.game = sec => {
         '<div class="throw-zone">' +
           '<div class="mat"><div class="sticks">' + [0, 1, 2, 3].map(i => '<i class="stick" data-i="' + i + '"></i>').join("") + "</div></div>" +
           '<div class="pending" id="pending"></div>' +
-          '<div class="act-row"><button class="btn big red throw" id="btn-throw" data-act="throw">윷 던지기!</button>' +
-            '<button class="btn big skill-btn" id="btn-skill" data-act="skill" hidden>✨ 기술</button></div>' +
+          '<div class="act-row"><button class="btn big red throw" id="btn-throw" data-act="throw">Throw!</button>' +
+            '<button class="btn big skill-btn" id="btn-skill" data-act="skill" hidden>✨ Move</button></div>' +
           '<div class="hint" id="hint"></div>' +
         "</div>" +
       "</aside>" +
@@ -1837,7 +1837,7 @@ function buildBoard() {
   const b = $("#board");
   const lines = Yut.LINES.map(l => l.map(n => Yut.NODES[n].map(v => v.toFixed(2)).join(",")).join(" "));
   // 모서리 이름(모·뒷모·찌모)은 아이가 헷갈려서 뺐다 — 출발·도착과 가운데 방만 표시
-  const labels = [[0, "출발·도착", 100, 111], [22, "방", 50, 59.5]];
+  const labels = [[0, "Start", 100, 111], [22, "Center", 50, 59.5]];
   b.innerHTML =
     '<svg class="lines" viewBox="-14 -14 128 128" aria-hidden="true">' +
       '<defs><pattern id="dirt" patternUnits="userSpaceOnUse" width="12" height="12">' +
@@ -1895,7 +1895,7 @@ function renderPanel() {
     const ps = G.s.pieces.map((p, i) => [p, i]).filter(x => x[0].team === ti);
     const done = ps.filter(x => x[0].state === "done").length;
     return '<div class="tcard' + (G.s.turn === ti && G.s.phase !== "over" ? " active" : "") + '" style="--tc:' + t.color + '">' +
-      '<div class="tn"><i></i>' + (t.avatar ? avHtml(t.avatar, "tn-av") : "") + esc(t.name) + teamFxHtml(ti) + "<em>골인 " + done + "/" + ps.length + "</em></div>" +
+      '<div class="tn"><i></i>' + (t.avatar ? avHtml(t.avatar, "tn-av") : "") + esc(t.name) + teamFxHtml(ti) + "<em>Goal " + done + "/" + ps.length + "</em></div>" +
       '<div class="pchips">' + ps.map(x => {
         const p = x[0], i = x[1], id = Yut.formOf(G.s, i);
         return '<button class="pchip ' + p.state + '" data-act="chip" data-piece="' + i + '" aria-label="' + esc(nameOf(id) + (p.skill ? " · " + skillName(p.skill) : "")) + '">' + spr(id) +
@@ -1907,7 +1907,7 @@ function renderPending() {
   const box = $("#pending");
   if (!box) return;
   box.innerHTML = G.s.pending.length
-    ? '<span class="lab">남은 결과</span>' + G.s.pending.map(r => '<span class="rchip"><img src="' + artUrl(CAST.yut[r]) + '" alt="">' + RES[r].name + "</span>").join("")
+    ? '<span class="lab">Left</span>' + G.s.pending.map(r => '<span class="rchip"><img src="' + artUrl(CAST.yut[r]) + '" alt="">' + RES[r].name + "</span>").join("")
     : "";
   box.classList.remove("compact", "tiny"); // 한 줄에 안 들어가면 작게
   if (box.scrollWidth > box.clientWidth + 1) box.classList.add("compact");
@@ -1940,21 +1940,21 @@ function renderTop() {
   const t = G.s.teams[G.s.turn];
   const pill = $("#turn-pill");
   if (pill) pill.innerHTML = G.s.phase === "over"
-    ? '<span style="--tc:' + G.s.teams[G.s.winner].color + '">🎉 ' + esc(window.innerWidth < 520 ? plain(G.s.teams[G.s.winner].name) : G.s.teams[G.s.winner].name + " 승리!") + "</span>" // 폰: "🎉 지온이" (잘리지 않게)
-    : '<span style="--tc:' + t.color + '">' + esc(t.name) + (window.innerWidth < 520 ? "" : " 차례") + "</span>"; // 폰: 이름만 (잘리지 않게)
+    ? '<span style="--tc:' + G.s.teams[G.s.winner].color + '">🎉 ' + esc(window.innerWidth < 520 ? plain(G.s.teams[G.s.winner].name) : G.s.teams[G.s.winner].name + " wins!") + "</span>" // 폰: "🎉 지온이" (잘리지 않게)
+    : '<span style="--tc:' + t.color + '">' + esc(t.name) + (window.innerWidth < 520 ? "" : "'s turn") + "</span>"; // 폰: 이름만 (잘리지 않게)
   if (pill) fitText(pill.firstElementChild, 12); // 이름이 길면(8글자까지) 글자를 줄여서 다 보이게
   const btn = $("#btn-throw");
   if (!btn) return;
   if (throwRO && !btn._ro) { btn._ro = true; throwRO.observe(btn); }
   const human = humanTurn();
   // 버튼 글: [긴 글, 짧은 글] — 버튼 폭을 재서 넘치면 짧은 글, 그래도 넘치면 글자를 줄인다 (폴드처럼 가로가 좁은 가로 화면에서 글이 버튼 밖으로 나가던 것, 2026-10-03)
-  let pair = ["윷 던지기!", "던지기!"], on = false;
-  const friend = ["🏠 " + plain(otherName()) + " 차례", "친구 차례"];
+  let pair = ["Throw the yut!", "Throw!"], on = false;
+  const friend = ["🏠 " + plain(otherName()) + "'s turn", "Friend's turn"];
   if (G.s.phase === "throw") {
-    if (human) { on = true; pair = G.s.pending.length ? ["한 번 더 던지기!", "한 번 더!"] : ["윷 던지기!", "던지기!"]; }
-    else pair = netOn() ? friend : ["로켓단이 던지는 중…", "로켓단 차례"];
-  } else if (G.s.phase === "choose") pair = human ? ["👆 말을 움직여요", "말 움직이기"] : netOn() ? friend : ["로켓단이 고르는 중…", "로켓단 차례"];
-  else pair = ["판이 끝났어요", "끝!"];
+    if (human) { on = true; pair = G.s.pending.length ? ["Throw again!", "Again!"] : ["Throw the yut!", "Throw!"]; }
+    else pair = netOn() ? friend : ["Team Rocket is throwing…", "Rocket's turn"];
+  } else if (G.s.phase === "choose") pair = human ? ["👆 Move a piece!", "Move!"] : netOn() ? friend : ["Team Rocket is choosing…", "Rocket's turn"];
+  else pair = ["Game over!", "Done!"];
   btn.dataset.full = pair[0]; btn.dataset.short = pair[1];
   fitThrow(btn);
   btn.disabled = !on || G.busy || !!G.target;
@@ -1968,7 +1968,7 @@ function renderTop() {
     sb.hidden = !can;
     sb.classList.toggle("cancel", !!G.target);
     sb.dataset.act = G.target ? "skill-cancel" : "skill";
-    sb.textContent = G.target ? "✖ 취소" : "✨ 기술"; // 폰에서는 던지기 버튼 아래 줄에 따로 들어가서 글이 다 들어간다
+    sb.textContent = G.target ? "✖ Cancel" : "✨ Move"; // 폰에서는 던지기 버튼 아래 줄에 따로 들어가서 글이 다 들어간다
   }
 }
 function hint(text) {
@@ -2073,7 +2073,7 @@ function mountGame() {
       afterAction();
     })();
   } else {
-    toast("이어서 해요! 🎲");
+    toast("Let's keep playing! 🎲");
     afterAction();
   }
 }
@@ -2087,14 +2087,14 @@ function afterAction() {
   if (G.paused) return;
   if (G.s.gifts && G.s.gifts.length && !G.s.teams[G.s.gifts[0].team].cpu && (!netOn() || G.s.gifts[0].team === G.net.me)) { openGiftChooser(); return; } // 🎁 누구에게 줄까?
   if (netOn() && !humanTurn()) { // 🏠 친구 차례 — 친구 패드에서 올라오기를 기다린다
-    hint(G.net.remoteBusy ? otherName() + "가 하는 중… 🕐" : otherName() + " 차례예요. 친구 패드에서 던져요 🕐");
+    hint(G.net.remoteBusy ? otherName() + " is playing… 🕐" : otherName() + "'s turn. They throw on their pad 🕐");
     return;
   }
   if (G.s.phase === "choose") {
     if (humanTurn()) prepareChoose();
-    else { hint("😈 로켓단이 생각하는 중…"); cpuTick(); }
+    else { hint("😈 Team Rocket is thinking…"); cpuTick(); }
   } else {
-    hint(humanTurn() ? "🎲 윷을 던져요!" + (G.s.settings.skills !== false && Yut.legalSkills(G.s).length ? " ✨ 기술도 쓸 수 있어요" : "") : "😈 로켓단 차례…");
+    hint(humanTurn() ? "🎲 Throw the yut!" + (G.s.settings.skills !== false && Yut.legalSkills(G.s).length ? " ✨ You can use a Move too!" : "") : "😈 Team Rocket's turn…");
     if (!humanTurn()) cpuTick();
   }
 }
@@ -2115,7 +2115,7 @@ function prepareChoose() {
     else { const el = unitAt(G.s.turn, u.slice(1)); if (el) el.classList.add("can"); }
   });
   if (units.length === 1) select(units[0]);
-  hint(units.length === 1 ? "👆 반짝이는 칸을 눌러요" : "👆 움직일 말을 먼저 골라요");
+  hint(units.length === 1 ? "👆 Tap a sparkling space!" : "👆 First, pick a piece to move!");
 }
 function select(key, cpu) {
   G.sel = key;
@@ -2131,7 +2131,7 @@ function select(key, cpu) {
     if (el) el.classList.add("sel");
   }
   showDests(G.moves.filter(m => m.unit === key), cpu);
-  if (!cpu && key === "new") hint("👆 반짝이는 칸을 누르면 " + josa(nameOf(Yut.formOf(G.s, G.newPick)), "이/가") + " 출발해요");
+  if (!cpu && key === "new") hint("👆 Tap a sparkling space to send out " + nameOf(Yut.formOf(G.s, G.newPick)) + "!");
 }
 function showDests(ms, cpu) {
   const box = $("#dests");
@@ -2144,20 +2144,20 @@ function showDests(ms, cpu) {
       (nodeXY(at)[0] >= 90 ? " flip" : ""); // 판 오른쪽 끝 칸은 말풍선을 왼쪽에 (판 밖으로 잘리지 않게)
     placeAt(b, at);
     b.dataset.move = m.id;
-    b.setAttribute("aria-label", m.finish ? "골인" : RES[m.result].name);
+    b.setAttribute("aria-label", m.finish ? "Goal" : RES[m.result].name);
     const wild = !m.finish && (G.s.spots || []).some(sp => !sp.used && sp.node === m.to.node);
-    b.innerHTML = "<b>" + (m.finish ? "🏁 골인!" : RES[m.result].name + (m.capture.length ? " 배틀!" : m.stack.length ? " 업기" : "") + (wild ? " 🌿" : "") + "<small>" + RES[m.result].steps + "</small>") + "</b>";
+    b.innerHTML = "<b>" + (m.finish ? "🏁 Goal!" : RES[m.result].name + (m.capture.length ? " Battle!" : m.stack.length ? " Stack" : "") + (wild ? " 🌿" : "") + "<small>" + RES[m.result].steps + "</small>") + "</b>";
     b.addEventListener("click", ev => { ev.stopPropagation(); if (!G.busy && humanTurn()) doMove(m.id); });
     box.appendChild(b);
   });
 }
 function onUnitTap(el) {
-  if (G.target) { const d = $('#dests .dest[data-node="' + el.dataset.node + '"]'); if (d) d.click(); else toast("반짝이는 곳을 눌러요 (취소하려면 ✖ 취소)"); return; }
+  if (G.target) { const d = $('#dests .dest[data-node="' + el.dataset.node + '"]'); if (d) d.click(); else toast("Tap a sparkling spot! (To stop, tap ✖ Cancel)"); return; }
   if (G.busy || !G.s || G.s.phase !== "choose" || !humanTurn()) return;
-  if (Number(el.dataset.team) !== G.s.turn) { toast("그건 상대 팀 말이에요"); return; }
+  if (Number(el.dataset.team) !== G.s.turn) { toast("That's the other team's piece!"); return; }
   const key = "n" + el.dataset.node;
   const ms = G.moves.filter(m => m.unit === key);
-  if (!ms.length) { toast("이 말은 지금 못 움직여요"); return; }
+  if (!ms.length) { toast("This piece can't move now."); return; }
   const ds = distinctDests(ms);
   if (G.sel === key && ds.length === 1) { doMove(ds[0].id); return; }
   SFX.tap();
@@ -2166,7 +2166,7 @@ function onUnitTap(el) {
 function onChipTap(i) {
   if (G.target) {
     if (G.target.kind === "enemyPiece" && G.target.targets.indexOf(i) >= 0) doSkill(G.target.piece, i, G.target.slot);
-    else toast("반짝이는 곳을 눌러요 (취소하려면 ✖ 취소)");
+    else toast("Tap a sparkling spot! (To stop, tap ✖ Cancel)");
     return;
   }
   if (!G.s) return;
@@ -2187,7 +2187,7 @@ function onChipTap(i) {
   } else if (p.state === "board") {
     const el = unitAt(p.team, Yut.posOf(p));
     if (el) onUnitTap(el);
-  } else toast("벌써 골인했어요! 🏁");
+  } else toast("It already made it home! 🏁");
 }
 
 /* ---------- 던지기 ---------- */
@@ -2204,11 +2204,11 @@ async function doThrow() {
   netSend(r.events, true);
   try {
     await animSticks(t.sticks);
-    if (t.poisoned) { toast("☠️ 맹독! 윷이 " + josa(RES[t.result].name, "으로/로") + " 나왔어요…", 1600); TTS.say("맹독!"); await sleep(800); }
-    if (t.rained) { toast("🌧️ 비의 힘! " + RES[t.rained].name + " → 개!", 1600); await sleep(800); }
-    if (t.chilled) { toast("🧊 얼음 때문에 윷이 작아졌어요! " + RES[t.chilled].name + " → 개", 1600); await sleep(800); }
+    if (t.poisoned) { toast("☠️ Toxic! Your throw became " + RES[t.result].name + "…", 1600); TTS.say("Toxic!"); await sleep(800); }
+    if (t.rained) { toast("🌧️ Rain power! " + RES[t.rained].name + " → Gae!", 1600); await sleep(800); }
+    if (t.chilled) { toast("🧊 The ice made your throw small! " + RES[t.chilled].name + " → Gae", 1600); await sleep(800); }
     await showResult(t.result);
-    if (t.again) { SFX.again(); await banner(RES[t.result].name + "! 한 번 더 던져요!", null, 1000, "gold"); }
+    if (t.again) { SFX.again(); await banner(RES[t.result].name + "! Throw again!", null, 1000, "gold"); }
     renderPending();
     await playEvents(r.events.slice(1), null);
   } catch (e) { console.error(e); }
@@ -2239,11 +2239,10 @@ function showResult(r) {
     w.className = "result-pop r" + r;
     w.innerHTML = '<div class="result-card"><div class="rays"></div><img src="' + artUrl(CAST.yut[r]) + '" alt="' + esc(nameOf(CAST.yut[r])) + '">' +
       '<div class="result-name">' + info.name + '!<span class="result-en">' + info.en + "</span></div>" +
-      '<div class="result-sub">' + info.emoji + " " + (info.animal ? info.animal + " · " : "") + info.steps + (Yut.RESULTS[r].again ? " · 한 번 더!" : "") + "</div></div>";
+      '<div class="result-sub">' + info.emoji + " " + (info.animal ? info.animal + " · " : "") + info.steps + (Yut.RESULTS[r].again ? " · Throw again!" : "") + "</div></div>";
     document.body.appendChild(w);
     SFX.result(r);
-    TTS.say(info.say);
-    TTS.sayEn(info.en + "!");
+    TTS.say(info.say); // 영어판: info.say 에 칸 수까지 들어 있어서 info.en 은 따로 읽지 않는다 (화면에만)
     let done = false;
     const close = () => {
       if (done) return;
@@ -2276,7 +2275,7 @@ async function doMove(id) {
   try { await playEvents(r.events, prev); } catch (e) { console.error(e); }
   if (missed && current === "game" && G.s.phase !== "over") {
     fxAt(missed.to.node, "⚔️");
-    toast("💡 앗, 저기 잡을 수 있었어! " + josa(RES[missed.result].name, "으로/로") + " " + nameOf(Yut.formOf(prev, missed.capture[0])) + " 있는 칸에 갈 수 있었어요", 2600);
+    toast("💡 Oh! You could have knocked out " + nameOf(Yut.formOf(prev, missed.capture[0])) + " with " + RES[missed.result].name + "!", 2600);
     await sleep(900);
   }
   G.newPick = null;
@@ -2294,7 +2293,7 @@ async function playEvents(events, prev) {
     else if (e.type === "evolve") await animEvolve(e);
     else if (e.type === "wild") await animWild(e);
     else if (e.type === "finish") await animFinish(e);
-    else if (e.type === "bonus") { SFX.again(); await banner("물리쳤으니 한 번 더!", null, 1000, "gold"); }
+    else if (e.type === "bonus") { SFX.again(); await banner("Knocked out! Throw again!", null, 1000, "gold"); }
     else if (e.type === "skip") await animSkip(e);
     else if (e.type === "turn") { renderAll(); await announceTurn(e.team); }
     else if (e.type === "win") await showWin(e.team);
@@ -2376,7 +2375,7 @@ function btPlate(side, name, team, extra) {
   return '<div class="bt-plate ' + side + '" style="--tc:' + team.color + '"><div class="bp-top"><b>' + esc(name) + "</b>" + (extra || "") + "<em>" + esc(team.name) + "</em></div>" +
     '<div class="bp-hp"><span>HP</span><i class="hpbar"><i class="fill"></i></i></div></div>';
 }
-const WILD_TEAM = { name: "🌿 야생", color: "#3a9d4f" };
+const WILD_TEAM = { name: "🌿 Wild", color: "#3a9d4f" };
 // 무대 위 표시가 무대 밖으로 나가면 안쪽으로 당긴다 (글자가 큰 패드·좁은 폰)
 function fitInStage(c, el) {
   // 튀어나오는 연출(크기 변화) 중에도 맞게: 화면상 크기가 아니라 원래 너비(offsetWidth)로 잰다. 가운데 맞춤(translate -50%) 기준
@@ -2386,7 +2385,7 @@ function fitInStage(c, el) {
   el.style.left = x.toFixed(0) + "px";
   return el;
 }
-const RARITY_KO = { c: "일반", r: "레어", u: "유니크", l: "전설" };
+const RARITY_KO = { c: vo("Common"), r: vo("Rare"), u: vo("Unique"), l: vo("Legendary") };
 const RARITY_STAR = { c: "", r: "⭐", u: "⭐⭐", l: "👑" };
 // 기술을 쓸 수 있는 때 (v8, 사용자 확정 2026-09-28): 일반~전설 모두 10칸 (전에는 희귀도로 15·10·5·처음부터)
 const SKILL_NEED = 10;
@@ -2428,7 +2427,7 @@ function openStage(o) {
       '<div class="bt-flash"></div><div class="bt-fx"></div><div class="bt-intro"></div>' +
     "</div>" +
     '<div class="bt-dialog"><p class="bt-text"></p><div class="bt-menu"></div><i class="bt-more">▼</i></div>' +
-    '<button class="btn bt-skip">건너뛰기 ⏭</button>';
+    '<button class="btn bt-skip">Skip ⏭</button>';
   document.body.appendChild(el);
   let resolveDone, typer = null, menuResolve = null;
   const c = {
@@ -2454,12 +2453,12 @@ function openStage(o) {
     c.fx.appendChild(s);
     return s;
   };
-  // 대화창: 한 글자씩 — 누르면 바로 다 보인다
+  // 대화창: 한 글자씩 — 누르면 바로 다 보인다. speak: true = msg 를 그대로 읽기 · 글/[조각…] = 그것을 읽기 (영어판: 녹음 규칙)
   c.say = (msg, speak) => new Promise(res => {
     clearInterval(typer);
     c.menuEl.innerHTML = "";
     if (c.skip) { c.text.textContent = msg; return res(); }
-    if (speak) TTS.say(msg);
+    if (speak) TTS.say(speak === true ? msg : speak);
     const chars = Array.from(msg);
     let i = 0;
     c.text.textContent = "";
@@ -2571,7 +2570,7 @@ async function stageThrow(c, ball, res) {
     SFX.catchOk();
     stageStars(c, x, y - 4);
     c.stage.querySelectorAll(".bt-rar").forEach(e => e.remove()); // 등급 표시는 치우고 "잡았다!"만
-    c.stage.insertAdjacentHTML("beforeend", '<div class="bt-stamp">잡았다!</div>');
+    c.stage.insertAdjacentHTML("beforeend", '<div class="bt-stamp">Gotcha!</div>');
     return;
   }
   SFX.pop();
@@ -2594,11 +2593,11 @@ async function quickBattle(e, prev) {
   fxAt(e.node, "💥");
   const mv = e.skill ? skillName(e.skill) : moveOf(atk);
   const sup = superEffective(atk, e.victims.map(i => Yut.formOf(prev, i)));
-  if (sup) setTimeout(() => { if (current === "game") toast("💥 효과가 굉장했다! " + sup, 2200); }, 1300 * SPEED);
-  toast(aTeam.cpu ? "로켓단이 " + josa(foeNames, "을/를") + " 물리쳤다옹~! 😼"
-    : vTeam.cpu ? nameOf(atk) + "의 " + mv + "! 로켓단의 " + josa(foeNames, "을/를") + " 물리쳤다!"
-    : nameOf(atk) + "의 " + mv + "! " + josa(foeNames, "을/를") + " 물리쳤다!", 2400);
-  TTS.say(aTeam.cpu ? "로켓단이 물리쳤다옹!" : "물리쳤다!");
+  if (sup) setTimeout(() => { if (current === "game") toast("💥 It's super effective! " + sup, 2200); }, 1300 * SPEED);
+  toast(aTeam.cpu ? "Team Rocket knocked out " + foeNames + ", meow! 😼"
+    : vTeam.cpu ? nameOf(atk) + " used " + mv + "! Knocked out Team Rocket's " + foeNames + "!"
+    : nameOf(atk) + " used " + mv + "! Knocked out " + foeNames + "!", 2400);
+  TTS.say(aTeam.cpu ? "Team Rocket won the battle, meow!" : "Knocked out!");
   await sleep(650);
 }
 
@@ -2617,37 +2616,38 @@ function battle(e, prev) {
     c.anim(c.allyEl, [{ transform: "translateX(-90%)", opacity: 0 }, { transform: "none", opacity: 1 }], 520);
     await c.wait(600);
     if (c.live()) Cry.play(foes[0]);
-    await c.say("앗! " + vTeam.name + "의 " + josa(foeNames, "와/과") + " 마주쳤다!");
+    await c.say("Look! It's " + vTeam.name + "'s " + foeNames + "!");
     await c.wait(550);
     // ② 기술
-    await c.say(nameOf(atk) + "의 " + (e.skill ? skillName(e.skill) : moveOf(atk)) + "!", true);
+    const mv = e.skill ? skillName(e.skill) : moveOf(atk);
+    await c.say(nameOf(atk) + " used " + mv + "!", [nameOf(atk), vo("used"), mv]);
     await stageAttack(c, atk);
     await c.wait(750);
     const sup = superEffective(atk, foes);
     if (sup && c.live()) {
       c.stage.classList.remove("quake"); void c.stage.offsetWidth; c.stage.classList.add("quake");
-      c.stage.insertAdjacentHTML("beforeend", '<div class="bt-stamp super">효과가 굉장했다!</div>');
+      c.stage.insertAdjacentHTML("beforeend", '<div class="bt-stamp super">It\'s super effective!</div>');
       SFX.hit();
-      await c.say("효과가 굉장했다! " + sup, true);
+      await c.say("It's super effective! " + sup, vo("It's super effective!"));
       await c.wait(700);
       const st = $(".bt-stamp.super", c.el); if (st) st.remove();
     }
-    await c.say(josa(foeNames, "은/는") + " 힘이 쭉 빠졌다!");
+    await c.say(foeNames + (foes.length > 1 ? " are" : " is") + " all tired out!");
     await c.wait(450);
     // ③ 물리쳤다!
     if (c.live()) {
       SFX.catchOk();
       stageStars(c, 27, 70);
-      c.stage.insertAdjacentHTML("beforeend", '<div class="bt-stamp">물리쳤다!</div>');
+      c.stage.insertAdjacentHTML("beforeend", '<div class="bt-stamp">Knocked out!</div>');
     }
-    if (aTeam.cpu) await c.say("로켓단이 " + josa(foeNames, "을/를") + " 물리쳤다옹~! 😼", true);
-    else if (vTeam.cpu) await c.say("로켓단의 " + josa(foeNames, "을/를") + " 물리쳤다! 로켓단은 또 당했다옹~!", true);
-    else await c.say("신난다! " + josa(foeNames, "을/를") + " 물리쳤다!", true);
+    if (aTeam.cpu) await c.say("Team Rocket knocked out " + foeNames + ", meow! 😼", vo("Team Rocket won the battle, meow!"));
+    else if (vTeam.cpu) await c.say("You knocked out Team Rocket's " + foeNames + "! Team Rocket lost again, meow!", [vo("You knocked out")].concat(foes.map(nameOf), [vo("Team Rocket lost again, meow!")]));
+    else await c.say("Yay! You knocked out " + foeNames + "!", [vo("Yay! You knocked out")].concat(foes.map(nameOf)));
     await c.wait(700);
     // ④ 집으로 — 쓰러지지 않는다 (영영 지는 게 아니라 처음부터 다시)
     if (c.live()) SFX.runHome();
     stageRunOff(c);
-    await c.say(josa(foeNames, "은/는") + " 집으로 돌아갔어요. 진화한 모습 그대로 다시 출발해요!");
+    await c.say(foeNames + " ran back home. " + (foes.length > 1 ? "They" : "It") + " will start again, still evolved!");
     await c.wait(900);
     c.close();
   })().catch(err => { console.error(err); c.close(); });
@@ -2664,7 +2664,7 @@ async function animWild(e) {
   const spotEl = $('#spots .spot[data-node="' + e.node + '"]');
   if (spotEl) spotEl.classList.add("shake");
   if (netOn() && e.team !== G.net.me) { // 🏠 친구 팀의 조우는 친구 패드에서
-    toast("🌿 " + G.s.teams[e.team].name + "가 풀숲에서 야생 포켓몬을 만났어요!", 2400);
+    toast("🌿 " + G.s.teams[e.team].name + " found a wild Pokémon in the tall grass!", 2400);
     await sleep(900);
   } else if (G.s.teams[e.team].cpu) { rollSpot(e, false); await rocketNet(e); }
   else if (netOn()) { rollSpot(e, false); await encounter(e, true); } // 🏠 친구 대결: 문제 없이, 볼은 저절로 (친구가 기다리니까)
@@ -2705,21 +2705,21 @@ function encounter(e, auto) {
       c.stage.classList.add("quake", "legend"); setTimeout(() => c.stage.classList.remove("quake"), 650 * SPEED);
       const fl = $(".bt-flash", c.el); fl.style.background = "radial-gradient(circle, #fff6c2, #f5b82e)"; c.anim(fl, [{ opacity: 0.95 }, { opacity: 0 }], 900, { fill: "none" });
       SFX.win();
-      c.stage.insertAdjacentHTML("beforeend", '<div class="bt-stamp legend">👑 전설의 포켓몬!</div>');
+      c.stage.insertAdjacentHTML("beforeend", '<div class="bt-stamp legend">👑 Legendary Pokémon!</div>');
       setTimeout(() => { const st = $(".bt-stamp.legend", c.el); if (st) st.remove(); }, 1800 * SPEED);
     }
     if (c.live()) Cry.play(id);
     rarTag();
-    await c.say("앗! 야생의 " + (rar === "c" ? "" : RARITY_KO[rar] + " 포켓몬 ") + josa(name, "이/가") + " 튀어나왔다!", true);
+    await c.say("A wild " + (rar === "c" ? "" : RARITY_KO[rar] + " ") + name + " appeared!", rar === "c" ? [vo("A wild"), name, vo("appeared!")] : [vo("A wild"), RARITY_KO[rar], name, vo("appeared!")]);
     await c.wait(500);
     // ② 내 포켓몬 등장
     c.allyEl.style.opacity = ""; $(".bt-plate.ally", c.el).style.opacity = "";
     c.anim(c.allyEl, [{ transform: "translateX(-90%)", opacity: 0 }, { transform: "none", opacity: 1 }], 480);
-    await c.say("가라, " + nameOf(ally) + "!");
+    await c.say("Go, " + nameOf(ally) + "!");
     await c.wait(350);
     let tries = 0, caught = false;
     if (auto) {
-      await c.say("몬스터볼이 저절로 날아가요! (잡을 확률 " + Math.round(NET_CATCH * 100) + "%)", true);
+      await c.say("A Poké Ball flies out by itself! (catch chance " + Math.round(NET_CATCH * 100) + "%)", vo("A Poké Ball flies out by itself!"));
       const res = FORCE_CATCH === "1" ? { ok: true, shakes: 3 } : FORCE_CATCH === "0" ? { ok: false, shakes: 2 } : (() => { const ok = Math.random() < NET_CATCH; return { ok, shakes: ok ? 3 : 1 + Math.floor(Math.random() * 3) }; })();
       if (res.ok) {
         caught = true;
@@ -2729,11 +2729,11 @@ function encounter(e, auto) {
       }
       await stageThrow(c, "poke", res);
       if (c.live() && res.ok) {
-        await c.say("신난다! " + josa(name, "을/를") + " 잡았다!", true);
+        await c.say("Gotcha! " + name + " was caught!", [vo("Gotcha!"), name, vo("was caught!")]);
         await c.wait(600);
         const swapped = c.live() ? await offerSwap(c, e, id) : false;
-        G.net.note = "🌿 " + G.s.teams[e.team].name + "가 " + josa(name, "을/를") + " 잡았어요!" + (swapped ? " 🔄 말로 바꿨어요" : "");
-        if (!swapped) await c.say(josa(name, "을/를") + " 보관함에 넣었어요! 다음 판부터 말로 쓸 수 있어요.");
+        G.net.note = "🌿 " + G.s.teams[e.team].name + " caught " + name + "!" + (swapped ? " 🔄 Swapped in as a piece" : "");
+        if (!swapped) await c.say(name + " went to your Box! You can play with it next game.");
         await c.wait(700);
       }
     }
@@ -2741,19 +2741,19 @@ function encounter(e, auto) {
     while (c.live() && !auto) {
       const have = R.BALLS.filter(b => (prof.bag[b] || 0) > 0);
       if (!have.length) {
-        await c.say("가방에 볼이 없어요! 로켓단을 이기면 🎁 상자에서 볼을 얻을 수 있어요.", true);
+        await c.say("No balls in your Bag! Beat Team Rocket to get balls from a 🎁 chest.", [vo("No balls in your Bag!"), vo("Beat Team Rocket to get more!")]);
         await c.wait(1300);
         break;
       }
       if (tries >= R.THROWS) break;
-      await c.say("어떤 볼을 던질까? (남은 기회 " + (R.THROWS - tries) + "번" + (tries ? " · 놓친 만큼 +" + (tries * 10) + "%" : "") + ")");
+      await c.say("Which ball will you throw? (" + (R.THROWS - tries) + (R.THROWS - tries === 1 ? " try" : " tries") + " left" + (tries ? " · +" + (tries * 10) + "% for misses" : "") + ")");
       const ball = await c.menu(have.map(b => ({
         key: b, cls: "bt-ballbtn",
         html: '<img src="assets/items/' + R.BALL_INFO[b].img + '.png" alt="">' + R.BALL_INFO[b].name + " <b>×" + prof.bag[b] + "</b><em" + (tries && b !== "master" ? ' class="up"' : "") + ">" + Math.round(R.catchRate(b, rar, tries) * 100) + "%</em>",
-      })).concat([{ key: "leave", cls: "ghost", html: "그냥 보내 주기" }]));
+      })).concat([{ key: "leave", cls: "ghost", html: "Let it go" }]));
       if (!c.live()) break;
       if (!ball || ball === "leave") {
-        await c.say(josa(name, "을/를") + " 풀숲으로 보내 줬어요. 또 만나자! 👋");
+        await c.say(name + " went back to the grass. See you again! 👋");
         stageRunOff(c);
         await c.wait(1000);
         c.close();
@@ -2770,26 +2770,26 @@ function encounter(e, auto) {
       }
       Store.save();
       renderBagChip();
-      await c.say("가랏, " + R.BALL_INFO[ball].name + "!", true);
+      await c.say("Go, " + R.BALL_INFO[ball].name + "!", [vo("Go!"), R.BALL_INFO[ball].name]);
       await stageThrow(c, ball, res);
       if (!c.live()) break;
       if (res.ok) {
-        await c.say("신난다! " + josa(name, "을/를") + " 잡았다!", true);
+        await c.say("Gotcha! " + name + " was caught!", [vo("Gotcha!"), name, vo("was caught!")]);
         await c.wait(800);
         const swapped = c.live() ? await offerSwap(c, e, id) : false;
-        if (netOn()) G.net.note = "🌿 " + G.s.teams[e.team].name + "가 " + josa(name, "을/를") + " 잡았어요!" + (swapped ? " 🔄 말로 바꿨어요" : "");
-        if (!swapped) await c.say(josa(name, "을/를") + " 보관함에 넣었어요! 다음 판부터 말로 쓸 수 있어요.");
+        if (netOn()) G.net.note = "🌿 " + G.s.teams[e.team].name + " caught " + name + "!" + (swapped ? " 🔄 Swapped in as a piece" : "");
+        if (!swapped) await c.say(name + " went to your Box! You can play with it next game.");
         await c.wait(1100);
         break;
       }
-      await c.say("앗! 볼에서 나와 버렸다!" + (tries < R.THROWS ? " 그래도 다음 볼은 잡을 확률 +10%!" : ""));
+      await c.say("Oh no! It broke free!" + (tries < R.THROWS ? " Next ball: +10% catch chance!" : ""));
       await c.wait(600);
     }
     if (!caught && c.live()) {
       if (c.live()) SFX.runHome();
       stageRunOff(c);
-      await c.say(josa(name, "은/는") + " 풀숲으로 도망갔다… 다음에 또 만나자!");
-      if (netOn()) G.net.note = "🌿 " + josa(name, "은/는") + " " + G.s.teams[e.team].name + "에게서 도망갔어요";
+      await c.say(name + " ran away into the grass… See you next time!");
+      if (netOn()) G.net.note = "🌿 " + name + " ran away from " + G.s.teams[e.team].name;
       await c.wait(auto ? 700 : 1000);
     }
     c.close();
@@ -2805,8 +2805,8 @@ async function animStack(e, prev) {
   el.innerHTML = unitInner(prev, e.pieces, G.s.teams[ti]);
   el.classList.remove("stacked"); void el.offsetWidth; el.classList.add("stacked");
   SFX.stack();
-  toast("업었다! " + e.pieces.length + "마리가 같이 가요 🤝", 1800);
-  TTS.say("업었다! 같이 가요");
+  toast("Stacked! " + e.pieces.length + " Pokémon go together 🤝", 1800);
+  TTS.say("Stacked! Let's go together!");
   await sleep(700);
 }
 async function animEvolve(e) {
@@ -2823,8 +2823,8 @@ async function animEvolve(e) {
     void el.offsetWidth;
     el.classList.add("evolving");
     SFX.evolve();
-    const msg = josa(nameOf(a), "이/가") + " " + josa(nameOf(b), "으로/로") + " 진화했어요!";
-    toast("✨ 어? " + nameOf(a) + "의 모습이…!", 1200);
+    const msg = nameOf(a) + " evolved into " + nameOf(b) + "!";
+    toast("✨ What? " + nameOf(a) + " is evolving…!", 1200);
     await sleep(1000);
     front.innerHTML = spr(b, true);
     el.classList.remove("evolving");
@@ -2833,7 +2833,7 @@ async function animEvolve(e) {
     sparkle(node);
     Cry.play(b);
     toast("✨ " + msg, 2200);
-    TTS.say(msg);
+    TTS.say([nameOf(a), "evolved into", nameOf(b)]);
     await sleep(1150);
   }
   el.classList.remove("evolved");
@@ -2843,21 +2843,21 @@ async function animFinish(e) {
   const names = e.pieces.map(i => nameOf(Yut.formOf(G.s, i)));
   sparkle(0);
   SFX.finish();
-  toast("🏁 " + names.join("·") + " 골인!", 2000);
-  TTS.say(names.join(", ") + " 골인!");
+  toast("🏁 Goal! " + names.join("·") + " made it home!", 2000);
+  TTS.say(names.concat(["made it home!"]));
   if (el) { el.classList.add("finishing"); await sleep(900); el.remove(); }
   else await sleep(900);
 }
 async function animSkip(e) {
   const allBack = e.results.every(r => r < 0);
-  toast(allBack ? "↩️ 빽도! 판 위에 말이 없어서 쉬어 가요 😴" : "움직일 수 있는 말이 없어서 쉬어 가요 😴", 2000);
-  TTS.say("쉬어 가요");
+  toast(allBack ? "↩️ Back-do! No pieces on the board. Take a break! 😴" : "No piece can move. Take a break! 😴", 2000);
+  TTS.say("Take a break!");
   await sleep(1400);
 }
 async function announceTurn(ti, first) {
   const t = G.s.teams[ti];
-  const text = t.cpu ? "😈 로켓단 차례다옹~" : (first ? t.name + " 팀부터 시작!" : t.name + " 차례!");
-  TTS.say(t.cpu ? "로켓단 차례다옹" : plain(t.name) + (first ? " 팀부터 시작해요!" : " 차례예요!"));
+  const text = t.cpu ? "😈 Team Rocket's turn, meow!" : (first ? t.name + " goes first!" : t.name + "'s turn!");
+  TTS.say(t.cpu ? "Team Rocket's turn, meow!" : [plain(t.name), first ? "goes first!" : "your turn!"]);
   await banner(text, t.color, first ? 1400 : 1050);
 }
 
@@ -2887,12 +2887,12 @@ function rocketIntro() {
     const o = document.createElement("div");
     o.className = "rocket-intro";
     o.innerHTML = '<div class="ri-flash"></div>' +
-      '<div class="ri-crew"><img src="assets/ui/rocket-jessie.png" alt="로사" onerror="this.remove()"><img src="assets/ui/rocket-meowth.png" alt="나옹" onerror="this.remove()"><img src="assets/ui/rocket-james.png" alt="로이" onerror="this.remove()"></div>' +
-      '<div class="ri-talk"><p>귀염둥이 악당, 포켓몬의 감초~!</p><p>우리는 로켓단이다옹~!</p><p class="ri-small">' + (G.s && G.s.settings.cpuLevel === "hard" ? "💀 오늘은 진심이다옹! 봐주지 않는다옹~!" : "윷놀이로 한판 붙자옹! 😼") + "</p></div>" +
-      '<button class="btn big gold" id="ri-go">⚔️ 대결 시작!</button>';
+      '<div class="ri-crew"><img src="assets/ui/rocket-jessie.png" alt="Jessie" onerror="this.remove()"><img src="assets/ui/rocket-meowth.png" alt="Meowth" onerror="this.remove()"><img src="assets/ui/rocket-james.png" alt="James" onerror="this.remove()"></div>' +
+      '<div class="ri-talk"><p>Cute but sneaky!</p><p>We are Team Rocket, meow!</p><p class="ri-small">' + (G.s && G.s.settings.cpuLevel === "hard" ? "💀 No going easy today, meow!" : "Let\'s play yut, meow! 😼") + "</p></div>" +
+      '<button class="btn big gold" id="ri-go">⚔️ Let\'s battle!</button>';
     document.body.appendChild(o);
     SFX.alarm();
-    TTS.say("귀염둥이 악당, 포켓몬의 감초! 우리는 로켓단이다옹!");
+    TTS.say("Cute but sneaky! We are Team Rocket, meow!");
     $("#ri-go").addEventListener("click", () => { TTS.stop(); o.remove(); res(); });
   });
 }
@@ -2902,15 +2902,15 @@ async function showWin(ti) {
   const s = G.s, t = s.teams[ti];
   const finals = t.paths.map(p => p[p.length - 1]);
   const rocket = s.settings.mode === "rocket";
-  const title = rocket && t.cpu ? "😼 로켓단이 이겼다옹~!" : "🎉 " + t.name + " 팀 승리!";
+  const title = rocket && t.cpu ? "😼 Team Rocket wins, meow!" : "🎉 " + t.name + " wins!";
   const netMine = netOn() && ti === G.net.me;
-  const sub = rocket ? (t.cpu ? "아깝다! 다음엔 꼭 이길 수 있어요. 위로 상자를 열어 봐요!" : "로켓단은 또 지는 거냐옹~! 😵")
-    : netOn() ? (netMine ? "친구네를 이겼어요! 보물상자를 열어 봐요 🎁" : "아깝다! 친구네가 이겼어요. 위로 상자를 열어 봐요") : "포켓몬이 모두 골인했어요!";
+  const sub = rocket ? (t.cpu ? "Good game! You can win next time. Open your gift chest!" : "Team Rocket lost again, meow! 😵")
+    : netOn() ? (netMine ? "You beat your friend! Open the treasure chest 🎁" : "Good game! Your friend won. Open your gift chest") : "All the Pokémon made it home!";
   hint("");
   SFX.win();
   confetti(80);
   Cry.play(finals[0]);
-  TTS.say(plain(title));
+  TTS.say(rocket && t.cpu ? "Team Rocket wins, meow!" : [plain(t.name), "wins!"]);
   await sleep(500);
   const o = document.createElement("div");
   o.className = "win-screen";
@@ -2918,7 +2918,7 @@ async function showWin(ti) {
     '<div class="win-team">' + finals.map((id, k) =>
       '<div class="w" style="--i:' + k + '"><img src="' + artUrl(id) + '" alt="" onerror="artFail(this,' + id + ')"><b>' + esc(nameOf(id)) + "</b></div>").join("") + "</div>" +
     boxHtml(s.reward) + bonusHtml(s.reward) +
-    '<div class="win-btns' + (s.reward && (!s.reward.opened || (studyFlag() && !s.reward.bonus)) ? " hidden" : "") + '">' + (netOn() ? '<button class="btn big gold" data-act="net-rematch">🔁 같은 친구와 한 판 더</button>' : '<button class="btn big gold" data-act="rematch">🔁 한 판 더</button>') + '<button class="btn big" data-act="win-home">🏠 처음으로</button></div></div>';
+    '<div class="win-btns' + (s.reward && (!s.reward.opened || (studyFlag() && !s.reward.bonus)) ? " hidden" : "") + '">' + (netOn() ? '<button class="btn big gold" data-act="net-rematch">🔁 Play again</button>' : '<button class="btn big gold" data-act="rematch">🔁 Play again</button>') + '<button class="btn big" data-act="win-home">🏠 Home</button></div></div>';
   document.body.appendChild(o);
 }
 /* ---------- 🎁 보물상자 — 볼은 이긴 순간 이미 가방에 들어갔다. 여기서는 열어서 보여 주기만 ---------- */
@@ -2930,8 +2930,8 @@ function chestFail(img) { img.onerror = null; img.replaceWith(Object.assign(docu
 function boxHtml(rw) {
   if (!rw) return "";
   return '<div class="box-zone' + (rw.opened ? " opened" : "") + '" id="box-zone">' +
-    '<button class="chest" data-act="open-box" aria-label="보물상자 열기"><img id="chest-img" src="assets/ui/' + (rw.opened ? "chest-open" : "chest-closed") + '.png" alt="" onerror="chestFail(this)"></button>' +
-    '<p class="box-hint" id="box-hint">' + (rw.opened ? "가방에 넣었어요! 🎒" : rw.lose ? "🎁 아깝다! 그래도 위로 상자가 있어요. 눌러서 열어 봐요" : rw.hard ? "💀 어려움을 이겼다! 🎁 볼 4개 특별 상자예요. 눌러서 열어 봐요" : "🎁 로켓단이 두고 간 상자예요! 눌러서 열어 봐요") + "</p>" +
+    '<button class="chest" data-act="open-box" aria-label="Open the treasure chest"><img id="chest-img" src="assets/ui/' + (rw.opened ? "chest-open" : "chest-closed") + '.png" alt="" onerror="chestFail(this)"></button>' +
+    '<p class="box-hint" id="box-hint">' + (rw.opened ? "Into your Bag! 🎒" : rw.lose ? "🎁 Good game! Here is a gift chest for you. Tap to open it" : rw.hard ? "💀 You beat Hard! 🎁 A special chest with 4 balls. Tap to open it" : "🎁 Team Rocket left a chest! Tap to open it") + "</p>" +
     '<div class="box-balls" id="box-balls">' + (rw.opened ? rw.balls.map(b => ballChip(b)).join("") : "") + "</div></div>";
 }
 async function openBox() {
@@ -2953,8 +2953,8 @@ async function openBox() {
     if (b === "luxury" || b === "master") { SFX.win(); confetti(40); }
     await sleep(450);
   }
-  $("#box-hint").textContent = "가방에 넣었어요! 🎒";
-  TTS.say(rw.balls.map(b => Yut.Rewards.BALL_INFO[b].name).join(", ") + "! 가방에 넣었어요");
+  $("#box-hint").textContent = "Into your Bag! 🎒";
+  TTS.say(rw.balls.map(b => Yut.Rewards.BALL_INFO[b].name).concat(["Into your Bag!"]));
   rw.opened = true;
   zone.classList.remove("opening");
   zone.classList.add("opened");
@@ -2982,16 +2982,16 @@ function openBag(pid) {
   pid = Store.cur;
   const col = Store.data.collection.slice(); // 잡은 순서대로
   showModal(
-    "<h2>🎒 " + esc(Store.prof().name) + "의 가방</h2>" + (inGame && netOn() ? "" : profTabs("prof-bag", pid)) +
+    "<h2>🎒 " + esc(Store.prof().name) + "'s Bag</h2>" + (inGame && netOn() ? "" : profTabs("prof-bag", pid)) +
     '<div class="bag-list">' + R.BALLS.map(b => '<div class="' + ((Store.data.bag[b] || 0) ? "" : "zero") + '"><img src="assets/items/' + R.BALL_INFO[b].img + '.png" alt=""><span>' + R.BALL_INFO[b].name +
       "</span><b>×" + (Store.data.bag[b] || 0) + "</b><em>" + (b === "master" ? "100%" : Math.round(R.catchRate(b, "l") * 100) + "~" + Math.round(R.catchRate(b, "c") * 100) + "%") + "</em></div>").join("") + "</div>" +
-    '<p class="catch-note">잡을 확률 (몬스터볼): <b>일반 80 · 레어 70 · 유니크 60 · 전설 40%</b><br>좋은 볼일수록 +5% · 놓칠 때마다 +10% · 마스터볼은 100%</p>' +
-    '<p class="small">🎁 로켓단을 이기면 상자에서 볼 3개 · 🌿 ❓ 풀숲에서 던져서 잡아요</p>' +
-    '<h2 class="sub">📦 보관함 <small>' + col.length + "마리</small></h2>" +
+    '<p class="catch-note">Catch chance (Poké Ball): <b>Common 80 · Rare 70 · Unique 60 · Legendary 40%</b><br>Better ball +5% · each miss +10% · Master Ball 100%</p>' +
+    '<p class="small">🎁 Beat Team Rocket: 3 balls in a chest · 🌿 Throw balls in ❓ tall grass to catch</p>' +
+    '<h2 class="sub">📦 Box <small>' + col.length + " Pokémon</small></h2>" +
     (col.length
       ? '<div class="bag-grid">' + col.map(x => '<div class="bg-card"><span class="pic">' + spr(x.id) + "</span><b>" + esc(nameOf(x.id)) + '</b><i class="bp-tag r-' + rarityOf(x.id) + '">' + RARITY_KO[rarityOf(x.id)] + "</i></div>").join("") + "</div>"
-      : "<p>아직 잡은 포켓몬이 없어요.<br>윷판의 <b>❓ 풀숲</b>에 딱 멈춰 보세요!</p>") +
-    '<div class="btns"><button class="btn big green" data-act="close-modal">닫기</button></div>',
+      : "<p>No Pokémon caught yet.<br>Stop right on the <b>❓ tall grass</b> on the board!</p>") +
+    '<div class="btns"><button class="btn big green" data-act="close-modal">Close</button></div>',
     () => { if (inGame) { G.paused = false; if (current === "game" && !G.busy) afterAction(); } }
   );
 }
@@ -3074,14 +3074,14 @@ function chipBadges(i) {
   const s = G.s, p = s.pieces[i];
   let h = "";
   if (s.settings.skills !== false && !p.skill && p.state !== "done" && !Yut.isFinal(s, i)) {
-    h += '<span class="sk left" title="기술까지 ' + skillLeft(i) + '칸">' + skillLeft(i) + "</span>"; // 기술까지 남은 칸
+    h += '<span class="sk left" title="Move in ' + skillLeft(i) + (skillLeft(i) === 1 ? " space" : " spaces") + '">' + skillLeft(i) + "</span>"; // 기술까지 남은 칸
   }
   if (s.settings.skills !== false && p.skill && p.state !== "done") {
-    h += p.used ? '<span class="sk used" title="기술을 다 썼어요">✓</span>'
+    h += p.used ? '<span class="sk used" title="Move used up">✓</span>'
       : '<span class="sk' + (Yut.isFinal(s, i) ? "" : " wait") + '" title="' + esc(skillName(p.skill)) + '">' + ((SKILL_UI[p.skill] || {}).emoji || "✨") + "</span>";
   }
   if (s.settings.skills !== false && p.gift && p.state !== "done") {
-    h += '<span class="sk gift' + (p.gift.used ? " used" : "") + '" title="받은 기술 ' + esc(skillName(p.gift.key)) + '">' + (p.gift.used ? "✓" : "🎁") + "</span>";
+    h += '<span class="sk gift' + (p.gift.used ? " used" : "") + '" title="Gift move: ' + esc(skillName(p.gift.key)) + '">' + (p.gift.used ? "✓" : "🎁") + "</span>";
   }
   if (p.state === "board") {
     const st = statusIcon(s, [i]);
@@ -3099,10 +3099,10 @@ function teamFxHtml(ti) {
   const teamAt = t => (((s.turn + (t - s.turnNo)) % n) + n) % n;
   const left = until => { let c = 0; for (let t = s.turnNo; t <= until; t++) if (teamAt(t) === ti) c++; return c; };
   let h = "";
-  if (f.poison) h += ' <span class="tfx" title="다음 윷이 빽도">☠️</span>';
-  if ((f.seal || 0) >= s.turnNo) h += ' <span class="tfx" title="기술 봉인">🔒' + left(f.seal) + "</span>";
-  if ((f.rain || 0) >= s.turnNo) h += ' <span class="tfx" title="비">🌧️' + left(f.rain) + "</span>";
-  if ((f.chill || 0) >= s.turnNo) h += ' <span class="tfx" title="얼음 — 윷이 빽도·도·개만">🧊</span>';
+  if (f.poison) h += ' <span class="tfx" title="Next throw is Back-do">☠️</span>';
+  if ((f.seal || 0) >= s.turnNo) h += ' <span class="tfx" title="Moves sealed">🔒' + left(f.seal) + "</span>";
+  if ((f.rain || 0) >= s.turnNo) h += ' <span class="tfx" title="Rain">🌧️' + left(f.rain) + "</span>";
+  if ((f.chill || 0) >= s.turnNo) h += ' <span class="tfx" title="Frozen — only Back-do, Do or Gae">🧊</span>';
   return h;
 }
 function renderTraps() {
@@ -3138,19 +3138,19 @@ function chanceLine(i, key) {
   const K = Yut.SKILLS[key];
   const c = Yut.skillChance(G.s, i, key, K.target === "none" ? null : undefined);
   const withMatch = Yut.MATCH_SKILLS.indexOf(key) >= 0 && K.target !== "none";
-  return "🎲 성공 " + pctTxt(c.chance) + (K.target === "none" ? matchTxt(c.match) : "") + (withMatch ? " (상성 ±10%)" : "");
+  return "🎲 Success " + pctTxt(c.chance) + (K.target === "none" ? matchTxt(c.match) : "") + (withMatch ? " (type matchup ±10%)" : "");
 }
 function skillItem(i, info, key, slot) {
   key = key || G.s.pieces[i].skill; slot = slot || "own";
   const id = Yut.formOf(G.s, i), K = Yut.SKILLS[key], U = SKILL_UI[key] || {};
   return '<button class="skill-item' + (info ? " info" : "") + '"' + (info ? " disabled" : ' data-act="skill-pick" data-piece="' + i + '" data-slot="' + slot + '"') + ' style="--tc:' + skillColor(key) + '">' +
     '<span class="si-pic">' + spr(id) + "</span>" +
-    '<span class="si-body"><b>' + (U.emoji || "") + " " + esc(K.name) + "<i>" + esc(K.type) + "</i>" + (slot === "gift" ? '<i class="gift">🎁 받은 기술</i>' : "") + "</b><small>" + esc(nameOf(id)) + " · " + esc(U.desc || "") + (info ? " (때가 되면 저절로 나가요)" : "") + '</small><em class="si-ch">' + esc(chanceLine(i, key)) + "</em></span></button>";
+    '<span class="si-body"><b>' + (U.emoji || "") + " " + esc(K.name) + "<i>" + esc(typeName(K.type)) + "</i>" + (slot === "gift" ? '<i class="gift">🎁 Gift move</i>' : "") + "</b><small>" + esc(nameOf(id)) + " · " + esc(U.desc || "") + (info ? " (Works by itself at the right time)" : "") + '</small><em class="si-ch">' + esc(chanceLine(i, key)) + "</em></span></button>";
 }
 function openSkillMenu() {
   if (!G.s || G.busy || !humanTurn() || G.s.settings.skills === false) return;
   const list = Yut.legalSkills(G.s);
-  if (!list.length) { toast("지금 쓸 수 있는 기술이 없어요"); return; }
+  if (!list.length) { toast("No moves to use right now"); return; }
   SFX.tap();
   const team = G.s.turn;
   const reacts = [];
@@ -3159,10 +3159,10 @@ function openSkillMenu() {
     if (p.skill && !p.used && Yut.isFinal(G.s, i) && Yut.SKILLS[p.skill].kind === "react") reacts.push([i, p.skill, "own"]);
     if (Yut.giftReady(p) && Yut.SKILLS[p.gift.key].kind === "react") reacts.push([i, p.gift.key, "gift"]);
   });
-  showModal("<h2>✨ 기술 쓰기</h2><p>한 차례에 하나, 기술마다 한 판에 한 번! 🎲 확률로 성공해요 — 실패해도 한 번 쓴 거예요</p>" +
+  showModal("<h2>✨ Use a Move</h2><p>One move per turn. Each move works once per game! 🎲 It works by chance — if it misses, it is still used up</p>" +
     '<div class="skill-list">' + list.map(x => skillItem(x.piece, false, x.key, x.slot)).join("") + "</div>" +
-    (reacts.length ? '<h2 class="sub">🛡️ 저절로 나가는 기술</h2><div class="skill-list">' + reacts.map(r => skillItem(r[0], true, r[1], r[2])).join("") + "</div>" : "") +
-    '<div class="btns"><button class="btn" data-act="skilldex">📖 기술 도감</button><button class="btn" data-act="close-modal">닫기</button></div>');
+    (reacts.length ? '<h2 class="sub">🛡️ Automatic moves</h2><div class="skill-list">' + reacts.map(r => skillItem(r[0], true, r[1], r[2])).join("") + "</div>" : "") +
+    '<div class="btns"><button class="btn" data-act="skilldex">📖 Move Dex</button><button class="btn" data-act="close-modal">Close</button></div>');
 }
 function beginSkill(i, slot) {
   if (!G.s || G.busy || !humanTurn()) return;
@@ -3172,16 +3172,16 @@ function beginSkill(i, slot) {
   G.skillPiece = i;
   G.skillSlot = x.slot;
   if (x.target === "none") { doSkill(i, null, x.slot); return; }
-  const cancel = '<div class="btns"><button class="btn" data-act="close-modal">취소</button></div>';
+  const cancel = '<div class="btns"><button class="btn" data-act="close-modal">Cancel</button></div>';
   if (x.target === "result") {
     const fut = x.key === "future";
-    showModal("<h2>" + U.emoji + " " + esc(K.name) + "</h2><p>" + (fut ? "어떤 결과가 나올까? 맞혀 봐요! <b>개·걸</b>이 잘 나와요." : "원하는 결과를 골라요! (한 번 더 던지기는 없어요)") + "</p>" +
+    showModal("<h2>" + U.emoji + " " + esc(K.name) + "</h2><p>" + (fut ? "What will you get? Guess! <b>Gae and Geol</b> come up a lot." : "Pick the result you want! (No extra throw)") + "</p>" +
       (fut ? probBars(G.s.settings.backdo) : "") +
       '<div class="res-pick">' + x.targets.map(r => '<button class="btn' + (fut && (r === 2 || r === 3) ? " hot" : "") + '" data-act="skill-target" data-v="' + r + '"><img src="' + artUrl(CAST.yut[r]) + '" alt="">' + RES[r].name + "</button>").join("") + "</div>" + cancel);
     return;
   }
   if (x.target === "pending") {
-    showModal("<h2>" + U.emoji + " " + esc(K.name) + "</h2><p>어느 결과를 크게 할까요?</p>" +
+    showModal("<h2>" + U.emoji + " " + esc(K.name) + "</h2><p>Which result do you want to make bigger?</p>" +
       '<div class="res-pick">' + x.targets.map(ri => {
         const r = G.s.pending[ri], nr = r === -1 ? 1 : Math.min(5, r + 1);
         return '<button class="btn" data-act="skill-target" data-v="' + ri + '"><img src="' + artUrl(CAST.yut[nr]) + '" alt="">' + RES[r].name + " → " + RES[nr].name + "</button>";
@@ -3192,7 +3192,7 @@ function beginSkill(i, slot) {
   G.target = { piece: i, key: x.key, kind: x.target, targets: x.targets.slice(), slot: x.slot };
   showSkillTargets(i, x);
   renderTop();
-  hint("👆 " + K.name + ": 반짝이는 곳을 눌러요");
+  hint("👆 " + K.name + ": tap a shining spot");
   SFX.tap();
 }
 function showSkillTargets(i, x) {
@@ -3220,7 +3220,7 @@ function showSkillTargets(i, x) {
     const d = Yut.backPlan(G.s, team, u, r);
     if (!d) return;
     const hit = Yut.piecesAt(G.s, d.node).some(j => G.s.pieces[j].team !== team);
-    ring(d.node, RES[r].name + " ↩️" + (hit ? " 배틀!" : ""), r, hit);
+    ring(d.node, RES[r].name + " ↩️" + (hit ? " Battle!" : ""), r, hit);
   });
   else if (x.target === "enemyPiece") {
     const seen = {};
@@ -3256,7 +3256,7 @@ async function doSkill(i, target, slot) {
 }
 // 로켓단: 고른 대상을 잠깐 보여 주고 쓴다
 async function cpuUseSkill(a) {
-  hint("😈 로켓단이 기술을 쓴다옹!");
+  hint("😈 Team Rocket uses a move, meow!");
   const K = Yut.SKILLS[a.key];
   const box = $("#dests");
   if (box && (K.target === "enemy" || K.target === "ally" || K.target === "node") && a.target != null) {
@@ -3277,9 +3277,9 @@ function skillRoll(chance, ok, match, title) {
     const at = ok ? Math.random() * pc * 0.92 + pc * 0.04 : pc + (100 - pc) * (0.15 + Math.random() * 0.7);
     const el = document.createElement("div");
     el.className = "roll";
-    el.innerHTML = '<div class="roll-card"><b class="roll-title">' + esc(title ? title + " · " : "") + "🎲 성공 " + pc + "%" + (match > 0 ? " 💥" : match < 0 ? " 💧" : "") + "</b>" +
+    el.innerHTML = '<div class="roll-card"><b class="roll-title">' + esc(title ? title + " · " : "") + "🎲 Success " + pc + "%" + (match > 0 ? " 💥" : match < 0 ? " 💧" : "") + "</b>" +
       '<div class="roll-bar"><i class="roll-win" style="width:' + pc + '%"></i><i class="roll-needle"></i></div>' +
-      '<div class="roll-lab"><em class="g" style="width:' + pc + '%">성공 ' + pc + "%</em>" + (pc < 100 ? '<em class="x">실패 ' + (100 - pc) + "%</em>" : "") + "</div>" +
+      '<div class="roll-lab"><em class="g" style="width:' + pc + '%">Success ' + pc + "%</em>" + (pc < 100 ? '<em class="x">Miss ' + (100 - pc) + "%</em>" : "") + "</div>" +
       '<strong class="roll-res"></strong></div>';
     document.body.appendChild(el);
     const nd = el.querySelector(".roll-needle"), out = el.querySelector(".roll-res");
@@ -3291,7 +3291,7 @@ function skillRoll(chance, ok, match, title) {
     a.onfinish = () => {
       if (done) return;
       el.classList.add(ok ? "ok" : "no");
-      out.textContent = ok ? "성공! ✨" : "실패… 😵";
+      out.textContent = ok ? "Success! ✨" : "Missed… 😵";
       if (ok) { SFX.again(); confetti(18); } else SFX.thud();
       setTimeout(close, 900 * SPEED);
     };
@@ -3305,14 +3305,14 @@ function cutIn(id, key, team, title) {
     const legend = isLegend(id);
     el.className = "cutin" + (legend ? " legend" : "");
     el.style.setProperty("--tc", skillColor(key));
-    const who = title || ((team && team.cpu ? "로켓단 " : "") + nameOf(id) + "의");
+    const who = title || ((team && team.cpu ? "Team Rocket's " : "") + nameOf(id) + " used");
     el.innerHTML = (legend ? '<div class="ci-flash"></div><div class="ci-rays"></div>' : "") +
-      '<div class="ci-band">' + (legend ? '<span class="ci-crown">👑 전설의 힘!</span>' : "") + '<div class="ci-mon">' + spr(id) + '</div><div class="ci-text"><b>' + esc(who) + "</b><strong>" + esc(K.name) + "!</strong><em>" + esc((U.emoji || "") + " " + (U.desc || "")) + "</em></div></div>";
+      '<div class="ci-band">' + (legend ? '<span class="ci-crown">👑 Legendary power!</span>' : "") + '<div class="ci-mon">' + spr(id) + '</div><div class="ci-text"><b>' + esc(who) + "</b><strong>" + esc(K.name) + "!</strong><em>" + esc((U.emoji || "") + " " + (U.desc || "")) + "</em></div></div>";
     document.body.appendChild(el);
     SFX.skill();
     if (legend) { SFX.win(); const b = $("#board"); if (b) { b.classList.remove("quake"); void b.offsetWidth; b.classList.add("quake"); setTimeout(() => b.classList.remove("quake"), 650 * SPEED); } }
     Cry.play(id);
-    TTS.say((title ? plain(title) + " " : nameOf(id) + "의 ") + K.name + "!");
+    TTS.say(title ? [plain(title), K.name] : [nameOf(id), "used", K.name]);
     let done = false;
     const close = () => { if (done) return; done = true; el.classList.add("out"); setTimeout(() => { el.remove(); res(); }, 220 * SPEED); };
     el.addEventListener("click", close);
@@ -3336,16 +3336,16 @@ const EVENT_ANIM = {
     const st = prev || G.s;
     await cutIn(Yut.formOf(st, e.piece), e.key, st.teams[e.team]);
     if (e.chance != null) await skillRoll(e.chance, e.ok !== false, e.match);
-    if (e.match > 0 && e.ok !== false) { SFX.again(); toast("💥 효과가 굉장했다! (성공 +10%)", 1500); await sleep(700); }
-    else if (e.match < 0) { toast("💧 효과가 별로인 듯하다… (성공 −10%)", 1500); await sleep(700); }
+    if (e.match > 0 && e.ok !== false) { SFX.again(); toast("💥 It's super effective! (Success +10%)", 1500); await sleep(700); }
+    else if (e.match < 0) { toast("💧 It's not very effective… (Success −10%)", 1500); await sleep(700); }
   },
   async skillfail(e, prev) {
     const st = prev || G.s, p = st.pieces[e.piece];
     if (p && p.state === "board") fxAt(Yut.posOf(p), "😵");
     SFX.thud();
-    const msg = "앗, " + josa(skillName(e.key), "이/가") + " 실패했어요! (성공 " + pctTxt(e.chance) + ")";
-    toast("😵 " + msg + " 이 기술은 써 버렸어요…", 2400);
-    TTS.say("앗, 실패!");
+    const msg = "Oh no! " + skillName(e.key) + " missed! (" + pctTxt(e.chance) + " chance)";
+    toast("😵 " + msg + " This move is used up…", 2400);
+    TTS.say("Oh no, it missed!");
     renderPanel();
     await sleep(1300);
   },
@@ -3354,19 +3354,19 @@ const EVENT_ANIM = {
     const q = G.s.pieces[e.piece];
     if (q && q.state === "board") fxAt(Yut.posOf(q), "😵");
     SFX.thud();
-    toast("😵 " + nameOf(Yut.formOf(G.s, e.piece)) + "의 " + (SKILL_UI[e.key] || {}).emoji + " " + josa(skillName(e.key), "이/가") + " 실패! (성공 " + pctTxt(e.chance) + ")", 1900);
+    toast("😵 " + nameOf(Yut.formOf(G.s, e.piece)) + "'s " + (SKILL_UI[e.key] || {}).emoji + " " + skillName(e.key) + " missed! (" + pctTxt(e.chance) + " chance)", 1900);
     await sleep(900);
   },
   async wake(e) {
-    if (e.ok) { fxAt(e.node, "☀️"); SFX.learn(); toast("💤 " + josa(namesOf(e.pieces), "이/가") + " 깼다! 이제 움직여요 (" + pctTxt(e.chance) + ")", 1900); }
-    else { fxAt(e.node, "💤"); toast("💤 " + josa(namesOf(e.pieces), "은/는") + " 아직 쿨쿨… (깰 확률 " + pctTxt(e.chance) + ")", 1700); }
+    if (e.ok) { fxAt(e.node, "☀️"); SFX.learn(); toast("💤 " + namesOf(e.pieces) + " woke up! Let's move! (" + pctTxt(e.chance) + ")", 1900); }
+    else { fxAt(e.node, "💤"); toast("💤 Zzz… " + namesOf(e.pieces) + " kept sleeping (wake chance " + pctTxt(e.chance) + ")", 1700); }
     syncUnitAt(e.team, e.node);
     renderPanel();
     await sleep(900);
   },
   async confused(e) {
     fxAt(e.node, "💋");
-    toast("💋 " + josa(namesOf(e.pieces), "은/는") + " 헷갈려서 뒤로 가요!", 1500);
+    toast("💋 " + namesOf(e.pieces) + " got confused and went back!", 1500);
     await sleep(600);
   },
   async magnet(e) {
@@ -3377,22 +3377,22 @@ const EVENT_ANIM = {
     await sleep(650);
     if (el) el.remove();
     syncUnitAt(e.team, e.to);
-    toast("🧲 자력선! " + josa(namesOf(e.pieces), "을/를") + " 끌어와 업었어요", 1700);
+    toast("🧲 " + skillName("magnet") + "! Pulled " + namesOf(e.pieces) + " in and stacked!", 1700);
     renderPanel();
     await sleep(500);
   },
   async metronome(e) {
     markSeen(e.key);
-    await cutIn(Yut.formOf(G.s, e.piece), e.key, G.s.teams[e.team], "👆 손가락흔들기 →");
+    await cutIn(Yut.formOf(G.s, e.piece), e.key, G.s.teams[e.team], "👆 " + skillName("metronome") + " →");
   },
   async learn(e) {
     markSeen(e.key);
     const p = G.s.pieces[e.piece], name = nameOf(Yut.formOf(G.s, e.piece)), k = skillName(e.key);
     if (p.state === "board") sparkle(Yut.posOf(p));
     SFX.learn();
-    const msg = josa(name, "은/는") + " " + josa(k, "을/를") + " 배웠다!";
+    const msg = name + " learned " + k + "!";
     toast("📖 " + msg + " " + ((SKILL_UI[e.key] || {}).emoji || ""), 2200);
-    TTS.say(msg);
+    TTS.say([name, "learned", k]);
     renderPanel();
     refreshUnits();
     await sleep(1400);
@@ -3402,7 +3402,7 @@ const EVENT_ANIM = {
     if (e.skill === "quake") { const b = $("#board"); if (b) { b.classList.remove("quake"); void b.offsetWidth; b.classList.add("quake"); setTimeout(() => b.classList.remove("quake"), 650 * SPEED); } }
     if (!e.path.length) {
       if (el) { el.classList.remove("bump"); void el.offsetWidth; el.classList.add("bump"); }
-      if (e.skill !== "quake") { toast(josa(namesOf(e.pieces), "은/는") + " 꿈쩍도 안 했다!", 1400); await sleep(700); }
+      if (e.skill !== "quake") { toast(namesOf(e.pieces) + " didn't budge!", 1400); await sleep(700); }
       return;
     }
     const pe = e.skill === "stoneedge" ? "🗿" : "🌊";
@@ -3414,7 +3414,7 @@ const EVENT_ANIM = {
       el.dataset.node = e.to;
     }
     syncUnitAt(e.team, e.to);
-    if (e.skill !== "quake") { toast(pe + " " + josa(namesOf(e.pieces), "이/가") + " " + e.path.length + "칸 밀려났어요!", 1500); await sleep(400); }
+    if (e.skill !== "quake") { toast(pe + " " + namesOf(e.pieces) + " got pushed " + e.path.length + (e.path.length === 1 ? " space!" : " spaces!"), 1500); await sleep(400); }
   },
   async status(e) {
     const icon = { para: "⚡", sleep: "💤", veil: "❄️", poison: "☠️", seal: "🔒", rain: "🌧️", freeze: "🧊", tired: "😮‍💨", bulk: "💪", weak: "🧪", dig: "🕳️", confuse: "💋", spike: "🟣" }[e.kind] || "✨";
@@ -3423,23 +3423,41 @@ const EVENT_ANIM = {
     (e.nodes || []).forEach(n => { fxAt(n, icon); syncUnitAt(e.team, n); });
     if (e.kind === "spike") renderTraps();
     if (e.kind === "rain") { const fx = $("#fx"); if (fx) { const r = document.createElement("div"); r.className = "rainfx"; fx.appendChild(r); setTimeout(() => r.remove(), 1300); } }
+    const tn = (e.n || 1) === 1 ? "1 turn" : e.n + " turns";
     const msg = {
-      para: e.nodes ? "방전! " + tname + "의 말이 모두 몸이 저려서 한 번 못 움직여요!" : josa(names, "은/는") + " 몸이 저려서 한 번 못 움직여요!",
-      sleep: josa(names, "은/는") + " 쿨쿨 잠들었어요! 두 번 못 움직여요 (깰 수도 있어요)",
-      freeze: josa(names, "은/는") + " 꽁꽁 얼었어요! 다음 차례에 못 움직이고, 그다음 " + tname + "의 윷은 빽도·도·개만!",
-      tired: josa(names, "은/는") + " 지쳤어요… 우리 차례 " + (e.n || 1) + "번 쉬어요",
-      bulk: josa(names, "은/는") + " 힘이 넘쳐요! 다음 두 번은 1칸씩 더 가요",
-      weak: josa(names, "은/는") + " 약해졌어요! 두 번 동안 1칸씩 덜 가요",
-      dig: josa(names, "은/는") + " 땅속에 숨었어요! 한 번 안 잡히고, 다음엔 1칸 더",
-      confuse: josa(names, "은/는") + " 헷갈려요! 다음 이동은 뒤로 가요",
-      spike: "독압정! " + josa(names, "은/는") + " 다음 차례에 못 움직여요",
-      veil: "얼음 장막! " + josa(names, "은/는") + " 상대 차례 두 번 동안 안전해요",
-      poison: tname + "의 다음 윷은 " + (G.s.settings.backdo ? "빽도" : "도") + "!",
-      seal: josa(tname, "은/는") + " 세 번 동안 기술을 못 써요!",
-      rain: "비가 내려요! " + tname + "의 도·빽도는 개가 돼요",
+      para: e.nodes ? skillName("discharge") + "! All of " + tname + "'s pieces got zapped! They can't move for 1 turn!" : names + " got zapped! Can't move for 1 turn!",
+      sleep: names + " fell asleep! Can't move for 2 turns (may wake up)",
+      freeze: names + " froze! Can't move next turn. Then " + tname + " can only throw Back-do, Do or Gae!",
+      tired: names + " got tired… Takes a break for " + tn,
+      bulk: names + " powered up! Next 2 moves: 1 space farther",
+      weak: names + " got weaker! Next 2 moves: 1 space less",
+      dig: names + " hid underground! Safe once, then 1 space more",
+      confuse: names + " got confused! Next move goes backward",
+      spike: skillName("spike") + "! " + names + " can't move next turn",
+      veil: skillName("veil") + "! Safe for 2 enemy turns: " + names,
+      poison: tname + "'s next throw: " + (G.s.settings.backdo ? "Back-do" : "Do") + "!",
+      seal: tname + " can't use moves for 3 turns!",
+      rain: "It's raining! " + tname + "'s Do and Back-do become Gae",
     }[e.kind] || "";
+    // 🔊 말할 때는 이름(녹음됨)과 고정 문장을 따로따로
+    const np = e.pieces.map(i => nameOf(Yut.formOf(G.s, i)));
+    const sp = {
+      para: e.nodes ? [skillName("discharge"), tname, vo("can't move for 1 turn!")] : np.concat([vo("got zapped!"), vo("Can't move for 1 turn!")]),
+      sleep: np.concat([vo("fell asleep!")]),
+      freeze: np.concat([vo("froze!")]),
+      tired: np.concat([vo("got tired…")]),
+      bulk: np.concat([vo("powered up!")]),
+      weak: np.concat([vo("got weaker!")]),
+      dig: np.concat([vo("hid underground!")]),
+      confuse: np.concat([vo("got confused!")]),
+      spike: [skillName("spike")].concat(np, [vo("can't move next turn!")]),
+      veil: [skillName("veil"), vo("Safe for 2 turns!")],
+      poison: [tname, vo("next throw:"), G.s.settings.backdo ? vo("Back-do!") : vo("Do!")],
+      seal: [tname, vo("can't use moves for 3 turns!")],
+      rain: [vo("It's raining!"), tname, vo("Do and Back-do become Gae!")],
+    }[e.kind] || [];
     toast(icon + " " + msg, 2200);
-    TTS.say(plain(msg));
+    TTS.say(sp);
     renderPanel();
     await sleep(1100);
   },
@@ -3447,20 +3465,20 @@ const EVENT_ANIM = {
     renderTraps();
     fxAt(e.node, TRAP_EMOJI[e.kind] || "🕸️");
     SFX.thud();
-    toast({ rock: "🪨 뾰족 바위를 놓았어요! 상대가 여기 멈추면 집으로", web: "🕸️ 거미줄을 쳤어요! 상대가 지나가다 걸려요", spike: "🟣 독 압정을 놓았어요! 상대가 여기 멈추면 한 번 못 움직여요" }[e.kind] || "", 2200);
+    toast({ rock: "🪨 Sharp rocks set! An enemy that stops here goes home", web: "🕸️ Sticky web set! An enemy that passes gets stuck", spike: "🟣 Toxic spikes set! An enemy that stops here can't move for 1 turn" }[e.kind] || "", 2200);
     await sleep(1000);
   },
   async webstop(e) {
     fxAt(e.node, "🕸️");
     SFX.thud();
     renderTraps();
-    toast("🕸️ 거미줄에 걸려서 멈췄어요!", 1800);
+    toast("🕸️ Stuck in the web! It stopped!", 1800);
     await sleep(900);
   },
   async rock(e) {
     fxAt(e.node, "🪨");
     SFX.hit();
-    toast("🪨 뾰족 바위! " + josa(namesOf(e.pieces), "은/는") + " 집으로…", 2000);
+    toast("🪨 Sharp rocks! " + namesOf(e.pieces) + " went back home…", 2000);
     renderTraps();
     await goHome(G.lastEl || unitAt(e.team, e.node));
     renderPanel();
@@ -3470,7 +3488,7 @@ const EVENT_ANIM = {
     fxAt(e.node, "🛡️");
     SFX.clang();
     await cutIn(Yut.formOf(G.s, e.piece), "iron", G.s.teams[q.team]);
-    toast("🛡️ " + nameOf(Yut.formOf(G.s, e.piece)) + "의 철벽! 튕겨 냈다!", 2000);
+    toast("🛡️ " + nameOf(Yut.formOf(G.s, e.piece)) + "'s " + skillName("iron") + "! Bounced it away!", 2000);
     if (!e.remote && G.lastEl) {
       const el = G.lastEl;
       if (e.back == null) await goHome(el);
@@ -3483,39 +3501,39 @@ const EVENT_ANIM = {
     syncUnitAt(e.team, e.to);
     sparkle(e.to);
     await cutIn(Yut.formOf(G.s, e.piece), "moon", G.s.teams[e.team]);
-    toast("🌙 달빛! " + josa(nameOf(Yut.formOf(G.s, e.piece)), "은/는") + " 집 대신 한 칸 뒤로!", 2000);
+    toast("🌙 " + skillName("moon") + "! " + nameOf(Yut.formOf(G.s, e.piece)) + " goes back 1 space, not home!", 2000);
     renderPanel();
     await sleep(600);
   },
   async bond(e) {
     await cutIn(Yut.formOf(G.s, e.piece), "bond", G.s.teams[G.s.pieces[e.piece].team]);
-    toast("👻 길동무! " + namesOf(e.pieces) + "도 같이 집으로!", 2000);
+    toast("👻 " + skillName("bond") + "! " + namesOf(e.pieces) + " goes home too!", 2000);
     await goHome(unitAt(e.team, e.node));
     renderPanel();
   },
   async home(e) {
     const hot = e.skill === "outrage" ? "🐲" : "🔥";
     fxAt(e.node, hot);
-    toast(hot + " 되돌아온 " + (e.skill === "outrage" ? "역린" : "불꽃") + "! " + josa(namesOf(e.pieces), "은/는") + " 집으로…", 2000);
+    toast(hot + " " + skillName(e.skill === "outrage" ? "outrage" : "flame") + " came back! " + namesOf(e.pieces) + " went back home…", 2000);
     await goHome(unitAt(e.team, e.node));
     renderPanel();
   },
   async reflect(e) {
     await cutIn(Yut.formOf(G.s, e.piece), "counter", G.s.teams[e.team]);
-    toast("🥊 카운터! " + josa(skillName(e.key), "을/를") + " 그대로 돌려줬다!", 2000);
+    toast("🥊 " + skillName("counter") + "! Sent " + skillName(e.key) + " right back!", 2000);
     await sleep(500);
   },
   async steal(e) {
     markSeen(e.key);
     SFX.capture();
-    toast("😈 " + nameOf(Yut.formOf(G.s, e.from)) + "의 " + josa(skillName(e.key), "을/를") + " 빼앗았다! 다음 차례부터 쓸 수 있어요", 2400);
+    toast("😈 Took " + nameOf(Yut.formOf(G.s, e.from)) + "'s " + skillName(e.key) + "! You can use it from your next turn", 2400);
     renderPanel();
     await sleep(1200);
   },
   async grow(e) {
     renderPending();
     SFX.again();
-    toast("🌱 성장! " + RES[e.from].name + " → " + RES[e.to].name, 1800);
+    toast("🌱 " + skillName("growth") + "! " + RES[e.from].name + " → " + RES[e.to].name, 1800);
     await sleep(900);
   },
   async wish(e) {
@@ -3524,21 +3542,21 @@ const EVENT_ANIM = {
     renderPending();
   },
   async guess(e) {
-    toast("🔮 " + RES[e.r].name + "! 맞히면 한 번 더 던져요", 1800);
+    toast("🔮 Guess: " + RES[e.r].name + "! If it comes up, throw again", 1800);
     await sleep(700);
   },
   async foresee(e) {
-    if (e.ok) { SFX.again(); await banner("🔮 맞혔다! 한 번 더!", null, 1100, "gold"); }
-    else { toast("🔮 아쉽다! " + josa(RES[e.result].name, "이/가") + " 나왔어요", 1600); await sleep(700); }
+    if (e.ok) { SFX.again(); await banner("🔮 Right! Throw again!", null, 1100, "gold"); }
+    else { toast("🔮 So close! It was " + RES[e.result].name, 1600); await sleep(700); }
   },
-  async again() { SFX.again(); await banner("🐉 한 번 더 던져요!", null, 1000, "gold"); },
+  async again() { SFX.again(); await banner("🐉 Throw again!", null, 1000, "gold"); },
   async switch(e) {
     const a = unitAt(e.team, e.na), b = unitAt(e.tb != null ? e.tb : e.team, e.nb);
     [[a, e.nb], [b, e.na]].forEach(([el, n]) => { if (el) { el.classList.add("flying"); placeAt(el, n); } });
     SFX.throwBall();
     await sleep(650);
     [[a, e.nb], [b, e.na]].forEach(([el, n]) => { if (el) { el.classList.remove("flying"); el.dataset.node = n; } });
-    toast("🔄 사이드체인지! 상대 말과 자리를 바꿨어요", 1600);
+    toast("🔄 " + skillName("allyswitch") + "! Swapped places with an enemy piece", 1600);
     renderPanel();
     await sleep(400);
   },
@@ -3556,18 +3574,19 @@ function swapInfo(id) {
 async function offerSwap(c, e, id) {
   const s = G.s, team = e.team, root = rootOf(id), name = nameOf(id);
   const cands = s.pieces.map((p, i) => i).filter(i => s.pieces[i].team === team && Yut.swapOk(s, i, root));
-  if (!cands.length) { await c.say("판 위에 " + nameOf(root) + " 가족이 있어서 지금은 말로 못 써요."); await c.wait(900); return false; }
-  await c.say(josa(name, "을/를") + " 지금 말로 쓸까요? 바꿀 말을 골라요!", true);
-  const tag = i => { const p = s.pieces[i]; return p.skill && p.used ? " <em>✨ 다 씀</em>" : p.state === "wait" ? ' <em class="home">집</em>' : ""; };
+  if (!cands.length) { await c.say("The " + nameOf(root) + " family is already on the board. It can't be a piece now."); await c.wait(900); return false; }
+  if (!c.skip) TTS.say(["Use it as a piece now?", "Pick a piece to swap!"]);
+  await c.say("Use " + name + " as a piece now? Pick a piece to swap!");
+  const tag = i => { const p = s.pieces[i]; return p.skill && p.used ? " <em>✨ used</em>" : p.state === "wait" ? ' <em class="home">Home</em>' : ""; };
   const pick = await c.menu(cands.map(i => ({ key: String(i), cls: "bt-swapbtn", html: '<span class="sw-pic">' + spr(Yut.formOf(s, i)) + "</span>" + esc(nameOf(Yut.formOf(s, i))) + tag(i) }))
-    .concat([{ key: "later", cls: "ghost", html: "나중에 (보관함에)" }]));
+    .concat([{ key: "later", cls: "ghost", html: "Later (to Box)" }]));
   if (!pick || pick === "later" || !c.live()) return false;
   const i = Number(pick);
   const old = Yut.formOf(G.s, i);
   const r = Yut.applySwap(G.s, i, swapInfo(id));
   G.s = r.state;
   persist();
-  await c.say("돌아와, " + nameOf(old) + "!");
+  await c.say("Come back, " + nameOf(old) + "!");
   if (e.pieces[0] === i && c.allyEl) { // 무대에 선 포켓몬이 바로 그 말이면 모습도 바꾼다
     await c.anim(c.allyEl, [{ transform: "none", opacity: 1, filter: "none" }, { transform: "scale(.2)", opacity: 0, filter: "brightness(3)" }], 420);
     c.allyEl.insertAdjacentHTML("afterend", btSprite(id, true, 27, 94, 33, "ally"));
@@ -3578,7 +3597,8 @@ async function offerSwap(c, e, id) {
     const plate = $(".bt-plate.ally b", c.el);
     if (plate) plate.textContent = name;
   }
-  await c.say("가라, " + name + "! 🔄", true);
+  if (!c.skip) TTS.say(["Go!", name]);
+  await c.say("Go, " + name + "! 🔄");
   await c.wait(700);
   G.swapAfter = { piece: i, events: r.events.slice(1), from: old, to: id };
   return true;
@@ -3596,7 +3616,7 @@ async function afterSwapBoard(x) {
   }
   renderPanel();
   SFX.pop();
-  toast("🔄 " + nameOf(x.from) + " → " + nameOf(x.to) + "! 새 말이 나왔어요", 1800);
+  toast("🔄 " + nameOf(x.from) + " → " + nameOf(x.to) + "! A new piece is here!", 1800);
   await sleep(900);
   G.lastEl = el;
   await playEvents(x.events, null);
@@ -3606,16 +3626,16 @@ async function rocketNet(e) {
   const id = e.id, name = nameOf(id);
   fxAt(e.node, "🥅");
   SFX.throwBall();
-  toast("😼 로켓단이 그물을 던졌다옹! 🥅", 1400);
-  TTS.say("로켓단이 그물을 던졌다옹!");
+  toast("😼 Team Rocket threw a net, meow! 🥅", 1400);
+  TTS.say("Team Rocket threw a net, meow!");
   await sleep(1000);
   const ok = FORCE_CATCH === "1" ? true : FORCE_CATCH === "0" ? false : Math.random() < ROCKET_NET;
   const target = ok ? Yut.cpuSwapTarget(G.s, e.team, rootOf(id), e.pieces[0]) : null;
   if (!ok || target == null) {
     fxAt(e.node, "💨");
     SFX.runHome();
-    toast(ok ? "로켓단이 " + josa(name, "을/를") + " 잡았지만… 같은 가족이 있어서 놓아줬다옹" : "그물이 찢어졌다옹! " + josa(name, "은/는") + " 풀숲으로 도망갔어요 🌿", 2400);
-    TTS.say(ok ? "놓아줬다옹" : "그물이 찢어졌다옹!");
+    toast(ok ? "Team Rocket caught " + name + "… but its family is already here. We let it go, meow!" : "The net broke, meow! " + name + " ran back into the grass 🌿", 2400);
+    TTS.say(ok ? "We let it go, meow!" : "The net broke, meow!");
     await sleep(1400);
     return;
   }
@@ -3625,8 +3645,8 @@ async function rocketNet(e) {
   persist();
   SFX.catchOk();
   fxAt(e.node, "😼");
-  toast("😼 로켓단이 그물로 " + josa(name, "을/를") + " 잡아 갔다옹! " + josa(nameOf(old), "은/는") + " 쉬고 " + josa(name, "이/가") + " 나온다옹~", 2800);
-  TTS.say("로켓단이 " + josa(name, "을/를") + " 잡아 갔다옹!");
+  toast("😼 Team Rocket netted " + name + ", meow! " + nameOf(old) + " takes a rest and " + name + " comes out, meow~", 2800);
+  TTS.say([name, "is ours now, meow!"]);
   await sleep(1200);
   G.swapAfter = { piece: target, events: r.events.slice(1), from: old, to: id };
 }
@@ -3636,42 +3656,43 @@ async function announceStartSkills() {
   // 👑 전설: 금빛 배너 + 이름을 크게 (v8: 기술은 10칸에 배우고, 90% 성공)
   const legends = G.s.pieces.map((p, i) => i).filter(i => isLegend(G.s.teams[G.s.pieces[i].team].picks[G.s.pieces[i].slot]));
   if (legends.length) {
-    const nm = legends.slice(0, 2).map(i => nameOf(Yut.formOf(G.s, i))).join("·") + (legends.length > 2 ? " 외 " + (legends.length - 2) + "마리" : "");
+    const lnames = legends.slice(0, 2).map(i => nameOf(Yut.formOf(G.s, i)));
+    const nm = lnames.join("·") + (legends.length > 2 ? " +" + (legends.length - 2) + " more" : "");
     SFX.win(); confetti(40); Cry.play(Yut.formOf(G.s, legends[0]));
-    TTS.say("전설의 포켓몬 " + nm + "! 기술이 구십 퍼센트 성공해요");
-    await banner("👑 전설의 " + nm + "! 기술 성공 90%", null, 1900, "gold legend");
+    TTS.say([vo("Legendary Pokémon!")].concat(lnames, [vo("Moves work 90% of the time!")]));
+    await banner("👑 Legendary " + nm + "! Move success 90%", null, 1900, "gold legend");
   }
   const list = G.s.pieces.map((p, i) => i).filter(i => G.s.pieces[i].skill);
   if (!list.length) return;
   list.forEach(i => markSeen(G.s.pieces[i].skill));
-  const named = list.slice(0, 2).map(i => nameOf(Yut.formOf(G.s, i)) + "(" + skillName(G.s.pieces[i].skill) + ")").join(", ");
-  toast("✨ 처음부터 기술을 아는 포켓몬: " + named + (list.length > 2 ? " 외 " + (list.length - 2) + "마리" : ""), 2600);
+  const named = list.slice(0, 2).map(i => nameOf(Yut.formOf(G.s, i)) + " (" + skillName(G.s.pieces[i].skill) + ")").join(", ");
+  toast("✨ Ready: " + named + (list.length > 2 ? " +" + (list.length - 2) + " more" : ""), 2600);
   await sleep(1700);
 }
 /* ---------- 📖 기술 도감 — 36개 (타입마다 2개), 본 기술은 밝게 ---------- */
 // 📖 방법 · 도감 — 한 창에 탭 두 개 (사용자 요청 2026-10-02)
-const helpTabs = on => '<div class="help-tabs">' + [["rules", "📖 윷놀이 방법"], ["dex", "✨ 기술 도감"]].map(([k, n]) =>
+const helpTabs = on => '<div class="help-tabs">' + [["rules", "📖 How to play"], ["dex", "✨ Move Dex"]].map(([k, n]) =>
   '<button class="chip' + (k === on ? " on" : "") + '" data-act="help-tab" data-tab="' + k + '">' + n + "</button>").join("") + "</div>";
 function openSkillDex() {
   const seen = new Set(Store.data.seenSkills || []);
   const keys = Object.keys(Yut.SKILLS);
-  showModal(helpTabs("dex") + "<h2>✨ 기술 도감</h2><p>본 기술 <b>" + keys.filter(k => seen.has(k)).length + "/" + keys.length + "</b> · 10칸 가면 타입에 맞는 기술을 하나 배워요 · 🎲 성공 확률 일반 60 · 레어 70 · 유니크 80 · 👑 전설 90% · 상성 ±10%</p>" +
-    '<div class="dex-types">' + TYPE_ORDER.map(t => '<div class="dex-row" style="--tc:' + (D.typeColors[t] || "#999") + '"><span>' + esc(t) + '</span><div class="dex-cards">' +
+  showModal(helpTabs("dex") + "<h2>✨ Move Dex</h2><p>Moves seen <b>" + keys.filter(k => seen.has(k)).length + "/" + keys.length + "</b> · Go 10 spaces to learn a move of your type · 🎲 Success chance: Common 60 · Rare 70 · Unique 80 · 👑 Legendary 90% · Type matchup ±10%</p>" +
+    '<div class="dex-types">' + TYPE_ORDER.map(t => '<div class="dex-row" style="--tc:' + (D.typeColors[t] || "#999") + '"><span>' + esc(typeName(t)) + '</span><div class="dex-cards">' +
       (Yut.TYPE_SKILLS[t] || []).map(k => '<div class="dex-card' + (seen.has(k) ? "" : " unseen") + '"><b>' + SKILL_UI[k].emoji + " " + esc(skillName(k)) + "</b>" +
-        (Yut.SKILLS[k].kind === "react" ? "<i>저절로</i>" : "") + "<br>" + esc(SKILL_UI[k].desc) + "</div>").join("") +
+        (Yut.SKILLS[k].kind === "react" ? "<i>Auto</i>" : "") + "<br>" + esc(SKILL_UI[k].desc) + "</div>").join("") +
     "</div></div>").join("") + "</div>" + typeChartHtml() +
-    '<div class="btns"><button class="btn big green" data-act="close-modal">닫기</button></div>');
+    '<div class="btns"><button class="btn big green" data-act="close-modal">Close</button></div>');
 }
 // ⚔️ 타입 상성표 — 공격 타입마다 강해요(+10%) · 약해요(−10%) · 안 통해요(−10%) (원작 상성, 규칙은 yut-rules.js 의 TYPE_CHART)
 function typeChartHtml() {
-  const chip = t => '<span class="tc-chip" style="--tc:' + (D.typeColors[t] || "#999") + '">' + esc(t) + "</span>";
+  const chip = t => '<span class="tc-chip" style="--tc:' + (D.typeColors[t] || "#999") + '">' + esc(typeName(t)) + "</span>";
   const list = str => (str || "").split(" ").filter(Boolean);
-  return '<h2 class="sub">⚔️ 타입 상성표</h2><p class="tc-note">상대 말에 거는 기술은 상성이 좋으면 <b>성공 +10%</b>, 나쁘면 <b>−10%</b>! 공격하는 기술의 타입 → 맞는 포켓몬의 타입</p>' +
+  return '<h2 class="sub">⚔️ Type matchups</h2><p class="tc-note">Moves used on enemy pieces: good matchup = <b>Success +10%</b>, bad = <b>−10%</b>! Move type → type of the Pokémon it hits</p>' +
     '<div class="tchart">' + TYPE_ORDER.map(t => {
       const c = Yut.TYPE_CHART[t] || {};
       const cell = (k, cls, label) => list(c[k]).length ? '<div class="tc-' + cls + '"><i>' + label + "</i>" + list(c[k]).map(chip).join("") + "</div>" : "";
-      return '<div class="tc-row" style="--tc:' + (D.typeColors[t] || "#999") + '"><span class="tc-atk">' + esc(t) + "</span><div>" +
-        cell(2, "good", "💥 강해요") + cell("h", "bad", "💧 약해요") + cell(0, "none", "🚫 안 통해요") + "</div></div>";
+      return '<div class="tc-row" style="--tc:' + (D.typeColors[t] || "#999") + '"><span class="tc-atk">' + esc(typeName(t)) + "</span><div>" +
+        cell(2, "good", "💥 Strong") + cell("h", "bad", "💧 Weak") + cell(0, "none", "🚫 No effect") + "</div></div>";
     }).join("") + "</div>";
 }
 
@@ -3705,18 +3726,18 @@ function clockSvg(h, m) {
   g += '<g class="hand-m" transform="rotate(' + md + ')"><line x1="0" y1="10" x2="0" y2="-80" stroke="#2f6fd6" stroke-width="6" stroke-linecap="round"/></g>';
   g += '<g class="hand-h" transform="rotate(' + hd + ')"><line x1="0" y1="8" x2="0" y2="-44" stroke="#e5484d" stroke-width="11" stroke-linecap="round"/></g>';
   g += '<circle r="8" fill="#263147"/><circle r="3" fill="#fff"/>';
-  return '<svg class="clock" viewBox="-110 -110 220 220" role="img" aria-label="시계">' + g + "</svg>";
+  return '<svg class="clock" viewBox="-110 -110 220 220" role="img" aria-label="Clock">' + g + "</svg>";
 }
 // 💰 놀이 돈 — 진짜 지폐를 베끼지 않는다. 단위마다 색·모양이 다른 지폐/수표/동전 + 큰 숫자
 const MONEY_UI = {
-  100000: { name: "십만 원", cls: "chk", n: "장" }, 10000: { name: "만 원", cls: "b10k", n: "장" },
-  1000: { name: "천 원", cls: "b1k", n: "장" }, 100: { name: "백 원", cls: "coin", n: "개" },
+  100000: { name: "100,000 won", cls: "chk", n: "check" }, 10000: { name: "10,000 won", cls: "b10k", n: "bill" },
+  1000: { name: "1,000 won", cls: "b1k", n: "bill" }, 100: { name: "100 won", cls: "coin", n: "coin" },
 };
 // 돈 한 장 + "× 7장" 한 줄 (사용자 요청 2026-10-04 — 하나하나 늘어놓으면 세기 어렵다)
 function moneyHtml(counts) {
   return '<div class="money">' + Yut.Study.UNITS.filter(u => counts[u] > 0).map(u =>
-    '<div class="mrow"><span class="cash ' + MONEY_UI[u].cls + '"><b>' + u + "</b><i>원</i></span>" +
-    '<b class="mx">× ' + counts[u] + "</b><span class=\"mx-u\">" + MONEY_UI[u].n + "</span></div>").join("") + "</div>";
+    '<div class="mrow"><span class="cash ' + MONEY_UI[u].cls + '"><b>' + u + "</b><i>won</i></span>" +
+    '<b class="mx">× ' + counts[u] + "</b><span class=\"mx-u\">" + MONEY_UI[u].n + (counts[u] > 1 ? "s" : "") + "</span></div>").join("") + "</div>";
 }
 /* 문제 창 — kind: "clock" | "money". 누르면 { ok }. 틀리면 풀이를 보여 주고 "알겠어요!"를 눌러야 닫힌다 */
 function quizWindow(o) {
@@ -3724,15 +3745,15 @@ function quizWindow(o) {
     const el = document.createElement("div");
     el.className = "quiz";
     el.innerHTML = '<div class="qz-card qz-' + o.kind + (o.scene ? " has-scene" : "") + '">' + (o.scene || "") +
-      '<p class="qz-title">' + o.title + ' <span class="qz-lv">' + (o.step ? "문제 " + o.step + "/" + (o.of || 3) + " · " : "") + "⭐".repeat(o.level) + " " + o.level + "단계</span></p>" +
+      '<p class="qz-title">' + o.title + ' <span class="qz-lv">' + (o.step ? "Q " + o.step + "/" + (o.of || 3) + " · " : "") + "⭐".repeat(o.level) + " Level " + o.level + "</span></p>" +
       '<div class="qz-body">' + o.body + "</div>" +
       '<div class="qz-side"><p class="qz-q">' + o.question + "</p>" +
         '<div class="qz-choices">' + o.choices.map((c, k) => '<button class="btn qz-choice" data-k="' + k + '"' + (k === o.answer ? ' data-ok="1"' : "") + ">" + esc(c) + "</button>").join("") + "</div>" +
         '<div class="qz-explain" aria-live="polite"></div>' +
-        '<button class="btn big green qz-next" hidden>알겠어요!</button></div>' +
+        '<button class="btn big green qz-next" hidden>Got it!</button></div>' +
       "</div>";
     document.body.appendChild(el);
-    TTS.say(plain(o.say || o.question));
+    TTS.say(o.say || o.question); // o.say 는 조각 배열도 된다 (숫자는 따로)
     const btns = $$(".qz-choice", el), ex = $(".qz-explain", el), next = $(".qz-next", el);
     let done = false;
     const close = ok => { el.classList.add("out"); setTimeout(() => { el.remove(); res({ ok }); }, 220 * SPEED); };
@@ -3745,15 +3766,15 @@ function quizWindow(o) {
       if (ok) {
         SFX.catchOk();
         b.insertAdjacentHTML("beforeend", '<span class="qz-star">⭐</span>');
-        ex.innerHTML = "<b>" + (o.okText || "정답!") + "</b>";
-        TTS.say(plain(o.okText || "정답!"));
+        ex.innerHTML = "<b>" + (o.okText || "Correct!") + "</b>";
+        TTS.say(o.okSay || vo("Correct!")); // o.okSay = 말할 조각 배열 (okText 는 화면용)
         await sleep(1500);
         close(true);
         return;
       }
       b.classList.add("wrong");
       SFX.pop();
-      TTS.say("아쉽다! 같이 볼까요?");
+      TTS.say("Oops! Let's look together!");
       await sleep(500);
       const steps = o.explain();
       for (const st of steps) {
@@ -3767,17 +3788,18 @@ function quizWindow(o) {
     }));
   });
 }
-// 숫자 뒤 조사: 3을·2를, 3과·4와 (숫자를 읽은 소리의 받침으로)
-const nj = (n, pair) => { const d = n % 10, jong = [0, 1, 3, 6, 7, 8].indexOf(d) >= 0; const [a, b] = pair.split("/"); return n + (jong ? a : b); };
+// 🕐 풀이 (영어판: 짧고 쉬운 문장 — "The short hand points to 3. … It's 3:45!")
 function clockExplain(h, m) {
   const next = h === 12 ? 1 : h + 1, k = Math.floor(m / 5), extra = m % 5, num = k === 0 ? 12 : k;
-  const hourText = m === 0 ? "짧은 <b class='hr'>빨간 바늘</b>이 <b>" + nj(h, "을/를") + "</b> 가리켜요 → <b>" + h + "시</b>"
-    : "짧은 <b class='hr'>빨간 바늘</b>이 <b>" + nj(h, "과/와") + "</b> <b>" + next + "</b> 사이 → 아직 <b>" + h + "시</b>예요";
-  const minText = m === 0 ? "긴 <b class='mn'>파란 바늘</b>이 <b>12</b>(0분)에 있으면 → <b>정각</b>"
-    : extra === 0 ? "긴 <b class='mn'>파란 바늘</b>이 <b>" + nj(num, "을/를") + "</b> 가리켜요 → " + num + " × 5 = <b>" + m + "분</b>"
-    : "긴 <b class='mn'>파란 바늘</b>이 <b>" + (k * 5) + "분</b>에서 작은 눈금 <b>" + extra + "칸</b> 더 → <b>" + m + "분</b>";
-  return [{ hl: ".hand-h", text: hourText }, { hl: ".hand-m", text: minText }, { text: "정답은 <b>" + Yut.Study.clockText({ h, m }) + "</b>!" }];
+  const hourText = m === 0 ? "The short <b class='hr'>red hand</b> points to <b>" + h + "</b>. → <b>" + h + " o'clock</b>"
+    : "The short <b class='hr'>red hand</b> is between <b>" + h + "</b> and <b>" + next + "</b>. → It's still <b>" + h + "</b>!";
+  const minText = m === 0 ? "The long <b class='mn'>blue hand</b> points to <b>12</b>. → <b>o'clock</b> (0 minutes)"
+    : extra === 0 ? "The long <b class='mn'>blue hand</b> points to <b>" + num + "</b>. → " + num + " × 5 = <b>" + m + " minutes</b>"
+    : "The long <b class='mn'>blue hand</b> is <b>" + extra + "</b> small " + (extra === 1 ? "mark" : "marks") + " past <b>" + (k * 5) + "</b>. → <b>" + m + " minutes</b>";
+  return [{ hl: ".hand-h", text: hourText }, { hl: ".hand-m", text: minText }, { text: "It's <b>" + Yut.Study.clockText({ h, m }) + "</b>!" }];
 }
+// 🔊 시각을 녹음된 숫자 조각으로: 3:00 → ["3", "o'clock"] · 3:05 → ["3", "oh", "5"] · 3:45 → ["3", "45"]
+const clockSay = c => c.m === 0 ? [String(c.h), vo("o'clock")] : c.m < 10 ? [String(c.h), vo("oh"), String(c.m)] : [String(c.h), String(c.m)];
 // ❓ 풀숲: 시계 문제 세 번 (아래 clockQuiz) — 맞힌 수만큼 이번 조우의 유니크·전설 ↑
 const QUIZ_TRIES = 3; // 틀리면 풀이를 보고 다음 문제로 — 세 문제까지 (사용자 요청 2026-09-27: 교육 효과)
 // 🏥 금액 문제 (사용자 확정 2026-10-04): 기회 세 번 — ① 천 원 → ② 천 원 → ③ 만 원 단위. 끝나면 럭키가 몬스터볼을 준다
@@ -3808,12 +3830,13 @@ async function clockQuizOnce(step, lv, right) {
   const od = moneyOdds(right);
   const r = await quizWindow({
     kind: "clock", level: lv, step, of: CLOCK_QS,
-    title: "🕐 시계 문제 " + step + "/" + CLOCK_QS + " — " + ["정각", "15 · 30 · 45분", "몇 시 몇 분"][lv - 1] + "! 맞히면 <b>유니크·전설 +" + MONEY_BOOST[lv - 1] + "%</b>" +
-      ' <small class="qz-odds">지금 유니크 ' + od.u + "% · 전설 " + od.l + "%</small>",
-    body: clockSvg(q.h, q.m), question: "지금 몇 시" + (lv === 1 ? "일까요?" : " 몇 분일까요?"),
-    say: (step === 1 ? "풀숲이 흔들흔들! " : "") + "지금 몇 시" + (lv === 1 ? "일까요?" : " 몇 분일까요?"),
+    title: "🕐 Clock quiz " + step + "/" + CLOCK_QS + " — " + ["o'clock", ":15 · :30 · :45", "minute by minute"][lv - 1] + "! Get it right: <b>Unique·Legendary +" + MONEY_BOOST[lv - 1] + "%</b>" +
+      ' <small class="qz-odds">Now: Unique ' + od.u + "% · Legendary " + od.l + "%</small>",
+    body: clockSvg(q.h, q.m), question: vo("What time is it?"),
+    say: step === 1 ? [vo("The grass is shaking!"), vo("What time is it?")] : [vo("What time is it?")],
     choices: q.choices.map(Yut.Study.clockText), answer: q.answer,
-    okText: "정답! " + Yut.Study.clockText(q) + " ⭐ 유니크·전설 +" + MONEY_BOOST[lv - 1] + "%!",
+    okText: "Correct! " + Yut.Study.clockText(q) + " ⭐ Unique·Legendary +" + MONEY_BOOST[lv - 1] + "%!",
+    okSay: [vo("Correct!")].concat(clockSay(q)),
     explain: () => clockExplain(q.h, q.m),
   });
   studyRecord("clock", r.ok);
@@ -3836,12 +3859,12 @@ function rollSpot(e, right) {
 // 💰 보물상자 바닥: 돈 문제 → 볼 하나 더 (틀리면 풀이 보고 다음 문제로 — 세 문제까지, 두·세 번째에 맞히면 몬스터볼)
 function moneyExplain(q) {
   const rows = Yut.Study.UNITS.filter(u => q.counts[u] > 0).map(u =>
-    ({ text: MONEY_UI[u].name + " " + q.counts[u] + MONEY_UI[u].n + " → <b>" + Yut.Study.won(u * q.counts[u]) + "</b>" }));
-  return rows.concat([{ text: "모두 <b>" + Yut.Study.won(q.total) + "</b> (" + Yut.Study.koNum(q.total) + " 원)" }]);
+    ({ text: q.counts[u] + " × " + MONEY_UI[u].name + " → <b>" + Yut.Study.won(u * q.counts[u]) + "</b>" }));
+  return rows.concat([{ text: "In all: <b>" + Yut.Study.won(q.total) + "</b> (" + Yut.Study.koNum(q.total) + " won)" }]);
 }
 // 💰 돈 문제 단계는 문제마다 무작위 1·2·3 (사용자 요청 2026-09-27 — 천·백만 나오지 않게, 만·십만도 자주)
 const moneyLevel = () => 1 + Math.floor(Math.random() * 3);
-const MONEY_LV = ["천 원", "천 원", "만 원"], MONEY_STUDY_LV = [1, 1, 2]; // 단계 → Study.money 단계 (1 = 천·백 원, 2 = 만·천·백 원)
+const MONEY_LV = ["1,000 won", "1,000 won", "10,000 won"], MONEY_STUDY_LV = [1, 1, 2]; // 단계 → Study.money 단계 (1 = 천·백 원, 2 = 만·천·백 원)
 async function moneyQuizOnce(step, right, again) { // again = 앞 문제를 틀려 같은 단계를 한 번 더
   const lv = Math.min(3, right + 1); // ① 천 원 · ② 천 원 · ③ 만 원 단위 — 틀리면 같은 단계
   const f = (Q.get("money") || "").split(",").map(Number);
@@ -3849,13 +3872,15 @@ async function moneyQuizOnce(step, right, again) { // again = 앞 문제를 틀�
   const q = Yut.Study.money(MONEY_STUDY_LV[lv - 1], Math.random, forced);
   const r = await quizWindow({
     kind: "money", level: lv, step, of: MONEY_QS,
-    scene: centerScene((again ? "한 번 더! " : "") + MONEY_LV[lv - 1] + " 손님이에요! 모두 얼마예요?"),
-    title: "🏥 포켓몬센터 손님 " + step + "/" + MONEY_QS + " — " + MONEY_LV[lv - 1] + " 단위! 맞히면 몬스터볼 속 <b>유니크·전설 +" + MONEY_BOOST[lv - 1] + "%</b>" +
-      ' <small class="qz-odds">지금 유니크 ' + moneyOdds(right).u + "% · 전설 " + moneyOdds(right).l + "%</small>",
-    body: moneyHtml(q.counts), question: "모두 얼마일까요?",
-    say: step === 1 ? "포켓몬센터에 왔어요! 럭키의 계산을 도와주세요. 모두 얼마일까요?" : (again ? "한 번 더! " : "이번엔 ") + MONEY_LV[lv - 1] + " 손님이에요. 모두 얼마일까요?",
+    scene: centerScene((again ? "One more try! " : "") + "A customer is here! How much is it in all?"),
+    title: "🏥 Pokémon Center customer " + step + "/" + MONEY_QS + " — up to " + MONEY_LV[lv - 1] + "! Get it right: Poké Ball <b>Unique·Legendary +" + MONEY_BOOST[lv - 1] + "%</b>" +
+      ' <small class="qz-odds">Now: Unique ' + moneyOdds(right).u + "% · Legendary " + moneyOdds(right).l + "%</small>",
+    body: moneyHtml(q.counts), question: vo("How much is it in all?"),
+    say: step === 1 ? [vo("Welcome to the Pokémon Center!"), vo("Please help Chansey count."), vo("How much is it in all?")]
+      : [again ? vo("One more try!") : vo("Next customer!"), vo("How much is it in all?")],
     choices: q.choices.map(Yut.Study.won), answer: q.answer,
-    okText: "정답! " + Yut.Study.won(q.total) + " (" + Yut.Study.koNum(q.total) + " 원) ⭐ 유니크·전설 +" + MONEY_BOOST[lv - 1] + "%!",
+    okText: "Correct! " + Yut.Study.won(q.total) + " (" + Yut.Study.koNum(q.total) + " won) ⭐ Unique·Legendary +" + MONEY_BOOST[lv - 1] + "%!",
+    okSay: [vo("Correct!"), Yut.Study.won(q.total)],
     explain: () => moneyExplain(q),
   });
   studyRecord("money", r.ok);
@@ -3868,14 +3893,14 @@ function bonusHtml(rw) {
   if (!rw || !rw.opened || !G.s || !studyFlag()) return "";
   const B = rw.bonus;
   if (B && B.mon && B.opened === false) // 🎁 받은 몬스터볼 — 포켓몬센터 화면에서 연다 (닫았거나 새로고침했으면 이 버튼으로 다시)
-    return '<div class="bonus-zone" id="bonus-zone"><button class="btn big gold cursor" data-act="center-open">🏥 럭키가 준 몬스터볼 열기!</button></div>';
+    return '<div class="bonus-zone" id="bonus-zone"><button class="btn big gold cursor" data-act="center-open">🏥 Open Chansey\'s Poké Ball!</button></div>';
   if (B && B.mon) { // 🎉 나온 포켓몬 카드 (새로고침해도 그대로)
     const id = B.mon, rar = rarityOf(id);
     return '<div class="bonus-zone" id="bonus-zone"><div class="bonus-mon r-' + rar + '"><span class="bm-pic">' + spr(id) + "</span>" +
-      "<b>🎉 짜잔! " + esc(josa(nameOf(id), "이/가")) + " 나왔다!</b><em>" + (B.isNew ? '<i class="bp-tag new">NEW!</i> ' : "") + '<i class="bp-tag r-' + rar + '">' + RARITY_KO[rar] + "</i> 보관함에 넣었어요</em></div></div>";
+      "<b>🎉 Ta-da! " + esc(nameOf(id)) + " came out!</b><em>" + (B.isNew ? '<i class="bp-tag new">NEW!</i> ' : "") + '<i class="bp-tag r-' + rar + '">' + RARITY_KO[rar] + "</i> Added to your Box</em></div></div>";
   }
-  if (B) return '<div class="bonus-zone" id="bonus-zone"><p class="box-hint">' + (B.ball ? "💰 돈 문제 보너스!" : "🏥 럭키: 괜찮아요, 다음에 또 도와줘요!") + "</p></div>";
-  return '<div class="bonus-zone" id="bonus-zone"><button class="btn big gold cursor" data-act="money-quiz">🏥 포켓몬센터에서 계산 돕기!</button></div>';
+  if (B) return '<div class="bonus-zone" id="bonus-zone"><p class="box-hint">' + (B.ball ? "💰 Money quiz bonus!" : "🏥 Chansey: It's okay! Help me again next time!") + "</p></div>";
+  return '<div class="bonus-zone" id="bonus-zone"><button class="btn big gold cursor" data-act="money-quiz">🏥 Help Chansey count money!</button></div>';
 }
 // 🏥 돈 문제 (사용자 요청 2026-10-03): 포켓몬센터에서 럭키의 계산을 돕는다 — 기회 세 번(위 MONEY_LV), 끝나면 몬스터볼을 받는다.
 // 볼 안에는 포켓몬이 풀숲과 같은 확률(50·30·10·10, 절반은 아직 없는 포켓몬 먼저)로 들어 있고, 열면 짜잔! 시험용 ?bonusmon=번호
@@ -3905,8 +3930,8 @@ async function moneyBonus() {
   G.moneyBusy = false;
   const zone = $("#bonus-zone");
   if (zone) zone.outerHTML = bonusHtml(rw);
-  if (ok) { SFX.again(); TTS.say("고마워요! 이 몬스터볼을 줄게요. 눌러서 열어 봐요!"); openCenterScene(); }
-  else TTS.say("괜찮아요, 다음에 또 도와줘요!");
+  if (ok) { SFX.again(); TTS.say("Thank you! This Poké Ball is for you. Tap to open it!"); openCenterScene(); }
+  else TTS.say("It's okay! Help me again next time!");
   const btns = $(".win-btns");
   if (btns) btns.classList.remove("hidden");
 }
@@ -3920,17 +3945,17 @@ function openCenterScene() {
   el.className = "center-ov";
   el.innerHTML = '<div class="cv-stage"><span class="cv-helper">' + spr(CENTER_HELPER, true) + "</span>" +
       '<div class="cv-mid" id="cv-mid">' + (B.opened === false
-        ? '<button class="bg-ball cv-ball cursor" data-act="bonus-open" aria-label="몬스터볼 열기"><img src="assets/items/poke-ball.png" alt=""></button><b class="cv-tap">👆 눌러서 열어 봐요!</b>'
+        ? '<button class="bg-ball cv-ball cursor" data-act="bonus-open" aria-label="Open the Poké Ball"><img src="assets/items/poke-ball.png" alt=""></button><b class="cv-tap">👆 Tap to open it!</b>'
         : centerMonHtml(B)) + "</div></div>" +
     '<div class="bt-dialog cv-dialog"><p class="cv-say" id="cv-say">' + (B.opened === false
-      ? "🏥 럭키: 고마워요! " + (B.right != null ? MONEY_QS + "문제 중 <b>" + B.right + "문제</b> 맞혀서 " : "") + "이 <b>몬스터볼</b>을 줄게요. 안에 누가 있을까?" +
-        (B.odds ? '<small class="cv-odds">✨ 이 볼은 일반 ' + B.odds.c + "% · 레어 " + B.odds.r + "% · <b>유니크 " + B.odds.u + "% · 전설 " + B.odds.l + "%</b></small>" : "")
+      ? "🏥 Chansey: Thank you! " + (B.right != null ? "You got <b>" + B.right + " of " + MONEY_QS + "</b> right! " : "") + "This <b>Poké Ball</b> is for you. Who is inside?" +
+        (B.odds ? '<small class="cv-odds">✨ This ball: Common ' + B.odds.c + "% · Rare " + B.odds.r + "% · <b>Unique " + B.odds.u + "% · Legendary " + B.odds.l + "%</b></small>" : "")
       : centerSay(B)) + "</p>" +
-      '<button class="btn big green cv-ok" data-act="center-close"' + (B.opened === false ? " hidden" : "") + ">좋아요!</button></div>";
+      '<button class="btn big green cv-ok" data-act="center-close"' + (B.opened === false ? " hidden" : "") + ">Great!</button></div>";
   document.body.appendChild(el);
 }
 const centerMonHtml = B => { const rar = rarityOf(B.mon); return '<div class="cv-mon r-' + rar + '"><span class="cv-pic">' + spr(B.mon) + "</span><em>" + (B.isNew ? '<i class="bp-tag new">NEW!</i> ' : "") + '<i class="bp-tag r-' + rar + '">' + RARITY_KO[rar] + "</i></em></div>"; };
-const centerSay = B => "🎉 짜잔! <b>" + esc(josa(nameOf(B.mon), "이/가")) + "</b> 나왔다! 보관함에 넣었어요";
+const centerSay = B => "🎉 Ta-da! <b>" + esc(nameOf(B.mon)) + "</b> came out! Added to your Box";
 function closeCenterScene() {
   $$(".center-ov").forEach(e => e.remove());
   const rw = G.s && G.s.reward, zone = $("#bonus-zone");
@@ -3959,7 +3984,7 @@ async function openBonusBall() {
   const zone = $("#bonus-zone");
   if (zone) zone.outerHTML = bonusHtml(rw);
   SFX.catchOk(); confetti(36); Cry.play(B.mon);
-  TTS.say("짜잔! " + josa(nameOf(B.mon), "이/가") + " 나왔다!");
+  TTS.say(["Ta-da!", nameOf(B.mon), "came out!"]);
   G.moneyBusy = false;
 }
 
@@ -3975,14 +4000,14 @@ function coinToss() {
     const face = f => '<img src="assets/ui/coin-' + f + '.png" alt="" draggable="false">';
     // 배틀 이름판 모양: 팀 색 띠 · 동전 면 · 팀 이름 · 그 팀 첫 포켓몬
     const plate = ti => '<div class="ct-plate p' + ti + '" style="--tc:' + T[ti].color + '"><span class="ct-mon">' + spr(lead(ti), true) + "</span>" +
-      '<div class="ct-pt"><em><i class="ct-mini">' + face(ti === 0 ? "front" : "back") + "</i>" + (ti === 0 ? "앞면 · Heads" : "뒷면 · Tails") + "</em><b>" + esc(T[ti].name) + '</b></div><strong class="ct-first">먼저!</strong></div>';
+      '<div class="ct-pt"><em><i class="ct-mini">' + face(ti === 0 ? "front" : "back") + "</i>" + (ti === 0 ? "Heads" : "Tails") + "</em><b>" + esc(T[ti].name) + '</b></div><strong class="ct-first">First!</strong></div>';
     const el = document.createElement("div");
     el.className = "coin-ov";
     el.innerHTML = '<div class="coin-stage">' + plate(0) + plate(1) +
       '<div class="ct-pad"></div><i class="ct-shadow"></i>' +
-      '<button class="ct-coin" id="ct-coin" aria-label="동전 던지기"><span class="ct-spin"><span class="ct-face front">' + face("front") + '</span><span class="ct-face back">' + face("back") + "</span></span></button>" +
-      '<h2 class="ct-title">누가 먼저 할까?</h2></div>' +
-      '<div class="bt-dialog ct-dialog"><p class="ct-say" id="ct-say">🪙 동전 던지기! 동전을 눌러서 던져요!</p><i class="bt-more">▼</i></div>';
+      '<button class="ct-coin" id="ct-coin" aria-label="Toss the coin"><span class="ct-spin"><span class="ct-face front">' + face("front") + '</span><span class="ct-face back">' + face("back") + "</span></span></button>" +
+      '<h2 class="ct-title">Who goes first?</h2></div>' +
+      '<div class="bt-dialog ct-dialog"><p class="ct-say" id="ct-say">🪙 Coin toss! Tap the coin to toss it!</p><i class="bt-more">▼</i></div>';
     document.body.appendChild(el);
     document.body.classList.add("coining"); // 동전이 떨어질 때까지 누구 차례인지 가린다
     const auto = netOn() || SPEED < 1;
@@ -3992,7 +4017,7 @@ function coinToss() {
       if (tossed) return;
       tossed = true;
       el.classList.add("tossing");
-      $("#ct-say", el).textContent = "빙글빙글… 🪙";
+      $("#ct-say", el).textContent = "Spin, spin… 🪙";
       SFX.throwBall();
       const spin = $(".ct-spin", el), end = 360 * 6 + (win === 0 ? 0 : 180);
       $(".ct-shadow", el).animate([{ transform: "translate(-50%,-50%) scale(1)" }, { transform: "translate(-50%,-50%) scale(.45)", opacity: 0.35, offset: 0.5 }, { transform: "translate(-50%,-50%) scale(1)" }], { duration: 1700 * SPEED, easing: "ease-out" });
@@ -4004,16 +4029,16 @@ function coinToss() {
         if (done) return;
         el.classList.add("landed", "w" + win);
         document.body.classList.remove("coining");
-        const msg = (win === 0 ? "앞면! " : "뒷면! ") + T[win].name + " 먼저!";
+        const msg = (win === 0 ? "Heads! " : "Tails! ") + T[win].name + " goes first!";
         $("#ct-say", el).textContent = msg;
-        TTS.say(plain(msg));
+        TTS.say([win === 0 ? "Heads!" : "Tails!", T[win].name, "goes first!"]);
         SFX.again();
         setTimeout(close, 1600 * SPEED);
         el.addEventListener("click", close);
       };
     };
     $("#ct-coin", el).addEventListener("click", ev => { ev.stopPropagation(); toss(); });
-    TTS.say("동전 던지기! 누가 먼저 할까?");
+    TTS.say("Coin toss! Who goes first?");
     if (auto) setTimeout(toss, 500 * SPEED);
   });
 }
@@ -4026,13 +4051,13 @@ function rocketGacha() {
     const t = G.s.teams.find(x => x.cpu), mons = t.picks.slice(0, G.s.settings.pieces);
     const el = document.createElement("div");
     el.className = "gacha-ov";
-    el.innerHTML = '<div class="gacha"><h2>😼 로켓단의 캡슐 뽑기!</h2>' +
+    el.innerHTML = '<div class="gacha"><h2>😼 Team Rocket\'s capsule machine!</h2>' +
       '<div class="gacha-scene"><img class="g-machine" src="assets/ui/gacha-machine.png" alt="" draggable="false">' +
         '<img class="g-meowth" src="assets/ui/rocket-meowth.png" alt="" draggable="false" onerror="this.remove()"><i class="g-floor"></i></div>' +
-      '<p id="gacha-say">어떤 포켓몬이 나올까옹~?</p><div class="gacha-out" id="gacha-out"></div><span class="gacha-skip">누르면 넘어가요</span></div>';
+      '<p id="gacha-say">Who will come out, meow~?</p><div class="gacha-out" id="gacha-out"></div><span class="gacha-skip">Tap to skip</span></div>';
     document.body.appendChild(el);
     window.__gachaShown = mons.slice();
-    TTS.say("로켓단의 캡슐 뽑기! 어떤 포켓몬이 나올까옹?");
+    TTS.say("Team Rocket's capsule machine! Who will come out, meow?");
     let done = false;
     const close = () => { if (done) return; done = true; el.classList.add("out"); setTimeout(() => { el.remove(); res(); }, 300 * SPEED); };
     el.addEventListener("click", close);
@@ -4071,7 +4096,7 @@ function rocketGacha() {
         mon.innerHTML = spr(id);
         scene.appendChild(mon);
         await A(mon, [{ top: "86%", transform: "translate(-50%, -50%) scale(.2)", opacity: 0 }, { top: "56%", transform: "translate(-50%, -50%) scale(1.15)", opacity: 1, offset: 0.6 }, { top: "60%", transform: "translate(-50%, -50%) scale(1)", opacity: 1 }], 560, { easing: "ease-out" });
-        say.textContent = josa(nameOf(id), "이/가") + " 나왔다옹! 😼";
+        say.textContent = nameOf(id) + " came out, meow! 😼";
         await sleep(650);
         if (done) return;
         // ④ 아래 줄로 — 캡슐·포켓몬은 치우고 카드로
@@ -4082,8 +4107,8 @@ function rocketGacha() {
         await sleep(200);
       }
       if (done) return;
-      say.textContent = "이번 판은 이 포켓몬들로 간다옹~!";
-      TTS.say("이번 판은 이 포켓몬들로 간다옹!");
+      say.textContent = "These are our Pokémon this game, meow~!";
+      TTS.say("These are our Pokémon this game, meow!");
       await sleep(1500);
       close();
     })();
@@ -4099,10 +4124,12 @@ function probBars(backdo) {
 /* ---------- 💧🔥🌿 타입 상성 — 물 > 불꽃 > 풀 > 물 (연출만, 승패는 그대로) ---------- */
 const TYPE_BEATS = { "물": "불꽃", "불꽃": "풀", "풀": "물" };
 const TYPE_EMOJI = { "물": "💧", "불꽃": "🔥", "풀": "🌿" };
+// 보여 주고 그대로 말하는 문장 (세 가지뿐이라 통째로 녹음)
+const TYPE_BEATS_TEXT = { "물": vo("💧 Water beats 🔥 Fire!"), "불꽃": vo("🔥 Fire beats 🌿 Grass!"), "풀": vo("🌿 Grass beats 💧 Water!") };
 function superEffective(atk, foes) {
   for (const a of typesOf(atk)) {
     const d = TYPE_BEATS[a];
-    if (d && foes.some(f => typesOf(f).indexOf(d) >= 0)) return TYPE_EMOJI[a] + " " + a + " 타입은 " + TYPE_EMOJI[d] + " " + d + " 타입에 강해요!";
+    if (d && foes.some(f => typesOf(f).indexOf(d) >= 0)) return TYPE_BEATS_TEXT[a];
   }
   return "";
 }
@@ -4116,16 +4143,16 @@ function openGiftChooser() {
   const from = nameOf(Yut.formOf(s, q.from)), K = Yut.SKILLS[q.key], U = SKILL_UI[q.key] || {};
   markSeen(q.key);
   SFX.learn();
-  TTS.say(josa(from, "이/가") + " 못 쓴 " + K.name + "! 누구에게 줄까요?");
+  TTS.say([from, "made it home!", K.name, "Who gets this move?"]);
   const tag = i => {
     const p = s.pieces[i];
-    const own = p.skill ? (p.used ? "✓ " + skillName(p.skill) + " 다 씀" : "✨ " + skillName(p.skill)) : "기술 없음";
-    return "<em>" + (p.state === "wait" ? "🏠 집 · " : "") + esc(own) + "</em>";
+    const own = p.skill ? (p.used ? "✓ " + skillName(p.skill) + " used" : "✨ " + skillName(p.skill)) : "No move";
+    return "<em>" + (p.state === "wait" ? "🏠 Home · " : "") + esc(own) + "</em>";
   };
-  showModal("<h2>🎁 " + esc(josa(from, "이/가")) + " 골인!</h2><p>못 쓴 기술을 팀원에게 줄 수 있어요. <b>누구에게 줄까요?</b></p>" +
-    '<div class="skill-item info pi-skill" style="--tc:' + skillColor(q.key) + '"><span class="si-body"><b>' + (U.emoji || "") + " " + esc(K.name) + "<i>" + esc(K.type) + "</i></b><small>" + esc(U.desc || "") + "</small></span></div>" +
+  showModal("<h2>🎁 " + esc(from) + " made it home!</h2><p>You can give the unused move to a teammate. <b>Who gets it?</b></p>" +
+    '<div class="skill-item info pi-skill" style="--tc:' + skillColor(q.key) + '"><span class="si-body"><b>' + (U.emoji || "") + " " + esc(K.name) + "<i>" + esc(typeName(K.type)) + "</i></b><small>" + esc(U.desc || "") + "</small></span></div>" +
     '<div class="gift-list">' + cand.map(i => '<button class="btn gift-pick" data-act="gift-to" data-to="' + i + '"><span class="gp-pic">' + spr(Yut.formOf(s, i)) + "</span><b>" + esc(nameOf(Yut.formOf(s, i))) + "</b>" + tag(i) + "</button>").join("") + "</div>" +
-    '<p class="pi-note">받은 포켓몬은 기술을 두 개까지 가질 수 있어요. 받은 기술은 판 위에서 바로 써요!</p>',
+    '<p class="pi-note">A Pokémon can have up to 2 moves. Use a gift move on the board right away!</p>',
     () => { G.paused = false; if (current === "game" && !G.busy) afterAction(); }); // 닫으면 다시 물어본다
 }
 async function doGift(to) {
@@ -4149,12 +4176,12 @@ Object.assign(EVENT_ANIM, {
     if (p.state === "board") { sparkle(Yut.posOf(p)); fxAt(Yut.posOf(p), "🎁"); }
     SFX.catchOk();
     renderPanel();
-    const msg = (G.s.teams[e.team].cpu ? "로켓단 " : "") + josa(name, "이/가") + " " + josa(skillName(e.key), "을/를") + " 받았어요! 🎁";
+    const msg = (G.s.teams[e.team].cpu ? "Team Rocket's " : "") + name + " got " + skillName(e.key) + "! 🎁";
     toast(msg, 2000);
-    TTS.say(plain(msg));
+    TTS.say([name, "got", skillName(e.key)]);
     await sleep(1100);
   },
-  async giftlost(e) { toast("받을 팀원이 없어서 " + josa(skillName(e.key), "은/는") + " 사라졌어요", 1800); await sleep(900); },
+  async giftlost(e) { toast("No teammate to take it, so " + skillName(e.key) + " is gone", 1800); await sleep(900); },
 });
 
 /* ---------- 🔍 포켓몬·기술 보기 — 오른쪽 팀 카드의 포켓몬을 누르면 ---------- */
@@ -4166,11 +4193,13 @@ function skillLeft(i) {
 function pieceLine(i) {
   const s = G.s, p = s.pieces[i], name = nameOf(Yut.formOf(s, i));
   if (s.settings.skills === false) return "🔍 " + name;
-  if (Yut.giftReady(p) && (!p.skill || p.used)) return "🔍 " + name + "의 🎁 " + skillName(p.gift.key) + ": " + ((SKILL_UI[p.gift.key] || {}).desc || "");
-  if (!p.skill) return "🔍 " + name + " — 아직 기술이 없어요 (" + skillLeft(i) + "칸 더 가면 배워요)";
+  if (Yut.giftReady(p) && (!p.skill || p.used)) return "🔍 " + name + "'s 🎁 " + skillName(p.gift.key) + ": " + ((SKILL_UI[p.gift.key] || {}).desc || "");
+  if (!p.skill) return "🔍 " + name + " — no move yet (learns it in " + spacesLeftTxt(skillLeft(i)) + ")";
   const U = SKILL_UI[p.skill] || {};
-  return "🔍 " + name + "의 " + (U.emoji || "") + " " + skillName(p.skill) + ": " + (U.desc || "") + (p.used ? " (다 썼어요)" : !Yut.isFinal(s, i) ? " (" + skillLeft(i) + "칸 더 가면 써요)" : "");
+  return "🔍 " + name + "'s " + (U.emoji || "") + " " + skillName(p.skill) + ": " + (U.desc || "") + (p.used ? " (used up)" : !Yut.isFinal(s, i) ? " (ready in " + spacesLeftTxt(skillLeft(i)) + ")" : "");
 }
+// "1 space" · "3 spaces"
+function spacesLeftTxt(n) { return n + (n === 1 ? " space" : " spaces"); }
 function openPieceInfo(i) {
   const s = G.s, p = s.pieces[i], t = s.teams[p.team], id = Yut.formOf(s, i);
   const path = t.paths[p.slot], inGame = current === "game";
@@ -4178,33 +4207,33 @@ function openPieceInfo(i) {
   SFX.tap();
   const evo = path.length > 1 ? '<div class="pi-evo">' + path.map((x, k) =>
     '<span class="pi-mini' + (k === p.stage ? " now" : "") + '">' + spr(x) + "<b>" + esc(nameOf(x)) + "</b></span>").join("<i>›</i>") + "</div>" : "";
-  const where = p.state === "done" ? "🏁 골인했어요" : p.state === "wait" ? "🏠 집에서 기다려요" : "🎲 " + (p.walk || 0) + "칸 왔어요";
+  const where = p.state === "done" ? "🏁 Made it home" : p.state === "wait" ? "🏠 Waiting at home" : "🎲 Went " + spacesLeftTxt(p.walk || 0);
   const st = p.state === "board" ? statusIcon(s, [i]) : "";
   let sk = "";
-  if (s.settings.skills === false) sk = '<p class="pi-note">이 판은 기술 없이 해요</p>';
+  if (s.settings.skills === false) sk = '<p class="pi-note">No moves in this game</p>';
   else if (p.skill) {
     const U = SKILL_UI[p.skill] || {}, K = Yut.SKILLS[p.skill];
     sk = "";
-    const state = p.used ? '<em class="used">✓ 다 썼어요</em>' : Yut.isFinal(s, i) ? '<em class="ready">✨ 쓸 수 있어요</em>' : '<em>' + skillLeft(i) + "칸 더 가면 써요</em>";
-    if (isLegend(t.picks[p.slot])) sk = '<p class="pi-legend">👑 전설의 포켓몬 — 기술이 90% 성공해요</p>';
-    sk += '<div class="skill-item info pi-skill" style="--tc:' + skillColor(p.skill) + '"><span class="si-body"><b>' + (U.emoji || "") + " " + esc(K.name) + "<i>" + esc(K.type) + "</i></b>" +
-      "<small>" + esc(U.desc || "") + (K.kind === "react" ? " (때가 되면 저절로 나가요)" : "") + "</small>" + state + "</span></div>";
+    const state = p.used ? '<em class="used">✓ Used up</em>' : Yut.isFinal(s, i) ? '<em class="ready">✨ Ready to use</em>' : '<em>Ready in ' + spacesLeftTxt(skillLeft(i)) + "</em>";
+    if (isLegend(t.picks[p.slot])) sk = '<p class="pi-legend">👑 Legendary Pokémon — moves work 90% of the time</p>';
+    sk += '<div class="skill-item info pi-skill" style="--tc:' + skillColor(p.skill) + '"><span class="si-body"><b>' + (U.emoji || "") + " " + esc(K.name) + "<i>" + esc(typeName(K.type)) + "</i></b>" +
+      "<small>" + esc(U.desc || "") + (K.kind === "react" ? " (works by itself at the right time)" : "") + "</small>" + state + "</span></div>";
   } else {
     const pool = ((t.pools || [])[p.slot] || []);
-    sk = '<p class="pi-note">📖 아직 기술이 없어요. <b>' + skillLeft(i) + "칸</b> 더 가면 이 중 하나를 배워요!</p>" +
+    sk = '<p class="pi-note">📖 No move yet. Go <b>' + spacesLeftTxt(skillLeft(i)) + "</b> more to learn one of these!</p>" +
       '<div class="pi-pool">' + pool.map(k => '<span style="--tc:' + skillColor(k) + '">' + ((SKILL_UI[k] || {}).emoji || "") + " " + esc(skillName(k)) + "</span>").join("") + "</div>";
   }
   if (s.settings.skills !== false && p.gift) {
     const U = SKILL_UI[p.gift.key] || {}, K = Yut.SKILLS[p.gift.key];
-    sk += '<div class="skill-item info pi-skill" style="--tc:' + skillColor(p.gift.key) + '"><span class="si-body"><b>' + (U.emoji || "") + " " + esc(K.name) + "<i>" + esc(K.type) + '</i><i class="gift">🎁 받은 기술</i></b>' +
-      "<small>" + esc(U.desc || "") + " — 골인한 팀원이 준 기술" + (K.kind === "react" ? " (때가 되면 저절로 나가요)" : "") + "</small>" +
-      (p.gift.used ? '<em class="used">✓ 다 썼어요</em>' : p.state === "board" ? '<em class="ready">✨ 쓸 수 있어요</em>' : "<em>판 위에 나가면 써요</em>") + "</span></div>";
+    sk += '<div class="skill-item info pi-skill" style="--tc:' + skillColor(p.gift.key) + '"><span class="si-body"><b>' + (U.emoji || "") + " " + esc(K.name) + "<i>" + esc(typeName(K.type)) + '</i><i class="gift">🎁 Gift move</i></b>' +
+      "<small>" + esc(U.desc || "") + " — a gift from a teammate who made it home" + (K.kind === "react" ? " (works by itself at the right time)" : "") + "</small>" +
+      (p.gift.used ? '<em class="used">✓ Used up</em>' : p.state === "board" ? '<em class="ready">✨ Ready to use</em>' : "<em>Use it once it\'s on the board</em>") + "</span></div>";
   }
   const r0 = rarityOf(t.picks[p.slot]);
   const cr = (t.rar || [])[p.slot];
-  if (s.settings.skills !== false && Yut.CHANCE[cr]) sk += '<p class="pi-note">🎲 기술이 성공할 확률 <b>' + pctTxt(Yut.CHANCE[cr]) + "</b> (" + RARITY_KO[cr] + ") · 상대에게 거는 기술은 상성에 따라 ±10%</p>";
+  if (s.settings.skills !== false && Yut.CHANCE[cr]) sk += '<p class="pi-note">🎲 Move success chance <b>' + pctTxt(Yut.CHANCE[cr]) + "</b> (" + RARITY_KO[cr] + ") · Moves on enemies: ±10% by type matchup</p>";
   showModal('<div class="pi-head" style="--tc:' + t.color + '"><span class="pi-pic">' + spr(id) + "</span><div><h2>" + esc(nameOf(id)) + ' <i class="bp-tag r-' + r0 + '">' + RARITY_KO[r0] + "</i></h2><p>" + esc(t.name) + " · " + where + (st ? " · " + st : "") + "</p></div></div>" +
-    evo + sk + '<div class="btns"><button class="btn big green" data-act="close-modal">닫기</button></div>',
+    evo + sk + '<div class="btns"><button class="btn big green" data-act="close-modal">Close</button></div>',
     () => { if (inGame) { G.paused = false; if (current === "game" && !G.busy) afterAction(); } });
 }
 
@@ -4339,26 +4368,27 @@ async function cloudPull() {
       const mine = p.collection.length;
       const o = applyCloud(x, false, p.cloud.code, room.updated);
       changed = true;
-      if (o.collection.length > mine) toast("💾 " + o.name + ": 다른 패드에서 잡은 포켓몬도 가져왔어요!", 2200);
+      if (o.collection.length > mine) toast("💾 " + o.name + ": Pokémon caught on the other tablet are here too!", 2200);
     } catch (e) { /* 다음에 */ }
   }
   if (changed && current === "profiles" && !$("#overlay").classList.contains("show")) showScreen("profiles"); // 창이 열려 있으면 그대로
 }
 window.addEventListener("online", () => cloudSchedule(true));
 document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden" && Cloud.timer) { clearTimeout(Cloud.timer); cloudPush(); } });
-const agoText = t => { if (!t) return "아직"; const m = Math.floor((Date.now() - t) / 60000); return m < 1 ? "방금" : m < 60 ? m + "분 전" : m < 1440 ? Math.floor(m / 60) + "시간 전" : Math.floor(m / 1440) + "일 전"; };
+const agoText = t => { if (!t) return "not yet"; const m = Math.floor((Date.now() - t) / 60000), d = Math.floor(m / 1440); return m < 1 ? "just now" : m < 60 ? m + " min ago" : m < 1440 ? Math.floor(m / 60) + " hr ago" : d + (d === 1 ? " day ago" : " days ago"); };
 const codeBoxes = (code, id) => '<div class="net-code save-code"' + (id ? ' id="' + id + '"' : "") + ">" + [0, 1, 2, 3, 4, 5].map(k => "<b>" + esc((code || "")[k] || "") + "</b>").join("") + "</div>";
 const bagCount = b => Yut.Rewards.BALLS.reduce((t, k) => t + ((b || {})[k] || 0), 0);
-const profLine = p => "📕 포켓몬 " + (p.collection || []).length + "마리 · 🎒 볼 " + bagCount(p.bag) + "개 · " + ((p.stats || {}).games || 0) + "판";
-const DENIED = "⚠️ 서버가 아직 준비 안 됐어요 — 부모님이 Firebase 규칙에 yutsaves 를 넣어 주세요";
+const ballCountText = n => n + (n === 1 ? " ball" : " balls");
+const profLine = p => { const g = (p.stats || {}).games || 0; return "📕 " + (p.collection || []).length + " Pokémon · 🎒 " + ballCountText(bagCount(p.bag)) + " · " + g + (g === 1 ? " game" : " games"); };
+const DENIED = "⚠️ The server isn't ready yet — a grown-up needs to add yutsaves to the Firebase rules";
 function renderSaveInfo() {
   const box = $("#save-info");
   if (!box) return;
   const p = Store.data.profiles[box.dataset.id], c = p && p.cloud;
   if (!c) return;
   box.innerHTML = c.err === "denied" ? esc(DENIED)
-    : c.err === "net" ? "📶 인터넷이 끊겨서 아직 못 올렸어요. 연결되면 저절로 저장해요"
-    : Cloud.busy || Cloud.timer ? "💾 저장하는 중…" : "✅ 마지막 저장: " + agoText(c.at);
+    : c.err === "net" ? "📶 No internet, so it isn't saved yet. It saves by itself when the internet is back"
+    : Cloud.busy || Cloud.timer ? "💾 Saving…" : "✅ Last saved: " + agoText(c.at);
 }
 
 /* ================================================================
@@ -4368,9 +4398,9 @@ function renderSaveInfo() {
    필터: 📕 잡은 포켓몬 수 · 👑 전설 수 · 🏆 이긴 수 (가족 + 로켓단 + 친구 대결)
 ================================================================ */
 const RANK_BY = [
-  { k: "mons", label: "📕 포켓몬", unit: "마리" },
-  { k: "legends", label: "👑 전설", unit: "마리" },
-  { k: "wins", label: "🏆 승리", unit: "번" },
+  { k: "mons", label: "📕 Pokémon", unit: " Pokémon" },
+  { k: "legends", label: "👑 Legendary", unit: " Pokémon" },
+  { k: "wins", label: "🏆 Wins", unit: " wins", one: " win" },
 ];
 const rankOf = p => ({
   name: p.name, avatar: p.avatar,
@@ -4404,10 +4434,10 @@ const Rank = {
 let rankRows = null, rankErr = null;
 Screens.rank = sec => {
   if (!Setup.rankBy) Setup.rankBy = "mons";
-  sec.innerHTML = '<header class="bar"><button class="btn icon" data-act="home" aria-label="처음으로">←</button><h2>🥇 랭킹</h2><span class="side"></span></header>' +
+  sec.innerHTML = '<header class="bar"><button class="btn icon" data-act="home" aria-label="Home">←</button><h2>🥇 Ranking</h2><span class="side"></span></header>' +
     '<div class="scroll"><div class="card">' +
       '<div class="chips rank-by">' + RANK_BY.map(x => '<button class="chip' + (Setup.rankBy === x.k ? " on" : "") + '" data-act="rank-by" data-by="' + x.k + '">' + x.label + "</button>").join("") + "</div>" +
-      '<div id="rank-list" class="rank-list"><p class="rank-msg">🥇 랭킹을 불러오는 중…</p></div>' +
+      '<div id="rank-list" class="rank-list"><p class="rank-msg">🥇 Loading the ranking…</p></div>' +
       '<p class="note" id="rank-note"></p>' +
     "</div></div>";
   rankRows = null; rankErr = null;
@@ -4424,13 +4454,13 @@ function renderRank() {
   if (!box) return;
   $$(".rank-by .chip").forEach(c => c.classList.toggle("on", c.dataset.by === Setup.rankBy));
   const off = Store.data.order.map(id => Store.data.profiles[id]).filter(p => !p.cloud);
-  if (note) note.innerHTML = off.length ? '💾 👤 프로필에서 저장 코드를 켜면 랭킹에 나와요 <button class="btn" data-act="profiles">👤 프로필로</button>' : ""; // 등록 안 한 사람 이름은 안 보인다 (사용자 요청 2026-10-02)
-  if (rankErr) { box.innerHTML = '<p class="rank-msg">' + (rankErr === "denied" ? "⚠️ 랭킹 서버가 아직 준비 안 됐어요 — 부모님이 Firebase 규칙에 <b>yutrank</b> 를 넣어 주세요" : "📶 인터넷을 확인하고 다시 들어와 주세요") + "</p>"; return; }
+  if (note) note.innerHTML = off.length ? '💾 Make a save code in 👤 Profiles to be in the ranking <button class="btn" data-act="profiles">👤 Go to Profiles</button>' : ""; // 등록 안 한 사람 이름은 안 보인다 (사용자 요청 2026-10-02)
+  if (rankErr) { box.innerHTML = '<p class="rank-msg">' + (rankErr === "denied" ? "⚠️ The ranking server isn't ready yet — a grown-up needs to add <b>yutrank</b> to the Firebase rules" : "📶 Check the internet and come back again") + "</p>"; return; }
   if (!rankRows) return;
   const by = Setup.rankBy, info = RANK_BY.find(x => x.k === by);
   const mine = new Set(cloudProfs().map(p => p.cloud.rid));
   const rows = rankRows.slice().sort((a, b) => (b[by] - a[by]) || (b.mons - a.mons) || (b.wins - a.wins) || ((a.updated || 0) - (b.updated || 0))).slice(0, 50);
-  if (!rows.length) { box.innerHTML = '<p class="rank-msg">아직 아무도 없어요. 👤 프로필에서 💾 저장을 켜면 첫 번째로!</p>'; return; }
+  if (!rows.length) { box.innerHTML = '<p class="rank-msg">No one here yet. Turn on 💾 Save in 👤 Profiles and be the first!</p>'; return; }
   let place = 0, last = null;
   box.innerHTML = rows.map((x, i) => {
     if (x[by] !== last) { place = i + 1; last = x[by]; } // 같은 숫자는 같은 등수
@@ -4438,7 +4468,7 @@ function renderRank() {
     const medal = !top ? place + "" : place === 1 ? "🥇" : place === 2 ? "🥈" : "🥉";
     const av = Number(x.avatar) >= 1 && Number(x.avatar) <= 1025 ? Number(x.avatar) : 25;
     return '<div class="rank-row' + (top ? " top t" + place : "") + (mine.has(x.rid) ? " me" : "") + '"><span class="rk-no">' + medal + '</span><span class="rk-av">' + spr(av) + "</span>" +
-      '<b class="rk-name">' + esc(String(x.name).slice(0, 12)) + (mine.has(x.rid) ? ' <i class="rk-me">우리</i>' : "") + '</b><span class="rk-val"><strong>' + (x[by] || 0) + "</strong>" + info.unit + "</span></div>";
+      '<b class="rk-name">' + esc(String(x.name).slice(0, 12)) + (mine.has(x.rid) ? ' <i class="rk-me">Us</i>' : "") + '</b><span class="rk-val"><strong>' + (x[by] || 0) + "</strong>" + ((x[by] || 0) === 1 && info.one ? info.one : info.unit) + "</span></div>";
   }).join("");
   $$(".rk-name", box).forEach(e => fitText(e, 12)); // 이름이 길면 글자를 줄여 다 보이게
 }
@@ -4446,24 +4476,24 @@ function renderRank() {
 /* ---------- 👤 프로필 화면 ---------- */
 Screens.profiles = sec => {
   const D2 = Store.data;
-  sec.innerHTML = '<header class="bar"><button class="btn icon" data-act="home" aria-label="처음으로">←</button><h2>👤 프로필</h2><span class="side"></span></header>' +
+  sec.innerHTML = '<header class="bar"><button class="btn icon" data-act="home" aria-label="Home">←</button><h2>👤 Profiles</h2><span class="side"></span></header>' +
     '<div class="scroll"><div class="card">' +
-      '<h3 class="pf-h">⚙️ 설정 <small>이 패드</small></h3><div class="pf-set"><button class="btn" data-act="sound" id="sound-btn">' + soundLabel() + "</button></div>" +
-      '<h3 class="pf-h">👤 프로필</h3><p class="note">사람마다 <b>이름</b>과 <b>캐릭터 포켓몬</b>을 정해요. 잡은 포켓몬 · 볼 · 공부 기록은 사람마다 따로 모여요. 💾 저장 코드를 만들면 다른 패드에서도 그대로, 🥇 랭킹에도 나와요!</p>' +
+      '<h3 class="pf-h">⚙️ Settings <small>this tablet</small></h3><div class="pf-set"><button class="btn" data-act="sound" id="sound-btn">' + soundLabel() + "</button></div>" +
+      '<h3 class="pf-h">👤 Profiles</h3><p class="note">Each person picks a <b>name</b> and a <b>buddy Pokémon</b>. Caught Pokémon, balls and quiz records are kept for each person. Make a 💾 save code to play on other tablets too — and be in 🥇 Ranking!</p>' +
       '<div class="prof-list">' + D2.order.map(id => {
         const p = D2.profiles[id];
         const sc = k => ((p.study || {})[k] || {});
-        const study = (sc("clock").total || sc("money").total) ? "🎓 시계 " + (sc("clock").right || 0) + "/" + (sc("clock").total || 0) + " · 돈 " + (sc("money").right || 0) + "/" + (sc("money").total || 0) : "";
+        const study = (sc("clock").total || sc("money").total) ? "🎓 Clock " + (sc("clock").right || 0) + "/" + (sc("clock").total || 0) + " · Money " + (sc("money").right || 0) + "/" + (sc("money").total || 0) : "";
         const w = p.stats || {};
-        const wins = "🏆 이김 " + ["family", "rocket", "net"].reduce((t, k) => t + ((w[k] || {}).win || 0), 0) + "번";
+        const wn = ["family", "rocket", "net"].reduce((t, k) => t + ((w[k] || {}).win || 0), 0), wins = "🏆 " + wn + (wn === 1 ? " win" : " wins");
         return '<div class="prof-card" data-id="' + esc(id) + '"><span class="pc-av">' + spr(p.avatar) + '</span><div class="pc-body"><b>' + esc(p.name) + "</b><small>" + esc(profLine(p)) + " · " + wins + "</small>" + (study ? '<small class="pc-study">' + esc(study) + "</small>" : "") +
           (p.cloud ? '<em class="pc-code">💾 ' + esc(p.cloud.code) + "</em>" : "") + '</div><div class="pc-btns">' +
-          '<button class="btn" data-act="prof-edit" data-id="' + esc(id) + '">✏️ 꾸미기</button>' +
-          '<button class="btn" data-act="prof-bag" data-id="' + esc(id) + '">🎒 가방</button>' +
-          '<button class="btn' + (p.cloud ? " green" : "") + '" data-act="prof-save" data-id="' + esc(id) + '">💾 ' + (p.cloud ? "저장 ✓" : "저장") + "</button>" +
-          '<button class="btn" data-act="prof-del" data-id="' + esc(id) + '" aria-label="지우기">🗑️</button></div></div>';
+          '<button class="btn" data-act="prof-edit" data-id="' + esc(id) + '">✏️ Edit</button>' +
+          '<button class="btn" data-act="prof-bag" data-id="' + esc(id) + '">🎒 Bag</button>' +
+          '<button class="btn' + (p.cloud ? " green" : "") + '" data-act="prof-save" data-id="' + esc(id) + '">💾 ' + (p.cloud ? "Save ✓" : "Save") + "</button>" +
+          '<button class="btn" data-act="prof-del" data-id="' + esc(id) + '" aria-label="Delete">🗑️</button></div></div>';
       }).join("") + "</div>" +
-      '<div class="btns save-btns"><button class="btn big green" data-act="prof-new">➕ 새 프로필</button><button class="btn big" data-act="save-load">📥 코드로 불러오기</button></div>' +
+      '<div class="btns save-btns"><button class="btn big green" data-act="prof-new">➕ New profile</button><button class="btn big" data-act="save-load">📥 Load with code</button></div>' +
     "</div></div>";
   cloudPull();
 };
@@ -4472,18 +4502,18 @@ function openProfEdit(id, field) {
   const p = id ? Store.data.profiles[id] : null;
   G.profEdit = { id: id || null, av: p ? p.avatar : STARTERS[Math.floor(Math.random() * STARTERS.length)], field: field || null };
   const list = p ? rosterIds(id) : STARTERS.slice();
-  showModal("<h2>" + (p ? "✏️ " + esc(p.name) + " 꾸미기" : "➕ 새 프로필") + "</h2>" +
-    '<h3 class="pe-h">이름</h3><input id="prof-name" maxlength="8" placeholder="예: 하윤이" value="' + esc(p ? p.name : "") + '" autocomplete="off">' +
-    '<h3 class="pe-h">캐릭터 포켓몬 <small>' + (p ? "내 포켓몬 " + list.length + "마리 중에서" : "스타팅 포켓몬 중에서 — 잡으면 더 늘어나요") + "</small></h3>" +
+  showModal("<h2>" + (p ? "✏️ Edit " + esc(p.name) : "➕ New profile") + "</h2>" +
+    '<h3 class="pe-h">Name</h3><input id="prof-name" maxlength="8" placeholder="e.g. Mia" value="' + esc(p ? p.name : "") + '" autocomplete="off">' +
+    '<h3 class="pe-h">Buddy Pokémon <small>' + (p ? "from your " + list.length + " Pokémon" : "from the starters — catch more to get more!") + "</small></h3>" +
     '<div class="av-grid">' + list.map(x => '<button class="av-pick' + (x === G.profEdit.av ? " on" : "") + '" data-act="av-pick" data-id="' + x + '"><span class="pic">' + spr(x, false, true) + "</span><b>" + esc(nameOf(x)) + "</b></button>").join("") + "</div>" +
     '<p class="net-err" id="prof-err"></p>' +
-    '<div class="btns save-btns"><button class="btn big green" data-act="prof-ok">좋아요!</button><button class="btn" data-act="close-modal">취소</button></div>');
+    '<div class="btns save-btns"><button class="btn big green" data-act="prof-ok">OK!</button><button class="btn" data-act="close-modal">Cancel</button></div>');
   if (!p) setTimeout(() => { const i = $("#prof-name"); if (i) i.focus(); }, 60);
 }
 function profOk() {
   const E = G.profEdit, err = $("#prof-err");
   const name = (($("#prof-name") || {}).value || "").trim().slice(0, 8);
-  if (!name) { err.textContent = "이름을 써 주세요"; return; }
+  if (!name) { err.textContent = "Please type a name"; return; }
   const D2 = Store.data;
   let id = E.id;
   if (id) Object.assign(D2.profiles[id], { name, avatar: E.av });
@@ -4495,7 +4525,7 @@ function profOk() {
   Store.save();
   closeModal();
   SFX.catchOk();
-  toast((E.id ? "✏️ " : "👤 ") + name + (E.id ? " 프로필을 바꿨어요" : " 프로필을 만들었어요!"), 1800);
+  toast((E.id ? "✏️ " : "👤 ") + name + (E.id ? "'s profile is changed!" : "'s profile is ready!"), 1800);
   if (E.field === "join") { Setup.t0 = id; showScreen("netjoin"); }
   else if (E.field) { Setup[E.field] = id; showScreen("setup"); }
   else showScreen(current === "profiles" ? "profiles" : current);
@@ -4503,16 +4533,16 @@ function profOk() {
 function profDel(id) {
   const D2 = Store.data, p = D2.profiles[id];
   if (!p) return;
-  if (D2.order.length <= 1) { toast("프로필이 하나는 있어야 해요", 1800); return; }
-  typedConfirm("지우기", esc(p.name) + "의 포켓몬 " + p.collection.length + "마리 · 볼 " + bagCount(p.bag) + "개 · 기록이 <b>이 패드에서 사라져요.</b>" +
-    (p.cloud ? "<br>💾 서버 기록은 남아서 코드 <b>" + esc(p.cloud.code) + "</b>로 다시 불러올 수 있어요." : ""), "지우기", () => {
+  if (D2.order.length <= 1) { toast("You need at least one profile", 1800); return; }
+  typedConfirm("Delete", esc(p.name) + "'s " + p.collection.length + " Pokémon · " + ballCountText(bagCount(p.bag)) + " · records will be <b>gone from this tablet.</b>" +
+    (p.cloud ? "<br>💾 The server copy stays, so you can load it again with code <b>" + esc(p.cloud.code) + "</b>." : ""), "delete", () => {
     Rank.remove(p);
     delete D2.profiles[id];
     D2.order = D2.order.filter(x => x !== id);
     ["t0", "t1"].forEach(k => { if (D2.settings[k] === id) D2.settings[k] = D2.order.find(x => x !== D2.settings[k === "t0" ? "t1" : "t0"]) || D2.order[0]; if (Setup[k] === id) Setup[k] = D2.settings[k]; });
     if (Store.cur === id) Store.cur = D2.settings.t0;
     Store.save();
-    toast(p.name + " 프로필을 지웠어요", 1800);
+    toast(p.name + "'s profile is deleted", 1800);
     showScreen("profiles");
   });
 }
@@ -4521,19 +4551,19 @@ function openSave(id, fresh) {
   const p = Store.data.profiles[id];
   if (!p) return;
   if (p.cloud) {
-    showModal("<h2>💾 " + esc(p.name) + "의 저장 코드</h2><p>" + esc(p.name) + "의 잡은 포켓몬 · 볼 · 이긴 기록 · 공부 기록이 <b>저절로</b> 저장돼요. 다른 패드에서 이 코드를 누르면 그대로!</p>" +
+    showModal("<h2>💾 " + esc(p.name) + "'s save code</h2><p>" + esc(p.name) + "'s Pokémon, balls, wins and quiz records save <b>by themselves</b>. Type this code on another tablet and it's all there!</p>" +
       codeBoxes(p.cloud.code) +
-      (fresh ? '<p class="save-photo">📸 부모님께 이 코드를 <b>사진 찍어</b> 달라고 해요!</p>' : "") +
+      (fresh ? '<p class="save-photo">📸 Ask a grown-up to <b>take a photo</b> of this code!</p>' : "") +
       '<p class="save-info" id="save-info" data-id="' + esc(id) + '"></p>' +
       '<p class="pi-note">' + esc(profLine(p)) + "</p>" +
-      '<div class="btns save-btns"><button class="btn big green" data-act="save-now" data-id="' + esc(id) + '">💾 지금 저장</button>' +
-      '<button class="btn" data-act="save-off" data-id="' + esc(id) + '">저장 끄기</button><button class="btn" data-act="close-modal">닫기</button></div>');
+      '<div class="btns save-btns"><button class="btn big green" data-act="save-now" data-id="' + esc(id) + '">💾 Save now</button>' +
+      '<button class="btn" data-act="save-off" data-id="' + esc(id) + '">Turn off save</button><button class="btn" data-act="close-modal">Close</button></div>');
     renderSaveInfo();
     return;
   }
-  showModal("<h2>💾 " + esc(p.name) + " 저장하기</h2><p>코드를 만들면 <b>" + esc(p.name) + "의 잡은 포켓몬 · 볼 · 이긴 기록 · 공부 기록</b>이 서버에 저절로 저장돼요.<br>패드를 바꾸거나 기록이 지워져도 코드만 누르면 그대로 돌아와요!</p>" +
+  showModal("<h2>💾 Save " + esc(p.name) + "</h2><p>Make a code and <b>" + esc(p.name) + "'s Pokémon, balls, wins and quiz records</b> save to the server by themselves.<br>New tablet, or records lost? Just type the code and everything comes back!</p>" +
     '<p class="net-err" id="save-err"></p>' +
-    '<div class="btns save-btns"><button class="btn big green" data-act="save-on" data-id="' + esc(id) + '" id="save-on">💾 저장 켜기 (코드 만들기)</button><button class="btn" data-act="close-modal">닫기</button></div>');
+    '<div class="btns save-btns"><button class="btn big green" data-act="save-on" data-id="' + esc(id) + '" id="save-on">💾 Turn on save (make a code)</button><button class="btn" data-act="close-modal">Close</button></div>');
 }
 async function saveOn(id) {
   const btn = $("#save-on"), err = $("#save-err"), p = Store.data.profiles[id];
@@ -4550,23 +4580,23 @@ async function saveOn(id) {
     if (p.cloud.err === "denied") throw new Error("denied");
     Store.save();
     SFX.catchOk();
-    TTS.say("저장을 켰어요! 부모님께 코드를 사진 찍어 달라고 해요");
+    TTS.say("Save is on! Ask a grown-up to take a photo of the code!");
     if (current === "profiles") showScreen("profiles");
     openSave(id, true);
   } catch (e) {
     if (p.cloud && !p.cloud.at) { p.cloud = null; Store.save(); }
-    if (err) err.textContent = e.message === "denied" ? DENIED : "📶 인터넷을 확인하고 다시 눌러 주세요";
+    if (err) err.textContent = e.message === "denied" ? DENIED : "📶 Check the internet and tap again";
     if (btn) btn.disabled = false;
   }
 }
 // 📥 코드로 불러오기 — 숫자판 6자리 → 그 프로필이 이 패드에 생긴다
 function openSaveLoad() {
   Setup.saveIn = "";
-  showModal("<h2>📥 코드로 불러오기</h2><p>저장할 때 받은 코드 6자리를 눌러요</p>" + codeBoxes("", "save-in") +
+  showModal("<h2>📥 Load with code</h2><p>Type the 6-digit code you got when you saved</p>" + codeBoxes("", "save-in") +
     '<div class="keypad save-keypad">' + [1, 2, 3, 4, 5, 6, 7, 8, 9].map(k => '<button class="btn" data-act="save-key" data-k="' + k + '">' + k + "</button>").join("") +
       '<button class="btn" data-act="save-key" data-k="del">⌫</button><button class="btn" data-act="save-key" data-k="0">0</button><span></span></div>' +
     '<p class="net-err" id="save-err"></p>' +
-    '<div class="btns save-btns"><button class="btn big green" data-act="save-fetch" id="save-fetch">📥 불러오기</button><button class="btn" data-act="close-modal">취소</button></div>');
+    '<div class="btns save-btns"><button class="btn big green" data-act="save-fetch" id="save-fetch">📥 Load</button><button class="btn" data-act="close-modal">Cancel</button></div>');
 }
 function saveKey(k) {
   if (k === "del") Setup.saveIn = Setup.saveIn.slice(0, -1); else if (Setup.saveIn.length < 6) Setup.saveIn += k;
@@ -4575,26 +4605,26 @@ function saveKey(k) {
 }
 async function saveFetch() {
   const code = Setup.saveIn, err = $("#save-err"), btn = $("#save-fetch");
-  if (code.length !== 6) { err.textContent = "코드 6자리를 눌러 주세요"; return; }
+  if (code.length !== 6) { err.textContent = "Please type all 6 digits"; return; }
   btn.disabled = true;
   try {
     const room = await Cloud.get(code);
     const x = room && Cloud.parse(room);
-    if (!x) { err.textContent = "그런 저장이 없어요. 코드를 다시 확인해 주세요"; btn.disabled = false; return; }
+    if (!x) { err.textContent = "There's no save with that code. Please check the code"; btn.disabled = false; return; }
     const done = replaced => {
       const o = applyCloud(x, true, code, room.updated || Date.now());
       SFX.catchOk();
-      toast("📥 " + o.name + " 프로필을 " + (replaced ? "바꿨어요" : "불러왔어요") + "! 포켓몬 " + o.collection.length + "마리", 2400);
+      toast("📥 " + o.name + (replaced ? "'s profile is updated" : "'s profile is loaded") + "! " + o.collection.length + " Pokémon", 2400);
       showScreen("profiles");
     };
     const old = Store.data.profiles[x.id];
     if (!old) { closeModal(); done(false); return; }
-    typedConfirm("불러오기",
-      "저장된 " + esc(x.name) + ": 📕 포켓몬 " + ((x.collection || []).length) + "마리 · 🎒 볼 " + bagCount(x.bag) + "개<br>" +
-      "이 패드의 " + esc(old.name) + " 기록(포켓몬 " + old.collection.length + "마리 · 볼 " + bagCount(old.bag) + "개)은 <b>사라지고</b> 저장된 기록으로 바뀌어요.",
-      "불러오기", () => done(true));
+    typedConfirm("Load",
+      "Saved " + esc(x.name) + ": 📕 " + ((x.collection || []).length) + " Pokémon · 🎒 " + ballCountText(bagCount(x.bag)) + "<br>" +
+      "On this tablet, " + esc(old.name) + "'s records (" + old.collection.length + " Pokémon · " + ballCountText(bagCount(old.bag)) + ") will be <b>gone</b> and changed to the saved ones.",
+      "load", () => done(true));
   } catch (e) {
-    err.textContent = e.message === "denied" ? DENIED : "📶 인터넷을 확인하고 다시 눌러 주세요";
+    err.textContent = e.message === "denied" ? DENIED : "📶 Check the internet and tap again";
     btn.disabled = false;
   }
 }
@@ -4614,7 +4644,7 @@ function netSend(events, busy) {
     lastJ: JSON.stringify({ seq: G.net.seq, by: G.net.me, events: events || [], busy: !!busy, note }) };
   netSave();
   const code = G.net.code;
-  netChain = netChain.then(() => Net.patch(code, payload)).catch(e => { console.error(e); toast("📶 인터넷이 끊겼어요. 연결되면 이어서 해요", 2600); });
+  netChain = netChain.then(() => Net.patch(code, payload)).catch(e => { console.error(e); toast("📶 The internet is down. We'll go on when it's back", 2600); });
 }
 const giftMine = () => !!(netOn() && G.s.gifts && G.s.gifts.length && G.s.gifts[0].team === G.net.me);
 // 상대 동작을 받는다 — 차례대로 연출
@@ -4681,7 +4711,7 @@ function timerTick() {
   if (TurnTimer.left <= 0) { TurnTimer.left = null; TurnTimer.w = null; timeUp(w); }
 }
 function timeUp(w) {
-  toast("⏱ 시간이 다 됐어요! 저절로 할게요", 1600);
+  toast("⏱ Time's up! I'll do it for you", 1600);
   if (w === "swap") { const b = $(".battle .bt-menu [data-key='later']"); if (b) b.click(); return; }
   if (w === "gift") { const b = $(".modal .gift-pick"); if (b) b.click(); return; }
   if ($("#overlay").classList.contains("show")) { modalClose = null; closeModal(); G.paused = false; }
@@ -4703,8 +4733,8 @@ function timerStart() {
 /* ---------- 💬 감정 표현 — 피카츄 표정 5가지 (사용자 확정 2026-09-29: 정해진 5개만, 글쓰기 없음, 소리 없음)
  * 서버 yutrooms/{코드}/emote = { by, e, t } — 판 상태(seq)와 따로. 보낸 팀 카드 모서리에 2.5초 */
 const EMOTES = [
-  { k: "joy", e: "😄", t: "좋아!" }, { k: "wow", e: "😮", t: "우와!" }, { k: "sad", e: "😢", t: "아쉬워…" },
-  { k: "huff", e: "😤", t: "두고 봐!" }, { k: "good", e: "👍", t: "잘했어!" },
+  { k: "joy", e: "😄", t: "Nice!" }, { k: "wow", e: "😮", t: "Wow!" }, { k: "sad", e: "😢", t: "Aww…" },
+  { k: "huff", e: "😤", t: "Just wait!" }, { k: "good", e: "👍", t: "Good job!" },
 ];
 const EMOTE_COOL = 3000; // 한 번 보내면 3초 쉬기 (도배 막기)
 // 그림: 피카츄(공식 그림) + 모서리 감정 표시 + 감정마다 다른 움직임 — Codex 가 상표 캐릭터 그리기를 막아서 (2026-09-29)
@@ -4763,11 +4793,11 @@ function showEmote(team, k) {
 
 /* ---------- 🏠 친구 대결 화면들 ---------- */
 Screens.net = sec => {
-  sec.innerHTML = '<header class="bar"><button class="btn icon" data-act="home" aria-label="처음으로">←</button><h2>🏠 친구 대결</h2><span class="side"></span></header>' +
+  sec.innerHTML = '<header class="bar"><button class="btn icon" data-act="home" aria-label="Home">←</button><h2>🏠 Friend Battle</h2><span class="side"></span></header>' +
     '<div class="scroll"><div class="card net-card">' +
-      "<p class=\"note\">친구네 가족과 각자 패드로 대결해요. 한 집이 방을 만들고, 코드 4자리를 친구네에 알려 주세요 (문자·전화).</p>" +
-      '<div class="net-menu"><button class="btn big red" data-act="net-host">🏠 방 만들기</button>' +
-      '<button class="btn big blue" data-act="net-join">🔢 코드로 들어가기</button></div>' +
+      "<p class=\"note\">Play with a friend's family, each on your own tablet. One family makes a room and tells the other family the 4-digit code (text or call).</p>" +
+      '<div class="net-menu"><button class="btn big red" data-act="net-host">🏠 Make a room</button>' +
+      '<button class="btn big blue" data-act="net-join">🔢 Join with code</button></div>' +
     "</div></div>";
 };
 async function netCreate() {
@@ -4791,7 +4821,7 @@ async function netCreate() {
     showScreen("netwait");
   } catch (e) {
     console.error(e);
-    toast(e.message === "denied" ? "서버가 아직 준비되지 않았어요 (Firebase 규칙을 확인해 주세요)" : "방을 만들지 못했어요. 인터넷을 확인해 주세요 📶", 3000);
+    toast(e.message === "denied" ? "The server isn't ready yet (check the Firebase rules)" : "Couldn't make a room. Check the internet 📶", 3000);
     if (btn) btn.disabled = false;
   }
 }
@@ -4799,11 +4829,11 @@ async function netCreate() {
 Screens.netwait = sec => {
   const N = Setup.net, host = N.me === 0, first = N.first || 0; // first: 먼저 고르는 집 (판마다 번갈아)
   const stage = N.stage || "join";
-  const msg = stage === "join" ? "친구를 기다려요… 🕐<br><small>친구네 패드에서 🏠 친구 대결 → 🔢 코드로 들어가기</small>"
-    : stage === "second-pick" ? esc(N.names[1 - first]) + "가 포켓몬을 고르는 중… 🕐" : esc(N.names[first]) + "가 먼저 포켓몬을 고르는 중… 🕐";
-  sec.innerHTML = '<header class="bar"><button class="btn icon" data-act="net-leave" aria-label="그만두기">←</button><h2>🏠 친구 대결</h2><span class="side"></span></header>' +
+  const msg = stage === "join" ? "Waiting for your friend… 🕐<br><small>On your friend's tablet: 🏠 Friend Battle → 🔢 Join with code</small>"
+    : stage === "second-pick" ? esc(N.names[1 - first]) + " is picking Pokémon… 🕐" : esc(N.names[first]) + " is picking Pokémon first… 🕐";
+  sec.innerHTML = '<header class="bar"><button class="btn icon" data-act="net-leave" aria-label="Leave">←</button><h2>🏠 Friend Battle</h2><span class="side"></span></header>' +
     '<div class="scroll"><div class="card net-card">' +
-      (host ? '<p class="net-lab">친구에게 알려 줄 코드</p><div class="net-code">' + N.code.split("").map(d => "<b>" + d + "</b>").join("") + "</div>" : '<p class="net-lab">코드 ' + esc(N.code) + " · " + esc(N.names[0]) + " 팀의 방</p>") +
+      (host ? '<p class="net-lab">Tell your friend this code</p><div class="net-code">' + N.code.split("").map(d => "<b>" + d + "</b>").join("") + "</div>" : '<p class="net-lab">Code ' + esc(N.code) + " · " + esc(N.names[0]) + "'s room</p>") +
       '<p class="net-wait">' + msg + "</p>" +
     "</div></div>";
   Net.listen(N.code, room => {
@@ -4811,7 +4841,7 @@ Screens.netwait = sec => {
     if (host && stage === "join" && room.guest && room.guest.name) {
       N.names[1] = room.guest.name;
       N.avatars = [N.avatars ? N.avatars[0] : null, room.guest.avatar || null];
-      SFX.again(); toast("🏠 " + room.guest.name + "가 들어왔어요!", 2000);
+      SFX.again(); toast("🏠 " + room.guest.name + " joined!", 2000);
       Setup.ti = 0; Setup.picks = [validPicks(Store.data.lastPicks[Setup.t0], 0), []];
       showScreen("pick");
     } else if (stage === "first-pick" && room.status === "pick-second" && room.picks && room.picks[first]) { // 먼저 고른 집이 끝냄 → 내 차례
@@ -4836,16 +4866,16 @@ function netEnterGame(room) {
 Screens.netjoin = sec => {
   const N = Setup.join || (Setup.join = { code: "" });
   if (!Store.data.profiles[Setup.t0]) Setup.t0 = Store.data.order[0];
-  sec.innerHTML = '<header class="bar"><button class="btn icon" data-act="new-net" aria-label="뒤로">←</button><h2>🔢 코드로 들어가기</h2><span class="side"></span></header>' +
+  sec.innerHTML = '<header class="bar"><button class="btn icon" data-act="new-net" aria-label="Back">←</button><h2>🔢 Join with code</h2><span class="side"></span></header>' +
     '<div class="scroll"><div class="card net-card">' +
       '<div class="net-code in" id="net-in">' + [0, 1, 2, 3].map(k => "<b>" + esc(N.code[k] || "") + "</b>").join("") + "</div>" +
       '<div class="keypad">' + [1, 2, 3, 4, 5, 6, 7, 8, 9].map(d => '<button class="btn" data-act="net-key" data-k="' + d + '">' + d + "</button>").join("") +
         '<button class="btn" data-act="net-key" data-k="del">⌫</button><button class="btn" data-act="net-key" data-k="0">0</button><span></span></div>' +
-      '<h3>누가 할까요? 👤</h3><div class="chips" id="net-prof">' + Store.data.order.map(id => { const p = Store.data.profiles[id];
+      '<h3>Who will play? 👤</h3><div class="chips" id="net-prof">' + Store.data.order.map(id => { const p = Store.data.profiles[id];
         return '<button class="chip prof-chip' + (id === Setup.t0 ? " on" : "") + '" style="--c:' + TEAM_COLORS[1] + '" data-act="join-prof" data-id="' + esc(id) + '">' + avHtml(p.avatar) + esc(p.name) + "</button>"; }).join("") +
-        '<button class="chip plain add-prof" data-act="prof-new" data-field="join">➕ 새 프로필</button></div>' +
+        '<button class="chip plain add-prof" data-act="prof-new" data-field="join">➕ New profile</button></div>' +
       '<p class="net-err" id="net-err"></p>' +
-      '<button class="btn big green" data-act="net-go" id="net-go">🏠 들어가기</button>' +
+      '<button class="btn big green" data-act="net-go" id="net-go">🏠 Join</button>' +
     "</div></div>";
 };
 function netKey(k) {
@@ -4857,11 +4887,11 @@ function netKey(k) {
 async function netJoin() {
   const N = Setup.join, err = $("#net-err");
   const me = memberOf(Setup.t0), name = me.name;
-  if (N.code.length !== 4) { err.textContent = "코드 4자리를 눌러 주세요"; return; }
+  if (N.code.length !== 4) { err.textContent = "Please type all 4 digits"; return; }
   $("#net-go").disabled = true;
   try {
     const room = await Net.get(N.code);
-    const bad = !room ? "그런 방이 없어요. 코드를 다시 확인해 주세요" : Date.now() - (room.created || 0) > ROOM_TTL || room.status === "over" ? "끝났거나 오래된 방이에요" : room.guest ? "벌써 친구가 들어온 방이에요" : "";
+    const bad = !room ? "There's no room with that code. Please check the code" : Date.now() - (room.created || 0) > ROOM_TTL || room.status === "over" ? "This room is over or too old" : room.guest ? "A friend is already in this room" : "";
     if (bad) { err.textContent = bad; $("#net-go").disabled = false; return; }
     const gname = name;
     await Net.patch(N.code, { guest: { name: gname, avatar: me.avatar }, status: "pick-first", first: 0, round: 0, updated: Date.now() });
@@ -4871,7 +4901,7 @@ async function netJoin() {
     showScreen("netwait");
   } catch (e) {
     console.error(e);
-    err.textContent = e.message === "denied" ? "서버가 아직 준비되지 않았어요" : "들어가지 못했어요. 인터넷을 확인해 주세요 📶";
+    err.textContent = e.message === "denied" ? "The server isn't ready yet" : "Couldn't join. Check the internet 📶";
     $("#net-go").disabled = false;
   }
 }
@@ -4893,7 +4923,7 @@ async function netPickDone() {
       const first = coinFirst();
       startGame(teams, { pieces: Setup.pieces, backdo: Setup.backdo, mode: "net", battle: Setup.battle, skills: Setup.skills, study: Setup.study, first, timer: Setup.timer, net: { code: N.code, me: N.me, pid: Setup.t0, round: N.round || 0, first: N.first || 0 } });
     }
-  } catch (e) { console.error(e); toast("📶 올리지 못했어요. 인터넷을 확인하고 다시 눌러 주세요", 2600); }
+  } catch (e) { console.error(e); toast("📶 Couldn't send it. Check the internet and tap again", 2600); }
 }
 /* ---------- 🔁 같은 친구와 한 판 더 (사용자 요청 2026-10-04) — 같은 방에서 바로, 먼저 고르는 집은 판마다 번갈아 ---------- */
 async function netRematch() {
@@ -4912,7 +4942,7 @@ async function netRematch() {
     console.error(e);
     G.net.rematching = false;
     if (btn) btn.disabled = false;
-    toast("📶 친구 방에 다시 들어가지 못했어요. 인터넷을 확인해 주세요", 2600);
+    toast("📶 Couldn't get back into the room. Check the internet", 2600);
   }
 }
 function netRematchEnter(room) {
@@ -4923,7 +4953,7 @@ function netRematchEnter(room) {
   Setup.net = { code, me, round, first, names: [room.host.name, room.guest.name], avatars: [room.host.avatar || null, room.guest.avatar || null] };
   G.net = null; G.s = null;
   Store.data.game = null; Store.data.net = null; Store.save();
-  toast("🔁 한 판 더! " + (first === me ? "이번엔 우리가 먼저 골라요" : Setup.net.names[first] + "가 먼저 골라요"), 2200);
+  toast("🔁 Play again! " + (first === me ? "We pick first this time" : Setup.net.names[first] + " picks first"), 2200);
   if (first === me) { Setup.ti = me; Setup.picks = [[], []]; Setup.picks[me] = validPicks(Store.data.lastPicks[Setup.t0], me); showScreen("pick"); }
   else { Setup.net.stage = "first-pick"; showScreen("netwait"); }
 }
@@ -4940,24 +4970,25 @@ function openPause() {
   G.paused = true;
   clearTimeout(G.cpuTimer);
   showModal(
-    '<h2>⏸ 잠깐 쉬어요</h2><p>판은 자동으로 저장돼요.<br>나갔다 와도 <b>이어하기</b>로 계속할 수 있어요.</p>' +
-    '<div class="btns"><button class="btn big green" data-act="close-modal">▶ 계속하기</button>' +
-    '<button class="btn big" data-act="pause-home">🏠 처음 화면으로</button>' +
-    '<button class="btn" data-act="pause-giveup">🏳️ 이 판 그만두기</button></div>',
+    '<h2>⏸ Pause</h2><p>The game saves by itself.<br>Leave and come back any time — tap <b>Continue</b> to keep playing.</p>' +
+    '<div class="btns"><button class="btn big green" data-act="close-modal">▶ Keep playing</button>' +
+    '<button class="btn big" data-act="pause-home">🏠 Home</button>' +
+    '<button class="btn" data-act="pause-giveup">🏳️ Quit game</button></div>',
     () => { G.paused = false; if (current === "game" && !G.busy) afterAction(); }
   );
 }
 // 되돌릴 수 없는 일은 글자를 직접 써야 실행된다
 function typedConfirm(title, text, word, onYes) {
   showModal(
-    "<h2>" + esc(title) + "</h2><p>" + text + '<br>아래 칸에 <b>' + esc(word) + "</b> 라고 써 주세요.</p>" +
+    "<h2>" + esc(title) + "</h2><p>" + text + '<br>Type <b>' + esc(word) + "</b> in the box below.</p>" +
     '<input id="confirm-in" autocomplete="off" spellcheck="false" placeholder="' + esc(word) + '">' +
-    '<div class="btns"><button class="btn big red" id="confirm-yes" disabled>' + esc(title) + '</button><button class="btn" data-act="close-modal">취소</button></div>',
+    '<div class="btns"><button class="btn big red" id="confirm-yes" disabled>' + esc(title) + '</button><button class="btn" data-act="close-modal">Cancel</button></div>',
     () => { G.paused = false; if (current === "game" && !G.busy) afterAction(); }
   );
   const inp = $("#confirm-in"), yes = $("#confirm-yes");
-  inp.addEventListener("input", () => { yes.disabled = inp.value.trim() !== word; });
-  yes.addEventListener("click", () => { if (inp.value.trim() === word) { modalClose = null; closeModal(); onYes(); } });
+  const typedOk = () => inp.value.trim().toLowerCase() === word.toLowerCase(); // 대소문자 상관없이
+  inp.addEventListener("input", () => { yes.disabled = !typedOk(); });
+  yes.addEventListener("click", () => { if (typedOk()) { modalClose = null; closeModal(); onYes(); } });
   setTimeout(() => inp.focus(), 60);
 }
 window.addEventListener("popstate", () => {
@@ -4968,28 +4999,28 @@ window.addEventListener("popstate", () => {
 /* ---------- 도움말 ---------- */
 function openRules() {
   showModal(helpTabs("rules") +
-    "<h2>📖 윷놀이 방법</h2>" +
+    "<h2>📖 How to play Yutnori</h2>" +
     '<div class="rules-res">' + [1, 2, 3, 4, 5, -1].map(r =>
       '<div><img src="' + artUrl(CAST.yut[r]) + '" alt=""><b>' + RES[r].name + '</b><i class="en">' + RES[r].en + "</i>" + (RES[r].animal ? RES[r].emoji + " " + RES[r].animal + " · " : "") + RES[r].steps + "</div>").join("") + "</div>" +
-    "<h2 class=\"sub\">🎲 무엇이 잘 나올까? <small>윷가락 하나가 평평하게 떨어질 확률 60%</small></h2>" + probBars(true) +
+    "<h2 class=\"sub\">🎲 What comes up most? <small>Each yut stick lands flat side up 60% of the time</small></h2>" + probBars(true) +
     '<ul class="rules-list">' +
-      "<li>🎲 <b>윷</b>이나 <b>모</b>가 나오면 한 번 더 던져요.</li>" +
-      "<li>🏁 <b>참먹이</b>(오른쪽 아래)에서 출발해 판을 돌아 다시 참먹이로 오면 <b>골인</b>!</li>" +
-      "<li>↗️ <b>위쪽 두 모서리</b>나 가운데 <b>방</b>에 딱 멈추면 지름길(대각선)로 가요.</li>" +
-      "<li>🤝 내 말끼리 같은 칸에 서면 <b>업어서</b> 같이 가요.</li>" +
-      "<li>⚔️ 상대 말이 있는 칸에 멈추면 <b>배틀</b>! 기술로 물리치면 상대 포켓몬은 <b>집(출발 자리)</b>으로 돌아가고, 이긴 팀은 한 번 더!</li>" +
-      "<li>✨ <b>5칸</b> 갈 때마다 포켓몬이 <b>진화</b>해요. 배틀에 져서 집으로 가도 <b>진화한 모습은 그대로</b>예요.</li>" +
-      "<li>🪙 시작할 때 <b>동전</b>을 던져서 먼저 할 팀을 정해요 — 앞면(Heads)·뒷면(Tails)</li>" +
-      "<li>📖 <b>기술</b>은 <b>10칸</b> 가면 배워요 (모든 포켓몬 같아요). 내 차례에 <b>✨ 기술</b> 버튼으로 써요 — 말마다 한 판에 한 번, 한 차례에 하나!</li>" +
-      "<li>🎲 기술은 <b>확률로 성공</b>해요 — 일반 <b>60%</b> · 레어 <b>70%</b> · 유니크 <b>80%</b> · 👑 전설 <b>90%</b> (스타팅 포켓몬은 레어). 상대 말에 거는 기술은 타입 상성이 좋으면 <b>+10%</b>, 나쁘면 <b>−10%</b>. 실패하면 그 기술은 사라져요!</li>" +
-      "<li>🕐 풀숲에서 <b>시계 문제</b>를 세 번 풀어요 — 정각 → 15·30·45분 → 몇 시 몇 분. 맞히면 다음 단계, 틀리면 같은 단계 다른 문제. 맞힐 때마다 유니크·전설 +3·+3·+4% (다 맞히면 20% · 20%). 🏥 로켓단 대결이 끝나면 <b>포켓몬센터</b>에서 세 손님의 계산(천 원 · 만 원 · 십만 원)을 도와요. 끝나면 몬스터볼을 받고, 열면 포켓몬이 짜잔! 맞힌 만큼 유니크·전설 확률이 올라가요 (다 맞히면 20% · 20%)</li>" +
-      "<li>🎯 잡을 확률(몬스터볼): 일반 80 · 레어 70 · 유니크 60 · 전설 40% — 좋은 볼일수록, 놓칠 때마다(+10%) 올라가요.</li>" +
-      "<li>🌿 윷판의 <b>❓ 풀숲</b>에 딱 멈추면 야생 포켓몬! 볼로 잡으면 <b>그 자리에서 바로</b> 내 말과 바꿀 수 있어요. 기술을 다 쓴 말과 바꾸면 새 기술을 또 써요!</li>" +
-      "<li>😼 로켓단도 풀숲에서 그물로 포켓몬을 잡아 가요. 먼저 가서 잡아요!</li>" +
-      "<li>🎁 로켓단을 이기면 <b>보물상자</b>에서 볼 3개!</li>" +
-      "<li>🏆 내 포켓몬이 먼저 전부 골인하면 이겨요!</li>" +
+      "<li>🎲 Get <b>Yut</b> or <b>Mo</b> and you throw again.</li>" +
+      "<li>🏁 Leave from <b>Start</b> (bottom right), go around the board, and come back to Start for a <b>Goal</b>!</li>" +
+      "<li>↗️ Stop right on one of the <b>top two corners</b> or the <b>Center</b> to take a shortcut (the diagonal).</li>" +
+      "<li>🤝 Land on your own piece to <b>stack</b> and go together.</li>" +
+      "<li>⚔️ Stop on an enemy piece and it's a <b>battle</b>! Knock it out with a move and that Pokémon goes back <b>home (to Start)</b>. The winner throws again!</li>" +
+      "<li>✨ Every <b>5 spaces</b>, your Pokémon <b>evolves</b>. If it loses a battle and goes home, it <b>stays evolved</b>.</li>" +
+      "<li>🪙 At the start, a <b>coin toss</b> picks who goes first — ☀️ sun (Heads) · 🌙 moon (Tails)</li>" +
+      "<li>📖 After <b>10 spaces</b>, a piece learns a <b>Move</b> (same for every Pokémon). Use it on your turn with the <b>✨ Move</b> button — once per piece each game, one per turn!</li>" +
+      "<li>🎲 A move works by <b>chance</b> — Common <b>60%</b> · Rare <b>70%</b> · Unique <b>80%</b> · 👑 Legendary <b>90%</b> (starters are Rare). On an enemy piece, a good type matchup gives <b>+10%</b>, a bad one <b>−10%</b>. If it misses, that move is gone!</li>" +
+      "<li>🕐 In the tall grass, answer 3 <b>clock quizzes</b> — o'clock → :15 · :30 · :45 → any time. Right: next level. Wrong: a new quiz at the same level. Each right answer adds Unique·Legendary +3 · +3 · +4% (all right: 20% · 20%). 🏥 After a Team Rocket game, help 3 customers at the <b>Pokémon Center</b> (1,000 won · 10,000 won · 100,000 won). Then you get a Poké Ball — open it and a Pokémon pops out! More right answers give a better Unique·Legendary chance (all right: 20% · 20%)</li>" +
+      "<li>🎯 Catch chance (Poké Ball): Common 80 · Rare 70 · Unique 60 · Legendary 40% — it goes up with better balls, and each time it breaks free (+10%).</li>" +
+      "<li>🌿 Stop right on <b>❓ tall grass</b> to meet a wild Pokémon! Catch it with a ball and you can swap it with your piece <b>right there</b>. Swap out a piece that used its move, and you get a new move!</li>" +
+      "<li>😼 Team Rocket catches Pokémon in the tall grass with nets, too. Get there first!</li>" +
+      "<li>🎁 Beat Team Rocket and get <b>3 balls</b> from a treasure chest!</li>" +
+      "<li>🏆 Get all your Pokémon to the Goal first, and you win!</li>" +
     "</ul>" +
-    '<div class="btns"><button class="btn big green" data-act="close-modal">알겠어요!</button></div>'
+    '<div class="btns"><button class="btn big green" data-act="close-modal">Got it!</button></div>'
   );
 }
 /* ================================================================
@@ -5035,7 +5066,7 @@ const Act = {
   "save": () => showScreen("profiles"),
   "save-on": el => saveOn(el.dataset.id),
   "save-now": el => { const p = Store.data.profiles[el.dataset.id]; if (p && p.cloud) { p.cloud.sent = null; cloudSchedule(true); } setTimeout(renderSaveInfo, 50); SFX.tap(); },
-  "save-off": el => { const p = Store.data.profiles[el.dataset.id]; if (p) { Rank.remove(p); p.cloud = null; } Store.save(); closeModal(); toast("저장을 껐어요. 서버 기록은 그대로라 코드로 다시 불러올 수 있어요", 2600); showScreen("profiles"); },
+  "save-off": el => { const p = Store.data.profiles[el.dataset.id]; if (p) { Rank.remove(p); p.cloud = null; } Store.save(); closeModal(); toast("Save is off. The server copy stays, so you can load it again with the code", 2600); showScreen("profiles"); },
   "save-load": openSaveLoad,
   "save-key": el => saveKey(el.dataset.k),
   "save-fetch": saveFetch,
@@ -5050,8 +5081,8 @@ const Act = {
     SFX.tap();
   },
   "to-pick": () => {
-    if (Setup.mode === "family" && (!Setup.t1 || !Store.data.profiles[Setup.t1])) { toast("두 번째 팀이 없어요 — ➕ 새 프로필로 만들어 주세요", 2200); return; }
-    if (Setup.mode === "family" && Setup.t0 === Setup.t1) { toast("두 팀은 다른 사람으로 골라 주세요", 1800); return; }
+    if (Setup.mode === "family" && (!Setup.t1 || !Store.data.profiles[Setup.t1])) { toast("There's no second team — make one with ➕ New profile", 2200); return; }
+    if (Setup.mode === "family" && Setup.t0 === Setup.t1) { toast("Pick two different people for the two teams", 1800); return; }
     Setup.ti = 0;
     Setup.rocket = rocketRoster(4, rosterIds(Setup.t0));
     Setup.picks = [[], []];
@@ -5063,8 +5094,8 @@ const Act = {
     const id = Number(el.dataset.id), mine = Setup.picks[Setup.ti];
     const k = mine.indexOf(id);
     if (k >= 0) mine.splice(k, 1);
-    else if (sameFamily(mine, id)) { toast(nameOf(rootOf(id)) + " 가족은 벌써 골랐어요! 한 가족에서 한 마리만 골라요", 2400); return; }
-    else if (mine.length >= Setup.pieces) { toast("벌써 " + Setup.pieces + "마리를 골랐어요. 위에서 하나 빼고 골라요"); return; }
+    else if (sameFamily(mine, id)) { toast("You already have one from the " + nameOf(rootOf(id)) + " family! Just one per family", 2400); return; }
+    else if (mine.length >= Setup.pieces) { toast("You already picked " + Setup.pieces + " Pokémon. Take one out at the top first"); return; }
     else { mine.push(id); SFX.pop(); }
     updatePick();
   },
@@ -5092,8 +5123,8 @@ const Act = {
   "chip": el => onChipTap(Number(el.dataset.piece)),
   "pause": openPause,
   "pause-home": () => { modalClose = null; closeModal(); G.paused = false; showScreen("home"); },
-  "pause-giveup": () => typedConfirm("판 그만두기", "이 판을 지우면 되돌릴 수 없어요.", "그만", () => {
-    Store.data.game = null; Store.data.net = null; Store.save(); G.s = null; G.net = null; G.paused = false; showScreen("home"); toast("판을 정리했어요");
+  "pause-giveup": () => typedConfirm("Quit game", "If you quit, this game is gone for good.", "quit", () => {
+    Store.data.game = null; Store.data.net = null; Store.save(); G.s = null; G.net = null; G.paused = false; showScreen("home"); toast("The game is cleared");
   }),
   "rematch": rematch,
   "net-rematch": () => netRematch(),
@@ -5128,14 +5159,14 @@ async function checkUpdate(force) {
 function tellUpdate() {
   if (current !== "home") return; // 판 · 고르기 · 친구 대결 중에는 기다렸다가 처음 화면에서
   const box = $(".menu-small");
-  if (box && !$("#upd-btn")) box.insertAdjacentHTML("afterbegin", '<button class="btn gold upd-btn" id="upd-btn" data-act="app-update">🎁 새 버전으로 바꾸기</button>');
+  if (box && !$("#upd-btn")) box.insertAdjacentHTML("afterbegin", '<button class="btn gold upd-btn" id="upd-btn" data-act="app-update">🎁 Get the new version</button>');
   const f = $(".ver");
-  if (f) f.textContent = "v" + APP_VERSION + " → 새 버전 v" + Update.ver;
+  if (f) f.textContent = "v" + APP_VERSION + " → new v" + Update.ver;
   if (Update.told === Update.ver || $("#overlay").classList.contains("show")) return;
   Update.told = Update.ver;
   showModal(
-    '<h2>🎁 새 버전이 나왔어요!</h2><p>지금 <b>v' + esc(APP_VERSION) + "</b> 을 쓰고 있어요.<br>새 버전 <b>v" + esc(Update.ver) + "</b> 으로 바꿔 볼까요?<br><small>하던 판 · 잡은 포켓몬은 그대로 남아요</small></p>" +
-    '<div class="btns"><button class="btn big green" data-act="app-update">🔄 새 버전으로 바꾸기</button><button class="btn" data-act="close-modal">나중에</button></div>'
+    '<h2>🎁 New version!</h2><p>You have <b>v' + esc(APP_VERSION) + "</b> now.<br>Change to the new <b>v" + esc(Update.ver) + "</b>?<br><small>Your game and caught Pokémon stay safe</small></p>" +
+    '<div class="btns"><button class="btn big green" data-act="app-update">🔄 Get the new version</button><button class="btn" data-act="close-modal">Later</button></div>'
   );
 }
 document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") checkUpdate(); });

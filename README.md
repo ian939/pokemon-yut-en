@@ -1,81 +1,60 @@
-# 포켓몬 윷놀이 🎲
+# Pokémon Yutnori 🎲 (English)
 
-포켓몬이 **윷판 위의 말**이 되는 가족 윷놀이예요. 처음엔 스타팅 포켓몬으로 시작하고, 윷판의 ❓ 풀숲에서 잡을 때마다 고를 수 있는 포켓몬이 늘어나요. 마지막 모습으로 진화하면 **✨ 기술**을 배워서 한 번 써요. 패드 한 대를 돌려 가며 가족끼리 하거나, 혼자서 로켓단과 대결해요.
+A family board game where **Pokémon are the pieces** on a Korean *yut-nori* board — the English version of
+[포켓몬 윷놀이](https://github.com/ian939/pokemon-yut). Made for a Korean first-grader learning English: every
+screen is in simple English, and the game **speaks English** with natural recorded voices (Microsoft Edge TTS).
 
-**▶ 플레이: https://ian939.github.io/pokemon-yut/**
+**▶ Play: https://ian939.github.io/pokemon-yut-en/**
 
-## 게임 방법
+## How to play
 
-1. **👨‍👩‍👧 가족 대결** 또는 **😈 로켓단 대결**을 골라요 (말 2·3·4개, 빽도 켜기/끄기, **✨ 기술 켜기/끄기**, 배틀 장면 ⚔️ 보기 / ⏭ 건너뛰기)
-2. 팀마다 포켓몬을 골라요 — **🌱 스타팅 포켓몬 27마리**(1~9세대 풀·불꽃·물)와 **🎯 ❓ 풀숲에서 잡은 포켓몬**(잡은 순서대로) 중에서
-3. **🎲 윷 던지기!** → 결과마다 같은 동물 포켓몬이 알려 줘요
+1. Pick **👨‍👩‍👧 Family Game**, **😈 vs Team Rocket**, or **🏠 Friend Battle** (2–4 pieces, Back-do on/off, ✨ Moves on/off).
+2. Each team picks Pokémon — 27 starter Pokémon plus every Pokémon you catch in the ❓ tall grass.
+3. **Throw!** the yut sticks:
 
-   | 도 | 개 | 걸 | 윷 | 모 | 빽도 |
+   | Do | Gae | Geol | Yut | Mo | Back-do |
    | --- | --- | --- | --- | --- | --- |
-   | 🐷 뚜꾸리 1칸 | 🐶 가디 2칸 | 🐑 메리프 3칸 | 🐮 켄타로스 4칸 + 한 번 더 | 🐴 포니타 5칸 + 한 번 더 | 야돈 뒤로 1칸 |
+   | 🐷 1 space | 🐶 2 spaces | 🐑 3 spaces | 🐮 4 spaces + throw again | 🐴 5 spaces + throw again | back 1 |
 
-4. 움직일 말을 누르면 도착할 칸이 반짝여요 → 그 칸을 누르면 한 칸씩 콩콩 이동
-5. 내 포켓몬이 먼저 전부 참먹이로 **골인**하면 승리! 🏆
+4. Tap a piece, then tap the glowing space to move.
+5. Land on an enemy piece to battle — it runs back home and you throw again. Land on your own piece to stack.
+6. Get all your pieces home first to win! 🏆
 
-## 윷놀이 규칙 (진짜 윷놀이 그대로)
+Extras: Pokémon **evolve** every 5 spaces and learn a **✨ move** at 10 spaces · ❓ tall grass with wild Pokémon and
+Poké Balls · 🕐 clock quiz and 🏥 money quiz (Korean won) for bonus chances · 🪙 coin toss · 👤 profiles ·
+💾 save codes · 🥇 ranking · 🏠 friend battles over the internet.
 
-- **윷·모**가 나오면 한 번 더 던져요. 쌓인 결과는 원하는 순서로 써요
-- **위쪽 두 모서리**나 가운데 **방**에 딱 멈추면 지름길(대각선)로 가요
-- 내 말끼리 같은 칸에 서면 **업어서** 같이 가요 (×2)
-- 상대 말이 있는 칸에 멈추면 **배틀**(잡기) — 물리친 상대 포켓몬은 집(출발 자리)으로 돌아가고, 이긴 팀은 한 번 더!
-- 아이가 좌절하지 않게 **낙은 없어요**. 참먹이에 도착하거나 지나가면 골인
+## Differences from the Korean version
 
-## 포켓몬 윷놀이만의 재미
+- All text and speech are English. Speech uses clips pre-recorded with Edge TTS (`assets/voice/`); anything not
+  recorded (names people type) falls back to the browser's voice.
+- Saved data uses its own key (`engmon_yut_en_v1`). The first time it opens, it copies profiles, Pokémon and balls
+  from the Korean version on the same device (not the game in progress, not save codes).
+- Save codes, rankings and friend rooms use the same server as the Korean version.
 
-- **✨ 진화** — 말은 진화 1단계 모습으로 출발해서 **5칸 갈 때마다** 진화해요 (파이리 → 5칸 리자드 → 10칸 리자몽). 갈래가 여럿인 포켓몬(이브이 등)은 판마다 어느 쪽으로 진화할지 몰라요. 배틀에 져서 집으로 가도 진화한 모습은 그대로예요. 한 진화 가족에서는 한 마리씩만 골라요
-- **📖 기술** — **10칸** 가면 그 포켓몬 타입의 기술을 하나 무작위로 배워요 (모든 포켓몬 같아요). 내 차례에 **✨ 기술** 버튼으로 써요 — 말마다 한 판에 한 번, 한 차례에 하나. 🎲 기술은 **확률로 성공**해요: 일반 60% · 레어 70% · 유니크 80% · 👑 전설 90% (스타팅 포켓몬은 레어), 상대 말에 거는 기술은 타입 상성이 좋으면 +10% · 나쁘면 −10%. 실패하면 그 기술은 사라져요! 타입마다 2개씩 모두 36개 — 니트로차지·와일드볼트·아이스차징·수면가루(깰 수도!)·사이드체인지·독압정·역린… 그중 카운터·철벽·달빛·길동무는 때가 되면 저절로 나가요. 처음 화면의 **✨ 기술 도감**에서 다 볼 수 있어요 (아래에 ⚔️ 타입 상성표도)
-- **⚔️ 배틀** — 상대 말이 있는 칸에 멈추면 포켓몬 배틀 화면! "리자몽의 화염방사!"로 물리치면 상대 포켓몬은 집(출발 자리)으로 돌아가요. 판 설정에서 **⏭ 건너뛰기**를 고르면 배틀 장면 없이 한 줄 안내만 나오고 바로 집으로
-- **😈 로켓단** — 🌱 쉬움 / 🔥 보통 / 💀 어려움 (이기면 볼 4개 + 좋은 볼이 더 잘 나오는 특별 상자). 로켓단 포켓몬은 판마다 무작위. "귀염둥이 악당, 포켓몬의 감초~!" 로켓단도 기술을 쓰고(쉬움은 방해 기술 없이), 풀숲에 멈추면 **그물로** 포켓몬을 잡아 가요
-- **🌿 ❓ 풀숲** — 판마다 윷판에 풀숲 2칸! 딱 멈추면 야생 포켓몬이 튀어나와요 (일반 50% · 레어 30% · 유니크 10% · 전설 10%). 가방의 볼을 골라 던지고(세 번 흔들리면 딸깍), 잡으면 **그 자리에서 바로 내 말과 바꿀 수 있어요** ("돌아와, 리자몽! 가라, 이브이!"). 바뀐 말이 간 칸 수를 이어받아 바로 진화해서, 기술을 다 쓴 말과 바꾸면 새 기술을 또 써요. 다음 판부터도 말로 골라요
-- **🕐 시계 문제** — ❓ 풀숲에 멈추면 포켓몬이 나오기 전에 시계 보기 문제! 맞히면 유니크·전설이 더 잘 나와요 (일반 30 · 레어 30 · 유니크 20 · 전설 20). 틀리면 짧은 바늘·긴 바늘로 풀이를 보여 줘요. 정각·30분 → 5분 → 1분으로 저절로 어려워져요
-- **💰 돈 문제** — 로켓단 보물상자에서 볼 3개(로켓단이 이기면 위로 상자에서 몬스터볼 1개)가 나온 뒤, 놀이 돈(십만·만·천·백 원)을 세어 "모두 얼마?"를 맞히면 🏥 포켓몬센터 럭키가 몬스터볼을 줘요 — 열면 포켓몬이 짜잔! 돈 단계(천·백 / 만 / 십만)는 문제마다 무작위. 틀리면 풀이를 보고 두 번째 문제까지 (준비 화면에서 🎓 공부 문제 켜기/끄기)
-- **🎁 기술 넘겨주기** — 기술을 못 쓰고 골인하면 그 기술을 받을 팀원을 골라요. 받은 포켓몬은 기술을 두 개까지(제 것 + 🎁 받은 것) 가지고, 제 기술을 다 썼으면 받은 기술을 써요
-- **🪙 동전 던지기** — 판을 시작할 때 도트 동전(☀️ 앞면 · 🌙 뒷면)을 눌러 던져서 먼저 할 팀을 정해요 (앞면 Heads = 첫 팀 · 뒷면 Tails = 둘째 팀, 로켓단 대결·한 판 더도). 친구 대결은 저절로 던져져요
-- **🥇 랭킹** — 처음 화면 🥇 랭킹: 💾 저장 코드를 켠 사람끼리(친구네 포함) 📕 포켓몬 수 · 👑 전설 수 · 🏆 승리 수로 줄 세우기 ([v11](docs/v11-랭킹.md))
-- **👤 프로필 · 💾 저장 코드** — 처음 화면 👤 프로필: 사람마다 이름과 캐릭터(내 포켓몬 중 하나)를 정하고, 잡은 포켓몬 · 볼 · 전적은 사람마다 따로 모여요. 💾 저장을 켜면 프로필마다 코드 6자리 — 다른 패드에서 코드만 누르면 그대로 ([v10](docs/v10-프로필.md))
-- **🏠 친구 대결** — 방을 만들면 코드 4자리가 나와요. 친구네 패드에서 코드를 누르고 이름을 쓰면 각자 패드로 대결! 상대가 두는 모습이 내 패드에 그대로 보여요. 💬 버튼으로 피카츄 표정 5가지(좋아·우와·아쉬워·두고 봐·잘했어)를 보낼 수 있어요. ❓ 풀숲에서는 몬스터볼이 저절로(70%), ⏱ 차례 타이머 20초 · 10초 · 없음 (잉글리시몬 Firebase `yutrooms`)
-- **😼 캡슐 뽑기** — 로켓단 대결을 시작하면 로켓단이 캡슐 뽑기 기계에서 이번 판 포켓몬을 뽑아 와요 (보는 장면)
-- **📚 배우며 놀기** — 잡을 수 있었는데 놓치면 "앗, 저기 잡을 수 있었어!" · 미래예지에 윷 확률 막대 · 물 > 불꽃 > 풀 > 물 상성이면 "효과가 굉장했다!"(연출만) · 도·개·걸·윷·모를 영어로(One~Five)
-- **🔍 기술 보기** — 오른쪽 팀 카드의 포켓몬을 누르면 그 포켓몬의 기술(이름·설명·쓸 수 있는지)과 진화 모습, 아직 없으면 몇 칸 더 가야 하는지 보여 줘요
-- **🎁 보물상자** — 로켓단을 이기면 볼 3개! 몬스터볼 50% · 슈퍼볼 30% · 하이퍼볼 10% · 럭셔리볼 5% · 마스터볼 5%. 잡을 확률은 몬스터볼 기준 일반 80 · 레어 70 · 유니크 60 · 전설 40%, 좋은 볼일수록 +5%, 놓칠 때마다 +10%, 마스터볼 100%
-- **🎒 가방** — 볼 개수와 잡은 포켓몬(잡은 순서대로)
-- 한국어로 결과·차례를 읽어 주고, 포켓몬 울음소리가 나요
-- 판은 자동 저장 — 나갔다 와도 **이어하기**. 사람별 전적
+## For developers
 
-## 잉글리시몬과는 따로
-
-- 잉글리시몬의 도감·코인·볼과 **관계없어요** — 읽지도 쓰지도 않아요. 윷놀이 포켓몬은 윷놀이 안에서 ❓ 풀숲으로 모아요
-- (2026-09-25까지는 잉글리시몬 도감을 읽어 말로 썼어요. 스타팅 포켓몬에서 하나씩 늘려 가는 재미를 위해 바꿨어요)
-
-## 폴더
-
-| 경로 | 내용 |
+| Path | What |
 | --- | --- |
-| `index.html` | 게임 화면·연출·저장 |
-| `yut-rules.js` | 규칙 엔진 (DOM 없음, Node 테스트) |
-| `lock.js` | 패드 확대·복사 잠금 |
-| `data/pokemon.js` | 포켓몬 이름·타입·희귀도·지역·진화 순서 — `tools/`로 생성 |
-| `assets/` | 포켓몬 도트 앞·뒷모습·일러스트(PokeAPI) + 윷판·윷가락·멍석·배경·배틀 무대(직접 그림) |
-| `tools/` | 데이터·그림 만들기, 테스트 |
-| `docs/` | [기획서](docs/기획서.md) · [기술 스펙](docs/기술스펙.md) · [v2 계획](docs/v2-보물상자·야생포켓몬.md) · [v3 계획 — 기술·말 바꾸기](docs/v3-기술·말바꾸기.md) · [v4 계획 — 시계·돈 문제](docs/v4-시계·돈문제.md) |
+| `index.html` | screens, animations, saving |
+| `yut-rules.js` | rules engine (no DOM, tested with Node) |
+| `data/pokemon.js` | Pokémon names (English), types, rarity, evolutions — `tools/extract-data.js` then `tools/english-data.js` |
+| `assets/voice/` | Edge TTS clips + `voice.js` table — `python tools/gen-voice.py` |
+| `docs/` | design notes (Korean, from the original project) |
 
 ```bash
-node tools/test-rules.js          # 규칙 테스트 78개 (기술 36개·발동 확률·말 바꾸기·시계·돈 문제·무작위 3,000판)
-node tools/sim-cpu.js             # 로켓단 난이도 시뮬레이션
-python tools/test-ui.py           # 화면 검사 (Playwright)
-python tools/audit-ui.py          # 전체 화면 점검 (8가지 크기 × 17장면 잘림)
+node tools/test-rules.js          # rules tests
+python tools/test-ui.py           # screen tests (Playwright)
+python tools/audit-ui.py          # layout audit (clipping at 8 screen sizes)
+python tools/gen-voice.py         # record new spoken lines (run after changing any TTS.say text)
 ```
 
-`index.html`을 그냥 열어도(`file://`) 돌아가요. 개발용 주소 옵션: `?fast=1`(연출 빠르게) · `?seed=12` · `?force=5,4,3`(다음 윷 결과 정하기) · `?spots=3:58,12:133` / `?spots=none`(풀숲) · `?catch=1`/`0`(볼·로켓단 그물 결과) · `?box=master,poke,poke`(상자) · `?pools=nitro,surf|toxic,quake`(말마다 기술) · `?early=1`(모두 처음부터 기술) · `?luck=1`(기술이 늘 성공) · `?swappool=rain`(바꿔 들어오는 포켓몬 기술) · `?clock=3:40` · `?money=0,3,2,5`(십만·만·천·백 장 수).
+## Credits
 
-## 저작권 안내
-
-- 개인·가정용 비상업 팬 프로젝트입니다.
-- 포켓몬 이미지는 [PokeAPI sprites](https://github.com/PokeAPI/sprites), 울음소리는 [PokeAPI cries](https://github.com/PokeAPI/cries)에서 가져오며, 포켓몬 관련 저작권은 Nintendo / Creatures Inc. / GAME FREAK inc.에 있습니다.
-- 윷판·윷가락·멍석·배경 그림은 이 프로젝트에서 이미지 생성으로 만들었습니다.
-- 글꼴: [갈무리(Galmuri)](https://github.com/quiple/galmuri) © 이민서 — SIL Open Font License 1.1 (`assets/fonts/OFL.md`). 게임에 쓰는 글자만 남겨 넣었습니다.
+- Personal, non-commercial fan project.
+- Pokémon images from [PokeAPI sprites](https://github.com/PokeAPI/sprites), cries from
+  [PokeAPI cries](https://github.com/PokeAPI/cries), names from [PokeAPI](https://pokeapi.co/). Pokémon © Nintendo /
+  Creatures Inc. / GAME FREAK inc.
+- Board, sticks, mat and backgrounds were made with image generation for this project.
+- Voice: Microsoft Edge text-to-speech (en-US-AnaNeural, en-US-GuyNeural).
+- Font: [Galmuri](https://github.com/quiple/galmuri) © Minseo Lee — SIL Open Font License 1.1 (`assets/fonts/OFL.md`).

@@ -1,6 +1,6 @@
 {
-  "name": "포켓몬 윷놀이",
-  "short_name": "포켓몬 윷놀이",
+  "name": "Pokémon Yutnori",
+  "short_name": "Pokémon Yut",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

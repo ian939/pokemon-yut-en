@@ -26,7 +26,7 @@
   ];
   const NODE_KIND = NODES.map((_, n) =>
     n === 0 ? "start" : (n === 5 || n === 10 || n === 15) ? "corner" : n === 22 ? "center" : "normal");
-  const NODE_NAME = { 0: "참먹이", 5: "모", 10: "뒷모", 15: "찌모", 22: "방" };
+  const NODE_NAME = { 0: "Start", 5: "Corner", 10: "Corner", 15: "Corner", 22: "Center" }; // 참먹이 · 모 · 뒷모 · 찌모 · 방 (지금 화면에서 안 씀)
   // 그릴 선 (바깥 한 바퀴 + 대각선 두 개)
   const LINES = [
     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 0],
@@ -64,12 +64,12 @@
   /* ---------- 윷 결과 ---------- */
   const BACKDO = -1;
   const RESULTS = {
-    "-1": { name: "빽도", steps: -1, again: false },
-    1: { name: "도", steps: 1, again: false },
-    2: { name: "개", steps: 2, again: false },
-    3: { name: "걸", steps: 3, again: false },
-    4: { name: "윷", steps: 4, again: true },
-    5: { name: "모", steps: 5, again: true },
+    "-1": { name: "Back-do", steps: -1, again: false },
+    1: { name: "Do", steps: 1, again: false },
+    2: { name: "Gae", steps: 2, again: false },
+    3: { name: "Geol", steps: 3, again: false },
+    4: { name: "Yut", steps: 4, again: true },
+    5: { name: "Mo", steps: 5, again: true },
   };
   const FLAT_P = 0.6; // 윷가락 하나가 평평한 면으로 떨어질 확률
 
@@ -377,42 +377,42 @@
    * target: none · enemy(상대 말 칸) · enemyPiece(상대 말) · ally(우리 말 칸) · node(빈 칸) · pending(남은 결과) · result(결과 고르기) · move(뒤로 갈 결과)
    * cat: 로켓단 쉬움은 attack·trap·random 을 안 쓴다 */
   const SKILLS = {
-    metronome: { name: "손가락흔들기", type: "노말", kind: "active", when: "any", target: "none", cat: "random" },
-    wish: { name: "희망사항", type: "노말", kind: "active", when: "throw", target: "result", cat: "throw" },
-    nitro: { name: "니트로차지", type: "불꽃", kind: "active", when: "any", target: "none", cat: "move" },
-    flame: { name: "화염방사", type: "불꽃", kind: "active", when: "any", target: "enemy", cat: "attack" },
-    surf: { name: "파도타기", type: "물", kind: "active", when: "any", target: "enemy", cat: "attack" },
-    rain: { name: "비바라기", type: "물", kind: "active", when: "any", target: "none", cat: "throw" },
-    growth: { name: "성장", type: "풀", kind: "active", when: "pending", target: "pending", cat: "throw" },
-    sleep: { name: "수면가루", type: "풀", kind: "active", when: "any", target: "enemy", cat: "attack" },
-    discharge: { name: "방전", type: "전기", kind: "active", when: "any", target: "none", cat: "attack" },
-    wildcharge: { name: "와일드볼트", type: "전기", kind: "active", when: "any", target: "none", cat: "move" },
-    veil: { name: "오로라베일", type: "얼음", kind: "active", when: "any", target: "none", cat: "guard" },
-    icecharge: { name: "아이스차징", type: "얼음", kind: "active", when: "any", target: "enemy", cat: "attack" },
-    counter: { name: "카운터", type: "격투", kind: "react", cat: "guard" },
-    bulkup: { name: "벌크업", type: "격투", kind: "active", when: "any", target: "none", cat: "move" },
-    toxic: { name: "맹독", type: "독", kind: "active", when: "any", target: "none", cat: "attack" },
-    poisonjab: { name: "독찌르기", type: "독", kind: "active", when: "any", target: "enemy", cat: "attack" },
-    quake: { name: "지진", type: "땅", kind: "active", when: "any", target: "none", cat: "attack" },
-    dig: { name: "구멍파기", type: "땅", kind: "active", when: "any", target: "none", cat: "guard" },
-    fly: { name: "공중날기", type: "비행", kind: "active", when: "any", target: "none", cat: "move" },
-    tailwind: { name: "순풍", type: "비행", kind: "active", when: "any", target: "none", cat: "move" },
-    future: { name: "미래예지", type: "에스퍼", kind: "active", when: "throw", target: "result", cat: "throw" },
-    allyswitch: { name: "사이드체인지", type: "에스퍼", kind: "active", when: "any", target: "enemy", cat: "move" }, // v8: 우리 말 ↔ 상대 말
-    uturn: { name: "유턴", type: "벌레", kind: "active", when: "pending", target: "move", cat: "move" },
-    web: { name: "끈적끈적네트", type: "벌레", kind: "active", when: "any", target: "node", cat: "trap" },
-    rock: { name: "스텔스록", type: "바위", kind: "active", when: "any", target: "node", cat: "trap" },
-    stoneedge: { name: "스톤에지", type: "바위", kind: "active", when: "any", target: "none", cat: "attack" },
-    spite: { name: "원한", type: "고스트", kind: "active", when: "any", target: "none", cat: "attack" },
-    bond: { name: "길동무", type: "고스트", kind: "react", cat: "guard" },
-    ddance: { name: "용의춤", type: "드래곤", kind: "active", when: "any", target: "none", cat: "move" },
-    outrage: { name: "역린", type: "드래곤", kind: "active", when: "any", target: "none", cat: "attack" },
-    snatch: { name: "가로챈다", type: "악", kind: "active", when: "any", target: "enemyPiece", cat: "attack" },
-    spike: { name: "독압정", type: "악", kind: "active", when: "any", target: "node", cat: "trap" },
-    iron: { name: "철벽", type: "강철", kind: "react", cat: "guard" },
-    magnet: { name: "자력선", type: "강철", kind: "active", when: "any", target: "ally", cat: "move" },
-    moon: { name: "달빛", type: "페어리", kind: "react", cat: "guard" },
-    kiss: { name: "천사의키스", type: "페어리", kind: "active", when: "any", target: "enemy", cat: "attack" },
+    metronome: { name: "Metronome", type: "노말", kind: "active", when: "any", target: "none", cat: "random" },
+    wish: { name: "Wish", type: "노말", kind: "active", when: "throw", target: "result", cat: "throw" },
+    nitro: { name: "Flame Charge", type: "불꽃", kind: "active", when: "any", target: "none", cat: "move" },
+    flame: { name: "Flamethrower", type: "불꽃", kind: "active", when: "any", target: "enemy", cat: "attack" },
+    surf: { name: "Surf", type: "물", kind: "active", when: "any", target: "enemy", cat: "attack" },
+    rain: { name: "Rain Dance", type: "물", kind: "active", when: "any", target: "none", cat: "throw" },
+    growth: { name: "Growth", type: "풀", kind: "active", when: "pending", target: "pending", cat: "throw" },
+    sleep: { name: "Sleep Powder", type: "풀", kind: "active", when: "any", target: "enemy", cat: "attack" },
+    discharge: { name: "Discharge", type: "전기", kind: "active", when: "any", target: "none", cat: "attack" },
+    wildcharge: { name: "Wild Charge", type: "전기", kind: "active", when: "any", target: "none", cat: "move" },
+    veil: { name: "Aurora Veil", type: "얼음", kind: "active", when: "any", target: "none", cat: "guard" },
+    icecharge: { name: "Ice Beam", type: "얼음", kind: "active", when: "any", target: "enemy", cat: "attack" },
+    counter: { name: "Counter", type: "격투", kind: "react", cat: "guard" },
+    bulkup: { name: "Bulk Up", type: "격투", kind: "active", when: "any", target: "none", cat: "move" },
+    toxic: { name: "Toxic", type: "독", kind: "active", when: "any", target: "none", cat: "attack" },
+    poisonjab: { name: "Poison Jab", type: "독", kind: "active", when: "any", target: "enemy", cat: "attack" },
+    quake: { name: "Earthquake", type: "땅", kind: "active", when: "any", target: "none", cat: "attack" },
+    dig: { name: "Dig", type: "땅", kind: "active", when: "any", target: "none", cat: "guard" },
+    fly: { name: "Fly", type: "비행", kind: "active", when: "any", target: "none", cat: "move" },
+    tailwind: { name: "Tailwind", type: "비행", kind: "active", when: "any", target: "none", cat: "move" },
+    future: { name: "Future Sight", type: "에스퍼", kind: "active", when: "throw", target: "result", cat: "throw" },
+    allyswitch: { name: "Ally Switch", type: "에스퍼", kind: "active", when: "any", target: "enemy", cat: "move" }, // v8: 우리 말 ↔ 상대 말
+    uturn: { name: "U-turn", type: "벌레", kind: "active", when: "pending", target: "move", cat: "move" },
+    web: { name: "Sticky Web", type: "벌레", kind: "active", when: "any", target: "node", cat: "trap" },
+    rock: { name: "Stealth Rock", type: "바위", kind: "active", when: "any", target: "node", cat: "trap" },
+    stoneedge: { name: "Stone Edge", type: "바위", kind: "active", when: "any", target: "none", cat: "attack" },
+    spite: { name: "Spite", type: "고스트", kind: "active", when: "any", target: "none", cat: "attack" },
+    bond: { name: "Destiny Bond", type: "고스트", kind: "react", cat: "guard" },
+    ddance: { name: "Dragon Dance", type: "드래곤", kind: "active", when: "any", target: "none", cat: "move" },
+    outrage: { name: "Outrage", type: "드래곤", kind: "active", when: "any", target: "none", cat: "attack" },
+    snatch: { name: "Snatch", type: "악", kind: "active", when: "any", target: "enemyPiece", cat: "attack" },
+    spike: { name: "Toxic Spikes", type: "악", kind: "active", when: "any", target: "node", cat: "trap" },
+    iron: { name: "Iron Defense", type: "강철", kind: "react", cat: "guard" },
+    magnet: { name: "Magnet Pull", type: "강철", kind: "active", when: "any", target: "ally", cat: "move" },
+    moon: { name: "Moonlight", type: "페어리", kind: "react", cat: "guard" },
+    kiss: { name: "Sweet Kiss", type: "페어리", kind: "active", when: "any", target: "enemy", cat: "attack" },
   };
   const TYPE_SKILLS = {
     "노말": ["metronome", "wish"], "불꽃": ["nitro", "flame"], "물": ["surf", "rain"], "풀": ["growth", "sleep"],
@@ -1041,9 +1041,9 @@
   // 기술 쓰기 — 대상은 targetsFor 가 준 값 중 하나 (없는 기술은 null)
   function applySkill(state, i, target, slot) {
     const entry = legalSkills(state).find(x => x.piece === i && (!slot || x.slot === slot));
-    if (!entry) throw new Error("쓸 수 없는 기술: " + i);
+    if (!entry) throw new Error("Move not usable: " + i);
     const tg = target === undefined ? null : target;
-    if (!entry.targets.some(x => x === tg)) throw new Error("대상이 맞지 않음: " + JSON.stringify(tg));
+    if (!entry.targets.some(x => x === tg)) throw new Error("Bad target: " + JSON.stringify(tg));
     const s = clone(state);
     const ev = [];
     const p = s.pieces[i], key0 = entry.key;
@@ -1078,8 +1078,8 @@
     return !s.teams.some((t, ti) => t.paths.some((pp, k) => !(ti === p.team && k === p.slot) && pp[0] === root));
   }
   function applySwap(state, i, o) {
-    if (!o || !Array.isArray(o.path) || !o.path.length || o.path.indexOf(o.id) < 0) throw new Error("바꿀 포켓몬이 이상함");
-    if (!swapOk(state, i, o.path[0])) throw new Error("바꿀 수 없는 말 (골인했거나 같은 가족이 있음): " + i);
+    if (!o || !Array.isArray(o.path) || !o.path.length || o.path.indexOf(o.id) < 0) throw new Error("Bad swap Pokémon");
+    if (!swapOk(state, i, o.path[0])) throw new Error("Cannot swap this piece (already home, or same family in play): " + i);
     const s = clone(state);
     const ev = [];
     const p = s.pieces[i], t = s.teams[p.team];
@@ -1200,7 +1200,7 @@
   }
 
   function applyThrow(state, forced) {
-    if (state.phase !== "throw") throw new Error("지금은 던질 차례가 아님: " + state.phase);
+    if (state.phase !== "throw") throw new Error("Not time to throw: " + state.phase);
     const s = clone(state);
     const ev = [];
     let t;
@@ -1264,10 +1264,10 @@
   function applyGift(state, to) {
     const s = clone(state), ev = [];
     const q = (s.gifts || [])[0];
-    if (!q) throw new Error("줄 기술이 없음");
+    if (!q) throw new Error("No gift move waiting");
     const cand = giftTargets(s, q.team);
     if (to == null) to = autoGiftTarget(s, q.team);
-    if (cand.indexOf(to) < 0) throw new Error("받을 수 없는 말: " + to);
+    if (cand.indexOf(to) < 0) throw new Error("This piece cannot take the gift: " + to);
     s.pieces[to].gift = { key: q.key, used: false };
     s.gifts.shift();
     ev.push({ type: "gift", team: q.team, from: q.from, to, key: q.key });
@@ -1278,7 +1278,7 @@
 
   function applyMove(state, moveId, pick) {
     const m = legalMoves(state).find(x => x.id === moveId);
-    if (!m) throw new Error("둘 수 없는 수: " + moveId);
+    if (!m) throw new Error("Illegal move: " + moveId);
     if (m.unit === "new" && pick != null && waitingOf(state, state.turn).indexOf(pick) >= 0) m.pieces = [pick];
     const s = clone(state);
     const ev = [];
@@ -1528,11 +1528,11 @@
    * 볼 5단계: 상자에서 50·30·10·5·5, 잡을 확률 60% + 단계마다 5% (마스터볼만 원작처럼 100%) */
   const BALLS = ["poke", "great", "ultra", "luxury", "master"];
   const BALL_INFO = {
-    poke: { name: "몬스터볼", img: "poke-ball", odds: 50 },
-    great: { name: "슈퍼볼", img: "great-ball", odds: 30 },
-    ultra: { name: "하이퍼볼", img: "ultra-ball", odds: 10 },
-    luxury: { name: "럭셔리볼", img: "luxury-ball", odds: 5 },
-    master: { name: "마스터볼", img: "master-ball", odds: 5 },
+    poke: { name: "Poké Ball", img: "poke-ball", odds: 50 },
+    great: { name: "Great Ball", img: "great-ball", odds: 30 },
+    ultra: { name: "Ultra Ball", img: "ultra-ball", odds: 10 },
+    luxury: { name: "Luxury Ball", img: "luxury-ball", odds: 5 },
+    master: { name: "Master Ball", img: "master-ball", odds: 5 },
   };
   const WILD_ODDS = { c: 50, r: 30, u: 10, l: 10 }; // ❓ 풀숲에서 나오는 희귀도 (사용자 확정 2026-09-25)
   const WILD_ODDS_BOOST = { c: 30, r: 30, u: 20, l: 20 }; // 🕐 시계 문제를 맞히면 그 조우만 (사용자 확정 2026-09-26: 유니크·전설 +10, 일반 −20)
@@ -1644,19 +1644,25 @@
       for (let i = out.length - 1; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); const x = out[i]; out[i] = out[j]; out[j] = x; }
       return { counts, total, choices: out, answer: out.indexOf(total) };
     },
-    // 32500 → "삼만 이천오백" (앞자리 일은 빼고 읽는다: 10000 → "만", 1000 → "천")
+    // 32500 → "thirty-two thousand five hundred" (영어판: 소리 내어 읽는 영어 숫자. 이름은 옛 그대로 koNum)
     koNum(n) {
-      const D = ["", "일", "이", "삼", "사", "오", "육", "칠", "팔", "구"];
-      const four = x => [[1000, "천"], [100, "백"], [10, "십"], [1, ""]].map(([u, w]) => {
-        const d = Math.floor(x / u) % 10;
-        return d ? (d === 1 && w ? "" : D[d]) + w : "";
-      }).join("");
-      if (!n) return "영";
-      const man = Math.floor(n / 10000), rest = n % 10000;
-      return [man ? (man === 1 ? "" : four(man)) + "만" : "", rest ? four(rest) : ""].filter(Boolean).join(" ");
+      const ONES = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
+        "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"];
+      const TENS = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"];
+      const two = x => x < 20 ? ONES[x] : TENS[Math.floor(x / 10)] + (x % 10 ? "-" + ONES[x % 10] : "");
+      const three = x => [x >= 100 ? ONES[Math.floor(x / 100)] + " hundred" : "", x % 100 ? two(x % 100) : ""].filter(Boolean).join(" ");
+      n = Math.floor(Math.abs(Number(n) || 0));
+      if (!n) return "zero";
+      const out = [];
+      [[1e9, "billion"], [1e6, "million"], [1e3, "thousand"], [1, ""]].forEach(([u, w]) => {
+        const d = Math.floor(n / u) % 1000;
+        if (d) out.push(three(d) + (w ? " " + w : ""));
+      });
+      return out.join(" ");
     },
-    won: n => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "원",
-    clockText: c => c.h + "시" + (c.m ? " " + c.m + "분" : ""),
+    won: n => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " won",
+    // 디지털 시계 모양: 3:05 · 정각은 "3 o'clock"
+    clockText: c => c.m ? c.h + ":" + String(c.m).padStart(2, "0") : c.h + " o'clock",
   };
 
   const Yut = {

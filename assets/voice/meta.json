@@ -1,0 +1,10127 @@
+{
+"0": {
+"clip": [
+0.103,
+0.645
+],
+"file": "cfcd208495.mp3",
+"text": "0",
+"voice": "en-US-AnaNeural"
+},
+"1": {
+"clip": [
+0.103,
+0.487
+],
+"file": "c4ca4238a0.mp3",
+"text": "1",
+"voice": "en-US-AnaNeural"
+},
+"10": {
+"clip": [
+0.103,
+0.5
+],
+"file": "d3d9446802.mp3",
+"text": "10",
+"voice": "en-US-AnaNeural"
+},
+"100": {
+"clip": [
+0.103,
+0.934
+],
+"file": "f899139df5.mp3",
+"text": "100",
+"voice": "en-US-AnaNeural"
+},
+"11": {
+"clip": [
+0.101,
+0.671
+],
+"file": "6512bd43d9.mp3",
+"text": "11",
+"voice": "en-US-AnaNeural"
+},
+"12": {
+"clip": [
+0.103,
+0.632
+],
+"file": "c20ad4d76f.mp3",
+"text": "12",
+"voice": "en-US-AnaNeural"
+},
+"13": {
+"clip": [
+0.102,
+0.763
+],
+"file": "c51ce410c1.mp3",
+"text": "13",
+"voice": "en-US-AnaNeural"
+},
+"14": {
+"clip": [
+0.103,
+0.829
+],
+"file": "aab3238922.mp3",
+"text": "14",
+"voice": "en-US-AnaNeural"
+},
+"15": {
+"clip": [
+0.102,
+0.829
+],
+"file": "9bf31c7ff0.mp3",
+"text": "15",
+"voice": "en-US-AnaNeural"
+},
+"16": {
+"clip": [
+0.103,
+0.908
+],
+"file": "c74d97b01e.mp3",
+"text": "16",
+"voice": "en-US-AnaNeural"
+},
+"17": {
+"clip": [
+0.103,
+0.974
+],
+"file": "70efdf2ec9.mp3",
+"text": "17",
+"voice": "en-US-AnaNeural"
+},
+"18": {
+"clip": [
+0.101,
+0.671
+],
+"file": "6f4922f455.mp3",
+"text": "18",
+"voice": "en-US-AnaNeural"
+},
+"19": {
+"clip": [
+0.103,
+0.776
+],
+"file": "1f0e3dad99.mp3",
+"text": "19",
+"voice": "en-US-AnaNeural"
+},
+"2": {
+"clip": [
+0.103,
+0.408
+],
+"file": "c81e728d9d.mp3",
+"text": "2",
+"voice": "en-US-AnaNeural"
+},
+"20": {
+"clip": [
+0.103,
+0.671
+],
+"file": "98f1370821.mp3",
+"text": "20",
+"voice": "en-US-AnaNeural"
+},
+"21": {
+"clip": [
+0.103,
+0.908
+],
+"file": "3c59dc048e.mp3",
+"text": "21",
+"voice": "en-US-AnaNeural"
+},
+"22": {
+"clip": [
+0.103,
+0.895
+],
+"file": "b6d767d2f8.mp3",
+"text": "22",
+"voice": "en-US-AnaNeural"
+},
+"23": {
+"clip": [
+0.103,
+0.961
+],
+"file": "37693cfc74.mp3",
+"text": "23",
+"voice": "en-US-AnaNeural"
+},
+"24": {
+"clip": [
+0.103,
+0.947
+],
+"file": "1ff1de7740.mp3",
+"text": "24",
+"voice": "en-US-AnaNeural"
+},
+"25": {
+"clip": [
+0.103,
+0.987
+],
+"file": "8e296a067a.mp3",
+"text": "25",
+"voice": "en-US-AnaNeural"
+},
+"26": {
+"clip": [
+0.103,
+1.105
+],
+"file": "4e732ced34.mp3",
+"text": "26",
+"voice": "en-US-AnaNeural"
+},
+"27": {
+"clip": [
+0.103,
+1.079
+],
+"file": "02e74f10e0.mp3",
+"text": "27",
+"voice": "en-US-AnaNeural"
+},
+"28": {
+"clip": [
+0.103,
+0.855
+],
+"file": "33e75ff09d.mp3",
+"text": "28",
+"voice": "en-US-AnaNeural"
+},
+"29": {
+"clip": [
+0.103,
+0.974
+],
+"file": "6ea9ab1baa.mp3",
+"text": "29",
+"voice": "en-US-AnaNeural"
+},
+"3": {
+"clip": [
+0.103,
+0.487
+],
+"file": "eccbc87e4b.mp3",
+"text": "3",
+"voice": "en-US-AnaNeural"
+},
+"30": {
+"clip": [
+0.103,
+0.526
+],
+"file": "34173cb38f.mp3",
+"text": "30",
+"voice": "en-US-AnaNeural"
+},
+"31": {
+"clip": [
+0.102,
+0.842
+],
+"file": "c16a5320fa.mp3",
+"text": "31",
+"voice": "en-US-AnaNeural"
+},
+"32": {
+"clip": [
+0.103,
+0.829
+],
+"file": "6364d3f0f4.mp3",
+"text": "32",
+"voice": "en-US-AnaNeural"
+},
+"33": {
+"clip": [
+0.103,
+0.855
+],
+"file": "182be0c5cd.mp3",
+"text": "33",
+"voice": "en-US-AnaNeural"
+},
+"34": {
+"clip": [
+0.103,
+0.855
+],
+"file": "e369853df7.mp3",
+"text": "34",
+"voice": "en-US-AnaNeural"
+},
+"35": {
+"clip": [
+0.103,
+0.882
+],
+"file": "1c383cd30b.mp3",
+"text": "35",
+"voice": "en-US-AnaNeural"
+},
+"36": {
+"clip": [
+0.103,
+1.013
+],
+"file": "19ca14e7ea.mp3",
+"text": "36",
+"voice": "en-US-AnaNeural"
+},
+"37": {
+"clip": [
+0.103,
+1.0
+],
+"file": "a5bfc9e079.mp3",
+"text": "37",
+"voice": "en-US-AnaNeural"
+},
+"38": {
+"clip": [
+0.103,
+0.803
+],
+"file": "a5771bce93.mp3",
+"text": "38",
+"voice": "en-US-AnaNeural"
+},
+"39": {
+"clip": [
+0.102,
+0.895
+],
+"file": "d67d8ab4f4.mp3",
+"text": "39",
+"voice": "en-US-AnaNeural"
+},
+"4": {
+"clip": [
+0.103,
+0.513
+],
+"file": "a87ff679a2.mp3",
+"text": "4",
+"voice": "en-US-AnaNeural"
+},
+"40": {
+"clip": [
+0.102,
+0.618
+],
+"file": "d645920e39.mp3",
+"text": "40",
+"voice": "en-US-AnaNeural"
+},
+"41": {
+"clip": [
+0.102,
+0.908
+],
+"file": "3416a75f4c.mp3",
+"text": "41",
+"voice": "en-US-AnaNeural"
+},
+"42": {
+"clip": [
+0.103,
+0.908
+],
+"file": "a1d0c6e83f.mp3",
+"text": "42",
+"voice": "en-US-AnaNeural"
+},
+"43": {
+"clip": [
+0.102,
+0.961
+],
+"file": "17e62166fc.mp3",
+"text": "43",
+"voice": "en-US-AnaNeural"
+},
+"44": {
+"clip": [
+0.103,
+0.947
+],
+"file": "f7177163c8.mp3",
+"text": "44",
+"voice": "en-US-AnaNeural"
+},
+"45": {
+"clip": [
+0.103,
+0.974
+],
+"file": "6c8349cc72.mp3",
+"text": "45",
+"voice": "en-US-AnaNeural"
+},
+"46": {
+"clip": [
+0.103,
+1.105
+],
+"file": "d9d4f495e8.mp3",
+"text": "46",
+"voice": "en-US-AnaNeural"
+},
+"47": {
+"clip": [
+0.103,
+1.079
+],
+"file": "67c6a1e7ce.mp3",
+"text": "47",
+"voice": "en-US-AnaNeural"
+},
+"48": {
+"clip": [
+0.103,
+0.882
+],
+"file": "642e92efb7.mp3",
+"text": "48",
+"voice": "en-US-AnaNeural"
+},
+"49": {
+"clip": [
+0.102,
+0.974
+],
+"file": "f457c545a9.mp3",
+"text": "49",
+"voice": "en-US-AnaNeural"
+},
+"5": {
+"clip": [
+0.102,
+0.579
+],
+"file": "e4da3b7fbb.mp3",
+"text": "5",
+"voice": "en-US-AnaNeural"
+},
+"50": {
+"clip": [
+0.102,
+0.645
+],
+"file": "c0c7c76d30.mp3",
+"text": "50",
+"voice": "en-US-AnaNeural"
+},
+"51": {
+"clip": [
+0.102,
+0.921
+],
+"file": "2838023a77.mp3",
+"text": "51",
+"voice": "en-US-AnaNeural"
+},
+"52": {
+"clip": [
+0.102,
+0.895
+],
+"file": "9a1158154d.mp3",
+"text": "52",
+"voice": "en-US-AnaNeural"
+},
+"53": {
+"clip": [
+0.102,
+0.974
+],
+"file": "d82c8d1619.mp3",
+"text": "53",
+"voice": "en-US-AnaNeural"
+},
+"54": {
+"clip": [
+0.102,
+0.947
+],
+"file": "a684eceee7.mp3",
+"text": "54",
+"voice": "en-US-AnaNeural"
+},
+"55": {
+"clip": [
+0.102,
+0.974
+],
+"file": "b53b3a3d6a.mp3",
+"text": "55",
+"voice": "en-US-AnaNeural"
+},
+"56": {
+"clip": [
+0.102,
+1.118
+],
+"file": "9f61408e3a.mp3",
+"text": "56",
+"voice": "en-US-AnaNeural"
+},
+"57": {
+"clip": [
+0.102,
+1.079
+],
+"file": "72b32a1f75.mp3",
+"text": "57",
+"voice": "en-US-AnaNeural"
+},
+"58": {
+"clip": [
+0.102,
+0.882
+],
+"file": "66f041e16a.mp3",
+"text": "58",
+"voice": "en-US-AnaNeural"
+},
+"59": {
+"clip": [
+0.102,
+0.974
+],
+"file": "093f65e080.mp3",
+"text": "59",
+"voice": "en-US-AnaNeural"
+},
+"6": {
+"clip": [
+0.103,
+0.684
+],
+"file": "1679091c5a.mp3",
+"text": "6",
+"voice": "en-US-AnaNeural"
+},
+"60": {
+"clip": [
+0.103,
+0.75
+],
+"file": "072b030ba1.mp3",
+"text": "60",
+"voice": "en-US-AnaNeural"
+},
+"61": {
+"clip": [
+0.103,
+1.026
+],
+"file": "7f39f8317f.mp3",
+"text": "61",
+"voice": "en-US-AnaNeural"
+},
+"62": {
+"clip": [
+0.103,
+1.013
+],
+"file": "44f683a841.mp3",
+"text": "62",
+"voice": "en-US-AnaNeural"
+},
+"63": {
+"clip": [
+0.103,
+1.026
+],
+"file": "03afdbd66e.mp3",
+"text": "63",
+"voice": "en-US-AnaNeural"
+},
+"64": {
+"clip": [
+0.103,
+1.039
+],
+"file": "ea5d2f1c46.mp3",
+"text": "64",
+"voice": "en-US-AnaNeural"
+},
+"65": {
+"clip": [
+0.103,
+1.066
+],
+"file": "fc490ca45c.mp3",
+"text": "65",
+"voice": "en-US-AnaNeural"
+},
+"66": {
+"clip": [
+0.103,
+1.197
+],
+"file": "3295c76acb.mp3",
+"text": "66",
+"voice": "en-US-AnaNeural"
+},
+"67": {
+"clip": [
+0.103,
+1.171
+],
+"file": "735b90b456.mp3",
+"text": "67",
+"voice": "en-US-AnaNeural"
+},
+"68": {
+"clip": [
+0.103,
+0.974
+],
+"file": "a3f390d88e.mp3",
+"text": "68",
+"voice": "en-US-AnaNeural"
+},
+"69": {
+"clip": [
+0.103,
+1.053
+],
+"file": "14bfa6bb14.mp3",
+"text": "69",
+"voice": "en-US-AnaNeural"
+},
+"7": {
+"clip": [
+0.103,
+0.671
+],
+"file": "8f14e45fce.mp3",
+"text": "7",
+"voice": "en-US-AnaNeural"
+},
+"70": {
+"clip": [
+0.103,
+0.803
+],
+"file": "7cbbc409ec.mp3",
+"text": "70",
+"voice": "en-US-AnaNeural"
+},
+"71": {
+"clip": [
+0.103,
+1.053
+],
+"file": "e2c420d928.mp3",
+"text": "71",
+"voice": "en-US-AnaNeural"
+},
+"72": {
+"clip": [
+0.103,
+1.039
+],
+"file": "32bb90e897.mp3",
+"text": "72",
+"voice": "en-US-AnaNeural"
+},
+"73": {
+"clip": [
+0.103,
+1.079
+],
+"file": "d2ddea18f0.mp3",
+"text": "73",
+"voice": "en-US-AnaNeural"
+},
+"74": {
+"clip": [
+0.103,
+1.066
+],
+"file": "ad61ab1432.mp3",
+"text": "74",
+"voice": "en-US-AnaNeural"
+},
+"75": {
+"clip": [
+0.103,
+1.118
+],
+"file": "d09bf41544.mp3",
+"text": "75",
+"voice": "en-US-AnaNeural"
+},
+"76": {
+"clip": [
+0.103,
+1.224
+],
+"file": "fbd7939d67.mp3",
+"text": "76",
+"voice": "en-US-AnaNeural"
+},
+"77": {
+"clip": [
+0.103,
+1.211
+],
+"file": "28dd2c7955.mp3",
+"text": "77",
+"voice": "en-US-AnaNeural"
+},
+"78": {
+"clip": [
+0.103,
+1.0
+],
+"file": "35f4a8d465.mp3",
+"text": "78",
+"voice": "en-US-AnaNeural"
+},
+"79": {
+"clip": [
+0.103,
+1.092
+],
+"file": "d1fe173d08.mp3",
+"text": "79",
+"voice": "en-US-AnaNeural"
+},
+"8": {
+"clip": [
+0.103,
+0.434
+],
+"file": "c9f0f895fb.mp3",
+"text": "8",
+"voice": "en-US-AnaNeural"
+},
+"80": {
+"clip": [
+0.103,
+0.447
+],
+"file": "f033ab37c3.mp3",
+"text": "80",
+"voice": "en-US-AnaNeural"
+},
+"81": {
+"clip": [
+0.103,
+0.737
+],
+"file": "43ec517d68.mp3",
+"text": "81",
+"voice": "en-US-AnaNeural"
+},
+"82": {
+"clip": [
+0.103,
+0.763
+],
+"file": "9778d5d219.mp3",
+"text": "82",
+"voice": "en-US-AnaNeural"
+},
+"83": {
+"clip": [
+0.103,
+0.816
+],
+"file": "fe9fc289c3.mp3",
+"text": "83",
+"voice": "en-US-AnaNeural"
+},
+"84": {
+"clip": [
+0.103,
+0.803
+],
+"file": "68d30a9594.mp3",
+"text": "84",
+"voice": "en-US-AnaNeural"
+},
+"85": {
+"clip": [
+0.103,
+0.842
+],
+"file": "3ef815416f.mp3",
+"text": "85",
+"voice": "en-US-AnaNeural"
+},
+"86": {
+"clip": [
+0.103,
+0.961
+],
+"file": "93db85ed90.mp3",
+"text": "86",
+"voice": "en-US-AnaNeural"
+},
+"87": {
+"clip": [
+0.103,
+0.934
+],
+"file": "c7e1249ffc.mp3",
+"text": "87",
+"voice": "en-US-AnaNeural"
+},
+"88": {
+"clip": [
+0.103,
+0.724
+],
+"file": "2a38a4a931.mp3",
+"text": "88",
+"voice": "en-US-AnaNeural"
+},
+"89": {
+"clip": [
+0.103,
+0.803
+],
+"file": "7647966b73.mp3",
+"text": "89",
+"voice": "en-US-AnaNeural"
+},
+"9": {
+"clip": [
+0.103,
+0.526
+],
+"file": "45c48cce2e.mp3",
+"text": "9",
+"voice": "en-US-AnaNeural"
+},
+"90": {
+"clip": [
+0.103,
+0.632
+],
+"file": "8613985ec4.mp3",
+"text": "90",
+"voice": "en-US-AnaNeural"
+},
+"91": {
+"clip": [
+0.103,
+0.908
+],
+"file": "54229abfcf.mp3",
+"text": "91",
+"voice": "en-US-AnaNeural"
+},
+"92": {
+"clip": [
+0.103,
+0.895
+],
+"file": "92cc227532.mp3",
+"text": "92",
+"voice": "en-US-AnaNeural"
+},
+"93": {
+"clip": [
+0.103,
+0.947
+],
+"file": "98dce83da5.mp3",
+"text": "93",
+"voice": "en-US-AnaNeural"
+},
+"94": {
+"clip": [
+0.103,
+0.921
+],
+"file": "f4b9ec30ad.mp3",
+"text": "94",
+"voice": "en-US-AnaNeural"
+},
+"95": {
+"clip": [
+0.103,
+0.974
+],
+"file": "812b4ba287.mp3",
+"text": "95",
+"voice": "en-US-AnaNeural"
+},
+"96": {
+"clip": [
+0.103,
+1.105
+],
+"file": "26657d5ff9.mp3",
+"text": "96",
+"voice": "en-US-AnaNeural"
+},
+"97": {
+"clip": [
+0.103,
+1.079
+],
+"file": "e2ef524fbf.mp3",
+"text": "97",
+"voice": "en-US-AnaNeural"
+},
+"98": {
+"clip": [
+0.103,
+0.855
+],
+"file": "ed3d2c2199.mp3",
+"text": "98",
+"voice": "en-US-AnaNeural"
+},
+"99": {
+"clip": [
+0.103,
+0.947
+],
+"file": "ac627ab1cc.mp3",
+"text": "99",
+"voice": "en-US-AnaNeural"
+},
+"abomasnow": {
+"clip": [
+0.102,
+1.013
+],
+"file": "c6610b7f71.mp3",
+"text": "Abomasnow",
+"voice": "en-US-AnaNeural"
+},
+"abra": {
+"clip": [
+0.101,
+0.579
+],
+"file": "79218a25c2.mp3",
+"text": "Abra",
+"voice": "en-US-AnaNeural"
+},
+"absol": {
+"clip": [
+0.103,
+0.75
+],
+"file": "d4967cd58b.mp3",
+"text": "Absol",
+"voice": "en-US-AnaNeural"
+},
+"accelgor": {
+"clip": [
+0.103,
+0.882
+],
+"file": "2e884b6446.mp3",
+"text": "Accelgor",
+"voice": "en-US-AnaNeural"
+},
+"aegislash": {
+"clip": [
+0.103,
+1.0
+],
+"file": "e39356e67d.mp3",
+"text": "Aegislash",
+"voice": "en-US-AnaNeural"
+},
+"aerodactyl": {
+"clip": [
+0.103,
+1.039
+],
+"file": "591d4c80e6.mp3",
+"text": "Aerodactyl",
+"voice": "en-US-AnaNeural"
+},
+"aggron": {
+"clip": [
+0.102,
+0.645
+],
+"file": "c61be37ffd.mp3",
+"text": "Aggron",
+"voice": "en-US-AnaNeural"
+},
+"aipom": {
+"clip": [
+0.101,
+0.658
+],
+"file": "613cf8a90c.mp3",
+"text": "Aipom",
+"voice": "en-US-AnaNeural"
+},
+"alakazam": {
+"clip": [
+0.103,
+0.974
+],
+"file": "54af55c832.mp3",
+"text": "Alakazam",
+"voice": "en-US-AnaNeural"
+},
+"alcremie": {
+"clip": [
+0.103,
+0.75
+],
+"file": "fc52f9092b.mp3",
+"text": "Alcremie",
+"voice": "en-US-AnaNeural"
+},
+"alomomola": {
+"clip": [
+0.101,
+1.013
+],
+"file": "3666ae9743.mp3",
+"text": "Alomomola",
+"voice": "en-US-AnaNeural"
+},
+"altaria": {
+"clip": [
+0.103,
+0.868
+],
+"file": "d0d728d729.mp3",
+"text": "Altaria",
+"voice": "en-US-AnaNeural"
+},
+"amaura": {
+"clip": [
+0.101,
+0.684
+],
+"file": "23e9e1d73c.mp3",
+"text": "Amaura",
+"voice": "en-US-AnaNeural"
+},
+"ambipom": {
+"clip": [
+0.103,
+0.829
+],
+"file": "9730839bb4.mp3",
+"text": "Ambipom",
+"voice": "en-US-AnaNeural"
+},
+"amoonguss": {
+"clip": [
+0.102,
+0.934
+],
+"file": "c788acf1e2.mp3",
+"text": "Amoonguss",
+"voice": "en-US-AnaNeural"
+},
+"ampharos": {
+"clip": [
+0.103,
+0.974
+],
+"file": "ec4a353dcc.mp3",
+"text": "Ampharos",
+"voice": "en-US-AnaNeural"
+},
+"annihilape": {
+"clip": [
+0.102,
+0.908
+],
+"file": "3c3e5cd376.mp3",
+"text": "Annihilape",
+"voice": "en-US-AnaNeural"
+},
+"anorith": {
+"clip": [
+0.103,
+0.737
+],
+"file": "f4f9446d46.mp3",
+"text": "Anorith",
+"voice": "en-US-AnaNeural"
+},
+"appletun": {
+"clip": [
+0.103,
+0.842
+],
+"file": "7fba22c693.mp3",
+"text": "Appletun",
+"voice": "en-US-AnaNeural"
+},
+"applin": {
+"clip": [
+0.103,
+0.618
+],
+"file": "481c6bd0af.mp3",
+"text": "Applin",
+"voice": "en-US-AnaNeural"
+},
+"araquanid": {
+"clip": [
+0.103,
+0.908
+],
+"file": "3485ed76fe.mp3",
+"text": "Araquanid",
+"voice": "en-US-AnaNeural"
+},
+"arbok": {
+"clip": [
+0.103,
+0.711
+],
+"file": "8e78638a3a.mp3",
+"text": "Arbok",
+"voice": "en-US-AnaNeural"
+},
+"arboliva": {
+"clip": [
+0.103,
+0.882
+],
+"file": "76111c6123.mp3",
+"text": "Arboliva",
+"voice": "en-US-AnaNeural"
+},
+"arcanine": {
+"clip": [
+0.103,
+0.789
+],
+"file": "c2d8f650da.mp3",
+"text": "Arcanine",
+"voice": "en-US-AnaNeural"
+},
+"arceus": {
+"clip": [
+0.103,
+0.842
+],
+"file": "fe0c7eb420.mp3",
+"text": "Arceus",
+"voice": "en-US-AnaNeural"
+},
+"archaludon": {
+"clip": [
+0.103,
+0.855
+],
+"file": "34c1dc3ff9.mp3",
+"text": "Archaludon",
+"voice": "en-US-AnaNeural"
+},
+"archen": {
+"clip": [
+0.103,
+0.711
+],
+"file": "39e8c0bdaa.mp3",
+"text": "Archen",
+"voice": "en-US-AnaNeural"
+},
+"archeops": {
+"clip": [
+0.103,
+0.921
+],
+"file": "e20dc6c201.mp3",
+"text": "Archeops",
+"voice": "en-US-AnaNeural"
+},
+"arctibax": {
+"clip": [
+0.103,
+0.987
+],
+"file": "560525944f.mp3",
+"text": "Arctibax",
+"voice": "en-US-AnaNeural"
+},
+"arctovish": {
+"clip": [
+0.103,
+0.908
+],
+"file": "5107fe20da.mp3",
+"text": "Arctovish",
+"voice": "en-US-AnaNeural"
+},
+"arctozolt": {
+"clip": [
+0.103,
+0.921
+],
+"file": "8bc40f4c84.mp3",
+"text": "Arctozolt",
+"voice": "en-US-AnaNeural"
+},
+"ariados": {
+"clip": [
+0.103,
+0.947
+],
+"file": "9a45ad9657.mp3",
+"text": "Ariados",
+"voice": "en-US-AnaNeural"
+},
+"armaldo": {
+"clip": [
+0.103,
+0.934
+],
+"file": "d0d982225c.mp3",
+"text": "Armaldo",
+"voice": "en-US-AnaNeural"
+},
+"armarouge": {
+"clip": [
+0.103,
+0.789
+],
+"file": "5fbffb82f6.mp3",
+"text": "Armarouge",
+"voice": "en-US-AnaNeural"
+},
+"aromatisse": {
+"clip": [
+0.101,
+1.0
+],
+"file": "bfd3607fdc.mp3",
+"text": "Aromatisse",
+"voice": "en-US-AnaNeural"
+},
+"aron": {
+"clip": [
+0.102,
+0.539
+],
+"file": "9835260c7c.mp3",
+"text": "Aron",
+"voice": "en-US-AnaNeural"
+},
+"arrokuda": {
+"clip": [
+0.103,
+0.776
+],
+"file": "906570c744.mp3",
+"text": "Arrokuda",
+"voice": "en-US-AnaNeural"
+},
+"articuno": {
+"clip": [
+0.103,
+0.921
+],
+"file": "d469cc297e.mp3",
+"text": "Articuno",
+"voice": "en-US-AnaNeural"
+},
+"audino": {
+"clip": [
+0.101,
+0.75
+],
+"file": "e1b95db18b.mp3",
+"text": "Audino",
+"voice": "en-US-AnaNeural"
+},
+"aurorus": {
+"clip": [
+0.101,
+0.855
+],
+"file": "12aa9ac3cf.mp3",
+"text": "Aurorus",
+"voice": "en-US-AnaNeural"
+},
+"avalugg": {
+"clip": [
+0.103,
+0.75
+],
+"file": "e3b65c54ea.mp3",
+"text": "Avalugg",
+"voice": "en-US-AnaNeural"
+},
+"axew": {
+"clip": [
+0.103,
+0.566
+],
+"file": "51b166fa9a.mp3",
+"text": "Axew",
+"voice": "en-US-AnaNeural"
+},
+"azelf": {
+"clip": [
+0.101,
+0.75
+],
+"file": "8cb85760b6.mp3",
+"text": "Azelf",
+"voice": "en-US-AnaNeural"
+},
+"azumarill": {
+"clip": [
+0.103,
+0.961
+],
+"file": "5c43f50eba.mp3",
+"text": "Azumarill",
+"voice": "en-US-AnaNeural"
+},
+"azurill": {
+"clip": [
+0.103,
+0.737
+],
+"file": "874fa32f56.mp3",
+"text": "Azurill",
+"voice": "en-US-AnaNeural"
+},
+"bagon": {
+"clip": [
+0.103,
+0.671
+],
+"file": "77b94c0f1a.mp3",
+"text": "Bagon",
+"voice": "en-US-AnaNeural"
+},
+"baltoy": {
+"clip": [
+0.103,
+0.75
+],
+"file": "fd83bd79e8.mp3",
+"text": "Baltoy",
+"voice": "en-US-AnaNeural"
+},
+"banette": {
+"clip": [
+0.103,
+0.592
+],
+"file": "92d4925c80.mp3",
+"text": "Banette",
+"voice": "en-US-AnaNeural"
+},
+"barbaracle": {
+"clip": [
+0.103,
+0.895
+],
+"file": "6ca243cc2d.mp3",
+"text": "Barbaracle",
+"voice": "en-US-AnaNeural"
+},
+"barboach": {
+"clip": [
+0.103,
+0.829
+],
+"file": "96b4c846c8.mp3",
+"text": "Barboach",
+"voice": "en-US-AnaNeural"
+},
+"barraskewda": {
+"clip": [
+0.103,
+0.947
+],
+"file": "7ed5207564.mp3",
+"text": "Barraskewda",
+"voice": "en-US-AnaNeural"
+},
+"basculegion": {
+"clip": [
+0.103,
+1.105
+],
+"file": "87d30d1e23.mp3",
+"text": "Basculegion",
+"voice": "en-US-AnaNeural"
+},
+"basculin": {
+"clip": [
+0.103,
+0.855
+],
+"file": "54c10b9736.mp3",
+"text": "Basculin",
+"voice": "en-US-AnaNeural"
+},
+"bastiodon": {
+"clip": [
+0.103,
+0.974
+],
+"file": "06397fbcbc.mp3",
+"text": "Bastiodon",
+"voice": "en-US-AnaNeural"
+},
+"baxcalibur": {
+"clip": [
+0.103,
+1.079
+],
+"file": "487913d1d7.mp3",
+"text": "Baxcalibur",
+"voice": "en-US-AnaNeural"
+},
+"bayleef": {
+"clip": [
+0.103,
+0.737
+],
+"file": "6c24cb1ee5.mp3",
+"text": "Bayleef",
+"voice": "en-US-AnaNeural"
+},
+"beartic": {
+"clip": [
+0.103,
+0.776
+],
+"file": "968cc0d653.mp3",
+"text": "Beartic",
+"voice": "en-US-AnaNeural"
+},
+"beautifly": {
+"clip": [
+0.103,
+0.855
+],
+"file": "9a982a3a29.mp3",
+"text": "Beautifly",
+"voice": "en-US-AnaNeural"
+},
+"beedrill": {
+"clip": [
+0.103,
+0.763
+],
+"file": "cc8da576ef.mp3",
+"text": "Beedrill",
+"voice": "en-US-AnaNeural"
+},
+"beheeyem": {
+"clip": [
+0.103,
+0.645
+],
+"file": "675f0fd4c4.mp3",
+"text": "Beheeyem",
+"voice": "en-US-AnaNeural"
+},
+"beldum": {
+"clip": [
+0.103,
+0.697
+],
+"file": "64bcaa7d71.mp3",
+"text": "Beldum",
+"voice": "en-US-AnaNeural"
+},
+"bellibolt": {
+"clip": [
+0.103,
+0.855
+],
+"file": "ff86881bd9.mp3",
+"text": "Bellibolt",
+"voice": "en-US-AnaNeural"
+},
+"bellossom": {
+"clip": [
+0.103,
+0.776
+],
+"file": "3b8676871e.mp3",
+"text": "Bellossom",
+"voice": "en-US-AnaNeural"
+},
+"bellsprout": {
+"clip": [
+0.103,
+0.855
+],
+"file": "f4b012e116.mp3",
+"text": "Bellsprout",
+"voice": "en-US-AnaNeural"
+},
+"bergmite": {
+"clip": [
+0.103,
+0.776
+],
+"file": "ec347e528a.mp3",
+"text": "Bergmite",
+"voice": "en-US-AnaNeural"
+},
+"bewear": {
+"clip": [
+0.103,
+0.632
+],
+"file": "f77d1545c0.mp3",
+"text": "Bewear",
+"voice": "en-US-AnaNeural"
+},
+"bibarel": {
+"clip": [
+0.103,
+0.618
+],
+"file": "2794b824e7.mp3",
+"text": "Bibarel",
+"voice": "en-US-AnaNeural"
+},
+"bidoof": {
+"clip": [
+0.103,
+0.684
+],
+"file": "cd4cc5f050.mp3",
+"text": "Bidoof",
+"voice": "en-US-AnaNeural"
+},
+"binacle": {
+"clip": [
+0.103,
+0.737
+],
+"file": "692e4455c6.mp3",
+"text": "Binacle",
+"voice": "en-US-AnaNeural"
+},
+"bisharp": {
+"clip": [
+0.103,
+0.763
+],
+"file": "971055ac55.mp3",
+"text": "Bisharp",
+"voice": "en-US-AnaNeural"
+},
+"blacephalon": {
+"clip": [
+0.103,
+1.0
+],
+"file": "51142beaf8.mp3",
+"text": "Blacephalon",
+"voice": "en-US-AnaNeural"
+},
+"blastoise": {
+"clip": [
+0.103,
+0.974
+],
+"file": "3b8cc476a0.mp3",
+"text": "Blastoise",
+"voice": "en-US-AnaNeural"
+},
+"blaziken": {
+"clip": [
+0.103,
+0.895
+],
+"file": "303446dcb3.mp3",
+"text": "Blaziken",
+"voice": "en-US-AnaNeural"
+},
+"blipbug": {
+"clip": [
+0.103,
+0.75
+],
+"file": "06fcfe7a95.mp3",
+"text": "Blipbug",
+"voice": "en-US-AnaNeural"
+},
+"blissey": {
+"clip": [
+0.103,
+0.592
+],
+"file": "85032d9aac.mp3",
+"text": "Blissey",
+"voice": "en-US-AnaNeural"
+},
+"blitzle": {
+"clip": [
+0.103,
+0.724
+],
+"file": "4d720bb8c1.mp3",
+"text": "Blitzle",
+"voice": "en-US-AnaNeural"
+},
+"boldore": {
+"clip": [
+0.103,
+0.75
+],
+"file": "f1ab223c65.mp3",
+"text": "Boldore",
+"voice": "en-US-AnaNeural"
+},
+"boltund": {
+"clip": [
+0.103,
+0.868
+],
+"file": "16236ae3fe.mp3",
+"text": "Boltund",
+"voice": "en-US-AnaNeural"
+},
+"bombirdier": {
+"clip": [
+0.103,
+0.882
+],
+"file": "de60aa1c2f.mp3",
+"text": "Bombirdier",
+"voice": "en-US-AnaNeural"
+},
+"bonsly": {
+"clip": [
+0.103,
+0.789
+],
+"file": "88ad38b53b.mp3",
+"text": "Bonsly",
+"voice": "en-US-AnaNeural"
+},
+"bouffalant": {
+"clip": [
+0.103,
+0.803
+],
+"file": "7f953b4b26.mp3",
+"text": "Bouffalant",
+"voice": "en-US-AnaNeural"
+},
+"bounsweet": {
+"clip": [
+0.103,
+0.842
+],
+"file": "1facf88010.mp3",
+"text": "Bounsweet",
+"voice": "en-US-AnaNeural"
+},
+"braixen": {
+"clip": [
+0.103,
+0.75
+],
+"file": "75aaeece07.mp3",
+"text": "Braixen",
+"voice": "en-US-AnaNeural"
+},
+"brambleghast": {
+"clip": [
+0.103,
+1.079
+],
+"file": "87906f9b55.mp3",
+"text": "Brambleghast",
+"voice": "en-US-AnaNeural"
+},
+"bramblin": {
+"clip": [
+0.103,
+0.763
+],
+"file": "4c478448ac.mp3",
+"text": "Bramblin",
+"voice": "en-US-AnaNeural"
+},
+"braviary": {
+"clip": [
+0.103,
+0.882
+],
+"file": "fd43759b6a.mp3",
+"text": "Braviary",
+"voice": "en-US-AnaNeural"
+},
+"breloom": {
+"clip": [
+0.103,
+0.632
+],
+"file": "78acf45550.mp3",
+"text": "Breloom",
+"voice": "en-US-AnaNeural"
+},
+"brionne": {
+"clip": [
+0.103,
+0.592
+],
+"file": "1b941fc14d.mp3",
+"text": "Brionne",
+"voice": "en-US-AnaNeural"
+},
+"bronzong": {
+"clip": [
+0.103,
+0.855
+],
+"file": "042a844fbd.mp3",
+"text": "Bronzong",
+"voice": "en-US-AnaNeural"
+},
+"bronzor": {
+"clip": [
+0.103,
+0.645
+],
+"file": "b806726735.mp3",
+"text": "Bronzor",
+"voice": "en-US-AnaNeural"
+},
+"brute bonnet": {
+"clip": [
+0.103,
+0.934
+],
+"file": "cc683ffb90.mp3",
+"text": "Brute Bonnet",
+"voice": "en-US-AnaNeural"
+},
+"bruxish": {
+"clip": [
+0.103,
+0.829
+],
+"file": "000b519a54.mp3",
+"text": "Bruxish",
+"voice": "en-US-AnaNeural"
+},
+"budew": {
+"clip": [
+0.103,
+0.539
+],
+"file": "efc422ba7a.mp3",
+"text": "Budew",
+"voice": "en-US-AnaNeural"
+},
+"buizel": {
+"clip": [
+0.103,
+0.671
+],
+"file": "d1b95e8e10.mp3",
+"text": "Buizel",
+"voice": "en-US-AnaNeural"
+},
+"bulbasaur": {
+"clip": [
+0.103,
+0.842
+],
+"file": "164e304dae.mp3",
+"text": "Bulbasaur",
+"voice": "en-US-AnaNeural"
+},
+"buneary": {
+"clip": [
+0.103,
+0.724
+],
+"file": "edbc7618f0.mp3",
+"text": "Buneary",
+"voice": "en-US-AnaNeural"
+},
+"bunnelby": {
+"clip": [
+0.103,
+0.684
+],
+"file": "d7c98f44d8.mp3",
+"text": "Bunnelby",
+"voice": "en-US-AnaNeural"
+},
+"burmy": {
+"clip": [
+0.103,
+0.539
+],
+"file": "344b27b3df.mp3",
+"text": "Burmy",
+"voice": "en-US-AnaNeural"
+},
+"butterfree": {
+"clip": [
+0.103,
+0.789
+],
+"file": "4b39197d55.mp3",
+"text": "Butterfree",
+"voice": "en-US-AnaNeural"
+},
+"buzzwole": {
+"clip": [
+0.103,
+0.776
+],
+"file": "e0f374b7a1.mp3",
+"text": "Buzzwole",
+"voice": "en-US-AnaNeural"
+},
+"cacnea": {
+"clip": [
+0.103,
+0.75
+],
+"file": "8078914b06.mp3",
+"text": "Cacnea",
+"voice": "en-US-AnaNeural"
+},
+"cacturne": {
+"clip": [
+0.103,
+0.776
+],
+"file": "fcbd9afa4e.mp3",
+"text": "Cacturne",
+"voice": "en-US-AnaNeural"
+},
+"calyrex": {
+"clip": [
+0.103,
+0.961
+],
+"file": "36fd4f6862.mp3",
+"text": "Calyrex",
+"voice": "en-US-AnaNeural"
+},
+"camerupt": {
+"clip": [
+0.103,
+0.882
+],
+"file": "e7f2e0960e.mp3",
+"text": "Camerupt",
+"voice": "en-US-AnaNeural"
+},
+"capsakid": {
+"clip": [
+0.103,
+0.921
+],
+"file": "b687b63905.mp3",
+"text": "Capsakid",
+"voice": "en-US-AnaNeural"
+},
+"carbink": {
+"clip": [
+0.103,
+0.789
+],
+"file": "7beb6bc53e.mp3",
+"text": "Carbink",
+"voice": "en-US-AnaNeural"
+},
+"carkol": {
+"clip": [
+0.103,
+0.671
+],
+"file": "2766cf5839.mp3",
+"text": "Carkol",
+"voice": "en-US-AnaNeural"
+},
+"carnivine": {
+"clip": [
+0.103,
+0.842
+],
+"file": "09b740d95b.mp3",
+"text": "Carnivine",
+"voice": "en-US-AnaNeural"
+},
+"carracosta": {
+"clip": [
+0.103,
+1.026
+],
+"file": "ce2d6d43eb.mp3",
+"text": "Carracosta",
+"voice": "en-US-AnaNeural"
+},
+"carvanha": {
+"clip": [
+0.103,
+0.842
+],
+"file": "484f7f7b25.mp3",
+"text": "Carvanha",
+"voice": "en-US-AnaNeural"
+},
+"cascoon": {
+"clip": [
+0.103,
+0.803
+],
+"file": "eb71dcc019.mp3",
+"text": "Cascoon",
+"voice": "en-US-AnaNeural"
+},
+"castform": {
+"clip": [
+0.103,
+0.961
+],
+"file": "608338e869.mp3",
+"text": "Castform",
+"voice": "en-US-AnaNeural"
+},
+"caterpie": {
+"clip": [
+0.103,
+0.816
+],
+"file": "958ceb9f4c.mp3",
+"text": "Caterpie",
+"voice": "en-US-AnaNeural"
+},
+"celebi": {
+"clip": [
+0.103,
+0.763
+],
+"file": "83b020b0a7.mp3",
+"text": "Celebi",
+"voice": "en-US-AnaNeural"
+},
+"celesteela": {
+"clip": [
+0.103,
+1.079
+],
+"file": "ec235df48d.mp3",
+"text": "Celesteela",
+"voice": "en-US-AnaNeural"
+},
+"centiskorch": {
+"clip": [
+0.103,
+1.132
+],
+"file": "32470d1b32.mp3",
+"text": "Centiskorch",
+"voice": "en-US-AnaNeural"
+},
+"ceruledge": {
+"clip": [
+0.103,
+0.934
+],
+"file": "4c689350b3.mp3",
+"text": "Ceruledge",
+"voice": "en-US-AnaNeural"
+},
+"cetitan": {
+"clip": [
+0.103,
+0.816
+],
+"file": "91b6ccce5d.mp3",
+"text": "Cetitan",
+"voice": "en-US-AnaNeural"
+},
+"cetoddle": {
+"clip": [
+0.103,
+0.789
+],
+"file": "a46f8e68bc.mp3",
+"text": "Cetoddle",
+"voice": "en-US-AnaNeural"
+},
+"chandelure": {
+"clip": [
+0.103,
+0.882
+],
+"file": "56d6cf7ac0.mp3",
+"text": "Chandelure",
+"voice": "en-US-AnaNeural"
+},
+"chansey": {
+"clip": [
+0.103,
+0.724
+],
+"file": "228dae079f.mp3",
+"text": "Chansey",
+"voice": "en-US-AnaNeural"
+},
+"charcadet": {
+"clip": [
+0.103,
+0.816
+],
+"file": "6452680317.mp3",
+"text": "Charcadet",
+"voice": "en-US-AnaNeural"
+},
+"charizard": {
+"clip": [
+0.103,
+0.855
+],
+"file": "6a4b9e817f.mp3",
+"text": "Charizard",
+"voice": "en-US-AnaNeural"
+},
+"charjabug": {
+"clip": [
+0.103,
+0.895
+],
+"file": "9009008e29.mp3",
+"text": "Charjabug",
+"voice": "en-US-AnaNeural"
+},
+"charmander": {
+"clip": [
+0.103,
+0.895
+],
+"file": "f0eb43ee18.mp3",
+"text": "Charmander",
+"voice": "en-US-AnaNeural"
+},
+"charmeleon": {
+"clip": [
+0.103,
+0.974
+],
+"file": "87d0850c53.mp3",
+"text": "Charmeleon",
+"voice": "en-US-AnaNeural"
+},
+"chatot": {
+"clip": [
+0.103,
+0.618
+],
+"file": "3b75bdaf53.mp3",
+"text": "Chatot",
+"voice": "en-US-AnaNeural"
+},
+"cherrim": {
+"clip": [
+0.103,
+0.803
+],
+"file": "0fd69bc01b.mp3",
+"text": "Cherrim",
+"voice": "en-US-AnaNeural"
+},
+"cherubi": {
+"clip": [
+0.103,
+0.711
+],
+"file": "76553f1e02.mp3",
+"text": "Cherubi",
+"voice": "en-US-AnaNeural"
+},
+"chesnaught": {
+"clip": [
+0.103,
+0.763
+],
+"file": "330905147d.mp3",
+"text": "Chesnaught",
+"voice": "en-US-AnaNeural"
+},
+"chespin": {
+"clip": [
+0.103,
+0.803
+],
+"file": "5be537d925.mp3",
+"text": "Chespin",
+"voice": "en-US-AnaNeural"
+},
+"chewtle": {
+"clip": [
+0.103,
+0.592
+],
+"file": "0487e2b957.mp3",
+"text": "Chewtle",
+"voice": "en-US-AnaNeural"
+},
+"chi yu": {
+"clip": [
+0.103,
+0.671
+],
+"file": "a67b16d37a.mp3",
+"text": "Chi-Yu",
+"voice": "en-US-AnaNeural"
+},
+"chien pao": {
+"clip": [
+0.103,
+0.868
+],
+"file": "1de01dd353.mp3",
+"text": "Chien-Pao",
+"voice": "en-US-AnaNeural"
+},
+"chikorita": {
+"clip": [
+0.103,
+0.882
+],
+"file": "5cc85d8a81.mp3",
+"text": "Chikorita",
+"voice": "en-US-AnaNeural"
+},
+"chimchar": {
+"clip": [
+0.103,
+0.803
+],
+"file": "402f147588.mp3",
+"text": "Chimchar",
+"voice": "en-US-AnaNeural"
+},
+"chimecho": {
+"clip": [
+0.103,
+0.816
+],
+"file": "d9e663ee9f.mp3",
+"text": "Chimecho",
+"voice": "en-US-AnaNeural"
+},
+"chinchou": {
+"clip": [
+0.103,
+0.737
+],
+"file": "3483dda3c4.mp3",
+"text": "Chinchou",
+"voice": "en-US-AnaNeural"
+},
+"chingling": {
+"clip": [
+0.103,
+0.763
+],
+"file": "50ef5b7dd2.mp3",
+"text": "Chingling",
+"voice": "en-US-AnaNeural"
+},
+"cinccino": {
+"clip": [
+0.103,
+0.947
+],
+"file": "db4d0e3dcb.mp3",
+"text": "Cinccino",
+"voice": "en-US-AnaNeural"
+},
+"cinderace": {
+"clip": [
+0.103,
+0.934
+],
+"file": "dbd6d028b8.mp3",
+"text": "Cinderace",
+"voice": "en-US-AnaNeural"
+},
+"clamperl": {
+"clip": [
+0.103,
+0.908
+],
+"file": "87e8cfa790.mp3",
+"text": "Clamperl",
+"voice": "en-US-AnaNeural"
+},
+"clauncher": {
+"clip": [
+0.103,
+0.658
+],
+"file": "894587fe11.mp3",
+"text": "Clauncher",
+"voice": "en-US-AnaNeural"
+},
+"clawitzer": {
+"clip": [
+0.103,
+0.842
+],
+"file": "ab2d752868.mp3",
+"text": "Clawitzer",
+"voice": "en-US-AnaNeural"
+},
+"claydol": {
+"clip": [
+0.103,
+0.711
+],
+"file": "c00f27898f.mp3",
+"text": "Claydol",
+"voice": "en-US-AnaNeural"
+},
+"clefable": {
+"clip": [
+0.103,
+0.763
+],
+"file": "5568b4beb1.mp3",
+"text": "Clefable",
+"voice": "en-US-AnaNeural"
+},
+"clefairy": {
+"clip": [
+0.103,
+0.75
+],
+"file": "29c635b1d9.mp3",
+"text": "Clefairy",
+"voice": "en-US-AnaNeural"
+},
+"cleffa": {
+"clip": [
+0.103,
+0.618
+],
+"file": "8c13cf3e28.mp3",
+"text": "Cleffa",
+"voice": "en-US-AnaNeural"
+},
+"clobbopus": {
+"clip": [
+0.103,
+0.908
+],
+"file": "c426156501.mp3",
+"text": "Clobbopus",
+"voice": "en-US-AnaNeural"
+},
+"clodsire": {
+"clip": [
+0.103,
+0.882
+],
+"file": "f90d608107.mp3",
+"text": "Clodsire",
+"voice": "en-US-AnaNeural"
+},
+"cloyster": {
+"clip": [
+0.103,
+0.658
+],
+"file": "cc0272074c.mp3",
+"text": "Cloyster",
+"voice": "en-US-AnaNeural"
+},
+"coalossal": {
+"clip": [
+0.103,
+0.868
+],
+"file": "003fa9f204.mp3",
+"text": "Coalossal",
+"voice": "en-US-AnaNeural"
+},
+"cobalion": {
+"clip": [
+0.103,
+0.868
+],
+"file": "5e7bfbddac.mp3",
+"text": "Cobalion",
+"voice": "en-US-AnaNeural"
+},
+"cofagrigus": {
+"clip": [
+0.103,
+1.184
+],
+"file": "053c0db72f.mp3",
+"text": "Cofagrigus",
+"voice": "en-US-AnaNeural"
+},
+"combee": {
+"clip": [
+0.103,
+0.697
+],
+"file": "69a34c3228.mp3",
+"text": "Combee",
+"voice": "en-US-AnaNeural"
+},
+"combusken": {
+"clip": [
+0.103,
+0.895
+],
+"file": "a4e8b8395a.mp3",
+"text": "Combusken",
+"voice": "en-US-AnaNeural"
+},
+"comfey": {
+"clip": [
+0.103,
+0.711
+],
+"file": "c6d400e365.mp3",
+"text": "Comfey",
+"voice": "en-US-AnaNeural"
+},
+"conkeldurr": {
+"clip": [
+0.103,
+0.842
+],
+"file": "272024a07a.mp3",
+"text": "Conkeldurr",
+"voice": "en-US-AnaNeural"
+},
+"copperajah": {
+"clip": [
+0.103,
+0.895
+],
+"file": "a5e191517d.mp3",
+"text": "Copperajah",
+"voice": "en-US-AnaNeural"
+},
+"corphish": {
+"clip": [
+0.103,
+0.803
+],
+"file": "e7392bcc08.mp3",
+"text": "Corphish",
+"voice": "en-US-AnaNeural"
+},
+"corsola": {
+"clip": [
+0.103,
+0.816
+],
+"file": "748e3558be.mp3",
+"text": "Corsola",
+"voice": "en-US-AnaNeural"
+},
+"corviknight": {
+"clip": [
+0.103,
+0.842
+],
+"file": "1723387998.mp3",
+"text": "Corviknight",
+"voice": "en-US-AnaNeural"
+},
+"corvisquire": {
+"clip": [
+0.103,
+0.987
+],
+"file": "1f2a8ad8f6.mp3",
+"text": "Corvisquire",
+"voice": "en-US-AnaNeural"
+},
+"cosmoem": {
+"clip": [
+0.103,
+0.868
+],
+"file": "85400a67e1.mp3",
+"text": "Cosmoem",
+"voice": "en-US-AnaNeural"
+},
+"cosmog": {
+"clip": [
+0.103,
+0.763
+],
+"file": "027704e848.mp3",
+"text": "Cosmog",
+"voice": "en-US-AnaNeural"
+},
+"cottonee": {
+"clip": [
+0.103,
+0.684
+],
+"file": "ac2b57f181.mp3",
+"text": "Cottonee",
+"voice": "en-US-AnaNeural"
+},
+"crabominable": {
+"clip": [
+0.103,
+1.013
+],
+"file": "1fb7f76119.mp3",
+"text": "Crabominable",
+"voice": "en-US-AnaNeural"
+},
+"crabrawler": {
+"clip": [
+0.103,
+0.882
+],
+"file": "b6c4d66908.mp3",
+"text": "Crabrawler",
+"voice": "en-US-AnaNeural"
+},
+"cradily": {
+"clip": [
+0.103,
+0.75
+],
+"file": "b6e7bee462.mp3",
+"text": "Cradily",
+"voice": "en-US-AnaNeural"
+},
+"cramorant": {
+"clip": [
+0.103,
+0.842
+],
+"file": "0e284e2300.mp3",
+"text": "Cramorant",
+"voice": "en-US-AnaNeural"
+},
+"cranidos": {
+"clip": [
+0.103,
+0.921
+],
+"file": "84965502d2.mp3",
+"text": "Cranidos",
+"voice": "en-US-AnaNeural"
+},
+"crawdaunt": {
+"clip": [
+0.103,
+0.763
+],
+"file": "50fcc8e64b.mp3",
+"text": "Crawdaunt",
+"voice": "en-US-AnaNeural"
+},
+"cresselia": {
+"clip": [
+0.103,
+0.895
+],
+"file": "7cf6d47815.mp3",
+"text": "Cresselia",
+"voice": "en-US-AnaNeural"
+},
+"croagunk": {
+"clip": [
+0.103,
+0.842
+],
+"file": "ca00a5d38c.mp3",
+"text": "Croagunk",
+"voice": "en-US-AnaNeural"
+},
+"crobat": {
+"clip": [
+0.103,
+0.684
+],
+"file": "467f38bcce.mp3",
+"text": "Crobat",
+"voice": "en-US-AnaNeural"
+},
+"crocalor": {
+"clip": [
+0.103,
+0.789
+],
+"file": "c8024f70b9.mp3",
+"text": "Crocalor",
+"voice": "en-US-AnaNeural"
+},
+"croconaw": {
+"clip": [
+0.103,
+0.789
+],
+"file": "74921164ac.mp3",
+"text": "Croconaw",
+"voice": "en-US-AnaNeural"
+},
+"crustle": {
+"clip": [
+0.103,
+0.671
+],
+"file": "ba558bb6c4.mp3",
+"text": "Crustle",
+"voice": "en-US-AnaNeural"
+},
+"cryogonal": {
+"clip": [
+0.103,
+0.947
+],
+"file": "302597c5ba.mp3",
+"text": "Cryogonal",
+"voice": "en-US-AnaNeural"
+},
+"cubchoo": {
+"clip": [
+0.103,
+0.697
+],
+"file": "d36611a900.mp3",
+"text": "Cubchoo",
+"voice": "en-US-AnaNeural"
+},
+"cubone": {
+"clip": [
+0.103,
+0.697
+],
+"file": "3888eb85ed.mp3",
+"text": "Cubone",
+"voice": "en-US-AnaNeural"
+},
+"cufant": {
+"clip": [
+0.103,
+0.763
+],
+"file": "b92a346031.mp3",
+"text": "Cufant",
+"voice": "en-US-AnaNeural"
+},
+"cursola": {
+"clip": [
+0.103,
+0.776
+],
+"file": "de75f1297b.mp3",
+"text": "Cursola",
+"voice": "en-US-AnaNeural"
+},
+"cutiefly": {
+"clip": [
+0.103,
+0.855
+],
+"file": "2c684a7ac2.mp3",
+"text": "Cutiefly",
+"voice": "en-US-AnaNeural"
+},
+"cyclizar": {
+"clip": [
+0.103,
+0.961
+],
+"file": "3199ba5b03.mp3",
+"text": "Cyclizar",
+"voice": "en-US-AnaNeural"
+},
+"cyndaquil": {
+"clip": [
+0.103,
+0.908
+],
+"file": "00c8093164.mp3",
+"text": "Cyndaquil",
+"voice": "en-US-AnaNeural"
+},
+"dachsbun": {
+"clip": [
+0.103,
+0.842
+],
+"file": "a920579f79.mp3",
+"text": "Dachsbun",
+"voice": "en-US-AnaNeural"
+},
+"darkrai": {
+"clip": [
+0.103,
+0.737
+],
+"file": "7ba1544a92.mp3",
+"text": "Darkrai",
+"voice": "en-US-AnaNeural"
+},
+"darmanitan": {
+"clip": [
+0.103,
+1.0
+],
+"file": "02dfec252a.mp3",
+"text": "Darmanitan",
+"voice": "en-US-AnaNeural"
+},
+"dartrix": {
+"clip": [
+0.103,
+0.947
+],
+"file": "ba836ffd17.mp3",
+"text": "Dartrix",
+"voice": "en-US-AnaNeural"
+},
+"darumaka": {
+"clip": [
+0.103,
+0.829
+],
+"file": "a90698d15a.mp3",
+"text": "Darumaka",
+"voice": "en-US-AnaNeural"
+},
+"decidueye": {
+"clip": [
+0.103,
+0.842
+],
+"file": "e7c1c59f67.mp3",
+"text": "Decidueye",
+"voice": "en-US-AnaNeural"
+},
+"dedenne": {
+"clip": [
+0.103,
+0.632
+],
+"file": "2b75b11774.mp3",
+"text": "Dedenne",
+"voice": "en-US-AnaNeural"
+},
+"deerling": {
+"clip": [
+0.103,
+0.711
+],
+"file": "82ecc4007d.mp3",
+"text": "Deerling",
+"voice": "en-US-AnaNeural"
+},
+"deino": {
+"clip": [
+0.103,
+0.592
+],
+"file": "02efdc8d20.mp3",
+"text": "Deino",
+"voice": "en-US-AnaNeural"
+},
+"delcatty": {
+"clip": [
+0.103,
+0.711
+],
+"file": "4ee77bdd86.mp3",
+"text": "Delcatty",
+"voice": "en-US-AnaNeural"
+},
+"delibird": {
+"clip": [
+0.103,
+0.855
+],
+"file": "a693219841.mp3",
+"text": "Delibird",
+"voice": "en-US-AnaNeural"
+},
+"delphox": {
+"clip": [
+0.103,
+0.947
+],
+"file": "60fd16d059.mp3",
+"text": "Delphox",
+"voice": "en-US-AnaNeural"
+},
+"deoxys": {
+"clip": [
+0.103,
+0.947
+],
+"file": "d6fae14a53.mp3",
+"text": "Deoxys",
+"voice": "en-US-AnaNeural"
+},
+"dewgong": {
+"clip": [
+0.103,
+0.684
+],
+"file": "1634a5efe5.mp3",
+"text": "Dewgong",
+"voice": "en-US-AnaNeural"
+},
+"dewott": {
+"clip": [
+0.103,
+0.553
+],
+"file": "f847968577.mp3",
+"text": "Dewott",
+"voice": "en-US-AnaNeural"
+},
+"dewpider": {
+"clip": [
+0.103,
+0.763
+],
+"file": "552e30fe2e.mp3",
+"text": "Dewpider",
+"voice": "en-US-AnaNeural"
+},
+"dhelmise": {
+"clip": [
+0.103,
+0.829
+],
+"file": "2355ac7956.mp3",
+"text": "Dhelmise",
+"voice": "en-US-AnaNeural"
+},
+"dialga": {
+"clip": [
+0.103,
+0.75
+],
+"file": "5c0a407135.mp3",
+"text": "Dialga",
+"voice": "en-US-AnaNeural"
+},
+"diancie": {
+"clip": [
+0.103,
+0.789
+],
+"file": "06e0a17694.mp3",
+"text": "Diancie",
+"voice": "en-US-AnaNeural"
+},
+"diggersby": {
+"clip": [
+0.103,
+0.816
+],
+"file": "6070bff240.mp3",
+"text": "Diggersby",
+"voice": "en-US-AnaNeural"
+},
+"diglett": {
+"clip": [
+0.103,
+0.658
+],
+"file": "7e39bef26b.mp3",
+"text": "Diglett",
+"voice": "en-US-AnaNeural"
+},
+"dipplin": {
+"clip": [
+0.103,
+0.632
+],
+"file": "2760ebed5f.mp3",
+"text": "Dipplin",
+"voice": "en-US-AnaNeural"
+},
+"ditto": {
+"clip": [
+0.103,
+0.566
+],
+"file": "13d9173fd8.mp3",
+"text": "Ditto",
+"voice": "en-US-AnaNeural"
+},
+"dodrio": {
+"clip": [
+0.103,
+0.776
+],
+"file": "78600d6c9b.mp3",
+"text": "Dodrio",
+"voice": "en-US-AnaNeural"
+},
+"doduo": {
+"clip": [
+0.103,
+0.711
+],
+"file": "eb54575d1c.mp3",
+"text": "Doduo",
+"voice": "en-US-AnaNeural"
+},
+"dolliv": {
+"clip": [
+0.103,
+0.645
+],
+"file": "20939f0380.mp3",
+"text": "Dolliv",
+"voice": "en-US-AnaNeural"
+},
+"dondozo": {
+"clip": [
+0.103,
+0.947
+],
+"file": "db868cd02a.mp3",
+"text": "Dondozo",
+"voice": "en-US-AnaNeural"
+},
+"donphan": {
+"clip": [
+0.103,
+0.803
+],
+"file": "37c444568f.mp3",
+"text": "Donphan",
+"voice": "en-US-AnaNeural"
+},
+"dottler": {
+"clip": [
+0.103,
+0.579
+],
+"file": "049e723cd0.mp3",
+"text": "Dottler",
+"voice": "en-US-AnaNeural"
+},
+"doublade": {
+"clip": [
+0.103,
+0.75
+],
+"file": "b20c5de8ed.mp3",
+"text": "Doublade",
+"voice": "en-US-AnaNeural"
+},
+"dracovish": {
+"clip": [
+0.103,
+0.921
+],
+"file": "cecfd5113d.mp3",
+"text": "Dracovish",
+"voice": "en-US-AnaNeural"
+},
+"dracozolt": {
+"clip": [
+0.103,
+0.961
+],
+"file": "9a7f77a193.mp3",
+"text": "Dracozolt",
+"voice": "en-US-AnaNeural"
+},
+"dragalge": {
+"clip": [
+0.103,
+0.816
+],
+"file": "e64b82bfaf.mp3",
+"text": "Dragalge",
+"voice": "en-US-AnaNeural"
+},
+"dragapult": {
+"clip": [
+0.103,
+0.921
+],
+"file": "f5416cda9d.mp3",
+"text": "Dragapult",
+"voice": "en-US-AnaNeural"
+},
+"dragonair": {
+"clip": [
+0.103,
+0.829
+],
+"file": "8aa3707a5f.mp3",
+"text": "Dragonair",
+"voice": "en-US-AnaNeural"
+},
+"dragonite": {
+"clip": [
+0.103,
+0.868
+],
+"file": "0202b75147.mp3",
+"text": "Dragonite",
+"voice": "en-US-AnaNeural"
+},
+"drakloak": {
+"clip": [
+0.103,
+0.829
+],
+"file": "51c2021abf.mp3",
+"text": "Drakloak",
+"voice": "en-US-AnaNeural"
+},
+"drampa": {
+"clip": [
+0.103,
+0.671
+],
+"file": "9babf51050.mp3",
+"text": "Drampa",
+"voice": "en-US-AnaNeural"
+},
+"drapion": {
+"clip": [
+0.103,
+0.763
+],
+"file": "fffcd8365b.mp3",
+"text": "Drapion",
+"voice": "en-US-AnaNeural"
+},
+"dratini": {
+"clip": [
+0.103,
+0.724
+],
+"file": "c46950087e.mp3",
+"text": "Dratini",
+"voice": "en-US-AnaNeural"
+},
+"drednaw": {
+"clip": [
+0.103,
+0.671
+],
+"file": "3483e37756.mp3",
+"text": "Drednaw",
+"voice": "en-US-AnaNeural"
+},
+"dreepy": {
+"clip": [
+0.103,
+0.618
+],
+"file": "4580866278.mp3",
+"text": "Dreepy",
+"voice": "en-US-AnaNeural"
+},
+"drifblim": {
+"clip": [
+0.103,
+0.776
+],
+"file": "b85fbcd0e2.mp3",
+"text": "Drifblim",
+"voice": "en-US-AnaNeural"
+},
+"drifloon": {
+"clip": [
+0.103,
+0.724
+],
+"file": "c7b8f24252.mp3",
+"text": "Drifloon",
+"voice": "en-US-AnaNeural"
+},
+"drilbur": {
+"clip": [
+0.103,
+0.671
+],
+"file": "881cb9ae49.mp3",
+"text": "Drilbur",
+"voice": "en-US-AnaNeural"
+},
+"drizzile": {
+"clip": [
+0.103,
+0.658
+],
+"file": "11f05e15ea.mp3",
+"text": "Drizzile",
+"voice": "en-US-AnaNeural"
+},
+"drowzee": {
+"clip": [
+0.103,
+0.697
+],
+"file": "d5f3426f3d.mp3",
+"text": "Drowzee",
+"voice": "en-US-AnaNeural"
+},
+"druddigon": {
+"clip": [
+0.103,
+0.776
+],
+"file": "6d0e2f9197.mp3",
+"text": "Druddigon",
+"voice": "en-US-AnaNeural"
+},
+"dubwool": {
+"clip": [
+0.103,
+0.711
+],
+"file": "7586da076a.mp3",
+"text": "Dubwool",
+"voice": "en-US-AnaNeural"
+},
+"ducklett": {
+"clip": [
+0.103,
+0.724
+],
+"file": "3af1c7cbf1.mp3",
+"text": "Ducklett",
+"voice": "en-US-AnaNeural"
+},
+"dudunsparce": {
+"clip": [
+0.103,
+1.053
+],
+"file": "3fce981751.mp3",
+"text": "Dudunsparce",
+"voice": "en-US-AnaNeural"
+},
+"dugtrio": {
+"clip": [
+0.103,
+0.934
+],
+"file": "60addad93b.mp3",
+"text": "Dugtrio",
+"voice": "en-US-AnaNeural"
+},
+"dunsparce": {
+"clip": [
+0.103,
+0.974
+],
+"file": "31ec8dea71.mp3",
+"text": "Dunsparce",
+"voice": "en-US-AnaNeural"
+},
+"duosion": {
+"clip": [
+0.103,
+0.776
+],
+"file": "623ca07a64.mp3",
+"text": "Duosion",
+"voice": "en-US-AnaNeural"
+},
+"duraludon": {
+"clip": [
+0.103,
+0.868
+],
+"file": "b26c8b6ba5.mp3",
+"text": "Duraludon",
+"voice": "en-US-AnaNeural"
+},
+"durant": {
+"clip": [
+0.103,
+0.711
+],
+"file": "d366e77516.mp3",
+"text": "Durant",
+"voice": "en-US-AnaNeural"
+},
+"dusclops": {
+"clip": [
+0.103,
+0.974
+],
+"file": "d6d3203507.mp3",
+"text": "Dusclops",
+"voice": "en-US-AnaNeural"
+},
+"dusknoir": {
+"clip": [
+0.103,
+0.934
+],
+"file": "f4c358543f.mp3",
+"text": "Dusknoir",
+"voice": "en-US-AnaNeural"
+},
+"duskull": {
+"clip": [
+0.103,
+0.75
+],
+"file": "0b4ab88adb.mp3",
+"text": "Duskull",
+"voice": "en-US-AnaNeural"
+},
+"dustox": {
+"clip": [
+0.103,
+0.921
+],
+"file": "7c2f24fbca.mp3",
+"text": "Dustox",
+"voice": "en-US-AnaNeural"
+},
+"dwebble": {
+"clip": [
+0.103,
+0.618
+],
+"file": "be9d2d4380.mp3",
+"text": "Dwebble",
+"voice": "en-US-AnaNeural"
+},
+"eelektrik": {
+"clip": [
+0.101,
+0.908
+],
+"file": "0281c8e638.mp3",
+"text": "Eelektrik",
+"voice": "en-US-AnaNeural"
+},
+"eelektross": {
+"clip": [
+0.101,
+1.013
+],
+"file": "7fbce10bc6.mp3",
+"text": "Eelektross",
+"voice": "en-US-AnaNeural"
+},
+"eevee": {
+"clip": [
+0.101,
+0.553
+],
+"file": "640ed62b7d.mp3",
+"text": "Eevee",
+"voice": "en-US-AnaNeural"
+},
+"eiscue": {
+"clip": [
+0.103,
+0.684
+],
+"file": "1292cb91f2.mp3",
+"text": "Eiscue",
+"voice": "en-US-AnaNeural"
+},
+"ekans": {
+"clip": [
+0.101,
+0.724
+],
+"file": "8d0897996f.mp3",
+"text": "Ekans",
+"voice": "en-US-AnaNeural"
+},
+"eldegoss": {
+"clip": [
+0.103,
+0.895
+],
+"file": "d4ae160f52.mp3",
+"text": "Eldegoss",
+"voice": "en-US-AnaNeural"
+},
+"electabuzz": {
+"clip": [
+0.101,
+1.039
+],
+"file": "2d9ffa048a.mp3",
+"text": "Electabuzz",
+"voice": "en-US-AnaNeural"
+},
+"electivire": {
+"clip": [
+0.102,
+0.908
+],
+"file": "4a8cb0cbaf.mp3",
+"text": "Electivire",
+"voice": "en-US-AnaNeural"
+},
+"electrike": {
+"clip": [
+0.101,
+0.934
+],
+"file": "80b2475f6a.mp3",
+"text": "Electrike",
+"voice": "en-US-AnaNeural"
+},
+"electrode": {
+"clip": [
+0.102,
+0.895
+],
+"file": "64f428b92c.mp3",
+"text": "Electrode",
+"voice": "en-US-AnaNeural"
+},
+"elekid": {
+"clip": [
+0.103,
+0.671
+],
+"file": "c7f05774e4.mp3",
+"text": "Elekid",
+"voice": "en-US-AnaNeural"
+},
+"elgyem": {
+"clip": [
+0.103,
+0.711
+],
+"file": "5f08b08a49.mp3",
+"text": "Elgyem",
+"voice": "en-US-AnaNeural"
+},
+"emboar": {
+"clip": [
+0.102,
+0.684
+],
+"file": "65df520540.mp3",
+"text": "Emboar",
+"voice": "en-US-AnaNeural"
+},
+"emolga": {
+"clip": [
+0.101,
+0.776
+],
+"file": "13a3b7e77e.mp3",
+"text": "Emolga",
+"voice": "en-US-AnaNeural"
+},
+"empoleon": {
+"clip": [
+0.102,
+0.934
+],
+"file": "59b68e2e5a.mp3",
+"text": "Empoleon",
+"voice": "en-US-AnaNeural"
+},
+"enamorus": {
+"clip": [
+0.101,
+0.987
+],
+"file": "37ecefb2a8.mp3",
+"text": "Enamorus",
+"voice": "en-US-AnaNeural"
+},
+"entei": {
+"clip": [
+0.103,
+0.684
+],
+"file": "32d5d9e11a.mp3",
+"text": "Entei",
+"voice": "en-US-AnaNeural"
+},
+"escavalier": {
+"clip": [
+0.102,
+1.0
+],
+"file": "ac91b163d4.mp3",
+"text": "Escavalier",
+"voice": "en-US-AnaNeural"
+},
+"espathra": {
+"clip": [
+0.101,
+0.908
+],
+"file": "a69b7d880e.mp3",
+"text": "Espathra",
+"voice": "en-US-AnaNeural"
+},
+"espeon": {
+"clip": [
+0.102,
+0.737
+],
+"file": "b5b29e73e2.mp3",
+"text": "Espeon",
+"voice": "en-US-AnaNeural"
+},
+"espurr": {
+"clip": [
+0.101,
+0.684
+],
+"file": "cd7958f982.mp3",
+"text": "Espurr",
+"voice": "en-US-AnaNeural"
+},
+"eternatus": {
+"clip": [
+0.103,
+0.987
+],
+"file": "36bf1b1d0a.mp3",
+"text": "Eternatus",
+"voice": "en-US-AnaNeural"
+},
+"excadrill": {
+"clip": [
+0.103,
+0.921
+],
+"file": "4bfd23db34.mp3",
+"text": "Excadrill",
+"voice": "en-US-AnaNeural"
+},
+"exeggcute": {
+"clip": [
+0.103,
+0.895
+],
+"file": "3a0e5e9095.mp3",
+"text": "Exeggcute",
+"voice": "en-US-AnaNeural"
+},
+"exeggutor": {
+"clip": [
+0.103,
+0.908
+],
+"file": "6f5b891963.mp3",
+"text": "Exeggutor",
+"voice": "en-US-AnaNeural"
+},
+"exploud": {
+"clip": [
+0.103,
+0.842
+],
+"file": "d54b3db328.mp3",
+"text": "Exploud",
+"voice": "en-US-AnaNeural"
+},
+"falinks": {
+"clip": [
+0.102,
+0.895
+],
+"file": "60aad636dd.mp3",
+"text": "Falinks",
+"voice": "en-US-AnaNeural"
+},
+"farfetch'd": {
+"clip": [
+0.103,
+0.921
+],
+"file": "4bf12dbb50.mp3",
+"text": "Farfetch’d",
+"voice": "en-US-AnaNeural"
+},
+"farigiraf": {
+"clip": [
+0.103,
+1.039
+],
+"file": "cc7afa900e.mp3",
+"text": "Farigiraf",
+"voice": "en-US-AnaNeural"
+},
+"fearow": {
+"clip": [
+0.103,
+0.737
+],
+"file": "5ea38e9f87.mp3",
+"text": "Fearow",
+"voice": "en-US-AnaNeural"
+},
+"feebas": {
+"clip": [
+0.103,
+0.671
+],
+"file": "6622a558a7.mp3",
+"text": "Feebas",
+"voice": "en-US-AnaNeural"
+},
+"fennekin": {
+"clip": [
+0.102,
+0.803
+],
+"file": "ebf4e31156.mp3",
+"text": "Fennekin",
+"voice": "en-US-AnaNeural"
+},
+"feraligatr": {
+"clip": [
+0.103,
+1.066
+],
+"file": "7dba9a229c.mp3",
+"text": "Feraligatr",
+"voice": "en-US-AnaNeural"
+},
+"ferroseed": {
+"clip": [
+0.103,
+0.934
+],
+"file": "d01dc978e4.mp3",
+"text": "Ferroseed",
+"voice": "en-US-AnaNeural"
+},
+"ferrothorn": {
+"clip": [
+0.102,
+1.026
+],
+"file": "ae68ea6227.mp3",
+"text": "Ferrothorn",
+"voice": "en-US-AnaNeural"
+},
+"fezandipiti": {
+"clip": [
+0.102,
+1.053
+],
+"file": "ac85867936.mp3",
+"text": "Fezandipiti",
+"voice": "en-US-AnaNeural"
+},
+"fidough": {
+"clip": [
+0.103,
+0.645
+],
+"file": "37394dde17.mp3",
+"text": "Fidough",
+"voice": "en-US-AnaNeural"
+},
+"finizen": {
+"clip": [
+0.102,
+0.895
+],
+"file": "9d4aa1cda3.mp3",
+"text": "Finizen",
+"voice": "en-US-AnaNeural"
+},
+"finneon": {
+"clip": [
+0.101,
+0.829
+],
+"file": "cbde6f72a9.mp3",
+"text": "Finneon",
+"voice": "en-US-AnaNeural"
+},
+"flaaffy": {
+"clip": [
+0.103,
+0.711
+],
+"file": "23c1f7c6b4.mp3",
+"text": "Flaaffy",
+"voice": "en-US-AnaNeural"
+},
+"flabebe": {
+"clip": [
+0.103,
+0.842
+],
+"file": "d6ce58c9fa.mp3",
+"text": "Flabébé",
+"voice": "en-US-AnaNeural"
+},
+"flamigo": {
+"clip": [
+0.102,
+0.855
+],
+"file": "6600ac3982.mp3",
+"text": "Flamigo",
+"voice": "en-US-AnaNeural"
+},
+"flapple": {
+"clip": [
+0.102,
+0.75
+],
+"file": "d189af6b15.mp3",
+"text": "Flapple",
+"voice": "en-US-AnaNeural"
+},
+"flareon": {
+"clip": [
+0.102,
+0.816
+],
+"file": "5697f6f7fb.mp3",
+"text": "Flareon",
+"voice": "en-US-AnaNeural"
+},
+"fletchinder": {
+"clip": [
+0.103,
+0.908
+],
+"file": "2184121b15.mp3",
+"text": "Fletchinder",
+"voice": "en-US-AnaNeural"
+},
+"fletchling": {
+"clip": [
+0.103,
+0.868
+],
+"file": "312fd3420f.mp3",
+"text": "Fletchling",
+"voice": "en-US-AnaNeural"
+},
+"flittle": {
+"clip": [
+0.103,
+0.618
+],
+"file": "11b6942aa7.mp3",
+"text": "Flittle",
+"voice": "en-US-AnaNeural"
+},
+"floatzel": {
+"clip": [
+0.103,
+0.855
+],
+"file": "45899cbcd0.mp3",
+"text": "Floatzel",
+"voice": "en-US-AnaNeural"
+},
+"floette": {
+"clip": [
+0.103,
+0.671
+],
+"file": "9a9c331bbc.mp3",
+"text": "Floette",
+"voice": "en-US-AnaNeural"
+},
+"floragato": {
+"clip": [
+0.102,
+1.026
+],
+"file": "0032467969.mp3",
+"text": "Floragato",
+"voice": "en-US-AnaNeural"
+},
+"florges": {
+"clip": [
+0.103,
+0.947
+],
+"file": "7baf7074ae.mp3",
+"text": "Florges",
+"voice": "en-US-AnaNeural"
+},
+"flutter mane": {
+"clip": [
+0.102,
+1.0
+],
+"file": "29fae41788.mp3",
+"text": "Flutter Mane",
+"voice": "en-US-AnaNeural"
+},
+"flygon": {
+"clip": [
+0.102,
+0.803
+],
+"file": "907e80ca00.mp3",
+"text": "Flygon",
+"voice": "en-US-AnaNeural"
+},
+"fomantis": {
+"clip": [
+0.102,
+1.053
+],
+"file": "83b4bd3837.mp3",
+"text": "Fomantis",
+"voice": "en-US-AnaNeural"
+},
+"foongus": {
+"clip": [
+0.103,
+0.855
+],
+"file": "e3f27dabb2.mp3",
+"text": "Foongus",
+"voice": "en-US-AnaNeural"
+},
+"forretress": {
+"clip": [
+0.102,
+0.987
+],
+"file": "4ca3f95b0d.mp3",
+"text": "Forretress",
+"voice": "en-US-AnaNeural"
+},
+"fraxure": {
+"clip": [
+0.103,
+0.829
+],
+"file": "dc0f1f8997.mp3",
+"text": "Fraxure",
+"voice": "en-US-AnaNeural"
+},
+"frigibax": {
+"clip": [
+0.103,
+1.013
+],
+"file": "bf9d92231f.mp3",
+"text": "Frigibax",
+"voice": "en-US-AnaNeural"
+},
+"frillish": {
+"clip": [
+0.103,
+0.763
+],
+"file": "75d190d0e4.mp3",
+"text": "Frillish",
+"voice": "en-US-AnaNeural"
+},
+"froakie": {
+"clip": [
+0.103,
+0.618
+],
+"file": "87f0158a29.mp3",
+"text": "Froakie",
+"voice": "en-US-AnaNeural"
+},
+"frogadier": {
+"clip": [
+0.103,
+0.908
+],
+"file": "8a644a7eab.mp3",
+"text": "Frogadier",
+"voice": "en-US-AnaNeural"
+},
+"froslass": {
+"clip": [
+0.103,
+0.934
+],
+"file": "d5c3693cd9.mp3",
+"text": "Froslass",
+"voice": "en-US-AnaNeural"
+},
+"frosmoth": {
+"clip": [
+0.103,
+0.868
+],
+"file": "10b3703815.mp3",
+"text": "Frosmoth",
+"voice": "en-US-AnaNeural"
+},
+"fuecoco": {
+"clip": [
+0.103,
+0.895
+],
+"file": "e2fea0ac6a.mp3",
+"text": "Fuecoco",
+"voice": "en-US-AnaNeural"
+},
+"furfrou": {
+"clip": [
+0.102,
+0.684
+],
+"file": "15af88b24e.mp3",
+"text": "Furfrou",
+"voice": "en-US-AnaNeural"
+},
+"furret": {
+"clip": [
+0.103,
+0.724
+],
+"file": "b692fec851.mp3",
+"text": "Furret",
+"voice": "en-US-AnaNeural"
+},
+"gabite": {
+"clip": [
+0.103,
+0.632
+],
+"file": "2e30ce2f40.mp3",
+"text": "Gabite",
+"voice": "en-US-AnaNeural"
+},
+"gallade": {
+"clip": [
+0.103,
+0.763
+],
+"file": "c7e46b8c9f.mp3",
+"text": "Gallade",
+"voice": "en-US-AnaNeural"
+},
+"galvantula": {
+"clip": [
+0.103,
+1.039
+],
+"file": "9b41e9b315.mp3",
+"text": "Galvantula",
+"voice": "en-US-AnaNeural"
+},
+"garbodor": {
+"clip": [
+0.103,
+0.842
+],
+"file": "7929aafe29.mp3",
+"text": "Garbodor",
+"voice": "en-US-AnaNeural"
+},
+"garchomp": {
+"clip": [
+0.103,
+0.789
+],
+"file": "d3bbe2528a.mp3",
+"text": "Garchomp",
+"voice": "en-US-AnaNeural"
+},
+"gardevoir": {
+"clip": [
+0.103,
+0.908
+],
+"file": "6e31a245b0.mp3",
+"text": "Gardevoir",
+"voice": "en-US-AnaNeural"
+},
+"garganacl": {
+"clip": [
+0.103,
+0.987
+],
+"file": "a8ada0a1ab.mp3",
+"text": "Garganacl",
+"voice": "en-US-AnaNeural"
+},
+"gastly": {
+"clip": [
+0.103,
+0.737
+],
+"file": "00e159af22.mp3",
+"text": "Gastly",
+"voice": "en-US-AnaNeural"
+},
+"gastrodon": {
+"clip": [
+0.103,
+0.882
+],
+"file": "7e5737444c.mp3",
+"text": "Gastrodon",
+"voice": "en-US-AnaNeural"
+},
+"genesect": {
+"clip": [
+0.103,
+0.921
+],
+"file": "79da9e6e97.mp3",
+"text": "Genesect",
+"voice": "en-US-AnaNeural"
+},
+"gengar": {
+"clip": [
+0.103,
+0.75
+],
+"file": "1cd427bc4d.mp3",
+"text": "Gengar",
+"voice": "en-US-AnaNeural"
+},
+"geodude": {
+"clip": [
+0.103,
+0.895
+],
+"file": "96bc98605a.mp3",
+"text": "Geodude",
+"voice": "en-US-AnaNeural"
+},
+"gholdengo": {
+"clip": [
+0.103,
+0.908
+],
+"file": "179704f0ac.mp3",
+"text": "Gholdengo",
+"voice": "en-US-AnaNeural"
+},
+"gible": {
+"clip": [
+0.103,
+0.566
+],
+"file": "b6e4e65d2a.mp3",
+"text": "Gible",
+"voice": "en-US-AnaNeural"
+},
+"gigalith": {
+"clip": [
+0.103,
+0.789
+],
+"file": "7703262581.mp3",
+"text": "Gigalith",
+"voice": "en-US-AnaNeural"
+},
+"gimmighoul": {
+"clip": [
+0.103,
+0.789
+],
+"file": "adfd4533b2.mp3",
+"text": "Gimmighoul",
+"voice": "en-US-AnaNeural"
+},
+"girafarig": {
+"clip": [
+0.103,
+0.921
+],
+"file": "b6d096a81d.mp3",
+"text": "Girafarig",
+"voice": "en-US-AnaNeural"
+},
+"giratina": {
+"clip": [
+0.103,
+0.934
+],
+"file": "671f29507d.mp3",
+"text": "Giratina",
+"voice": "en-US-AnaNeural"
+},
+"glaceon": {
+"clip": [
+0.103,
+0.724
+],
+"file": "4dd64cfb5d.mp3",
+"text": "Glaceon",
+"voice": "en-US-AnaNeural"
+},
+"glalie": {
+"clip": [
+0.103,
+0.645
+],
+"file": "2d875cc8f3.mp3",
+"text": "Glalie",
+"voice": "en-US-AnaNeural"
+},
+"glameow": {
+"clip": [
+0.103,
+0.632
+],
+"file": "1542b9f192.mp3",
+"text": "Glameow",
+"voice": "en-US-GuyNeural"
+},
+"glastrier": {
+"clip": [
+0.103,
+0.921
+],
+"file": "5f93dad26f.mp3",
+"text": "Glastrier",
+"voice": "en-US-AnaNeural"
+},
+"gligar": {
+"clip": [
+0.103,
+0.605
+],
+"file": "d974ee7d15.mp3",
+"text": "Gligar",
+"voice": "en-US-AnaNeural"
+},
+"glimmet": {
+"clip": [
+0.103,
+0.592
+],
+"file": "40882f5698.mp3",
+"text": "Glimmet",
+"voice": "en-US-AnaNeural"
+},
+"glimmora": {
+"clip": [
+0.103,
+0.697
+],
+"file": "b197dace64.mp3",
+"text": "Glimmora",
+"voice": "en-US-AnaNeural"
+},
+"gliscor": {
+"clip": [
+0.103,
+0.697
+],
+"file": "4fc7e5f507.mp3",
+"text": "Gliscor",
+"voice": "en-US-AnaNeural"
+},
+"gloom": {
+"clip": [
+0.103,
+0.579
+],
+"file": "9de1485387.mp3",
+"text": "Gloom",
+"voice": "en-US-AnaNeural"
+},
+"gogoat": {
+"clip": [
+0.103,
+0.684
+],
+"file": "93b9cc8eee.mp3",
+"text": "Gogoat",
+"voice": "en-US-AnaNeural"
+},
+"golbat": {
+"clip": [
+0.103,
+0.658
+],
+"file": "2870baec37.mp3",
+"text": "Golbat",
+"voice": "en-US-AnaNeural"
+},
+"goldeen": {
+"clip": [
+0.103,
+0.75
+],
+"file": "999cae1e22.mp3",
+"text": "Goldeen",
+"voice": "en-US-AnaNeural"
+},
+"golduck": {
+"clip": [
+0.103,
+0.816
+],
+"file": "a532443f3e.mp3",
+"text": "Golduck",
+"voice": "en-US-AnaNeural"
+},
+"golem": {
+"clip": [
+0.103,
+0.632
+],
+"file": "62650cd9a5.mp3",
+"text": "Golem",
+"voice": "en-US-AnaNeural"
+},
+"golett": {
+"clip": [
+0.103,
+0.579
+],
+"file": "870440efa9.mp3",
+"text": "Golett",
+"voice": "en-US-AnaNeural"
+},
+"golisopod": {
+"clip": [
+0.103,
+0.974
+],
+"file": "c9b9532ffd.mp3",
+"text": "Golisopod",
+"voice": "en-US-AnaNeural"
+},
+"golurk": {
+"clip": [
+0.103,
+0.671
+],
+"file": "1eac2e0ffe.mp3",
+"text": "Golurk",
+"voice": "en-US-AnaNeural"
+},
+"goodra": {
+"clip": [
+0.103,
+0.605
+],
+"file": "9f683c7e4e.mp3",
+"text": "Goodra",
+"voice": "en-US-AnaNeural"
+},
+"goomy": {
+"clip": [
+0.103,
+0.513
+],
+"file": "f4d25d05c8.mp3",
+"text": "Goomy",
+"voice": "en-US-AnaNeural"
+},
+"gorebyss": {
+"clip": [
+0.103,
+0.724
+],
+"file": "af85b66059.mp3",
+"text": "Gorebyss",
+"voice": "en-US-AnaNeural"
+},
+"gossifleur": {
+"clip": [
+0.103,
+0.868
+],
+"file": "cead929a75.mp3",
+"text": "Gossifleur",
+"voice": "en-US-AnaNeural"
+},
+"gothita": {
+"clip": [
+0.103,
+0.789
+],
+"file": "e217517463.mp3",
+"text": "Gothita",
+"voice": "en-US-AnaNeural"
+},
+"gothitelle": {
+"clip": [
+0.103,
+0.842
+],
+"file": "b6880a9103.mp3",
+"text": "Gothitelle",
+"voice": "en-US-AnaNeural"
+},
+"gothorita": {
+"clip": [
+0.103,
+0.895
+],
+"file": "ea14cbf970.mp3",
+"text": "Gothorita",
+"voice": "en-US-AnaNeural"
+},
+"gouging fire": {
+"clip": [
+0.103,
+1.118
+],
+"file": "4f5597a760.mp3",
+"text": "Gouging Fire",
+"voice": "en-US-AnaNeural"
+},
+"gourgeist": {
+"clip": [
+0.103,
+0.868
+],
+"file": "5c4341e58c.mp3",
+"text": "Gourgeist",
+"voice": "en-US-AnaNeural"
+},
+"grafaiai": {
+"clip": [
+0.103,
+0.803
+],
+"file": "c3470def99.mp3",
+"text": "Grafaiai",
+"voice": "en-US-AnaNeural"
+},
+"granbull": {
+"clip": [
+0.103,
+0.776
+],
+"file": "0d29684d2e.mp3",
+"text": "Granbull",
+"voice": "en-US-AnaNeural"
+},
+"grapploct": {
+"clip": [
+0.103,
+0.934
+],
+"file": "13ce511b8f.mp3",
+"text": "Grapploct",
+"voice": "en-US-AnaNeural"
+},
+"graveler": {
+"clip": [
+0.103,
+0.671
+],
+"file": "c648a20fba.mp3",
+"text": "Graveler",
+"voice": "en-US-AnaNeural"
+},
+"great tusk": {
+"clip": [
+0.103,
+1.013
+],
+"file": "f6b7300bb9.mp3",
+"text": "Great Tusk",
+"voice": "en-US-AnaNeural"
+},
+"greavard": {
+"clip": [
+0.103,
+0.737
+],
+"file": "e332077b6b.mp3",
+"text": "Greavard",
+"voice": "en-US-AnaNeural"
+},
+"greedent": {
+"clip": [
+0.103,
+0.789
+],
+"file": "4134d54366.mp3",
+"text": "Greedent",
+"voice": "en-US-AnaNeural"
+},
+"greninja": {
+"clip": [
+0.103,
+0.829
+],
+"file": "ddfcfde1c0.mp3",
+"text": "Greninja",
+"voice": "en-US-AnaNeural"
+},
+"grimer": {
+"clip": [
+0.103,
+0.539
+],
+"file": "7f566c3193.mp3",
+"text": "Grimer",
+"voice": "en-US-AnaNeural"
+},
+"grimmsnarl": {
+"clip": [
+0.103,
+0.987
+],
+"file": "42697722eb.mp3",
+"text": "Grimmsnarl",
+"voice": "en-US-AnaNeural"
+},
+"grookey": {
+"clip": [
+0.103,
+0.605
+],
+"file": "44c0a7b39e.mp3",
+"text": "Grookey",
+"voice": "en-US-AnaNeural"
+},
+"grotle": {
+"clip": [
+0.103,
+0.671
+],
+"file": "ca896410e5.mp3",
+"text": "Grotle",
+"voice": "en-US-AnaNeural"
+},
+"groudon": {
+"clip": [
+0.103,
+0.684
+],
+"file": "f3975bb80f.mp3",
+"text": "Groudon",
+"voice": "en-US-AnaNeural"
+},
+"grovyle": {
+"clip": [
+0.103,
+0.803
+],
+"file": "c6a4965fd0.mp3",
+"text": "Grovyle",
+"voice": "en-US-AnaNeural"
+},
+"growlithe": {
+"clip": [
+0.103,
+0.737
+],
+"file": "5b87c58c1f.mp3",
+"text": "Growlithe",
+"voice": "en-US-AnaNeural"
+},
+"grubbin": {
+"clip": [
+0.103,
+0.724
+],
+"file": "e8fc916d96.mp3",
+"text": "Grubbin",
+"voice": "en-US-AnaNeural"
+},
+"grumpig": {
+"clip": [
+0.103,
+0.697
+],
+"file": "73660fb8ec.mp3",
+"text": "Grumpig",
+"voice": "en-US-AnaNeural"
+},
+"gulpin": {
+"clip": [
+0.103,
+0.724
+],
+"file": "6bc22e5404.mp3",
+"text": "Gulpin",
+"voice": "en-US-AnaNeural"
+},
+"gumshoos": {
+"clip": [
+0.103,
+0.829
+],
+"file": "2a5a4678da.mp3",
+"text": "Gumshoos",
+"voice": "en-US-AnaNeural"
+},
+"gurdurr": {
+"clip": [
+0.103,
+0.579
+],
+"file": "c034dfa32e.mp3",
+"text": "Gurdurr",
+"voice": "en-US-AnaNeural"
+},
+"guzzlord": {
+"clip": [
+0.103,
+0.763
+],
+"file": "0c64e09107.mp3",
+"text": "Guzzlord",
+"voice": "en-US-AnaNeural"
+},
+"gyarados": {
+"clip": [
+0.103,
+0.842
+],
+"file": "dd9bd84123.mp3",
+"text": "Gyarados",
+"voice": "en-US-AnaNeural"
+},
+"hakamo o": {
+"clip": [
+0.102,
+0.882
+],
+"file": "d9a292cf79.mp3",
+"text": "Hakamo-o",
+"voice": "en-US-AnaNeural"
+},
+"happiny": {
+"clip": [
+0.102,
+0.684
+],
+"file": "398a2ee4b7.mp3",
+"text": "Happiny",
+"voice": "en-US-AnaNeural"
+},
+"hariyama": {
+"clip": [
+0.103,
+0.882
+],
+"file": "bbadd5f5a9.mp3",
+"text": "Hariyama",
+"voice": "en-US-AnaNeural"
+},
+"hatenna": {
+"clip": [
+0.103,
+0.724
+],
+"file": "408cc28952.mp3",
+"text": "Hatenna",
+"voice": "en-US-AnaNeural"
+},
+"hatterene": {
+"clip": [
+0.102,
+0.803
+],
+"file": "02e60e47d5.mp3",
+"text": "Hatterene",
+"voice": "en-US-AnaNeural"
+},
+"hattrem": {
+"clip": [
+0.103,
+0.684
+],
+"file": "5c9a320cf9.mp3",
+"text": "Hattrem",
+"voice": "en-US-AnaNeural"
+},
+"haunter": {
+"clip": [
+0.101,
+0.724
+],
+"file": "7d636ee05a.mp3",
+"text": "Haunter",
+"voice": "en-US-AnaNeural"
+},
+"hawlucha": {
+"clip": [
+0.103,
+0.737
+],
+"file": "53d6315dd9.mp3",
+"text": "Hawlucha",
+"voice": "en-US-AnaNeural"
+},
+"haxorus": {
+"clip": [
+0.102,
+0.987
+],
+"file": "bde226d84d.mp3",
+"text": "Haxorus",
+"voice": "en-US-AnaNeural"
+},
+"heatmor": {
+"clip": [
+0.103,
+0.724
+],
+"file": "5648af3f28.mp3",
+"text": "Heatmor",
+"voice": "en-US-AnaNeural"
+},
+"heatran": {
+"clip": [
+0.103,
+0.776
+],
+"file": "1d6d6b081e.mp3",
+"text": "Heatran",
+"voice": "en-US-AnaNeural"
+},
+"heliolisk": {
+"clip": [
+0.103,
+1.053
+],
+"file": "90db4f7550.mp3",
+"text": "Heliolisk",
+"voice": "en-US-AnaNeural"
+},
+"helioptile": {
+"clip": [
+0.103,
+1.026
+],
+"file": "a11c208b3c.mp3",
+"text": "Helioptile",
+"voice": "en-US-AnaNeural"
+},
+"heracross": {
+"clip": [
+0.103,
+0.908
+],
+"file": "1be562f08b.mp3",
+"text": "Heracross",
+"voice": "en-US-AnaNeural"
+},
+"herdier": {
+"clip": [
+0.103,
+0.697
+],
+"file": "704d73c538.mp3",
+"text": "Herdier",
+"voice": "en-US-AnaNeural"
+},
+"hippopotas": {
+"clip": [
+0.103,
+1.039
+],
+"file": "7e56d2e3d2.mp3",
+"text": "Hippopotas",
+"voice": "en-US-AnaNeural"
+},
+"hippowdon": {
+"clip": [
+0.103,
+0.803
+],
+"file": "9aadb3e878.mp3",
+"text": "Hippowdon",
+"voice": "en-US-AnaNeural"
+},
+"hitmonchan": {
+"clip": [
+0.102,
+0.934
+],
+"file": "6ef74cd45f.mp3",
+"text": "Hitmonchan",
+"voice": "en-US-AnaNeural"
+},
+"hitmonlee": {
+"clip": [
+0.103,
+0.816
+],
+"file": "9fe4ef429a.mp3",
+"text": "Hitmonlee",
+"voice": "en-US-AnaNeural"
+},
+"hitmontop": {
+"clip": [
+0.103,
+0.921
+],
+"file": "dd433dbcd9.mp3",
+"text": "Hitmontop",
+"voice": "en-US-AnaNeural"
+},
+"ho oh": {
+"clip": [
+0.102,
+0.605
+],
+"file": "f3c97d7f09.mp3",
+"text": "Ho-Oh",
+"voice": "en-US-AnaNeural"
+},
+"honchkrow": {
+"clip": [
+0.103,
+0.882
+],
+"file": "f779b84f29.mp3",
+"text": "Honchkrow",
+"voice": "en-US-AnaNeural"
+},
+"honedge": {
+"clip": [
+0.102,
+0.737
+],
+"file": "566c81463c.mp3",
+"text": "Honedge",
+"voice": "en-US-AnaNeural"
+},
+"hoopa": {
+"clip": [
+0.103,
+0.553
+],
+"file": "92755c9fc9.mp3",
+"text": "Hoopa",
+"voice": "en-US-AnaNeural"
+},
+"hoothoot": {
+"clip": [
+0.103,
+0.75
+],
+"file": "ec21ded934.mp3",
+"text": "Hoothoot",
+"voice": "en-US-AnaNeural"
+},
+"hoppip": {
+"clip": [
+0.102,
+0.75
+],
+"file": "27837d880c.mp3",
+"text": "Hoppip",
+"voice": "en-US-AnaNeural"
+},
+"horsea": {
+"clip": [
+0.103,
+0.737
+],
+"file": "bf6a718826.mp3",
+"text": "Horsea",
+"voice": "en-US-AnaNeural"
+},
+"houndoom": {
+"clip": [
+0.103,
+0.763
+],
+"file": "f293437f1a.mp3",
+"text": "Houndoom",
+"voice": "en-US-AnaNeural"
+},
+"houndour": {
+"clip": [
+0.103,
+0.75
+],
+"file": "ab53c0cfd8.mp3",
+"text": "Houndour",
+"voice": "en-US-AnaNeural"
+},
+"houndstone": {
+"clip": [
+0.102,
+0.987
+],
+"file": "764f4a83f3.mp3",
+"text": "Houndstone",
+"voice": "en-US-AnaNeural"
+},
+"huntail": {
+"clip": [
+0.102,
+0.803
+],
+"file": "ea96c0c69b.mp3",
+"text": "Huntail",
+"voice": "en-US-AnaNeural"
+},
+"hydrapple": {
+"clip": [
+0.103,
+0.882
+],
+"file": "4f36093d1e.mp3",
+"text": "Hydrapple",
+"voice": "en-US-AnaNeural"
+},
+"hydreigon": {
+"clip": [
+0.103,
+0.987
+],
+"file": "a2fb808f1f.mp3",
+"text": "Hydreigon",
+"voice": "en-US-AnaNeural"
+},
+"hypno": {
+"clip": [
+0.103,
+0.684
+],
+"file": "ec1d72e232.mp3",
+"text": "Hypno",
+"voice": "en-US-AnaNeural"
+},
+"igglybuff": {
+"clip": [
+0.103,
+0.829
+],
+"file": "b560563b0d.mp3",
+"text": "Igglybuff",
+"voice": "en-US-AnaNeural"
+},
+"illumise": {
+"clip": [
+0.103,
+0.855
+],
+"file": "6888cca948.mp3",
+"text": "Illumise",
+"voice": "en-US-AnaNeural"
+},
+"impidimp": {
+"clip": [
+0.103,
+0.789
+],
+"file": "8e3c942df6.mp3",
+"text": "Impidimp",
+"voice": "en-US-AnaNeural"
+},
+"incineroar": {
+"clip": [
+0.103,
+0.947
+],
+"file": "80488decf4.mp3",
+"text": "Incineroar",
+"voice": "en-US-AnaNeural"
+},
+"indeedee": {
+"clip": [
+0.103,
+0.803
+],
+"file": "b39d2e8652.mp3",
+"text": "Indeedee",
+"voice": "en-US-AnaNeural"
+},
+"infernape": {
+"clip": [
+0.103,
+0.842
+],
+"file": "405b1b3e76.mp3",
+"text": "Infernape",
+"voice": "en-US-AnaNeural"
+},
+"inkay": {
+"clip": [
+0.103,
+0.618
+],
+"file": "c9fb957ed0.mp3",
+"text": "Inkay",
+"voice": "en-US-AnaNeural"
+},
+"inteleon": {
+"clip": [
+0.103,
+0.947
+],
+"file": "a62f176ec2.mp3",
+"text": "Inteleon",
+"voice": "en-US-AnaNeural"
+},
+"iron boulder": {
+"clip": [
+0.103,
+1.105
+],
+"file": "93d3deb4d2.mp3",
+"text": "Iron Boulder",
+"voice": "en-US-AnaNeural"
+},
+"iron bundle": {
+"clip": [
+0.103,
+1.079
+],
+"file": "764d590303.mp3",
+"text": "Iron Bundle",
+"voice": "en-US-AnaNeural"
+},
+"iron crown": {
+"clip": [
+0.103,
+1.039
+],
+"file": "68a2901458.mp3",
+"text": "Iron Crown",
+"voice": "en-US-AnaNeural"
+},
+"iron hands": {
+"clip": [
+0.103,
+1.158
+],
+"file": "60af55f3f7.mp3",
+"text": "Iron Hands",
+"voice": "en-US-AnaNeural"
+},
+"iron jugulis": {
+"clip": [
+0.102,
+1.355
+],
+"file": "6c47a0dbda.mp3",
+"text": "Iron Jugulis",
+"voice": "en-US-AnaNeural"
+},
+"iron leaves": {
+"clip": [
+0.103,
+1.092
+],
+"file": "4cec09df75.mp3",
+"text": "Iron Leaves",
+"voice": "en-US-AnaNeural"
+},
+"iron moth": {
+"clip": [
+0.103,
+0.921
+],
+"file": "e4dbb16560.mp3",
+"text": "Iron Moth",
+"voice": "en-US-AnaNeural"
+},
+"iron thorns": {
+"clip": [
+0.103,
+1.224
+],
+"file": "f1cb27823d.mp3",
+"text": "Iron Thorns",
+"voice": "en-US-AnaNeural"
+},
+"iron treads": {
+"clip": [
+0.103,
+1.145
+],
+"file": "81e07848d0.mp3",
+"text": "Iron Treads",
+"voice": "en-US-AnaNeural"
+},
+"iron valiant": {
+"clip": [
+0.103,
+1.211
+],
+"file": "2d88614f3d.mp3",
+"text": "Iron Valiant",
+"voice": "en-US-AnaNeural"
+},
+"ivysaur": {
+"clip": [
+0.103,
+0.763
+],
+"file": "441ee82949.mp3",
+"text": "Ivysaur",
+"voice": "en-US-AnaNeural"
+},
+"jangmo o": {
+"clip": [
+0.103,
+0.868
+],
+"file": "d5cdc7f474.mp3",
+"text": "Jangmo-o",
+"voice": "en-US-AnaNeural"
+},
+"jellicent": {
+"clip": [
+0.103,
+0.895
+],
+"file": "61777bf05c.mp3",
+"text": "Jellicent",
+"voice": "en-US-AnaNeural"
+},
+"jigglypuff": {
+"clip": [
+0.103,
+0.934
+],
+"file": "805a69c06e.mp3",
+"text": "Jigglypuff",
+"voice": "en-US-AnaNeural"
+},
+"jirachi": {
+"clip": [
+0.103,
+0.803
+],
+"file": "f6da0d177a.mp3",
+"text": "Jirachi",
+"voice": "en-US-AnaNeural"
+},
+"jolteon": {
+"clip": [
+0.103,
+0.816
+],
+"file": "e335c21da5.mp3",
+"text": "Jolteon",
+"voice": "en-US-AnaNeural"
+},
+"joltik": {
+"clip": [
+0.103,
+0.816
+],
+"file": "1c232b73b8.mp3",
+"text": "Joltik",
+"voice": "en-US-AnaNeural"
+},
+"jumpluff": {
+"clip": [
+0.103,
+0.829
+],
+"file": "909c425545.mp3",
+"text": "Jumpluff",
+"voice": "en-US-AnaNeural"
+},
+"jynx": {
+"clip": [
+0.103,
+0.697
+],
+"file": "93503e4b62.mp3",
+"text": "Jynx",
+"voice": "en-US-AnaNeural"
+},
+"kabuto": {
+"clip": [
+0.103,
+0.75
+],
+"file": "7171fc6e03.mp3",
+"text": "Kabuto",
+"voice": "en-US-AnaNeural"
+},
+"kabutops": {
+"clip": [
+0.103,
+1.013
+],
+"file": "e554a6768f.mp3",
+"text": "Kabutops",
+"voice": "en-US-AnaNeural"
+},
+"kadabra": {
+"clip": [
+0.103,
+0.789
+],
+"file": "cffb4c276a.mp3",
+"text": "Kadabra",
+"voice": "en-US-AnaNeural"
+},
+"kakuna": {
+"clip": [
+0.103,
+0.711
+],
+"file": "3ebe94df45.mp3",
+"text": "Kakuna",
+"voice": "en-US-AnaNeural"
+},
+"kangaskhan": {
+"clip": [
+0.103,
+0.987
+],
+"file": "3d25dbfbb8.mp3",
+"text": "Kangaskhan",
+"voice": "en-US-AnaNeural"
+},
+"karrablast": {
+"clip": [
+0.103,
+1.0
+],
+"file": "6b77ab706d.mp3",
+"text": "Karrablast",
+"voice": "en-US-AnaNeural"
+},
+"kartana": {
+"clip": [
+0.103,
+0.776
+],
+"file": "ed6cb60003.mp3",
+"text": "Kartana",
+"voice": "en-US-AnaNeural"
+},
+"kecleon": {
+"clip": [
+0.103,
+0.776
+],
+"file": "cfdb26b21d.mp3",
+"text": "Kecleon",
+"voice": "en-US-AnaNeural"
+},
+"keldeo": {
+"clip": [
+0.103,
+0.763
+],
+"file": "b9b8b3ee8c.mp3",
+"text": "Keldeo",
+"voice": "en-US-AnaNeural"
+},
+"kilowattrel": {
+"clip": [
+0.103,
+1.013
+],
+"file": "9a2b95a844.mp3",
+"text": "Kilowattrel",
+"voice": "en-US-AnaNeural"
+},
+"kingambit": {
+"clip": [
+0.103,
+0.908
+],
+"file": "23c2f0879d.mp3",
+"text": "Kingambit",
+"voice": "en-US-AnaNeural"
+},
+"kingdra": {
+"clip": [
+0.103,
+0.684
+],
+"file": "9d7692d6f7.mp3",
+"text": "Kingdra",
+"voice": "en-US-AnaNeural"
+},
+"kingler": {
+"clip": [
+0.103,
+0.684
+],
+"file": "af906fe1ca.mp3",
+"text": "Kingler",
+"voice": "en-US-AnaNeural"
+},
+"kirlia": {
+"clip": [
+0.103,
+0.697
+],
+"file": "0141cf507a.mp3",
+"text": "Kirlia",
+"voice": "en-US-AnaNeural"
+},
+"klang": {
+"clip": [
+0.103,
+0.579
+],
+"file": "4f9110d8de.mp3",
+"text": "Klang",
+"voice": "en-US-AnaNeural"
+},
+"klawf": {
+"clip": [
+0.103,
+0.618
+],
+"file": "b5ab8705dd.mp3",
+"text": "Klawf",
+"voice": "en-US-AnaNeural"
+},
+"kleavor": {
+"clip": [
+0.103,
+0.618
+],
+"file": "271d5199ba.mp3",
+"text": "Kleavor",
+"voice": "en-US-AnaNeural"
+},
+"klefki": {
+"clip": [
+0.103,
+0.697
+],
+"file": "425a768e4f.mp3",
+"text": "Klefki",
+"voice": "en-US-AnaNeural"
+},
+"klink": {
+"clip": [
+0.103,
+0.566
+],
+"file": "d2e6fd7482.mp3",
+"text": "Klink",
+"voice": "en-US-AnaNeural"
+},
+"klinklang": {
+"clip": [
+0.103,
+0.855
+],
+"file": "04f4a029f9.mp3",
+"text": "Klinklang",
+"voice": "en-US-AnaNeural"
+},
+"koffing": {
+"clip": [
+0.103,
+0.697
+],
+"file": "de73f6bf1e.mp3",
+"text": "Koffing",
+"voice": "en-US-AnaNeural"
+},
+"komala": {
+"clip": [
+0.103,
+0.684
+],
+"file": "327cfb8b78.mp3",
+"text": "Komala",
+"voice": "en-US-AnaNeural"
+},
+"kommo o": {
+"clip": [
+0.103,
+0.724
+],
+"file": "7d61ce3f0b.mp3",
+"text": "Kommo-o",
+"voice": "en-US-AnaNeural"
+},
+"koraidon": {
+"clip": [
+0.103,
+0.763
+],
+"file": "059f023760.mp3",
+"text": "Koraidon",
+"voice": "en-US-AnaNeural"
+},
+"krabby": {
+"clip": [
+0.103,
+0.632
+],
+"file": "3a46698f93.mp3",
+"text": "Krabby",
+"voice": "en-US-AnaNeural"
+},
+"kricketot": {
+"clip": [
+0.103,
+0.816
+],
+"file": "f3c2b0b86a.mp3",
+"text": "Kricketot",
+"voice": "en-US-AnaNeural"
+},
+"kricketune": {
+"clip": [
+0.103,
+0.803
+],
+"file": "0d9e092f96.mp3",
+"text": "Kricketune",
+"voice": "en-US-AnaNeural"
+},
+"krokorok": {
+"clip": [
+0.103,
+0.908
+],
+"file": "cf6021b207.mp3",
+"text": "Krokorok",
+"voice": "en-US-AnaNeural"
+},
+"krookodile": {
+"clip": [
+0.103,
+0.882
+],
+"file": "139dab31c8.mp3",
+"text": "Krookodile",
+"voice": "en-US-AnaNeural"
+},
+"kubfu": {
+"clip": [
+0.103,
+0.579
+],
+"file": "4296e1221b.mp3",
+"text": "Kubfu",
+"voice": "en-US-AnaNeural"
+},
+"kyogre": {
+"clip": [
+0.103,
+0.75
+],
+"file": "8631980906.mp3",
+"text": "Kyogre",
+"voice": "en-US-AnaNeural"
+},
+"kyurem": {
+"clip": [
+0.103,
+0.684
+],
+"file": "d758ec4e45.mp3",
+"text": "Kyurem",
+"voice": "en-US-AnaNeural"
+},
+"lairon": {
+"clip": [
+0.103,
+0.697
+],
+"file": "8b6a142ecd.mp3",
+"text": "Lairon",
+"voice": "en-US-AnaNeural"
+},
+"lampent": {
+"clip": [
+0.103,
+0.803
+],
+"file": "f35e661ce5.mp3",
+"text": "Lampent",
+"voice": "en-US-AnaNeural"
+},
+"landorus": {
+"clip": [
+0.103,
+1.039
+],
+"file": "cc73262c29.mp3",
+"text": "Landorus",
+"voice": "en-US-AnaNeural"
+},
+"lanturn": {
+"clip": [
+0.103,
+0.737
+],
+"file": "10789bdd6a.mp3",
+"text": "Lanturn",
+"voice": "en-US-AnaNeural"
+},
+"lapras": {
+"clip": [
+0.103,
+0.816
+],
+"file": "4c6ee993eb.mp3",
+"text": "Lapras",
+"voice": "en-US-AnaNeural"
+},
+"larvesta": {
+"clip": [
+0.103,
+0.908
+],
+"file": "7a382dd3f5.mp3",
+"text": "Larvesta",
+"voice": "en-US-AnaNeural"
+},
+"larvitar": {
+"clip": [
+0.103,
+0.934
+],
+"file": "2c0ddd45db.mp3",
+"text": "Larvitar",
+"voice": "en-US-AnaNeural"
+},
+"latias": {
+"clip": [
+0.103,
+0.855
+],
+"file": "a42c88eae2.mp3",
+"text": "Latias",
+"voice": "en-US-AnaNeural"
+},
+"latios": {
+"clip": [
+0.103,
+0.882
+],
+"file": "9aa116b51b.mp3",
+"text": "Latios",
+"voice": "en-US-AnaNeural"
+},
+"leafeon": {
+"clip": [
+0.103,
+0.855
+],
+"file": "bb6a9e8b25.mp3",
+"text": "Leafeon",
+"voice": "en-US-AnaNeural"
+},
+"leavanny": {
+"clip": [
+0.103,
+0.671
+],
+"file": "68db79b1bd.mp3",
+"text": "Leavanny",
+"voice": "en-US-AnaNeural"
+},
+"lechonk": {
+"clip": [
+0.103,
+0.763
+],
+"file": "2a37ace1d2.mp3",
+"text": "Lechonk",
+"voice": "en-US-AnaNeural"
+},
+"ledian": {
+"clip": [
+0.103,
+0.737
+],
+"file": "ae59656b91.mp3",
+"text": "Ledian",
+"voice": "en-US-AnaNeural"
+},
+"ledyba": {
+"clip": [
+0.103,
+0.671
+],
+"file": "3f8adedeaa.mp3",
+"text": "Ledyba",
+"voice": "en-US-AnaNeural"
+},
+"lickilicky": {
+"clip": [
+0.103,
+0.882
+],
+"file": "4be630939a.mp3",
+"text": "Lickilicky",
+"voice": "en-US-AnaNeural"
+},
+"lickitung": {
+"clip": [
+0.103,
+0.789
+],
+"file": "401051266e.mp3",
+"text": "Lickitung",
+"voice": "en-US-AnaNeural"
+},
+"liepard": {
+"clip": [
+0.103,
+0.711
+],
+"file": "5271df99b6.mp3",
+"text": "Liepard",
+"voice": "en-US-AnaNeural"
+},
+"lileep": {
+"clip": [
+0.103,
+0.632
+],
+"file": "393e179c98.mp3",
+"text": "Lileep",
+"voice": "en-US-AnaNeural"
+},
+"lilligant": {
+"clip": [
+0.103,
+0.842
+],
+"file": "f99d401653.mp3",
+"text": "Lilligant",
+"voice": "en-US-AnaNeural"
+},
+"lillipup": {
+"clip": [
+0.103,
+0.816
+],
+"file": "ed9640a33b.mp3",
+"text": "Lillipup",
+"voice": "en-US-AnaNeural"
+},
+"linoone": {
+"clip": [
+0.103,
+0.658
+],
+"file": "aae659cd66.mp3",
+"text": "Linoone",
+"voice": "en-US-AnaNeural"
+},
+"litleo": {
+"clip": [
+0.103,
+0.816
+],
+"file": "53d965a57c.mp3",
+"text": "Litleo",
+"voice": "en-US-AnaNeural"
+},
+"litten": {
+"clip": [
+0.103,
+0.592
+],
+"file": "5891f1466b.mp3",
+"text": "Litten",
+"voice": "en-US-AnaNeural"
+},
+"litwick": {
+"clip": [
+0.103,
+0.737
+],
+"file": "1b5d6272b6.mp3",
+"text": "Litwick",
+"voice": "en-US-AnaNeural"
+},
+"lokix": {
+"clip": [
+0.103,
+0.868
+],
+"file": "6c1bde3b79.mp3",
+"text": "Lokix",
+"voice": "en-US-AnaNeural"
+},
+"lombre": {
+"clip": [
+0.103,
+0.711
+],
+"file": "4f651a6731.mp3",
+"text": "Lombre",
+"voice": "en-US-AnaNeural"
+},
+"lopunny": {
+"clip": [
+0.103,
+0.737
+],
+"file": "4fa149099a.mp3",
+"text": "Lopunny",
+"voice": "en-US-AnaNeural"
+},
+"lotad": {
+"clip": [
+0.103,
+0.684
+],
+"file": "9ec9cd95ae.mp3",
+"text": "Lotad",
+"voice": "en-US-AnaNeural"
+},
+"loudred": {
+"clip": [
+0.103,
+0.816
+],
+"file": "0b8b184d0a.mp3",
+"text": "Loudred",
+"voice": "en-US-AnaNeural"
+},
+"lucario": {
+"clip": [
+0.103,
+0.895
+],
+"file": "c1078f9544.mp3",
+"text": "Lucario",
+"voice": "en-US-AnaNeural"
+},
+"ludicolo": {
+"clip": [
+0.103,
+0.895
+],
+"file": "d6a5664e9d.mp3",
+"text": "Ludicolo",
+"voice": "en-US-AnaNeural"
+},
+"lugia": {
+"clip": [
+0.103,
+0.671
+],
+"file": "c349461a99.mp3",
+"text": "Lugia",
+"voice": "en-US-AnaNeural"
+},
+"lumineon": {
+"clip": [
+0.103,
+0.816
+],
+"file": "5296b4c787.mp3",
+"text": "Lumineon",
+"voice": "en-US-AnaNeural"
+},
+"lunala": {
+"clip": [
+0.103,
+0.75
+],
+"file": "2bc273a024.mp3",
+"text": "Lunala",
+"voice": "en-US-AnaNeural"
+},
+"lunatone": {
+"clip": [
+0.103,
+0.868
+],
+"file": "b9f2682230.mp3",
+"text": "Lunatone",
+"voice": "en-US-AnaNeural"
+},
+"lurantis": {
+"clip": [
+0.103,
+1.0
+],
+"file": "0dfc43a3bb.mp3",
+"text": "Lurantis",
+"voice": "en-US-AnaNeural"
+},
+"luvdisc": {
+"clip": [
+0.103,
+0.855
+],
+"file": "eabc32490c.mp3",
+"text": "Luvdisc",
+"voice": "en-US-AnaNeural"
+},
+"luxio": {
+"clip": [
+0.103,
+0.842
+],
+"file": "890ab588bf.mp3",
+"text": "Luxio",
+"voice": "en-US-AnaNeural"
+},
+"luxray": {
+"clip": [
+0.103,
+0.776
+],
+"file": "540e57f313.mp3",
+"text": "Luxray",
+"voice": "en-US-AnaNeural"
+},
+"lycanroc": {
+"clip": [
+0.103,
+0.921
+],
+"file": "119d1b1b90.mp3",
+"text": "Lycanroc",
+"voice": "en-US-AnaNeural"
+},
+"mabosstiff": {
+"clip": [
+0.103,
+0.974
+],
+"file": "bbb3ce8dc4.mp3",
+"text": "Mabosstiff",
+"voice": "en-US-AnaNeural"
+},
+"machamp": {
+"clip": [
+0.103,
+0.737
+],
+"file": "5e262fa922.mp3",
+"text": "Machamp",
+"voice": "en-US-AnaNeural"
+},
+"machoke": {
+"clip": [
+0.103,
+0.803
+],
+"file": "df578917be.mp3",
+"text": "Machoke",
+"voice": "en-US-AnaNeural"
+},
+"machop": {
+"clip": [
+0.103,
+0.776
+],
+"file": "757b6e269f.mp3",
+"text": "Machop",
+"voice": "en-US-AnaNeural"
+},
+"magby": {
+"clip": [
+0.103,
+0.671
+],
+"file": "6ad71af625.mp3",
+"text": "Magby",
+"voice": "en-US-AnaNeural"
+},
+"magcargo": {
+"clip": [
+0.103,
+1.026
+],
+"file": "d6c302e5f7.mp3",
+"text": "Magcargo",
+"voice": "en-US-AnaNeural"
+},
+"magearna": {
+"clip": [
+0.103,
+0.908
+],
+"file": "b3d501eab7.mp3",
+"text": "Magearna",
+"voice": "en-US-AnaNeural"
+},
+"magikarp": {
+"clip": [
+0.103,
+0.908
+],
+"file": "07b251037a.mp3",
+"text": "Magikarp",
+"voice": "en-US-AnaNeural"
+},
+"magmar": {
+"clip": [
+0.103,
+0.803
+],
+"file": "a3c3f0f8b8.mp3",
+"text": "Magmar",
+"voice": "en-US-AnaNeural"
+},
+"magmortar": {
+"clip": [
+0.103,
+0.934
+],
+"file": "5d31ad4c14.mp3",
+"text": "Magmortar",
+"voice": "en-US-AnaNeural"
+},
+"magnemite": {
+"clip": [
+0.103,
+0.868
+],
+"file": "8f48f990ad.mp3",
+"text": "Magnemite",
+"voice": "en-US-AnaNeural"
+},
+"magneton": {
+"clip": [
+0.103,
+0.921
+],
+"file": "c6aca98991.mp3",
+"text": "Magneton",
+"voice": "en-US-AnaNeural"
+},
+"magnezone": {
+"clip": [
+0.103,
+0.947
+],
+"file": "29543132df.mp3",
+"text": "Magnezone",
+"voice": "en-US-AnaNeural"
+},
+"makuhita": {
+"clip": [
+0.103,
+0.921
+],
+"file": "1fe9dcb6c4.mp3",
+"text": "Makuhita",
+"voice": "en-US-AnaNeural"
+},
+"malamar": {
+"clip": [
+0.103,
+0.803
+],
+"file": "a3503cd856.mp3",
+"text": "Malamar",
+"voice": "en-US-AnaNeural"
+},
+"mamoswine": {
+"clip": [
+0.103,
+0.921
+],
+"file": "458a9b2f14.mp3",
+"text": "Mamoswine",
+"voice": "en-US-AnaNeural"
+},
+"manaphy": {
+"clip": [
+0.103,
+0.75
+],
+"file": "72b3578c8e.mp3",
+"text": "Manaphy",
+"voice": "en-US-AnaNeural"
+},
+"mandibuzz": {
+"clip": [
+0.103,
+0.974
+],
+"file": "cc76b45f13.mp3",
+"text": "Mandibuzz",
+"voice": "en-US-AnaNeural"
+},
+"manectric": {
+"clip": [
+0.103,
+0.908
+],
+"file": "75eb2cf4cb.mp3",
+"text": "Manectric",
+"voice": "en-US-AnaNeural"
+},
+"mankey": {
+"clip": [
+0.103,
+0.724
+],
+"file": "5004662f6c.mp3",
+"text": "Mankey",
+"voice": "en-US-AnaNeural"
+},
+"mantine": {
+"clip": [
+0.103,
+0.763
+],
+"file": "739d7a25d2.mp3",
+"text": "Mantine",
+"voice": "en-US-AnaNeural"
+},
+"mantyke": {
+"clip": [
+0.103,
+0.829
+],
+"file": "a13366632d.mp3",
+"text": "Mantyke",
+"voice": "en-US-AnaNeural"
+},
+"maractus": {
+"clip": [
+0.103,
+1.013
+],
+"file": "b2249e7465.mp3",
+"text": "Maractus",
+"voice": "en-US-AnaNeural"
+},
+"mareanie": {
+"clip": [
+0.103,
+0.776
+],
+"file": "35f26a631b.mp3",
+"text": "Mareanie",
+"voice": "en-US-AnaNeural"
+},
+"mareep": {
+"clip": [
+0.103,
+0.618
+],
+"file": "74a4a0baf1.mp3",
+"text": "Mareep",
+"voice": "en-US-AnaNeural"
+},
+"marill": {
+"clip": [
+0.103,
+0.632
+],
+"file": "2658f801f3.mp3",
+"text": "Marill",
+"voice": "en-US-AnaNeural"
+},
+"marowak": {
+"clip": [
+0.103,
+0.882
+],
+"file": "240a29ee6c.mp3",
+"text": "Marowak",
+"voice": "en-US-AnaNeural"
+},
+"marshadow": {
+"clip": [
+0.103,
+0.855
+],
+"file": "6044087ae5.mp3",
+"text": "Marshadow",
+"voice": "en-US-AnaNeural"
+},
+"marshtomp": {
+"clip": [
+0.103,
+0.882
+],
+"file": "f801982725.mp3",
+"text": "Marshtomp",
+"voice": "en-US-AnaNeural"
+},
+"maschiff": {
+"clip": [
+0.103,
+0.855
+],
+"file": "544b5be68e.mp3",
+"text": "Maschiff",
+"voice": "en-US-AnaNeural"
+},
+"masquerain": {
+"clip": [
+0.103,
+0.921
+],
+"file": "552edd57f9.mp3",
+"text": "Masquerain",
+"voice": "en-US-AnaNeural"
+},
+"maushold": {
+"clip": [
+0.103,
+0.829
+],
+"file": "8c7980eb03.mp3",
+"text": "Maushold",
+"voice": "en-US-AnaNeural"
+},
+"mawile": {
+"clip": [
+0.103,
+0.684
+],
+"file": "a6ab0be03d.mp3",
+"text": "Mawile",
+"voice": "en-US-AnaNeural"
+},
+"medicham": {
+"clip": [
+0.103,
+0.842
+],
+"file": "a9d0e14424.mp3",
+"text": "Medicham",
+"voice": "en-US-AnaNeural"
+},
+"meditite": {
+"clip": [
+0.103,
+0.789
+],
+"file": "7e5ba67263.mp3",
+"text": "Meditite",
+"voice": "en-US-AnaNeural"
+},
+"meganium": {
+"clip": [
+0.103,
+0.842
+],
+"file": "4556099037.mp3",
+"text": "Meganium",
+"voice": "en-US-AnaNeural"
+},
+"melmetal": {
+"clip": [
+0.103,
+0.803
+],
+"file": "52b57ccaf7.mp3",
+"text": "Melmetal",
+"voice": "en-US-AnaNeural"
+},
+"meloetta": {
+"clip": [
+0.103,
+0.829
+],
+"file": "18b07b9ae2.mp3",
+"text": "Meloetta",
+"voice": "en-US-AnaNeural"
+},
+"meltan": {
+"clip": [
+0.103,
+0.789
+],
+"file": "84664f7193.mp3",
+"text": "Meltan",
+"voice": "en-US-AnaNeural"
+},
+"meowscarada": {
+"clip": [
+0.103,
+1.118
+],
+"file": "04a05eaf5c.mp3",
+"text": "Meowscarada",
+"voice": "en-US-GuyNeural"
+},
+"meowstic": {
+"clip": [
+0.103,
+0.868
+],
+"file": "5aed3be9e3.mp3",
+"text": "Meowstic",
+"voice": "en-US-GuyNeural"
+},
+"meowth": {
+"clip": [
+0.103,
+0.697
+],
+"file": "fd575f5beb.mp3",
+"text": "Meowth",
+"voice": "en-US-GuyNeural"
+},
+"mesprit": {
+"clip": [
+0.103,
+0.711
+],
+"file": "0635bbc570.mp3",
+"text": "Mesprit",
+"voice": "en-US-AnaNeural"
+},
+"metagross": {
+"clip": [
+0.103,
+0.947
+],
+"file": "9c51bccee5.mp3",
+"text": "Metagross",
+"voice": "en-US-AnaNeural"
+},
+"metang": {
+"clip": [
+0.103,
+0.671
+],
+"file": "fe764b77dc.mp3",
+"text": "Metang",
+"voice": "en-US-AnaNeural"
+},
+"metapod": {
+"clip": [
+0.103,
+0.803
+],
+"file": "4ad0fd71bf.mp3",
+"text": "Metapod",
+"voice": "en-US-AnaNeural"
+},
+"mew": {
+"clip": [
+0.103,
+0.526
+],
+"file": "4b673ef9d9.mp3",
+"text": "Mew",
+"voice": "en-US-AnaNeural"
+},
+"mewtwo": {
+"clip": [
+0.103,
+0.737
+],
+"file": "f86256146c.mp3",
+"text": "Mewtwo",
+"voice": "en-US-AnaNeural"
+},
+"mienfoo": {
+"clip": [
+0.103,
+0.671
+],
+"file": "7ff56ec94a.mp3",
+"text": "Mienfoo",
+"voice": "en-US-AnaNeural"
+},
+"mienshao": {
+"clip": [
+0.103,
+0.921
+],
+"file": "61aadca48a.mp3",
+"text": "Mienshao",
+"voice": "en-US-AnaNeural"
+},
+"mightyena": {
+"clip": [
+0.103,
+0.842
+],
+"file": "f852c7028e.mp3",
+"text": "Mightyena",
+"voice": "en-US-AnaNeural"
+},
+"milcery": {
+"clip": [
+0.103,
+0.803
+],
+"file": "0339dce339.mp3",
+"text": "Milcery",
+"voice": "en-US-AnaNeural"
+},
+"milotic": {
+"clip": [
+0.103,
+0.908
+],
+"file": "a52ace8ed5.mp3",
+"text": "Milotic",
+"voice": "en-US-AnaNeural"
+},
+"miltank": {
+"clip": [
+0.103,
+0.895
+],
+"file": "261e63ac34.mp3",
+"text": "Miltank",
+"voice": "en-US-AnaNeural"
+},
+"mime jr": {
+"clip": [
+0.103,
+1.026
+],
+"file": "e46c428bc4.mp3",
+"text": "Mime Jr.",
+"voice": "en-US-AnaNeural"
+},
+"mimikyu": {
+"clip": [
+0.103,
+0.763
+],
+"file": "a9c5b3dd27.mp3",
+"text": "Mimikyu",
+"voice": "en-US-AnaNeural"
+},
+"minccino": {
+"clip": [
+0.103,
+0.882
+],
+"file": "c6f1b81435.mp3",
+"text": "Minccino",
+"voice": "en-US-AnaNeural"
+},
+"minior": {
+"clip": [
+0.103,
+0.539
+],
+"file": "8955cbeb69.mp3",
+"text": "Minior",
+"voice": "en-US-AnaNeural"
+},
+"minun": {
+"clip": [
+0.103,
+0.605
+],
+"file": "0e5a8af32d.mp3",
+"text": "Minun",
+"voice": "en-US-AnaNeural"
+},
+"miraidon": {
+"clip": [
+0.103,
+0.75
+],
+"file": "6a7b39b3ba.mp3",
+"text": "Miraidon",
+"voice": "en-US-AnaNeural"
+},
+"misdreavus": {
+"clip": [
+0.103,
+1.066
+],
+"file": "da8d8f111a.mp3",
+"text": "Misdreavus",
+"voice": "en-US-AnaNeural"
+},
+"mismagius": {
+"clip": [
+0.103,
+1.105
+],
+"file": "fe2967add7.mp3",
+"text": "Mismagius",
+"voice": "en-US-AnaNeural"
+},
+"moltres": {
+"clip": [
+0.103,
+0.868
+],
+"file": "c4c27ddddb.mp3",
+"text": "Moltres",
+"voice": "en-US-AnaNeural"
+},
+"monferno": {
+"clip": [
+0.103,
+0.934
+],
+"file": "81f4481a5a.mp3",
+"text": "Monferno",
+"voice": "en-US-AnaNeural"
+},
+"morelull": {
+"clip": [
+0.103,
+0.776
+],
+"file": "5a09a2bfda.mp3",
+"text": "Morelull",
+"voice": "en-US-AnaNeural"
+},
+"morgrem": {
+"clip": [
+0.103,
+0.75
+],
+"file": "160e3ee844.mp3",
+"text": "Morgrem",
+"voice": "en-US-AnaNeural"
+},
+"morpeko": {
+"clip": [
+0.103,
+0.855
+],
+"file": "c41fad97a7.mp3",
+"text": "Morpeko",
+"voice": "en-US-AnaNeural"
+},
+"mothim": {
+"clip": [
+0.103,
+0.658
+],
+"file": "024645470d.mp3",
+"text": "Mothim",
+"voice": "en-US-AnaNeural"
+},
+"mr mime": {
+"clip": [
+0.103,
+0.921
+],
+"file": "c69aba3e40.mp3",
+"text": "Mr. Mime",
+"voice": "en-US-AnaNeural"
+},
+"mr rime": {
+"clip": [
+0.103,
+0.961
+],
+"file": "100e75087e.mp3",
+"text": "Mr. Rime",
+"voice": "en-US-AnaNeural"
+},
+"mudbray": {
+"clip": [
+0.103,
+0.737
+],
+"file": "192f816bb6.mp3",
+"text": "Mudbray",
+"voice": "en-US-AnaNeural"
+},
+"mudkip": {
+"clip": [
+0.103,
+0.711
+],
+"file": "ae6659b049.mp3",
+"text": "Mudkip",
+"voice": "en-US-AnaNeural"
+},
+"mudsdale": {
+"clip": [
+0.103,
+0.934
+],
+"file": "e88dee56c8.mp3",
+"text": "Mudsdale",
+"voice": "en-US-AnaNeural"
+},
+"muk": {
+"clip": [
+0.103,
+0.487
+],
+"file": "b60fb76579.mp3",
+"text": "Muk",
+"voice": "en-US-AnaNeural"
+},
+"munchlax": {
+"clip": [
+0.103,
+1.039
+],
+"file": "af99e4a633.mp3",
+"text": "Munchlax",
+"voice": "en-US-AnaNeural"
+},
+"munkidori": {
+"clip": [
+0.103,
+0.961
+],
+"file": "f5201f83c4.mp3",
+"text": "Munkidori",
+"voice": "en-US-AnaNeural"
+},
+"munna": {
+"clip": [
+0.103,
+0.539
+],
+"file": "cf72c35762.mp3",
+"text": "Munna",
+"voice": "en-US-AnaNeural"
+},
+"murkrow": {
+"clip": [
+0.103,
+0.737
+],
+"file": "46683f59f5.mp3",
+"text": "Murkrow",
+"voice": "en-US-AnaNeural"
+},
+"musharna": {
+"clip": [
+0.103,
+0.803
+],
+"file": "22d312e769.mp3",
+"text": "Musharna",
+"voice": "en-US-AnaNeural"
+},
+"nacli": {
+"clip": [
+0.103,
+0.671
+],
+"file": "f92fbd01ed.mp3",
+"text": "Nacli",
+"voice": "en-US-AnaNeural"
+},
+"naclstack": {
+"clip": [
+0.103,
+1.0
+],
+"file": "2d73bb1727.mp3",
+"text": "Naclstack",
+"voice": "en-US-AnaNeural"
+},
+"naganadel": {
+"clip": [
+0.103,
+0.961
+],
+"file": "c6e5f349c2.mp3",
+"text": "Naganadel",
+"voice": "en-US-AnaNeural"
+},
+"natu": {
+"clip": [
+0.103,
+0.526
+],
+"file": "29d8fbcf62.mp3",
+"text": "Natu",
+"voice": "en-US-AnaNeural"
+},
+"necrozma": {
+"clip": [
+0.103,
+0.934
+],
+"file": "8b4a5c5c6c.mp3",
+"text": "Necrozma",
+"voice": "en-US-AnaNeural"
+},
+"nickit": {
+"clip": [
+0.103,
+0.763
+],
+"file": "1ddcc7ce27.mp3",
+"text": "Nickit",
+"voice": "en-US-AnaNeural"
+},
+"nidoking": {
+"clip": [
+0.103,
+0.868
+],
+"file": "4ac804cde4.mp3",
+"text": "Nidoking",
+"voice": "en-US-AnaNeural"
+},
+"nidoqueen": {
+"clip": [
+0.103,
+0.882
+],
+"file": "f64214a929.mp3",
+"text": "Nidoqueen",
+"voice": "en-US-AnaNeural"
+},
+"nidoran": {
+"clip": [
+0.103,
+0.737
+],
+"file": "c9bef61cf6.mp3",
+"text": "Nidoran",
+"voice": "en-US-AnaNeural"
+},
+"nidorina": {
+"clip": [
+0.103,
+0.895
+],
+"file": "53283f4c3a.mp3",
+"text": "Nidorina",
+"voice": "en-US-AnaNeural"
+},
+"nidorino": {
+"clip": [
+0.103,
+0.921
+],
+"file": "5034590600.mp3",
+"text": "Nidorino",
+"voice": "en-US-AnaNeural"
+},
+"nihilego": {
+"clip": [
+0.103,
+0.882
+],
+"file": "acb0f418c2.mp3",
+"text": "Nihilego",
+"voice": "en-US-AnaNeural"
+},
+"nincada": {
+"clip": [
+0.103,
+0.816
+],
+"file": "3b76b739fa.mp3",
+"text": "Nincada",
+"voice": "en-US-AnaNeural"
+},
+"ninetales": {
+"clip": [
+0.103,
+1.013
+],
+"file": "32d6d0b6be.mp3",
+"text": "Ninetales",
+"voice": "en-US-AnaNeural"
+},
+"ninjask": {
+"clip": [
+0.103,
+0.882
+],
+"file": "a0b10fd1a4.mp3",
+"text": "Ninjask",
+"voice": "en-US-AnaNeural"
+},
+"noctowl": {
+"clip": [
+0.103,
+0.829
+],
+"file": "0deb84ac21.mp3",
+"text": "Noctowl",
+"voice": "en-US-AnaNeural"
+},
+"noibat": {
+"clip": [
+0.103,
+0.711
+],
+"file": "f7c9446d43.mp3",
+"text": "Noibat",
+"voice": "en-US-AnaNeural"
+},
+"noivern": {
+"clip": [
+0.103,
+0.724
+],
+"file": "b9bd5ca427.mp3",
+"text": "Noivern",
+"voice": "en-US-AnaNeural"
+},
+"nosepass": {
+"clip": [
+0.103,
+0.947
+],
+"file": "0547dcf8f7.mp3",
+"text": "Nosepass",
+"voice": "en-US-AnaNeural"
+},
+"numel": {
+"clip": [
+0.103,
+0.618
+],
+"file": "e6f74204e4.mp3",
+"text": "Numel",
+"voice": "en-US-AnaNeural"
+},
+"nuzleaf": {
+"clip": [
+0.103,
+0.829
+],
+"file": "452b1ba967.mp3",
+"text": "Nuzleaf",
+"voice": "en-US-AnaNeural"
+},
+"nymble": {
+"clip": [
+0.103,
+0.632
+],
+"file": "fcf342cc2e.mp3",
+"text": "Nymble",
+"voice": "en-US-AnaNeural"
+},
+"obstagoon": {
+"clip": [
+0.101,
+0.882
+],
+"file": "cd3a523437.mp3",
+"text": "Obstagoon",
+"voice": "en-US-AnaNeural"
+},
+"octillery": {
+"clip": [
+0.103,
+0.855
+],
+"file": "436d0d9665.mp3",
+"text": "Octillery",
+"voice": "en-US-AnaNeural"
+},
+"oddish": {
+"clip": [
+0.103,
+0.671
+],
+"file": "033b913793.mp3",
+"text": "Oddish",
+"voice": "en-US-AnaNeural"
+},
+"ogerpon": {
+"clip": [
+0.103,
+0.803
+],
+"file": "08cba8cc0f.mp3",
+"text": "Ogerpon",
+"voice": "en-US-AnaNeural"
+},
+"oinkologne": {
+"clip": [
+0.102,
+0.961
+],
+"file": "8d333b8a37.mp3",
+"text": "Oinkologne",
+"voice": "en-US-AnaNeural"
+},
+"okidogi": {
+"clip": [
+0.103,
+0.882
+],
+"file": "2587af6cc2.mp3",
+"text": "Okidogi",
+"voice": "en-US-AnaNeural"
+},
+"omanyte": {
+"clip": [
+0.103,
+0.724
+],
+"file": "1ffcd3d0b6.mp3",
+"text": "Omanyte",
+"voice": "en-US-AnaNeural"
+},
+"omastar": {
+"clip": [
+0.103,
+0.855
+],
+"file": "d4b998b6e2.mp3",
+"text": "Omastar",
+"voice": "en-US-AnaNeural"
+},
+"onix": {
+"clip": [
+0.103,
+0.737
+],
+"file": "fd96a4e3eb.mp3",
+"text": "Onix",
+"voice": "en-US-AnaNeural"
+},
+"oranguru": {
+"clip": [
+0.101,
+0.842
+],
+"file": "782c418db3.mp3",
+"text": "Oranguru",
+"voice": "en-US-AnaNeural"
+},
+"orbeetle": {
+"clip": [
+0.103,
+0.737
+],
+"file": "05106ea86f.mp3",
+"text": "Orbeetle",
+"voice": "en-US-AnaNeural"
+},
+"oricorio": {
+"clip": [
+0.103,
+1.026
+],
+"file": "da7ddfa3ed.mp3",
+"text": "Oricorio",
+"voice": "en-US-AnaNeural"
+},
+"orthworm": {
+"clip": [
+0.103,
+0.789
+],
+"file": "14c72169d4.mp3",
+"text": "Orthworm",
+"voice": "en-US-AnaNeural"
+},
+"oshawott": {
+"clip": [
+0.103,
+0.75
+],
+"file": "a419ff1163.mp3",
+"text": "Oshawott",
+"voice": "en-US-AnaNeural"
+},
+"overqwil": {
+"clip": [
+0.103,
+0.868
+],
+"file": "534f29d7f4.mp3",
+"text": "Overqwil",
+"voice": "en-US-AnaNeural"
+},
+"pachirisu": {
+"clip": [
+0.103,
+0.882
+],
+"file": "71bdfc5075.mp3",
+"text": "Pachirisu",
+"voice": "en-US-AnaNeural"
+},
+"palafin": {
+"clip": [
+0.103,
+0.776
+],
+"file": "09fbbaa0d7.mp3",
+"text": "Palafin",
+"voice": "en-US-AnaNeural"
+},
+"palkia": {
+"clip": [
+0.103,
+0.776
+],
+"file": "5d27c12eb7.mp3",
+"text": "Palkia",
+"voice": "en-US-AnaNeural"
+},
+"palossand": {
+"clip": [
+0.103,
+1.066
+],
+"file": "ac5b848036.mp3",
+"text": "Palossand",
+"voice": "en-US-AnaNeural"
+},
+"palpitoad": {
+"clip": [
+0.103,
+0.855
+],
+"file": "667e1a0322.mp3",
+"text": "Palpitoad",
+"voice": "en-US-AnaNeural"
+},
+"pancham": {
+"clip": [
+0.103,
+0.75
+],
+"file": "ae6e9aa5c1.mp3",
+"text": "Pancham",
+"voice": "en-US-AnaNeural"
+},
+"pangoro": {
+"clip": [
+0.103,
+0.75
+],
+"file": "e29add9055.mp3",
+"text": "Pangoro",
+"voice": "en-US-AnaNeural"
+},
+"panpour": {
+"clip": [
+0.103,
+0.776
+],
+"file": "8517d5006e.mp3",
+"text": "Panpour",
+"voice": "en-US-AnaNeural"
+},
+"pansage": {
+"clip": [
+0.103,
+0.829
+],
+"file": "a603029f84.mp3",
+"text": "Pansage",
+"voice": "en-US-AnaNeural"
+},
+"pansear": {
+"clip": [
+0.103,
+0.789
+],
+"file": "51e12ca4c4.mp3",
+"text": "Pansear",
+"voice": "en-US-AnaNeural"
+},
+"paras": {
+"clip": [
+0.103,
+0.763
+],
+"file": "87985799d4.mp3",
+"text": "Paras",
+"voice": "en-US-AnaNeural"
+},
+"parasect": {
+"clip": [
+0.103,
+0.934
+],
+"file": "031a622a31.mp3",
+"text": "Parasect",
+"voice": "en-US-AnaNeural"
+},
+"passimian": {
+"clip": [
+0.103,
+0.855
+],
+"file": "57b9c5d9f4.mp3",
+"text": "Passimian",
+"voice": "en-US-AnaNeural"
+},
+"patrat": {
+"clip": [
+0.103,
+0.75
+],
+"file": "2ff9ea4b18.mp3",
+"text": "Patrat",
+"voice": "en-US-AnaNeural"
+},
+"pawmi": {
+"clip": [
+0.103,
+0.566
+],
+"file": "a14aa77913.mp3",
+"text": "Pawmi",
+"voice": "en-US-AnaNeural"
+},
+"pawmo": {
+"clip": [
+0.103,
+0.605
+],
+"file": "3f005cdc33.mp3",
+"text": "Pawmo",
+"voice": "en-US-AnaNeural"
+},
+"pawmot": {
+"clip": [
+0.103,
+0.658
+],
+"file": "ce10ec5772.mp3",
+"text": "Pawmot",
+"voice": "en-US-AnaNeural"
+},
+"pawniard": {
+"clip": [
+0.103,
+0.724
+],
+"file": "ac1ad82516.mp3",
+"text": "Pawniard",
+"voice": "en-US-AnaNeural"
+},
+"pecharunt": {
+"clip": [
+0.103,
+0.829
+],
+"file": "0b3ef3b1cc.mp3",
+"text": "Pecharunt",
+"voice": "en-US-AnaNeural"
+},
+"pelipper": {
+"clip": [
+0.103,
+0.671
+],
+"file": "fb5fe2bec4.mp3",
+"text": "Pelipper",
+"voice": "en-US-AnaNeural"
+},
+"perrserker": {
+"clip": [
+0.103,
+0.842
+],
+"file": "fe76203652.mp3",
+"text": "Perrserker",
+"voice": "en-US-AnaNeural"
+},
+"persian": {
+"clip": [
+0.103,
+0.658
+],
+"file": "40c47a2077.mp3",
+"text": "Persian",
+"voice": "en-US-AnaNeural"
+},
+"petilil": {
+"clip": [
+0.103,
+0.711
+],
+"file": "706d4ef7ed.mp3",
+"text": "Petilil",
+"voice": "en-US-AnaNeural"
+},
+"phanpy": {
+"clip": [
+0.102,
+0.711
+],
+"file": "5138275faa.mp3",
+"text": "Phanpy",
+"voice": "en-US-AnaNeural"
+},
+"phantump": {
+"clip": [
+0.103,
+0.829
+],
+"file": "6bbff5b5f0.mp3",
+"text": "Phantump",
+"voice": "en-US-AnaNeural"
+},
+"pheromosa": {
+"clip": [
+0.102,
+0.987
+],
+"file": "853914c4ef.mp3",
+"text": "Pheromosa",
+"voice": "en-US-AnaNeural"
+},
+"phione": {
+"clip": [
+0.102,
+0.711
+],
+"file": "cb1925fb80.mp3",
+"text": "Phione",
+"voice": "en-US-AnaNeural"
+},
+"pichu": {
+"clip": [
+0.103,
+0.487
+],
+"file": "c314f394a2.mp3",
+"text": "Pichu",
+"voice": "en-US-AnaNeural"
+},
+"pidgeot": {
+"clip": [
+0.103,
+0.671
+],
+"file": "bea40fc9f5.mp3",
+"text": "Pidgeot",
+"voice": "en-US-AnaNeural"
+},
+"pidgeotto": {
+"clip": [
+0.103,
+0.895
+],
+"file": "a6151e859b.mp3",
+"text": "Pidgeotto",
+"voice": "en-US-AnaNeural"
+},
+"pidgey": {
+"clip": [
+0.103,
+0.566
+],
+"file": "234d10a1d5.mp3",
+"text": "Pidgey",
+"voice": "en-US-AnaNeural"
+},
+"pidove": {
+"clip": [
+0.103,
+0.671
+],
+"file": "209758197d.mp3",
+"text": "Pidove",
+"voice": "en-US-AnaNeural"
+},
+"pignite": {
+"clip": [
+0.103,
+0.737
+],
+"file": "68b13ba79a.mp3",
+"text": "Pignite",
+"voice": "en-US-AnaNeural"
+},
+"pikachu": {
+"clip": [
+0.103,
+0.711
+],
+"file": "9ce44f88a2.mp3",
+"text": "Pikachu",
+"voice": "en-US-AnaNeural"
+},
+"pikipek": {
+"clip": [
+0.103,
+0.829
+],
+"file": "6f66fe64d9.mp3",
+"text": "Pikipek",
+"voice": "en-US-AnaNeural"
+},
+"piloswine": {
+"clip": [
+0.103,
+0.974
+],
+"file": "a0bde4f59d.mp3",
+"text": "Piloswine",
+"voice": "en-US-AnaNeural"
+},
+"pincurchin": {
+"clip": [
+0.103,
+0.868
+],
+"file": "b5baf3d407.mp3",
+"text": "Pincurchin",
+"voice": "en-US-AnaNeural"
+},
+"pineco": {
+"clip": [
+0.103,
+0.816
+],
+"file": "334e6b6234.mp3",
+"text": "Pineco",
+"voice": "en-US-AnaNeural"
+},
+"pinsir": {
+"clip": [
+0.103,
+0.75
+],
+"file": "c530838cb7.mp3",
+"text": "Pinsir",
+"voice": "en-US-AnaNeural"
+},
+"piplup": {
+"clip": [
+0.103,
+0.684
+],
+"file": "24dbb042d2.mp3",
+"text": "Piplup",
+"voice": "en-US-AnaNeural"
+},
+"plusle": {
+"clip": [
+0.103,
+0.671
+],
+"file": "5585d6fc32.mp3",
+"text": "Plusle",
+"voice": "en-US-AnaNeural"
+},
+"poipole": {
+"clip": [
+0.103,
+0.671
+],
+"file": "e72899a2bd.mp3",
+"text": "Poipole",
+"voice": "en-US-AnaNeural"
+},
+"politoed": {
+"clip": [
+0.103,
+0.789
+],
+"file": "161079791d.mp3",
+"text": "Politoed",
+"voice": "en-US-AnaNeural"
+},
+"poliwag": {
+"clip": [
+0.103,
+0.816
+],
+"file": "c1a0fe38ae.mp3",
+"text": "Poliwag",
+"voice": "en-US-AnaNeural"
+},
+"poliwhirl": {
+"clip": [
+0.103,
+0.882
+],
+"file": "4dd0a3d16c.mp3",
+"text": "Poliwhirl",
+"voice": "en-US-AnaNeural"
+},
+"poliwrath": {
+"clip": [
+0.103,
+0.895
+],
+"file": "b098c14834.mp3",
+"text": "Poliwrath",
+"voice": "en-US-AnaNeural"
+},
+"poltchageist": {
+"clip": [
+0.103,
+1.092
+],
+"file": "695eb738ff.mp3",
+"text": "Poltchageist",
+"voice": "en-US-AnaNeural"
+},
+"polteageist": {
+"clip": [
+0.103,
+1.092
+],
+"file": "9c6c6c22ea.mp3",
+"text": "Polteageist",
+"voice": "en-US-AnaNeural"
+},
+"ponyta": {
+"clip": [
+0.103,
+0.697
+],
+"file": "520c78073c.mp3",
+"text": "Ponyta",
+"voice": "en-US-AnaNeural"
+},
+"poochyena": {
+"clip": [
+0.103,
+0.882
+],
+"file": "1d72bcf519.mp3",
+"text": "Poochyena",
+"voice": "en-US-AnaNeural"
+},
+"popplio": {
+"clip": [
+0.103,
+0.763
+],
+"file": "fd585a7547.mp3",
+"text": "Popplio",
+"voice": "en-US-AnaNeural"
+},
+"porygon": {
+"clip": [
+0.103,
+0.789
+],
+"file": "b1845921aa.mp3",
+"text": "Porygon",
+"voice": "en-US-AnaNeural"
+},
+"porygon z": {
+"clip": [
+0.103,
+0.961
+],
+"file": "35992b3636.mp3",
+"text": "Porygon-Z",
+"voice": "en-US-AnaNeural"
+},
+"porygon2": {
+"clip": [
+0.103,
+1.092
+],
+"file": "69662cdc10.mp3",
+"text": "Porygon2",
+"voice": "en-US-AnaNeural"
+},
+"primarina": {
+"clip": [
+0.103,
+0.908
+],
+"file": "feee61f823.mp3",
+"text": "Primarina",
+"voice": "en-US-AnaNeural"
+},
+"primeape": {
+"clip": [
+0.103,
+0.684
+],
+"file": "778c27e4a5.mp3",
+"text": "Primeape",
+"voice": "en-US-AnaNeural"
+},
+"prinplup": {
+"clip": [
+0.103,
+0.75
+],
+"file": "9125838ea8.mp3",
+"text": "Prinplup",
+"voice": "en-US-AnaNeural"
+},
+"probopass": {
+"clip": [
+0.103,
+0.947
+],
+"file": "7925992813.mp3",
+"text": "Probopass",
+"voice": "en-US-AnaNeural"
+},
+"psyduck": {
+"clip": [
+0.103,
+0.776
+],
+"file": "adacde58a4.mp3",
+"text": "Psyduck",
+"voice": "en-US-AnaNeural"
+},
+"pumpkaboo": {
+"clip": [
+0.103,
+0.711
+],
+"file": "b0a4d2aa86.mp3",
+"text": "Pumpkaboo",
+"voice": "en-US-AnaNeural"
+},
+"pupitar": {
+"clip": [
+0.103,
+0.697
+],
+"file": "aa7013d486.mp3",
+"text": "Pupitar",
+"voice": "en-US-AnaNeural"
+},
+"purrloin": {
+"clip": [
+0.103,
+0.711
+],
+"file": "a695eac1c4.mp3",
+"text": "Purrloin",
+"voice": "en-US-AnaNeural"
+},
+"purugly": {
+"clip": [
+0.103,
+0.803
+],
+"file": "2eff674661.mp3",
+"text": "Purugly",
+"voice": "en-US-AnaNeural"
+},
+"pyroar": {
+"clip": [
+0.103,
+0.671
+],
+"file": "831da2ebc8.mp3",
+"text": "Pyroar",
+"voice": "en-US-AnaNeural"
+},
+"pyukumuku": {
+"clip": [
+0.103,
+0.947
+],
+"file": "b3d2ca6f0d.mp3",
+"text": "Pyukumuku",
+"voice": "en-US-AnaNeural"
+},
+"quagsire": {
+"clip": [
+0.103,
+0.908
+],
+"file": "d8b101acef.mp3",
+"text": "Quagsire",
+"voice": "en-US-AnaNeural"
+},
+"quaquaval": {
+"clip": [
+0.103,
+0.882
+],
+"file": "1abd2e23d7.mp3",
+"text": "Quaquaval",
+"voice": "en-US-AnaNeural"
+},
+"quaxly": {
+"clip": [
+0.103,
+0.842
+],
+"file": "1be035d2d1.mp3",
+"text": "Quaxly",
+"voice": "en-US-AnaNeural"
+},
+"quaxwell": {
+"clip": [
+0.103,
+0.868
+],
+"file": "fba548649c.mp3",
+"text": "Quaxwell",
+"voice": "en-US-AnaNeural"
+},
+"quilava": {
+"clip": [
+0.103,
+0.724
+],
+"file": "d0fecc52d8.mp3",
+"text": "Quilava",
+"voice": "en-US-AnaNeural"
+},
+"quilladin": {
+"clip": [
+0.103,
+0.763
+],
+"file": "df57439c08.mp3",
+"text": "Quilladin",
+"voice": "en-US-AnaNeural"
+},
+"qwilfish": {
+"clip": [
+0.103,
+0.855
+],
+"file": "60cc1aba2d.mp3",
+"text": "Qwilfish",
+"voice": "en-US-AnaNeural"
+},
+"raboot": {
+"clip": [
+0.103,
+0.579
+],
+"file": "a3d18e099e.mp3",
+"text": "Raboot",
+"voice": "en-US-AnaNeural"
+},
+"rabsca": {
+"clip": [
+0.103,
+0.776
+],
+"file": "0597a2ac1e.mp3",
+"text": "Rabsca",
+"voice": "en-US-AnaNeural"
+},
+"raging bolt": {
+"clip": [
+0.103,
+1.04
+],
+"file": "3d662e49fb.mp3",
+"text": "Raging Bolt",
+"voice": "en-US-AnaNeural"
+},
+"raichu": {
+"clip": [
+0.103,
+0.632
+],
+"file": "b38056ff02.mp3",
+"text": "Raichu",
+"voice": "en-US-AnaNeural"
+},
+"raikou": {
+"clip": [
+0.103,
+0.526
+],
+"file": "163794029d.mp3",
+"text": "Raikou",
+"voice": "en-US-AnaNeural"
+},
+"ralts": {
+"clip": [
+0.103,
+0.684
+],
+"file": "419990a21d.mp3",
+"text": "Ralts",
+"voice": "en-US-AnaNeural"
+},
+"rampardos": {
+"clip": [
+0.103,
+1.039
+],
+"file": "30f02e8a23.mp3",
+"text": "Rampardos",
+"voice": "en-US-AnaNeural"
+},
+"rapidash": {
+"clip": [
+0.103,
+0.934
+],
+"file": "b50bad560f.mp3",
+"text": "Rapidash",
+"voice": "en-US-AnaNeural"
+},
+"raticate": {
+"clip": [
+0.103,
+0.776
+],
+"file": "99447e1520.mp3",
+"text": "Raticate",
+"voice": "en-US-AnaNeural"
+},
+"rattata": {
+"clip": [
+0.103,
+0.724
+],
+"file": "d274ecad12.mp3",
+"text": "Rattata",
+"voice": "en-US-AnaNeural"
+},
+"rayquaza": {
+"clip": [
+0.103,
+0.868
+],
+"file": "5e58d6627a.mp3",
+"text": "Rayquaza",
+"voice": "en-US-AnaNeural"
+},
+"regice": {
+"clip": [
+0.103,
+0.789
+],
+"file": "c14c1c5399.mp3",
+"text": "Regice",
+"voice": "en-US-AnaNeural"
+},
+"regidrago": {
+"clip": [
+0.103,
+0.974
+],
+"file": "034aedebc5.mp3",
+"text": "Regidrago",
+"voice": "en-US-AnaNeural"
+},
+"regieleki": {
+"clip": [
+0.103,
+1.013
+],
+"file": "312a44a431.mp3",
+"text": "Regieleki",
+"voice": "en-US-AnaNeural"
+},
+"regigigas": {
+"clip": [
+0.103,
+1.079
+],
+"file": "99e9018710.mp3",
+"text": "Regigigas",
+"voice": "en-US-AnaNeural"
+},
+"regirock": {
+"clip": [
+0.103,
+1.013
+],
+"file": "6483c45a99.mp3",
+"text": "Regirock",
+"voice": "en-US-AnaNeural"
+},
+"registeel": {
+"clip": [
+0.103,
+1.0
+],
+"file": "f08fbd07f9.mp3",
+"text": "Registeel",
+"voice": "en-US-AnaNeural"
+},
+"relicanth": {
+"clip": [
+0.103,
+0.842
+],
+"file": "92d81c17ec.mp3",
+"text": "Relicanth",
+"voice": "en-US-AnaNeural"
+},
+"rellor": {
+"clip": [
+0.103,
+0.447
+],
+"file": "16db3d855a.mp3",
+"text": "Rellor",
+"voice": "en-US-AnaNeural"
+},
+"remoraid": {
+"clip": [
+0.103,
+0.803
+],
+"file": "20238a1174.mp3",
+"text": "Remoraid",
+"voice": "en-US-AnaNeural"
+},
+"reshiram": {
+"clip": [
+0.103,
+0.921
+],
+"file": "6954791a60.mp3",
+"text": "Reshiram",
+"voice": "en-US-AnaNeural"
+},
+"reuniclus": {
+"clip": [
+0.103,
+1.066
+],
+"file": "bf54483914.mp3",
+"text": "Reuniclus",
+"voice": "en-US-AnaNeural"
+},
+"revavroom": {
+"clip": [
+0.103,
+0.934
+],
+"file": "071fab52e9.mp3",
+"text": "Revavroom",
+"voice": "en-US-AnaNeural"
+},
+"rhydon": {
+"clip": [
+0.103,
+0.645
+],
+"file": "711d94ed58.mp3",
+"text": "Rhydon",
+"voice": "en-US-AnaNeural"
+},
+"rhyhorn": {
+"clip": [
+0.103,
+0.776
+],
+"file": "dbf8e52788.mp3",
+"text": "Rhyhorn",
+"voice": "en-US-AnaNeural"
+},
+"rhyperior": {
+"clip": [
+0.103,
+0.908
+],
+"file": "9b67e28044.mp3",
+"text": "Rhyperior",
+"voice": "en-US-AnaNeural"
+},
+"ribombee": {
+"clip": [
+0.103,
+0.842
+],
+"file": "52f93a56da.mp3",
+"text": "Ribombee",
+"voice": "en-US-AnaNeural"
+},
+"rillaboom": {
+"clip": [
+0.103,
+0.724
+],
+"file": "8b645db18f.mp3",
+"text": "Rillaboom",
+"voice": "en-US-AnaNeural"
+},
+"riolu": {
+"clip": [
+0.103,
+0.632
+],
+"file": "7e79a0a045.mp3",
+"text": "Riolu",
+"voice": "en-US-AnaNeural"
+},
+"roaring moon": {
+"clip": [
+0.103,
+0.934
+],
+"file": "fd3f0b42e5.mp3",
+"text": "Roaring Moon",
+"voice": "en-US-AnaNeural"
+},
+"rockruff": {
+"clip": [
+0.103,
+0.816
+],
+"file": "009a060068.mp3",
+"text": "Rockruff",
+"voice": "en-US-AnaNeural"
+},
+"roggenrola": {
+"clip": [
+0.103,
+0.987
+],
+"file": "fd41ffbde2.mp3",
+"text": "Roggenrola",
+"voice": "en-US-AnaNeural"
+},
+"rolycoly": {
+"clip": [
+0.103,
+0.895
+],
+"file": "d675cfe6e6.mp3",
+"text": "Rolycoly",
+"voice": "en-US-AnaNeural"
+},
+"rookidee": {
+"clip": [
+0.103,
+0.632
+],
+"file": "a23ab193a7.mp3",
+"text": "Rookidee",
+"voice": "en-US-AnaNeural"
+},
+"roselia": {
+"clip": [
+0.103,
+0.842
+],
+"file": "c30df7ff57.mp3",
+"text": "Roselia",
+"voice": "en-US-AnaNeural"
+},
+"roserade": {
+"clip": [
+0.103,
+0.816
+],
+"file": "19f7787e39.mp3",
+"text": "Roserade",
+"voice": "en-US-AnaNeural"
+},
+"rotom": {
+"clip": [
+0.103,
+0.618
+],
+"file": "b8a2479481.mp3",
+"text": "Rotom",
+"voice": "en-US-AnaNeural"
+},
+"rowlet": {
+"clip": [
+0.103,
+0.684
+],
+"file": "521675dece.mp3",
+"text": "Rowlet",
+"voice": "en-US-AnaNeural"
+},
+"rufflet": {
+"clip": [
+0.103,
+0.724
+],
+"file": "820838295c.mp3",
+"text": "Rufflet",
+"voice": "en-US-AnaNeural"
+},
+"runerigus": {
+"clip": [
+0.103,
+1.079
+],
+"file": "b3297bd230.mp3",
+"text": "Runerigus",
+"voice": "en-US-AnaNeural"
+},
+"sableye": {
+"clip": [
+0.103,
+0.776
+],
+"file": "b71f5f5b68.mp3",
+"text": "Sableye",
+"voice": "en-US-AnaNeural"
+},
+"salamence": {
+"clip": [
+0.103,
+0.987
+],
+"file": "503859f018.mp3",
+"text": "Salamence",
+"voice": "en-US-AnaNeural"
+},
+"salandit": {
+"clip": [
+0.103,
+0.842
+],
+"file": "92ae0a4097.mp3",
+"text": "Salandit",
+"voice": "en-US-AnaNeural"
+},
+"salazzle": {
+"clip": [
+0.103,
+0.895
+],
+"file": "48a3c96ba0.mp3",
+"text": "Salazzle",
+"voice": "en-US-AnaNeural"
+},
+"samurott": {
+"clip": [
+0.103,
+0.868
+],
+"file": "ba13b99521.mp3",
+"text": "Samurott",
+"voice": "en-US-AnaNeural"
+},
+"sandaconda": {
+"clip": [
+0.103,
+1.092
+],
+"file": "6d39f50980.mp3",
+"text": "Sandaconda",
+"voice": "en-US-AnaNeural"
+},
+"sandile": {
+"clip": [
+0.103,
+0.868
+],
+"file": "b6ed9253c8.mp3",
+"text": "Sandile",
+"voice": "en-US-AnaNeural"
+},
+"sandshrew": {
+"clip": [
+0.103,
+0.947
+],
+"file": "7669caa546.mp3",
+"text": "Sandshrew",
+"voice": "en-US-AnaNeural"
+},
+"sandslash": {
+"clip": [
+0.103,
+1.118
+],
+"file": "db05dca437.mp3",
+"text": "Sandslash",
+"voice": "en-US-AnaNeural"
+},
+"sandy shocks": {
+"clip": [
+0.103,
+1.224
+],
+"file": "19d2438aa8.mp3",
+"text": "Sandy Shocks",
+"voice": "en-US-AnaNeural"
+},
+"sandygast": {
+"clip": [
+0.103,
+1.092
+],
+"file": "3e3eaf15dc.mp3",
+"text": "Sandygast",
+"voice": "en-US-AnaNeural"
+},
+"sawk": {
+"clip": [
+0.103,
+0.553
+],
+"file": "804cce400d.mp3",
+"text": "Sawk",
+"voice": "en-US-AnaNeural"
+},
+"sawsbuck": {
+"clip": [
+0.103,
+0.895
+],
+"file": "fae3c507a7.mp3",
+"text": "Sawsbuck",
+"voice": "en-US-AnaNeural"
+},
+"scatterbug": {
+"clip": [
+0.103,
+0.974
+],
+"file": "a0de2edbad.mp3",
+"text": "Scatterbug",
+"voice": "en-US-AnaNeural"
+},
+"sceptile": {
+"clip": [
+0.103,
+0.842
+],
+"file": "c606580fd4.mp3",
+"text": "Sceptile",
+"voice": "en-US-AnaNeural"
+},
+"scizor": {
+"clip": [
+0.103,
+0.724
+],
+"file": "50d2c16b4d.mp3",
+"text": "Scizor",
+"voice": "en-US-AnaNeural"
+},
+"scolipede": {
+"clip": [
+0.103,
+0.921
+],
+"file": "10ea29cffe.mp3",
+"text": "Scolipede",
+"voice": "en-US-AnaNeural"
+},
+"scorbunny": {
+"clip": [
+0.103,
+0.921
+],
+"file": "8bed27b811.mp3",
+"text": "Scorbunny",
+"voice": "en-US-AnaNeural"
+},
+"scovillain": {
+"clip": [
+0.103,
+0.974
+],
+"file": "fac9504dda.mp3",
+"text": "Scovillain",
+"voice": "en-US-AnaNeural"
+},
+"scrafty": {
+"clip": [
+0.103,
+0.842
+],
+"file": "b6cb9b2dcf.mp3",
+"text": "Scrafty",
+"voice": "en-US-AnaNeural"
+},
+"scraggy": {
+"clip": [
+0.103,
+0.763
+],
+"file": "8886f5f6c3.mp3",
+"text": "Scraggy",
+"voice": "en-US-AnaNeural"
+},
+"scream tail": {
+"clip": [
+0.103,
+1.132
+],
+"file": "34d479b276.mp3",
+"text": "Scream Tail",
+"voice": "en-US-AnaNeural"
+},
+"scyther": {
+"clip": [
+0.103,
+0.539
+],
+"file": "efee64258d.mp3",
+"text": "Scyther",
+"voice": "en-US-AnaNeural"
+},
+"seadra": {
+"clip": [
+0.103,
+0.697
+],
+"file": "f9805bdc1a.mp3",
+"text": "Seadra",
+"voice": "en-US-AnaNeural"
+},
+"seaking": {
+"clip": [
+0.103,
+0.763
+],
+"file": "4c790a6379.mp3",
+"text": "Seaking",
+"voice": "en-US-AnaNeural"
+},
+"sealeo": {
+"clip": [
+0.103,
+0.855
+],
+"file": "0ef5033d13.mp3",
+"text": "Sealeo",
+"voice": "en-US-AnaNeural"
+},
+"seedot": {
+"clip": [
+0.103,
+0.724
+],
+"file": "d0f54ed6d6.mp3",
+"text": "Seedot",
+"voice": "en-US-AnaNeural"
+},
+"seel": {
+"clip": [
+0.103,
+0.553
+],
+"file": "9ae603ca4e.mp3",
+"text": "Seel",
+"voice": "en-US-AnaNeural"
+},
+"seismitoad": {
+"clip": [
+0.103,
+0.974
+],
+"file": "654c63a934.mp3",
+"text": "Seismitoad",
+"voice": "en-US-AnaNeural"
+},
+"sentret": {
+"clip": [
+0.103,
+0.776
+],
+"file": "eba6f81c0c.mp3",
+"text": "Sentret",
+"voice": "en-US-AnaNeural"
+},
+"serperior": {
+"clip": [
+0.103,
+0.947
+],
+"file": "779501db93.mp3",
+"text": "Serperior",
+"voice": "en-US-AnaNeural"
+},
+"servine": {
+"clip": [
+0.103,
+0.868
+],
+"file": "f08e97871b.mp3",
+"text": "Servine",
+"voice": "en-US-AnaNeural"
+},
+"seviper": {
+"clip": [
+0.103,
+0.763
+],
+"file": "c8b80a0d42.mp3",
+"text": "Seviper",
+"voice": "en-US-AnaNeural"
+},
+"sewaddle": {
+"clip": [
+0.103,
+0.842
+],
+"file": "44b58ad0a0.mp3",
+"text": "Sewaddle",
+"voice": "en-US-AnaNeural"
+},
+"sharpedo": {
+"clip": [
+0.103,
+0.947
+],
+"file": "11718ed8c5.mp3",
+"text": "Sharpedo",
+"voice": "en-US-AnaNeural"
+},
+"shaymin": {
+"clip": [
+0.103,
+0.737
+],
+"file": "ffa01d71d5.mp3",
+"text": "Shaymin",
+"voice": "en-US-AnaNeural"
+},
+"shedinja": {
+"clip": [
+0.103,
+0.882
+],
+"file": "e1bc77ce7a.mp3",
+"text": "Shedinja",
+"voice": "en-US-AnaNeural"
+},
+"shelgon": {
+"clip": [
+0.103,
+0.763
+],
+"file": "95c30fd157.mp3",
+"text": "Shelgon",
+"voice": "en-US-AnaNeural"
+},
+"shellder": {
+"clip": [
+0.103,
+0.711
+],
+"file": "cb86b2de1d.mp3",
+"text": "Shellder",
+"voice": "en-US-AnaNeural"
+},
+"shellos": {
+"clip": [
+0.103,
+0.816
+],
+"file": "8df2a6382e.mp3",
+"text": "Shellos",
+"voice": "en-US-AnaNeural"
+},
+"shelmet": {
+"clip": [
+0.103,
+0.737
+],
+"file": "e5f6817fe2.mp3",
+"text": "Shelmet",
+"voice": "en-US-AnaNeural"
+},
+"shieldon": {
+"clip": [
+0.103,
+0.842
+],
+"file": "8243d0d9fe.mp3",
+"text": "Shieldon",
+"voice": "en-US-AnaNeural"
+},
+"shiftry": {
+"clip": [
+0.103,
+0.776
+],
+"file": "42560ee025.mp3",
+"text": "Shiftry",
+"voice": "en-US-AnaNeural"
+},
+"shiinotic": {
+"clip": [
+0.103,
+0.908
+],
+"file": "6337bba344.mp3",
+"text": "Shiinotic",
+"voice": "en-US-AnaNeural"
+},
+"shinx": {
+"clip": [
+0.103,
+0.75
+],
+"file": "889083520e.mp3",
+"text": "Shinx",
+"voice": "en-US-AnaNeural"
+},
+"shroodle": {
+"clip": [
+0.103,
+0.658
+],
+"file": "21d2ee2d0b.mp3",
+"text": "Shroodle",
+"voice": "en-US-AnaNeural"
+},
+"shroomish": {
+"clip": [
+0.103,
+0.829
+],
+"file": "e3e3b36007.mp3",
+"text": "Shroomish",
+"voice": "en-US-AnaNeural"
+},
+"shuckle": {
+"clip": [
+0.103,
+0.645
+],
+"file": "25f5e17f36.mp3",
+"text": "Shuckle",
+"voice": "en-US-AnaNeural"
+},
+"shuppet": {
+"clip": [
+0.103,
+0.645
+],
+"file": "6ddf5515d6.mp3",
+"text": "Shuppet",
+"voice": "en-US-AnaNeural"
+},
+"sigilyph": {
+"clip": [
+0.103,
+0.855
+],
+"file": "e0343dc739.mp3",
+"text": "Sigilyph",
+"voice": "en-US-AnaNeural"
+},
+"silcoon": {
+"clip": [
+0.103,
+0.803
+],
+"file": "e6e4918588.mp3",
+"text": "Silcoon",
+"voice": "en-US-AnaNeural"
+},
+"silicobra": {
+"clip": [
+0.103,
+1.013
+],
+"file": "36b7fcea8a.mp3",
+"text": "Silicobra",
+"voice": "en-US-AnaNeural"
+},
+"silvally": {
+"clip": [
+0.103,
+0.829
+],
+"file": "2094d84fe5.mp3",
+"text": "Silvally",
+"voice": "en-US-AnaNeural"
+},
+"simipour": {
+"clip": [
+0.103,
+0.868
+],
+"file": "5cf699f892.mp3",
+"text": "Simipour",
+"voice": "en-US-AnaNeural"
+},
+"simisage": {
+"clip": [
+0.103,
+0.921
+],
+"file": "01b574556e.mp3",
+"text": "Simisage",
+"voice": "en-US-AnaNeural"
+},
+"simisear": {
+"clip": [
+0.103,
+0.908
+],
+"file": "da93a1d361.mp3",
+"text": "Simisear",
+"voice": "en-US-AnaNeural"
+},
+"sinistcha": {
+"clip": [
+0.103,
+0.868
+],
+"file": "4b334d3f91.mp3",
+"text": "Sinistcha",
+"voice": "en-US-AnaNeural"
+},
+"sinistea": {
+"clip": [
+0.103,
+0.934
+],
+"file": "19ee5daabd.mp3",
+"text": "Sinistea",
+"voice": "en-US-AnaNeural"
+},
+"sirfetch'd": {
+"clip": [
+0.103,
+0.882
+],
+"file": "782c5e9c84.mp3",
+"text": "Sirfetch’d",
+"voice": "en-US-AnaNeural"
+},
+"sizzlipede": {
+"clip": [
+0.103,
+0.934
+],
+"file": "69db553e49.mp3",
+"text": "Sizzlipede",
+"voice": "en-US-AnaNeural"
+},
+"skarmory": {
+"clip": [
+0.103,
+0.868
+],
+"file": "3bb882611e.mp3",
+"text": "Skarmory",
+"voice": "en-US-AnaNeural"
+},
+"skeledirge": {
+"clip": [
+0.103,
+1.013
+],
+"file": "3af514e86a.mp3",
+"text": "Skeledirge",
+"voice": "en-US-AnaNeural"
+},
+"skiddo": {
+"clip": [
+0.103,
+0.724
+],
+"file": "bd1b0726dc.mp3",
+"text": "Skiddo",
+"voice": "en-US-AnaNeural"
+},
+"skiploom": {
+"clip": [
+0.103,
+0.882
+],
+"file": "3cba76e99a.mp3",
+"text": "Skiploom",
+"voice": "en-US-AnaNeural"
+},
+"skitty": {
+"clip": [
+0.103,
+0.632
+],
+"file": "b524814eea.mp3",
+"text": "Skitty",
+"voice": "en-US-AnaNeural"
+},
+"skorupi": {
+"clip": [
+0.103,
+0.855
+],
+"file": "3bc50eeca3.mp3",
+"text": "Skorupi",
+"voice": "en-US-AnaNeural"
+},
+"skrelp": {
+"clip": [
+0.103,
+0.697
+],
+"file": "408b4c3cb1.mp3",
+"text": "Skrelp",
+"voice": "en-US-AnaNeural"
+},
+"skuntank": {
+"clip": [
+0.103,
+0.921
+],
+"file": "7845c4ed69.mp3",
+"text": "Skuntank",
+"voice": "en-US-AnaNeural"
+},
+"skwovet": {
+"clip": [
+0.103,
+0.803
+],
+"file": "1209d0ac3b.mp3",
+"text": "Skwovet",
+"voice": "en-US-AnaNeural"
+},
+"slaking": {
+"clip": [
+0.103,
+0.789
+],
+"file": "85bc15c898.mp3",
+"text": "Slaking",
+"voice": "en-US-AnaNeural"
+},
+"slakoth": {
+"clip": [
+0.103,
+0.829
+],
+"file": "ce1745c6ff.mp3",
+"text": "Slakoth",
+"voice": "en-US-AnaNeural"
+},
+"sliggoo": {
+"clip": [
+0.103,
+0.618
+],
+"file": "880352ca4f.mp3",
+"text": "Sliggoo",
+"voice": "en-US-AnaNeural"
+},
+"slither wing": {
+"clip": [
+0.103,
+0.987
+],
+"file": "8360cb9d08.mp3",
+"text": "Slither Wing",
+"voice": "en-US-AnaNeural"
+},
+"slowbro": {
+"clip": [
+0.103,
+0.882
+],
+"file": "bf9d67f7f0.mp3",
+"text": "Slowbro",
+"voice": "en-US-AnaNeural"
+},
+"slowking": {
+"clip": [
+0.103,
+0.868
+],
+"file": "cbb00d81af.mp3",
+"text": "Slowking",
+"voice": "en-US-AnaNeural"
+},
+"slowpoke": {
+"clip": [
+0.103,
+0.882
+],
+"file": "b734de3b32.mp3",
+"text": "Slowpoke",
+"voice": "en-US-AnaNeural"
+},
+"slugma": {
+"clip": [
+0.103,
+0.789
+],
+"file": "eb68f089fc.mp3",
+"text": "Slugma",
+"voice": "en-US-AnaNeural"
+},
+"slurpuff": {
+"clip": [
+0.103,
+0.895
+],
+"file": "8d0d94bc64.mp3",
+"text": "Slurpuff",
+"voice": "en-US-AnaNeural"
+},
+"smeargle": {
+"clip": [
+0.103,
+0.803
+],
+"file": "88dd463db4.mp3",
+"text": "Smeargle",
+"voice": "en-US-AnaNeural"
+},
+"smoliv": {
+"clip": [
+0.103,
+0.816
+],
+"file": "1c06b718f5.mp3",
+"text": "Smoliv",
+"voice": "en-US-AnaNeural"
+},
+"smoochum": {
+"clip": [
+0.103,
+0.776
+],
+"file": "7069c5b37a.mp3",
+"text": "Smoochum",
+"voice": "en-US-AnaNeural"
+},
+"sneasel": {
+"clip": [
+0.103,
+0.816
+],
+"file": "cd03940906.mp3",
+"text": "Sneasel",
+"voice": "en-US-AnaNeural"
+},
+"sneasler": {
+"clip": [
+0.103,
+0.855
+],
+"file": "f3a0483ff4.mp3",
+"text": "Sneasler",
+"voice": "en-US-AnaNeural"
+},
+"snivy": {
+"clip": [
+0.103,
+0.763
+],
+"file": "0e2bd30157.mp3",
+"text": "Snivy",
+"voice": "en-US-AnaNeural"
+},
+"snom": {
+"clip": [
+0.103,
+0.684
+],
+"file": "d5f5f3a2a4.mp3",
+"text": "Snom",
+"voice": "en-US-AnaNeural"
+},
+"snorlax": {
+"clip": [
+0.103,
+1.053
+],
+"file": "00996911aa.mp3",
+"text": "Snorlax",
+"voice": "en-US-AnaNeural"
+},
+"snorunt": {
+"clip": [
+0.103,
+0.855
+],
+"file": "5bcbb970b5.mp3",
+"text": "Snorunt",
+"voice": "en-US-AnaNeural"
+},
+"snover": {
+"clip": [
+0.103,
+0.763
+],
+"file": "c2eb257d1a.mp3",
+"text": "Snover",
+"voice": "en-US-AnaNeural"
+},
+"snubbull": {
+"clip": [
+0.103,
+0.882
+],
+"file": "9200ffedf8.mp3",
+"text": "Snubbull",
+"voice": "en-US-AnaNeural"
+},
+"sobble": {
+"clip": [
+0.103,
+0.671
+],
+"file": "cc951021de.mp3",
+"text": "Sobble",
+"voice": "en-US-AnaNeural"
+},
+"solgaleo": {
+"clip": [
+0.103,
+1.026
+],
+"file": "758612d89a.mp3",
+"text": "Solgaleo",
+"voice": "en-US-AnaNeural"
+},
+"solosis": {
+"clip": [
+0.103,
+1.013
+],
+"file": "343356ece1.mp3",
+"text": "Solosis",
+"voice": "en-US-AnaNeural"
+},
+"solrock": {
+"clip": [
+0.103,
+0.908
+],
+"file": "15d7541489.mp3",
+"text": "Solrock",
+"voice": "en-US-AnaNeural"
+},
+"spearow": {
+"clip": [
+0.103,
+0.763
+],
+"file": "2a3b5d1afc.mp3",
+"text": "Spearow",
+"voice": "en-US-AnaNeural"
+},
+"spectrier": {
+"clip": [
+0.103,
+0.934
+],
+"file": "4e6c6493ba.mp3",
+"text": "Spectrier",
+"voice": "en-US-AnaNeural"
+},
+"spewpa": {
+"clip": [
+0.103,
+0.737
+],
+"file": "cb01b610df.mp3",
+"text": "Spewpa",
+"voice": "en-US-AnaNeural"
+},
+"spheal": {
+"clip": [
+0.103,
+0.645
+],
+"file": "ef9b1b4f5f.mp3",
+"text": "Spheal",
+"voice": "en-US-AnaNeural"
+},
+"spidops": {
+"clip": [
+0.103,
+0.895
+],
+"file": "2c8b767083.mp3",
+"text": "Spidops",
+"voice": "en-US-AnaNeural"
+},
+"spinarak": {
+"clip": [
+0.103,
+0.947
+],
+"file": "af938e7b99.mp3",
+"text": "Spinarak",
+"voice": "en-US-AnaNeural"
+},
+"spinda": {
+"clip": [
+0.103,
+0.776
+],
+"file": "9152f357c8.mp3",
+"text": "Spinda",
+"voice": "en-US-AnaNeural"
+},
+"spiritomb": {
+"clip": [
+0.103,
+0.947
+],
+"file": "622daa75e5.mp3",
+"text": "Spiritomb",
+"voice": "en-US-AnaNeural"
+},
+"spoink": {
+"clip": [
+0.103,
+0.697
+],
+"file": "65265a7d77.mp3",
+"text": "Spoink",
+"voice": "en-US-AnaNeural"
+},
+"sprigatito": {
+"clip": [
+0.103,
+1.105
+],
+"file": "fd02ef8ae1.mp3",
+"text": "Sprigatito",
+"voice": "en-US-AnaNeural"
+},
+"spritzee": {
+"clip": [
+0.103,
+0.803
+],
+"file": "1061078f87.mp3",
+"text": "Spritzee",
+"voice": "en-US-AnaNeural"
+},
+"squawkabilly": {
+"clip": [
+0.103,
+1.066
+],
+"file": "e7fad9c3b2.mp3",
+"text": "Squawkabilly",
+"voice": "en-US-AnaNeural"
+},
+"squirtle": {
+"clip": [
+0.103,
+0.789
+],
+"file": "7577f85991.mp3",
+"text": "Squirtle",
+"voice": "en-US-AnaNeural"
+},
+"stakataka": {
+"clip": [
+0.103,
+1.053
+],
+"file": "6f22483305.mp3",
+"text": "Stakataka",
+"voice": "en-US-AnaNeural"
+},
+"stantler": {
+"clip": [
+0.103,
+0.868
+],
+"file": "f76bcf97b1.mp3",
+"text": "Stantler",
+"voice": "en-US-AnaNeural"
+},
+"staraptor": {
+"clip": [
+0.103,
+0.961
+],
+"file": "6fd7116198.mp3",
+"text": "Staraptor",
+"voice": "en-US-AnaNeural"
+},
+"staravia": {
+"clip": [
+0.103,
+0.961
+],
+"file": "06c0628384.mp3",
+"text": "Staravia",
+"voice": "en-US-AnaNeural"
+},
+"starly": {
+"clip": [
+0.103,
+0.789
+],
+"file": "25db301d71.mp3",
+"text": "Starly",
+"voice": "en-US-AnaNeural"
+},
+"starmie": {
+"clip": [
+0.103,
+0.75
+],
+"file": "2adbdc1c17.mp3",
+"text": "Starmie",
+"voice": "en-US-AnaNeural"
+},
+"staryu": {
+"clip": [
+0.103,
+0.763
+],
+"file": "9c5d54d37e.mp3",
+"text": "Staryu",
+"voice": "en-US-AnaNeural"
+},
+"steelix": {
+"clip": [
+0.103,
+0.974
+],
+"file": "a6407b0f10.mp3",
+"text": "Steelix",
+"voice": "en-US-AnaNeural"
+},
+"steenee": {
+"clip": [
+0.103,
+0.711
+],
+"file": "f81a84a6d9.mp3",
+"text": "Steenee",
+"voice": "en-US-AnaNeural"
+},
+"stonjourner": {
+"clip": [
+0.103,
+0.987
+],
+"file": "d82210425d.mp3",
+"text": "Stonjourner",
+"voice": "en-US-AnaNeural"
+},
+"stoutland": {
+"clip": [
+0.103,
+0.974
+],
+"file": "8c95770a1f.mp3",
+"text": "Stoutland",
+"voice": "en-US-AnaNeural"
+},
+"stufful": {
+"clip": [
+0.103,
+0.829
+],
+"file": "34f8b78a26.mp3",
+"text": "Stufful",
+"voice": "en-US-AnaNeural"
+},
+"stunfisk": {
+"clip": [
+0.103,
+0.987
+],
+"file": "47decbe76f.mp3",
+"text": "Stunfisk",
+"voice": "en-US-AnaNeural"
+},
+"stunky": {
+"clip": [
+0.103,
+0.763
+],
+"file": "95a4275433.mp3",
+"text": "Stunky",
+"voice": "en-US-AnaNeural"
+},
+"sudowoodo": {
+"clip": [
+0.103,
+1.0
+],
+"file": "e10fca64ad.mp3",
+"text": "Sudowoodo",
+"voice": "en-US-AnaNeural"
+},
+"suicune": {
+"clip": [
+0.103,
+0.803
+],
+"file": "c6a6f4f5b7.mp3",
+"text": "Suicune",
+"voice": "en-US-AnaNeural"
+},
+"sunflora": {
+"clip": [
+0.103,
+1.013
+],
+"file": "6c5a288c0b.mp3",
+"text": "Sunflora",
+"voice": "en-US-AnaNeural"
+},
+"sunkern": {
+"clip": [
+0.103,
+0.934
+],
+"file": "c119113f41.mp3",
+"text": "Sunkern",
+"voice": "en-US-AnaNeural"
+},
+"surskit": {
+"clip": [
+0.103,
+0.816
+],
+"file": "a62aca1008.mp3",
+"text": "Surskit",
+"voice": "en-US-AnaNeural"
+},
+"swablu": {
+"clip": [
+0.103,
+0.816
+],
+"file": "86ff94ccf0.mp3",
+"text": "Swablu",
+"voice": "en-US-AnaNeural"
+},
+"swadloon": {
+"clip": [
+0.103,
+0.895
+],
+"file": "5708293e59.mp3",
+"text": "Swadloon",
+"voice": "en-US-AnaNeural"
+},
+"swalot": {
+"clip": [
+0.103,
+0.724
+],
+"file": "5279fc7f2b.mp3",
+"text": "Swalot",
+"voice": "en-US-AnaNeural"
+},
+"swampert": {
+"clip": [
+0.103,
+0.908
+],
+"file": "ad7c63a8df.mp3",
+"text": "Swampert",
+"voice": "en-US-AnaNeural"
+},
+"swanna": {
+"clip": [
+0.103,
+0.711
+],
+"file": "98e187fe0c.mp3",
+"text": "Swanna",
+"voice": "en-US-AnaNeural"
+},
+"swellow": {
+"clip": [
+0.103,
+0.737
+],
+"file": "672876030f.mp3",
+"text": "Swellow",
+"voice": "en-US-AnaNeural"
+},
+"swinub": {
+"clip": [
+0.103,
+0.75
+],
+"file": "954a22304c.mp3",
+"text": "Swinub",
+"voice": "en-US-AnaNeural"
+},
+"swirlix": {
+"clip": [
+0.103,
+0.974
+],
+"file": "c020b0327a.mp3",
+"text": "Swirlix",
+"voice": "en-US-AnaNeural"
+},
+"swoobat": {
+"clip": [
+0.103,
+0.724
+],
+"file": "5d9561f2b5.mp3",
+"text": "Swoobat",
+"voice": "en-US-AnaNeural"
+},
+"sylveon": {
+"clip": [
+0.103,
+0.829
+],
+"file": "df7deb0f9f.mp3",
+"text": "Sylveon",
+"voice": "en-US-AnaNeural"
+},
+"tadbulb": {
+"clip": [
+0.103,
+0.855
+],
+"file": "570cc11c83.mp3",
+"text": "Tadbulb",
+"voice": "en-US-AnaNeural"
+},
+"taillow": {
+"clip": [
+0.103,
+0.737
+],
+"file": "a3c61697fc.mp3",
+"text": "Taillow",
+"voice": "en-US-AnaNeural"
+},
+"talonflame": {
+"clip": [
+0.103,
+0.987
+],
+"file": "61e1aa35d0.mp3",
+"text": "Talonflame",
+"voice": "en-US-AnaNeural"
+},
+"tandemaus": {
+"clip": [
+0.103,
+0.961
+],
+"file": "a19e808ad1.mp3",
+"text": "Tandemaus",
+"voice": "en-US-AnaNeural"
+},
+"tangela": {
+"clip": [
+0.103,
+0.776
+],
+"file": "4cc7ea17b4.mp3",
+"text": "Tangela",
+"voice": "en-US-AnaNeural"
+},
+"tangrowth": {
+"clip": [
+0.103,
+0.908
+],
+"file": "15439c3861.mp3",
+"text": "Tangrowth",
+"voice": "en-US-AnaNeural"
+},
+"tapu bulu": {
+"clip": [
+0.103,
+1.039
+],
+"file": "a284ff1022.mp3",
+"text": "Tapu Bulu",
+"voice": "en-US-AnaNeural"
+},
+"tapu fini": {
+"clip": [
+0.103,
+1.039
+],
+"file": "0aca96baf0.mp3",
+"text": "Tapu Fini",
+"voice": "en-US-AnaNeural"
+},
+"tapu koko": {
+"clip": [
+0.103,
+1.158
+],
+"file": "e6e09f3de4.mp3",
+"text": "Tapu Koko",
+"voice": "en-US-AnaNeural"
+},
+"tapu lele": {
+"clip": [
+0.103,
+1.092
+],
+"file": "da2892eaff.mp3",
+"text": "Tapu Lele",
+"voice": "en-US-AnaNeural"
+},
+"tarountula": {
+"clip": [
+0.103,
+0.961
+],
+"file": "3fab409c73.mp3",
+"text": "Tarountula",
+"voice": "en-US-AnaNeural"
+},
+"tatsugiri": {
+"clip": [
+0.103,
+1.013
+],
+"file": "7ecff30342.mp3",
+"text": "Tatsugiri",
+"voice": "en-US-AnaNeural"
+},
+"tauros": {
+"clip": [
+0.103,
+0.763
+],
+"file": "d53268dfbb.mp3",
+"text": "Tauros",
+"voice": "en-US-AnaNeural"
+},
+"teddiursa": {
+"clip": [
+0.103,
+0.908
+],
+"file": "be71b00003.mp3",
+"text": "Teddiursa",
+"voice": "en-US-AnaNeural"
+},
+"tentacool": {
+"clip": [
+0.103,
+0.816
+],
+"file": "0c4498d1a1.mp3",
+"text": "Tentacool",
+"voice": "en-US-AnaNeural"
+},
+"tentacruel": {
+"clip": [
+0.103,
+0.974
+],
+"file": "d79ae1a07d.mp3",
+"text": "Tentacruel",
+"voice": "en-US-AnaNeural"
+},
+"tepig": {
+"clip": [
+0.103,
+0.592
+],
+"file": "0414205f86.mp3",
+"text": "Tepig",
+"voice": "en-US-AnaNeural"
+},
+"terapagos": {
+"clip": [
+0.103,
+1.092
+],
+"file": "e17d0f73f6.mp3",
+"text": "Terapagos",
+"voice": "en-US-AnaNeural"
+},
+"terrakion": {
+"clip": [
+0.103,
+0.868
+],
+"file": "c5b3f11fdf.mp3",
+"text": "Terrakion",
+"voice": "en-US-AnaNeural"
+},
+"thievul": {
+"clip": [
+0.102,
+0.684
+],
+"file": "5e9ed71e68.mp3",
+"text": "Thievul",
+"voice": "en-US-AnaNeural"
+},
+"throh": {
+"clip": [
+0.102,
+0.526
+],
+"file": "056b91d375.mp3",
+"text": "Throh",
+"voice": "en-US-AnaNeural"
+},
+"thundurus": {
+"clip": [
+0.103,
+0.987
+],
+"file": "b6bbf5108e.mp3",
+"text": "Thundurus",
+"voice": "en-US-AnaNeural"
+},
+"thwackey": {
+"clip": [
+0.103,
+0.671
+],
+"file": "ef54f641b9.mp3",
+"text": "Thwackey",
+"voice": "en-US-AnaNeural"
+},
+"timburr": {
+"clip": [
+0.103,
+0.697
+],
+"file": "d0d449a0d7.mp3",
+"text": "Timburr",
+"voice": "en-US-AnaNeural"
+},
+"ting lu": {
+"clip": [
+0.103,
+0.724
+],
+"file": "ac5134eba6.mp3",
+"text": "Ting-Lu",
+"voice": "en-US-AnaNeural"
+},
+"tinkatink": {
+"clip": [
+0.103,
+0.882
+],
+"file": "57bb0edb65.mp3",
+"text": "Tinkatink",
+"voice": "en-US-AnaNeural"
+},
+"tinkaton": {
+"clip": [
+0.103,
+0.829
+],
+"file": "4ac3ab60e7.mp3",
+"text": "Tinkaton",
+"voice": "en-US-AnaNeural"
+},
+"tinkatuff": {
+"clip": [
+0.103,
+0.947
+],
+"file": "11e05f5383.mp3",
+"text": "Tinkatuff",
+"voice": "en-US-AnaNeural"
+},
+"tirtouga": {
+"clip": [
+0.103,
+0.789
+],
+"file": "c72f5ba793.mp3",
+"text": "Tirtouga",
+"voice": "en-US-AnaNeural"
+},
+"toedscool": {
+"clip": [
+0.103,
+0.908
+],
+"file": "d813a36263.mp3",
+"text": "Toedscool",
+"voice": "en-US-AnaNeural"
+},
+"toedscruel": {
+"clip": [
+0.103,
+0.921
+],
+"file": "9aff8f1f47.mp3",
+"text": "Toedscruel",
+"voice": "en-US-AnaNeural"
+},
+"togedemaru": {
+"clip": [
+0.103,
+0.921
+],
+"file": "a2499877fc.mp3",
+"text": "Togedemaru",
+"voice": "en-US-AnaNeural"
+},
+"togekiss": {
+"clip": [
+0.103,
+0.868
+],
+"file": "e4247da5c1.mp3",
+"text": "Togekiss",
+"voice": "en-US-AnaNeural"
+},
+"togepi": {
+"clip": [
+0.103,
+0.737
+],
+"file": "903cf7cacc.mp3",
+"text": "Togepi",
+"voice": "en-US-AnaNeural"
+},
+"togetic": {
+"clip": [
+0.103,
+0.829
+],
+"file": "d8ec64ae21.mp3",
+"text": "Togetic",
+"voice": "en-US-AnaNeural"
+},
+"torchic": {
+"clip": [
+0.103,
+0.776
+],
+"file": "5147e56da7.mp3",
+"text": "Torchic",
+"voice": "en-US-AnaNeural"
+},
+"torkoal": {
+"clip": [
+0.103,
+0.829
+],
+"file": "1f9a950c46.mp3",
+"text": "Torkoal",
+"voice": "en-US-AnaNeural"
+},
+"tornadus": {
+"clip": [
+0.103,
+0.934
+],
+"file": "7a48a89960.mp3",
+"text": "Tornadus",
+"voice": "en-US-AnaNeural"
+},
+"torracat": {
+"clip": [
+0.103,
+0.842
+],
+"file": "5b654948ea.mp3",
+"text": "Torracat",
+"voice": "en-US-AnaNeural"
+},
+"torterra": {
+"clip": [
+0.103,
+0.855
+],
+"file": "68f1560d24.mp3",
+"text": "Torterra",
+"voice": "en-US-AnaNeural"
+},
+"totodile": {
+"clip": [
+0.103,
+0.921
+],
+"file": "1ff3c9d349.mp3",
+"text": "Totodile",
+"voice": "en-US-AnaNeural"
+},
+"toucannon": {
+"clip": [
+0.103,
+0.855
+],
+"file": "1c9462b804.mp3",
+"text": "Toucannon",
+"voice": "en-US-AnaNeural"
+},
+"toxapex": {
+"clip": [
+0.103,
+1.053
+],
+"file": "b277735dbd.mp3",
+"text": "Toxapex",
+"voice": "en-US-AnaNeural"
+},
+"toxel": {
+"clip": [
+0.103,
+0.763
+],
+"file": "e2615ed3c0.mp3",
+"text": "Toxel",
+"voice": "en-US-AnaNeural"
+},
+"toxicroak": {
+"clip": [
+0.103,
+1.0
+],
+"file": "80a4b3cd19.mp3",
+"text": "Toxicroak",
+"voice": "en-US-AnaNeural"
+},
+"toxtricity": {
+"clip": [
+0.103,
+1.039
+],
+"file": "68da52e73f.mp3",
+"text": "Toxtricity",
+"voice": "en-US-AnaNeural"
+},
+"tranquill": {
+"clip": [
+0.103,
+0.763
+],
+"file": "85e0ab1377.mp3",
+"text": "Tranquill",
+"voice": "en-US-AnaNeural"
+},
+"trapinch": {
+"clip": [
+0.103,
+0.868
+],
+"file": "4b17303ae6.mp3",
+"text": "Trapinch",
+"voice": "en-US-AnaNeural"
+},
+"treecko": {
+"clip": [
+0.103,
+0.684
+],
+"file": "4818651dd7.mp3",
+"text": "Treecko",
+"voice": "en-US-AnaNeural"
+},
+"trevenant": {
+"clip": [
+0.103,
+0.829
+],
+"file": "57d3649359.mp3",
+"text": "Trevenant",
+"voice": "en-US-AnaNeural"
+},
+"tropius": {
+"clip": [
+0.103,
+0.895
+],
+"file": "f8f9c4f27b.mp3",
+"text": "Tropius",
+"voice": "en-US-AnaNeural"
+},
+"trubbish": {
+"clip": [
+0.103,
+0.737
+],
+"file": "eb4623104b.mp3",
+"text": "Trubbish",
+"voice": "en-US-AnaNeural"
+},
+"trumbeak": {
+"clip": [
+0.103,
+0.803
+],
+"file": "6f4b8f15cb.mp3",
+"text": "Trumbeak",
+"voice": "en-US-AnaNeural"
+},
+"tsareena": {
+"clip": [
+0.103,
+0.803
+],
+"file": "a5f82abe19.mp3",
+"text": "Tsareena",
+"voice": "en-US-AnaNeural"
+},
+"turtonator": {
+"clip": [
+0.103,
+0.895
+],
+"file": "ca56a540c3.mp3",
+"text": "Turtonator",
+"voice": "en-US-AnaNeural"
+},
+"turtwig": {
+"clip": [
+0.103,
+0.671
+],
+"file": "3adda7130f.mp3",
+"text": "Turtwig",
+"voice": "en-US-AnaNeural"
+},
+"tympole": {
+"clip": [
+0.103,
+0.776
+],
+"file": "cd36dde1c4.mp3",
+"text": "Tympole",
+"voice": "en-US-AnaNeural"
+},
+"tynamo": {
+"clip": [
+0.103,
+0.724
+],
+"file": "fb1631f655.mp3",
+"text": "Tynamo",
+"voice": "en-US-AnaNeural"
+},
+"type null": {
+"clip": [
+0.103,
+1.092
+],
+"file": "36f74240ab.mp3",
+"text": "Type: Null",
+"voice": "en-US-AnaNeural"
+},
+"typhlosion": {
+"clip": [
+0.103,
+0.908
+],
+"file": "25b776cba7.mp3",
+"text": "Typhlosion",
+"voice": "en-US-AnaNeural"
+},
+"tyranitar": {
+"clip": [
+0.103,
+0.868
+],
+"file": "5b2b132bdd.mp3",
+"text": "Tyranitar",
+"voice": "en-US-AnaNeural"
+},
+"tyrantrum": {
+"clip": [
+0.103,
+0.974
+],
+"file": "4d50320c48.mp3",
+"text": "Tyrantrum",
+"voice": "en-US-AnaNeural"
+},
+"tyrogue": {
+"clip": [
+0.103,
+0.711
+],
+"file": "a1c3a14c1e.mp3",
+"text": "Tyrogue",
+"voice": "en-US-AnaNeural"
+},
+"tyrunt": {
+"clip": [
+0.103,
+0.737
+],
+"file": "e84314b6e0.mp3",
+"text": "Tyrunt",
+"voice": "en-US-AnaNeural"
+},
+"umbreon": {
+"clip": [
+0.103,
+0.803
+],
+"file": "03448c1651.mp3",
+"text": "Umbreon",
+"voice": "en-US-AnaNeural"
+},
+"unfezant": {
+"clip": [
+0.103,
+0.908
+],
+"file": "381a3eb176.mp3",
+"text": "Unfezant",
+"voice": "en-US-AnaNeural"
+},
+"unown": {
+"clip": [
+0.103,
+0.618
+],
+"file": "ad009a3aff.mp3",
+"text": "Unown",
+"voice": "en-US-AnaNeural"
+},
+"ursaluna": {
+"clip": [
+0.103,
+0.855
+],
+"file": "258f39dba6.mp3",
+"text": "Ursaluna",
+"voice": "en-US-AnaNeural"
+},
+"ursaring": {
+"clip": [
+0.103,
+0.697
+],
+"file": "f7f5962d59.mp3",
+"text": "Ursaring",
+"voice": "en-US-AnaNeural"
+},
+"urshifu": {
+"clip": [
+0.103,
+0.697
+],
+"file": "84bb13e3a4.mp3",
+"text": "Urshifu",
+"voice": "en-US-AnaNeural"
+},
+"uxie": {
+"clip": [
+0.103,
+0.605
+],
+"file": "d0e6d91781.mp3",
+"text": "Uxie",
+"voice": "en-US-AnaNeural"
+},
+"vanillish": {
+"clip": [
+0.103,
+0.842
+],
+"file": "4ff2903ef9.mp3",
+"text": "Vanillish",
+"voice": "en-US-AnaNeural"
+},
+"vanillite": {
+"clip": [
+0.103,
+0.803
+],
+"file": "c0084b569d.mp3",
+"text": "Vanillite",
+"voice": "en-US-AnaNeural"
+},
+"vanilluxe": {
+"clip": [
+0.103,
+0.961
+],
+"file": "710a9557fc.mp3",
+"text": "Vanilluxe",
+"voice": "en-US-AnaNeural"
+},
+"vaporeon": {
+"clip": [
+0.103,
+0.895
+],
+"file": "ec38601e9e.mp3",
+"text": "Vaporeon",
+"voice": "en-US-AnaNeural"
+},
+"varoom": {
+"clip": [
+0.103,
+0.632
+],
+"file": "2d6495dede.mp3",
+"text": "Varoom",
+"voice": "en-US-AnaNeural"
+},
+"veluza": {
+"clip": [
+0.103,
+0.724
+],
+"file": "5292901b5d.mp3",
+"text": "Veluza",
+"voice": "en-US-AnaNeural"
+},
+"venipede": {
+"clip": [
+0.103,
+0.789
+],
+"file": "1e09805520.mp3",
+"text": "Venipede",
+"voice": "en-US-AnaNeural"
+},
+"venomoth": {
+"clip": [
+0.103,
+0.803
+],
+"file": "d3c3345eb1.mp3",
+"text": "Venomoth",
+"voice": "en-US-AnaNeural"
+},
+"venonat": {
+"clip": [
+0.103,
+0.711
+],
+"file": "b74b55235c.mp3",
+"text": "Venonat",
+"voice": "en-US-AnaNeural"
+},
+"venusaur": {
+"clip": [
+0.103,
+0.829
+],
+"file": "62b513c72a.mp3",
+"text": "Venusaur",
+"voice": "en-US-AnaNeural"
+},
+"vespiquen": {
+"clip": [
+0.103,
+0.868
+],
+"file": "f115fe6c29.mp3",
+"text": "Vespiquen",
+"voice": "en-US-AnaNeural"
+},
+"vibrava": {
+"clip": [
+0.103,
+0.855
+],
+"file": "b6aba38bac.mp3",
+"text": "Vibrava",
+"voice": "en-US-AnaNeural"
+},
+"victini": {
+"clip": [
+0.103,
+0.855
+],
+"file": "92623fd283.mp3",
+"text": "Victini",
+"voice": "en-US-AnaNeural"
+},
+"victreebel": {
+"clip": [
+0.103,
+0.868
+],
+"file": "d8cfd7e2e5.mp3",
+"text": "Victreebel",
+"voice": "en-US-AnaNeural"
+},
+"vigoroth": {
+"clip": [
+0.103,
+0.763
+],
+"file": "19b687b534.mp3",
+"text": "Vigoroth",
+"voice": "en-US-AnaNeural"
+},
+"vikavolt": {
+"clip": [
+0.103,
+0.842
+],
+"file": "bc6d135e64.mp3",
+"text": "Vikavolt",
+"voice": "en-US-AnaNeural"
+},
+"vileplume": {
+"clip": [
+0.103,
+0.908
+],
+"file": "9b34008b4e.mp3",
+"text": "Vileplume",
+"voice": "en-US-AnaNeural"
+},
+"virizion": {
+"clip": [
+0.103,
+0.842
+],
+"file": "8ca4549cdd.mp3",
+"text": "Virizion",
+"voice": "en-US-AnaNeural"
+},
+"vivillon": {
+"clip": [
+0.103,
+0.75
+],
+"file": "896054ce5d.mp3",
+"text": "Vivillon",
+"voice": "en-US-AnaNeural"
+},
+"volbeat": {
+"clip": [
+0.103,
+0.711
+],
+"file": "13909e3013.mp3",
+"text": "Volbeat",
+"voice": "en-US-AnaNeural"
+},
+"volcanion": {
+"clip": [
+0.103,
+0.974
+],
+"file": "e17a2db8af.mp3",
+"text": "Volcanion",
+"voice": "en-US-AnaNeural"
+},
+"volcarona": {
+"clip": [
+0.103,
+0.974
+],
+"file": "87bfc60660.mp3",
+"text": "Volcarona",
+"voice": "en-US-AnaNeural"
+},
+"voltorb": {
+"clip": [
+0.103,
+0.816
+],
+"file": "baf8fb73c5.mp3",
+"text": "Voltorb",
+"voice": "en-US-AnaNeural"
+},
+"vullaby": {
+"clip": [
+0.103,
+0.711
+],
+"file": "27c788f419.mp3",
+"text": "Vullaby",
+"voice": "en-US-AnaNeural"
+},
+"vulpix": {
+"clip": [
+0.103,
+0.868
+],
+"file": "966f1c74df.mp3",
+"text": "Vulpix",
+"voice": "en-US-AnaNeural"
+},
+"wailmer": {
+"clip": [
+0.103,
+0.763
+],
+"file": "655c7550d4.mp3",
+"text": "Wailmer",
+"voice": "en-US-AnaNeural"
+},
+"wailord": {
+"clip": [
+0.103,
+0.776
+],
+"file": "6294736aec.mp3",
+"text": "Wailord",
+"voice": "en-US-AnaNeural"
+},
+"walking wake": {
+"clip": [
+0.103,
+0.987
+],
+"file": "ba037e74ad.mp3",
+"text": "Walking Wake",
+"voice": "en-US-AnaNeural"
+},
+"walrein": {
+"clip": [
+0.103,
+0.789
+],
+"file": "16b58346e9.mp3",
+"text": "Walrein",
+"voice": "en-US-AnaNeural"
+},
+"wartortle": {
+"clip": [
+0.103,
+0.829
+],
+"file": "d2386f9016.mp3",
+"text": "Wartortle",
+"voice": "en-US-AnaNeural"
+},
+"watchog": {
+"clip": [
+0.103,
+0.684
+],
+"file": "e0f9d0ab77.mp3",
+"text": "Watchog",
+"voice": "en-US-AnaNeural"
+},
+"wattrel": {
+"clip": [
+0.103,
+0.737
+],
+"file": "977cfef292.mp3",
+"text": "Wattrel",
+"voice": "en-US-AnaNeural"
+},
+"weavile": {
+"clip": [
+0.103,
+0.645
+],
+"file": "ad3d1af6a3.mp3",
+"text": "Weavile",
+"voice": "en-US-AnaNeural"
+},
+"weedle": {
+"clip": [
+0.103,
+0.632
+],
+"file": "93cd019565.mp3",
+"text": "Weedle",
+"voice": "en-US-AnaNeural"
+},
+"weepinbell": {
+"clip": [
+0.103,
+0.829
+],
+"file": "82d1a0b786.mp3",
+"text": "Weepinbell",
+"voice": "en-US-AnaNeural"
+},
+"weezing": {
+"clip": [
+0.103,
+0.697
+],
+"file": "36d0f6d04e.mp3",
+"text": "Weezing",
+"voice": "en-US-AnaNeural"
+},
+"whimsicott": {
+"clip": [
+0.103,
+0.895
+],
+"file": "3f43c9fc49.mp3",
+"text": "Whimsicott",
+"voice": "en-US-AnaNeural"
+},
+"whirlipede": {
+"clip": [
+0.103,
+0.816
+],
+"file": "2b0073dbda.mp3",
+"text": "Whirlipede",
+"voice": "en-US-AnaNeural"
+},
+"whiscash": {
+"clip": [
+0.103,
+0.855
+],
+"file": "b14445d49d.mp3",
+"text": "Whiscash",
+"voice": "en-US-AnaNeural"
+},
+"whismur": {
+"clip": [
+0.103,
+0.776
+],
+"file": "1b12341776.mp3",
+"text": "Whismur",
+"voice": "en-US-AnaNeural"
+},
+"wigglytuff": {
+"clip": [
+0.103,
+0.921
+],
+"file": "ffe1b68ed6.mp3",
+"text": "Wigglytuff",
+"voice": "en-US-AnaNeural"
+},
+"wiglett": {
+"clip": [
+0.103,
+0.684
+],
+"file": "aa6802963f.mp3",
+"text": "Wiglett",
+"voice": "en-US-AnaNeural"
+},
+"wimpod": {
+"clip": [
+0.103,
+0.803
+],
+"file": "90e853314f.mp3",
+"text": "Wimpod",
+"voice": "en-US-AnaNeural"
+},
+"wingull": {
+"clip": [
+0.103,
+0.776
+],
+"file": "ff73e29065.mp3",
+"text": "Wingull",
+"voice": "en-US-AnaNeural"
+},
+"wishiwashi": {
+"clip": [
+0.103,
+0.908
+],
+"file": "21ae9fa11f.mp3",
+"text": "Wishiwashi",
+"voice": "en-US-AnaNeural"
+},
+"wo chien": {
+"clip": [
+0.103,
+0.763
+],
+"file": "856186b44f.mp3",
+"text": "Wo-Chien",
+"voice": "en-US-AnaNeural"
+},
+"wobbuffet": {
+"clip": [
+0.103,
+0.829
+],
+"file": "145d33c318.mp3",
+"text": "Wobbuffet",
+"voice": "en-US-AnaNeural"
+},
+"woobat": {
+"clip": [
+0.103,
+0.632
+],
+"file": "7b890d0f46.mp3",
+"text": "Woobat",
+"voice": "en-US-AnaNeural"
+},
+"wooloo": {
+"clip": [
+0.103,
+0.618
+],
+"file": "cd0c850f31.mp3",
+"text": "Wooloo",
+"voice": "en-US-AnaNeural"
+},
+"wooper": {
+"clip": [
+0.103,
+0.461
+],
+"file": "c0ba19f724.mp3",
+"text": "Wooper",
+"voice": "en-US-AnaNeural"
+},
+"wormadam": {
+"clip": [
+0.103,
+0.842
+],
+"file": "fdb3a25f34.mp3",
+"text": "Wormadam",
+"voice": "en-US-AnaNeural"
+},
+"wugtrio": {
+"clip": [
+0.103,
+0.882
+],
+"file": "f61dd6c84e.mp3",
+"text": "Wugtrio",
+"voice": "en-US-AnaNeural"
+},
+"wurmple": {
+"clip": [
+0.103,
+0.684
+],
+"file": "f35d374da9.mp3",
+"text": "Wurmple",
+"voice": "en-US-AnaNeural"
+},
+"wynaut": {
+"clip": [
+0.103,
+0.645
+],
+"file": "a724a662d3.mp3",
+"text": "Wynaut",
+"voice": "en-US-AnaNeural"
+},
+"wyrdeer": {
+"clip": [
+0.103,
+0.763
+],
+"file": "d3eba4c2d2.mp3",
+"text": "Wyrdeer",
+"voice": "en-US-AnaNeural"
+},
+"xatu": {
+"clip": [
+0.103,
+0.539
+],
+"file": "6c18a5aa27.mp3",
+"text": "Xatu",
+"voice": "en-US-AnaNeural"
+},
+"xerneas": {
+"clip": [
+0.103,
+0.882
+],
+"file": "01dfb6adaf.mp3",
+"text": "Xerneas",
+"voice": "en-US-AnaNeural"
+},
+"xurkitree": {
+"clip": [
+0.103,
+0.868
+],
+"file": "d20c2f8df4.mp3",
+"text": "Xurkitree",
+"voice": "en-US-AnaNeural"
+},
+"yamask": {
+"clip": [
+0.103,
+0.882
+],
+"file": "85d7b23f8e.mp3",
+"text": "Yamask",
+"voice": "en-US-AnaNeural"
+},
+"yamper": {
+"clip": [
+0.103,
+0.711
+],
+"file": "02291a9d36.mp3",
+"text": "Yamper",
+"voice": "en-US-AnaNeural"
+},
+"yanma": {
+"clip": [
+0.103,
+0.539
+],
+"file": "b0a99f7ef1.mp3",
+"text": "Yanma",
+"voice": "en-US-AnaNeural"
+},
+"yanmega": {
+"clip": [
+0.103,
+0.842
+],
+"file": "44876485fa.mp3",
+"text": "Yanmega",
+"voice": "en-US-AnaNeural"
+},
+"yungoos": {
+"clip": [
+0.103,
+0.842
+],
+"file": "97f2e83e72.mp3",
+"text": "Yungoos",
+"voice": "en-US-AnaNeural"
+},
+"yveltal": {
+"clip": [
+0.101,
+0.868
+],
+"file": "96d9d78890.mp3",
+"text": "Yveltal",
+"voice": "en-US-AnaNeural"
+},
+"zacian": {
+"clip": [
+0.103,
+0.763
+],
+"file": "4f8e778fe6.mp3",
+"text": "Zacian",
+"voice": "en-US-AnaNeural"
+},
+"zamazenta": {
+"clip": [
+0.103,
+0.987
+],
+"file": "14f3e021e4.mp3",
+"text": "Zamazenta",
+"voice": "en-US-AnaNeural"
+},
+"zangoose": {
+"clip": [
+0.103,
+0.895
+],
+"file": "65912eaac1.mp3",
+"text": "Zangoose",
+"voice": "en-US-AnaNeural"
+},
+"zapdos": {
+"clip": [
+0.103,
+0.934
+],
+"file": "354e2a35f9.mp3",
+"text": "Zapdos",
+"voice": "en-US-AnaNeural"
+},
+"zarude": {
+"clip": [
+0.103,
+0.632
+],
+"file": "94ae2acdca.mp3",
+"text": "Zarude",
+"voice": "en-US-AnaNeural"
+},
+"zebstrika": {
+"clip": [
+0.103,
+0.974
+],
+"file": "4810d406d4.mp3",
+"text": "Zebstrika",
+"voice": "en-US-AnaNeural"
+},
+"zekrom": {
+"clip": [
+0.103,
+0.711
+],
+"file": "047a6a2b8a.mp3",
+"text": "Zekrom",
+"voice": "en-US-AnaNeural"
+},
+"zeraora": {
+"clip": [
+0.102,
+0.868
+],
+"file": "bb735466a1.mp3",
+"text": "Zeraora",
+"voice": "en-US-AnaNeural"
+},
+"zigzagoon": {
+"clip": [
+0.103,
+0.947
+],
+"file": "3302c25ade.mp3",
+"text": "Zigzagoon",
+"voice": "en-US-AnaNeural"
+},
+"zoroark": {
+"clip": [
+0.103,
+0.895
+],
+"file": "a9dec85ecc.mp3",
+"text": "Zoroark",
+"voice": "en-US-AnaNeural"
+},
+"zorua": {
+"clip": [
+0.102,
+0.711
+],
+"file": "b8f4bb1215.mp3",
+"text": "Zorua",
+"voice": "en-US-AnaNeural"
+},
+"zubat": {
+"clip": [
+0.103,
+0.671
+],
+"file": "6c6bf5bfba.mp3",
+"text": "Zubat",
+"voice": "en-US-AnaNeural"
+},
+"zweilous": {
+"clip": [
+0.103,
+0.882
+],
+"file": "4d8d9c38b9.mp3",
+"text": "Zweilous",
+"voice": "en-US-AnaNeural"
+},
+"zygarde": {
+"clip": [
+0.103,
+0.711
+],
+"file": "376e22d52e.mp3",
+"text": "Zygarde",
+"voice": "en-US-AnaNeural"
+}
+}

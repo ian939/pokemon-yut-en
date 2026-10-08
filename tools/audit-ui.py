@@ -60,7 +60,7 @@ with sync_playwright() as p:
         pg = b.new_page(viewport={'width': vw, 'height': vh}, has_touch=True)
         errs = []
         pg.on('pageerror', lambda e: errs.append(str(e)))
-        pg.add_init_script("if (!localStorage.getItem('engmon_yut_v1')) localStorage.setItem('engmon_yut_v1', JSON.stringify({ collection: [{id:5,t:1},{id:133,t:2},{id:150,t:3}], bag: {poke:3,great:2,ultra:1,luxury:1,master:1} }));")
+        pg.add_init_script("if (!localStorage.getItem('engmon_yut_en_v1')) localStorage.setItem('engmon_yut_en_v1', JSON.stringify({ collection: [{id:5,t:1},{id:133,t:2},{id:150,t:3}], bag: {poke:3,great:2,ultra:1,luxury:1,master:1} }));")
         pg.goto(url + '?fast=1&fam=1&seed=2&spots=3:133,12:58&early=1&pools=nitro,surf|toxic,quake&box=master,luxury,ultra&money=0,3,2,5')
         pg.wait_for_timeout(500)
         shot(pg, 'home')
@@ -70,7 +70,7 @@ with sync_playwright() as p:
         pg.click('[data-act=prof-bag][data-id=kid]'); shot(pg, 'bag', '.modal'); pg.click('[data-act=close-modal]')
         pg.click('[data-act=home]'); pg.click('[data-act=rank]'); pg.wait_for_timeout(600); shot(pg, 'rank')
         pg.click('[data-act=home]')
-        pg.click('text=로켓단 대결'); shot(pg, 'setup')
+        pg.click('text=vs Team Rocket'); shot(pg, 'setup')
         pg.click("[data-act=set][data-field=pieces][data-value='2']")
         pg.click('[data-act=to-pick]'); pg.click('[data-act=pick-auto]'); shot(pg, 'pick')
         pg.click('#pick-next')

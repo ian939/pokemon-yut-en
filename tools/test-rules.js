@@ -744,8 +744,8 @@ t("58. 시계 문제 — 보기 4개, 정답 하나, 단계별 시각 (정각·3
     if (lv === 3) ok(q.m % 5 !== 0, "3단계 " + q.m);
   }
   const q = S.clock(2, rnd, { h: 3, m: 40 });
-  eq(q.choices.map(S.clockText).sort(), ["3시 40분", "3시 8분", "4시 40분", "8시 15분"], "3시 40분의 오답 = 다음 시 · 바늘 바꿔 읽기 · 숫자 그대로");
-  eq(S.clockText({ h: 7, m: 0 }), "7시");
+  eq(q.choices.map(S.clockText).sort(), ["3:08", "3:40", "4:40", "8:15"], "3시 40분의 오답 = 다음 시 · 바늘 바꿔 읽기 · 숫자 그대로");
+  eq(S.clockText({ h: 7, m: 0 }), "7 o'clock"); eq(S.clockText({ h: 12, m: 5 }), "12:05");
 });
 t("59. 돈 문제 — 합이 정확, 보기 4개, 단계별 단위 (천·백 / +만 / +십만), 자릿값 실수가 오답에", () => {
   const S = Y.Study, rnd = Y.rng(12);
@@ -761,8 +761,9 @@ t("59. 돈 문제 — 합이 정확, 보기 4개, 단계별 단위 (천·백 / +
   eq(q.total, 32500);
   ok(q.choices.includes(3250) && q.choices.includes(325000) && q.choices.includes(23500), "자릿값 오답 " + q.choices);
   eq([32500, 10000, 1000, 110000, 999900, 2100, 15000, 700400].map(S.koNum),
-    ["삼만 이천오백", "만", "천", "십일만", "구십구만 구천구백", "이천백", "만 오천", "칠십만 사백"]);
-  eq([S.won(32500), S.won(100), S.won(999900)], ["32,500원", "100원", "999,900원"]);
+    ["thirty-two thousand five hundred", "ten thousand", "one thousand", "one hundred ten thousand",
+     "nine hundred ninety-nine thousand nine hundred", "two thousand one hundred", "fifteen thousand", "seven hundred thousand four hundred"]);
+  eq([S.won(32500), S.won(100), S.won(999900)], ["32,500 won", "100 won", "999,900 won"]);
 });
 t("60. 어려움 자동 오르내림 — 3번 연속 맞히면 위, 2번 연속 틀리면 아래 (1~3단계)", () => {
   const S = Y.Study;
