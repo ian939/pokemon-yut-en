@@ -113,7 +113,7 @@ img { -webkit-user-drag: none; }
 .cast { display: flex; gap: clamp(2px, 1.2vmin, 12px); align-items: flex-end; }
 .cast .c { width: clamp(56px, 10vmin, 100px); text-align: center; }
 .cast img { width: 100%; display: block; filter: drop-shadow(0 4px 0 rgba(38,49,71,.25)); animation: bob 2.6s ease-in-out infinite; animation-delay: calc(var(--i) * -.45s); }
-.cast b { display: inline-block; margin-top: 4px; min-width: 44px; background: var(--paper); border: 3px solid var(--ink); border-radius: 10px; padding: 2px 8px; font-family: var(--pixel); font-weight: 700; font-size: var(--t1); box-shadow: 0 3px 0 var(--ink); }
+.cast b { display: inline-block; margin-top: 4px; min-width: 44px; white-space: nowrap; background: var(--paper); border: 3px solid var(--ink); border-radius: 10px; padding: 2px 8px; font-family: var(--pixel); font-weight: 700; font-size: var(--t1); box-shadow: 0 3px 0 var(--ink); }
 .menu { width: min(440px, 100%); display: grid; gap: 12px; padding: 16px; background: var(--paper); border: 4px solid var(--ink); border-radius: 18px; box-shadow: var(--win), var(--lift); }
 .menu-small { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
 .ver { position: absolute; bottom: calc(8px + env(safe-area-inset-bottom)); right: 12px; font-family: var(--pixel); font-size: 11px; color: var(--ink); background: var(--paper); border: 2px solid var(--ink); padding: 2px 8px; border-radius: 8px; }
@@ -386,6 +386,32 @@ body.game-land #toast.show { transform: none; }
   text-shadow: 5px 0 0 var(--ink), -5px 0 0 var(--ink), 0 5px 0 var(--ink), 0 -5px 0 var(--ink), 5px 5px 0 var(--ink), -5px 5px 0 var(--ink), 5px -5px 0 var(--ink), -5px -5px 0 var(--ink), 0 11px 0 rgba(38,49,71,.35); }
 .result-sub { position: absolute; bottom: -5%; background: var(--paper); border: 3px solid var(--ink); border-radius: 12px; padding: 6px 16px 5px; font-family: var(--pixel); font-weight: 700; font-size: var(--t1); box-shadow: 0 4px 0 var(--ink); white-space: nowrap; }
 .result-pop.r4 .result-name, .result-pop.r5 .result-name { color: #ffd23f; }
+/* 🔤 단어 세트 */
+.wpic { display: inline-block; line-height: 1; font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif; }
+.wpic[style*="--k"] { transform: scale(var(--k)); }
+.wpic.sw { width: .9em; height: .9em; background: var(--c); border: 3px solid var(--ink); border-radius: .18em; box-sizing: border-box; vertical-align: middle; }
+.wpic.tag { font-family: var(--pixel); font-size: .55em; background: var(--paper); color: var(--ink); border: 2px solid var(--ink); border-radius: 6px; padding: 2px 4px; vertical-align: middle; }
+.result-word { bottom: 13%; display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 0 4%; box-sizing: border-box; font-size: var(--t4); }
+.result-word .rw { flex: 0 1 auto; min-width: 0; white-space: nowrap; line-height: 1.25; } /* g·p·y 아래가 잘리지 않게 */
+.result-word .wpic { flex: none; font-size: .9em; } /* 그림은 그대로, 글자만 줄인다 (fitText) */
+.result-word .wpic.tag { font-size: .45em; text-shadow: none; }
+.result-word .wpic.sw { font-size: .7em; }
+@media (max-width: 520px) { .cast b { padding: 2px 4px; min-width: 0; } }
+.rchip.word { padding: 2px 8px; gap: 4px; }
+.dest b .wpic { margin-right: 3px; }
+.words-ov { position: fixed; inset: 0; z-index: 330; display: grid; place-items: center; padding: 16px; background: rgba(12,18,30,.7); animation: fadeIn .2s ease both; }
+.words-ov.out { opacity: 0; transition: opacity calc(.25s * var(--spd)); }
+.words-card { width: min(860px, 100%); background: var(--paper); border: 4px solid var(--ink); border-radius: 18px; box-shadow: var(--win), var(--lift); padding: 18px 16px 14px; text-align: center; }
+.words-card h2 { font-family: var(--pixel); font-size: var(--t2); margin-bottom: 14px; }
+.words-row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+.wtile { display: flex; flex-direction: column; align-items: center; gap: 6px; background: var(--paper-2); border: 3px solid var(--ink); border-radius: 14px; padding: 12px 4px 10px; min-width: 0;
+  animation: popIn calc(.35s * var(--spd)) cubic-bezier(.2,1.4,.4,1) both; animation-delay: calc(var(--i) * .5s * var(--spd)); }
+.wtile .wpic { font-size: 54px; height: 60px; display: grid; place-items: center; }
+.wtile .wpic.tag { font-size: 22px; height: auto; padding: 8px 6px; margin: 10px 0; }
+.wtile b { font-family: var(--pixel); font-size: var(--t1); max-width: 100%; overflow-wrap: anywhere; }
+.wtile small { font-size: 13px; font-weight: 800; color: var(--ink-soft); }
+.words-tap { margin-top: 12px; font-weight: 800; color: var(--ink-soft); }
+@media (max-width: 640px) { .words-row { grid-template-columns: repeat(3, minmax(0, 1fr)); } .wtile .wpic { font-size: 40px; height: 46px; } }
 .result-pop.r-1 .result-name { color: #9fd3ff; }
 
 .win-screen, .rocket-intro { position: fixed; inset: 0; z-index: 380; display: grid; place-items: center; padding: 16px; animation: fadeIn .4s ease both; }
@@ -540,6 +566,10 @@ body.game-land #toast.show { transform: none; }
 .pchip.target { box-shadow: 0 0 0 3px var(--violet), 0 0 14px 4px rgba(122,79,181,.7); animation: glowChip 1s ease-in-out infinite; }
 .tcard .tfx { font-family: var(--font); font-size: 13px; font-weight: 900; color: var(--ink); background: var(--paper-2); border: 2px solid var(--ink); border-radius: 8px; padding: 0 5px; line-height: 1.4; }
 .tcard .tn { flex-wrap: wrap; row-gap: 2px; } /* 효과 표시가 많으면 다음 줄로 (카드 밖으로 안 나가게) */
+/* 영어판: "😈 Team Rocket" 처럼 긴 이름은 칸 안에서 줄을 바꾼다 (한 덩어리로 카드 밖으로 밀려나던 것) · 폰 세로 두 칸은 내용이 길어도 반반 */
+.tcard .tn .tnm { white-space: normal; min-width: 0; }
+.game.port .panel > *, .tcard, .throw-zone { min-width: 0; }
+.throw-zone { grid-template-columns: minmax(0, 1fr); }
 @media (max-width: 520px) {
   /* 폰: 안내 칸이 좁아서 도트 글꼴(22px)은 한 줄에 서너 글자뿐 — 낱말이 쪼개지지 않게 보통 글꼴로 */
   .game.port .hint { font-family: var(--font); font-size: 15px; line-height: 1.45; padding: 8px 22px 8px 10px; height: calc(15px * 1.45 * 5 + 16px); }
@@ -989,6 +1019,19 @@ body.coining .tcard.active { border-color: var(--ink) !important; box-shadow: va
 @keyframes evoPulse { 0% { transform: scale(1); } 25% { transform: scale(1.12); } 50% { transform: scale(.92); } 75% { transform: scale(1.16); } 100% { transform: scale(1); } }
 @keyframes evoPop { 0% { transform: scale(.6); } 100% { transform: scale(1); } }
 @keyframes finishOut { 0% { transform: translate(-50%, -64%) scale(1); } 40% { transform: translate(-50%, -110%) scale(1.25); } 100% { transform: translate(-50%, -200%) scale(.3); opacity: 0; } }
+/* 🔢 영어로 칸 세기 (영어판 2026-10-08): 말이 콩콩 갈 때마다 칸 위에 숫자 + 영어 낱말, 다 가면 "3 spaces!" */
+.fx-count { position: absolute; transform: translate(-50%, -150%); z-index: 72; pointer-events: none; display: flex; flex-direction: column; align-items: center; gap: 2px; line-height: 1;
+  animation: count-up calc(1s * var(--spd)) ease-out forwards; }
+.fx-count b { font-family: var(--pixel); font-size: var(--t2); color: #fff; text-shadow: 0 3px 0 var(--ink), 3px 0 0 var(--ink), -3px 0 0 var(--ink), 0 -3px 0 var(--ink); }
+.fx-count i { font-style: normal; font-family: var(--pixel); font-size: var(--t1); color: #fff; background: var(--ink); padding: 3px 8px 4px; border-radius: 8px; white-space: nowrap; }
+.fx-count.back b { color: #ffd6d6; }
+.fx-count.back i { background: var(--red); }
+@keyframes count-up { 0% { opacity: 0; transform: translate(-50%, -110%) scale(.5); } 20% { opacity: 1; transform: translate(-50%, -155%) scale(1.15); } 35% { transform: translate(-50%, -150%) scale(1); } 75% { opacity: 1; } 100% { opacity: 0; transform: translate(-50%, -190%); } }
+.fx-sum { --tx: -50%; position: absolute; transform: translate(var(--tx), -175%); z-index: 73; pointer-events: none; font-family: var(--pixel); font-size: var(--t1); color: var(--ink); background: var(--paper);
+  border: 3px solid var(--ink); border-radius: 10px; box-shadow: var(--lift); padding: 5px 10px 6px; white-space: nowrap; animation: sum-pop calc(1.4s * var(--spd)) ease-out forwards; }
+.fx-sum.back { background: #ffe3e3; }
+.fx-sum.r { --tx: -85%; } .fx-sum.l { --tx: -15%; }
+@keyframes sum-pop { 0% { opacity: 0; transform: translate(var(--tx), -140%) scale(.6); } 15% { opacity: 1; transform: translate(var(--tx), -175%) scale(1.1); } 25% { transform: translate(var(--tx), -175%) scale(1); } 80% { opacity: 1; } 100% { opacity: 0; transform: translate(var(--tx), -200%); } }
 @keyframes burst { 0% { transform: translate(-50%, -50%) scale(.2); opacity: 0; } 30% { transform: translate(-50%, -50%) scale(1.4); opacity: 1; } 100% { transform: translate(-50%, -50%) scale(2); opacity: 0; } }
 @keyframes spark { 0% { transform: translate(0, 0) scale(.3); opacity: 1; } 100% { transform: translate(var(--dx), var(--dy)) scale(1.1); opacity: 0; } }
 @keyframes toss { 0% { transform: translateY(0) rotate(var(--r)); } 35% { transform: translateY(-160%) rotate(calc(var(--r) + 250deg)); } 70% { transform: translateY(8%) rotate(calc(var(--r) + 350deg)); } 85% { transform: translateY(-10%) rotate(calc(var(--r) + 362deg)); } 100% { transform: translateY(0) rotate(calc(var(--r) + 360deg)); } }
@@ -1018,7 +1061,7 @@ body.coining .tcard.active { border-color: var(--ink) !important; box-shadow: va
 /* ================================================================
    설정
 ================================================================ */
-const APP_VERSION = "2026-10-08a";
+const APP_VERSION = "2026-10-08c";
 const D = window.YUT_DATA;
 const Q = new URLSearchParams(location.search);
 const SPEED = Q.has("fast") ? 0.12 : 1;           // 테스트용: ?fast=1 이면 연출을 빠르게
@@ -1040,6 +1083,37 @@ const RES = {
   4: { name: "Yut", animal: "cow", emoji: "🐮", steps: "4 spaces", say: vo("Yut! Four spaces. Throw again!"), en: vo("Four") },
   5: { name: "Mo", animal: "horse", emoji: "🐴", steps: "5 spaces", say: vo("Mo! Five spaces. Throw again!"), en: vo("Five") },
 };
+// 🔤 도·개·걸·윷·모 단어 세트 (영어판, 사용자 확정 2026-10-08) — 한 판에 세트 하나 (판의 seed 로 정해서 이어하기·친구 대결 두 패드가 같다)
+// 도 → 모로 갈수록 커지거나·많아지거나·빨라지는 순서. 빽도는 세트와 상관없이 그대로. 단어는 gen-voice.py 가 녹음 (vo)
+// [그림, 단어, 크기] — 크기 세트는 같은 공을 점점 크게, 요일은 글자 이름표, 색은 색 네모 (색 이모지는 기기마다 색이 달라서)
+const WORD_SETS = [
+  { name: vo("Yut animals"), emoji: "🐾", words: [["🐷", vo("pig")], ["🐶", vo("dog")], ["🐑", vo("sheep")], ["🐮", vo("cow")], ["🐴", vo("horse")]] },
+  { name: vo("Numbers"), emoji: "🔢", words: [["1️⃣", vo("one")], ["2️⃣", vo("two")], ["3️⃣", vo("three")], ["4️⃣", vo("four")], ["5️⃣", vo("five")]] },
+  { name: vo("Family"), emoji: "👪", words: [["👶", vo("baby")], ["🧒", vo("kid")], ["👩", vo("mom")], ["👨", vo("dad")], ["👴", vo("grandpa")]] },
+  { name: vo("Small to big animals"), emoji: "🦁", words: [["🐜", vo("ant")], ["🐭", vo("mouse")], ["🐱", vo("cat")], ["🦁", vo("lion")], ["🐘", vo("elephant")]] },
+  { name: vo("Sea friends"), emoji: "🌊", words: [["🦐", vo("shrimp")], ["🐟", vo("fish")], ["🐙", vo("octopus")], ["🐬", vo("dolphin")], ["🐳", vo("whale")]] },
+  { name: vo("Fruits"), emoji: "🍉", words: [["🍇", vo("grape")], ["🍓", vo("strawberry")], ["🍎", vo("apple")], ["🍈", vo("melon")], ["🍉", vo("watermelon")]] },
+  { name: vo("Slow to fast"), emoji: "🚀", words: [["🛴", vo("scooter")], ["🚲", vo("bike")], ["🚗", vo("car")], ["🚄", vo("train")], ["🚀", vo("rocket")]] },
+  { name: vo("Rainbow colors"), emoji: "🌈", words: [["#e5383b", vo("red")], ["#f7901e", vo("orange")], ["#ffd23f", vo("yellow")], ["#2fa35a", vo("green")], ["#2f6fd6", vo("blue")]] },
+  { name: vo("Sizes"), emoji: "📏", words: [["🟡", vo("tiny"), .4], ["🟡", vo("small"), .55], ["🟡", vo("medium"), .7], ["🟡", vo("big"), .85], ["🟡", vo("huge"), 1]] },
+  { name: vo("Days of the week"), emoji: "📅", words: [["Mon", vo("Monday")], ["Tue", vo("Tuesday")], ["Wed", vo("Wednesday")], ["Thu", vo("Thursday")], ["Fri", vo("Friday")]] },
+];
+const STEP_SAY = { 1: vo("One space!"), 2: vo("Two spaces!"), 3: vo("Three spaces!"), 4: vo("Four spaces. Throw again!"), 5: vo("Five spaces. Throw again!") };
+const wordSet = st => WORD_SETS[(((st || G.s || {}).seed >>> 0) || 0) % WORD_SETS.length];
+// 결과 r 의 단어 { pic, word, k } — 빽도면 null
+function yutWord(r, st) {
+  if (!(r >= 1 && r <= 5)) return null;
+  const w = wordSet(st).words[r - 1];
+  return { pic: w[0], word: w[1], k: w[2] || 0 };
+}
+// 그림 HTML — 글자 그림(Mon)은 작은 이름표, 크기 세트는 공을 k 배로
+function wordPic(w) {
+  if (/^[A-Za-z]+$/.test(w.pic)) return '<span class="wpic tag">' + w.pic + "</span>";
+  if (w.pic[0] === "#") return '<span class="wpic sw" style="--c:' + w.pic + '"></span>';
+  return '<span class="wpic"' + (w.k ? ' style="--k:' + w.k + '"' : "") + ">" + w.pic + "</span>";
+}
+// 칩·말풍선에 쓰는 짧은 이름: 그림 + 단어 (빽도는 Back-do)
+const resLabel = r => { const w = yutWord(r); return w ? wordPic(w) + esc(w.word) : esc(RES[r].name); };
 const MEMBERS = [
   { key: "kid", name: "🧒 Jion" }, { key: "mom", name: "👩 Mom" }, { key: "dad", name: "👨 Dad" },
   { key: "aunt", name: "👱‍♀️ Aunt" }, { key: "grandma", name: "👵 Grandma" }, { key: "grandpa", name: "👴 Grandpa" },
@@ -1142,6 +1216,8 @@ function josa(word) { return String(word); }
 const TYPE_EN = { "노말": "Normal", "불꽃": "Fire", "물": "Water", "풀": "Grass", "전기": "Electric", "얼음": "Ice", "격투": "Fighting", "독": "Poison", "땅": "Ground", "비행": "Flying", "에스퍼": "Psychic", "벌레": "Bug", "바위": "Rock", "고스트": "Ghost", "드래곤": "Dragon", "악": "Dark", "강철": "Steel", "페어리": "Fairy" };
 const typeName = t => String(t).split("·").map(x => TYPE_EN[x] || x).join("/");
 
+const NUM_WORD = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"];
+const numWord = n => NUM_WORD[n] || String(n); // 칸 세기에 보이는 영어 낱말
 const nameOf = id => D.names[id - 1] || "???";
 const collectionIds = pid => ((Store.prof(pid) || {}).collection || []).map(x => x.id); // 👤 프로필의 보관함 (없으면 지금 프로필)
 // 스타팅 포켓몬 — 1~9세대 첫 파트너 27마리. 처음에는 이것만 고를 수 있고, ❓ 풀숲에서 잡을 때마다 명단이 늘어난다
@@ -1562,7 +1638,7 @@ function confetti(n) {
     setTimeout(() => c.remove(), 4200);
   }
 }
-function fxAt(node, html, cls) {
+function fxAt(node, html, cls, ms) {
   const fx = $("#fx");
   if (!fx) return null;
   const e = document.createElement("div");
@@ -1571,7 +1647,7 @@ function fxAt(node, html, cls) {
   e.style.left = pct(x); e.style.top = pct(y);
   e.innerHTML = html;
   fx.appendChild(e);
-  setTimeout(() => e.remove(), 1200);
+  setTimeout(() => e.remove(), ms || 1200);
   return e;
 }
 function sparkle(node) {
@@ -1898,7 +1974,7 @@ function renderPanel() {
     const ps = G.s.pieces.map((p, i) => [p, i]).filter(x => x[0].team === ti);
     const done = ps.filter(x => x[0].state === "done").length;
     return '<div class="tcard' + (G.s.turn === ti && G.s.phase !== "over" ? " active" : "") + '" style="--tc:' + t.color + '">' +
-      '<div class="tn"><i></i>' + (t.avatar ? avHtml(t.avatar, "tn-av") : "") + esc(t.name) + teamFxHtml(ti) + "<em>Goal " + done + "/" + ps.length + "</em></div>" +
+      '<div class="tn"><i></i>' + (t.avatar ? avHtml(t.avatar, "tn-av") : "") + '<span class="tnm">' + esc(t.name) + "</span>" + teamFxHtml(ti) + "<em>Goal " + done + "/" + ps.length + "</em></div>" +
       '<div class="pchips">' + ps.map(x => {
         const p = x[0], i = x[1], id = Yut.formOf(G.s, i);
         return '<button class="pchip ' + p.state + '" data-act="chip" data-piece="' + i + '" aria-label="' + esc(nameOf(id) + (p.skill ? " · " + skillName(p.skill) : "")) + '">' + spr(id) +
@@ -1910,7 +1986,7 @@ function renderPending() {
   const box = $("#pending");
   if (!box) return;
   box.innerHTML = G.s.pending.length
-    ? '<span class="lab">Left</span>' + G.s.pending.map(r => '<span class="rchip"><img src="' + artUrl(CAST.yut[r]) + '" alt="">' + RES[r].name + "</span>").join("")
+    ? '<span class="lab">Left</span>' + G.s.pending.map(r => yutWord(r) ? '<span class="rchip word">' + resLabel(r) + "</span>" : '<span class="rchip"><img src="' + artUrl(CAST.yut[r]) + '" alt="">' + RES[r].name + "</span>").join("")
     : "";
   box.classList.remove("compact", "tiny", "mini"); // 한 줄에 안 들어가면 작게
   if (box.scrollWidth > box.clientWidth + 1) box.classList.add("compact");
@@ -1950,6 +2026,7 @@ function renderTop() {
   const btn = $("#btn-throw");
   if (!btn) return;
   if (throwRO && !btn._ro) { btn._ro = true; throwRO.observe(btn); }
+  if (document.fonts && document.fonts.status !== "loaded") document.fonts.ready.then(() => fitThrow($("#btn-throw"))); // 도트 글꼴이 늦게 오면 글 폭이 달라진다 → 다시 맞추기
   const human = humanTurn();
   // 버튼 글: [긴 글, 짧은 글] — 버튼 폭을 재서 넘치면 짧은 글, 그래도 넘치면 글자를 줄인다 (폴드처럼 가로가 좁은 가로 화면에서 글이 버튼 밖으로 나가던 것, 2026-10-03)
   let pair = ["Throw the yut!", "Throw!"], on = false;
@@ -1960,11 +2037,11 @@ function renderTop() {
   } else if (G.s.phase === "choose") pair = human ? ["👆 Move a piece!", "Move!"] : netOn() ? friend : ["Team Rocket is choosing…", "Rocket's turn"];
   else pair = ["Game over!", "Done!"];
   btn.dataset.full = pair[0]; btn.dataset.short = pair[1];
-  fitThrow(btn);
   btn.disabled = !on || G.busy || !!G.target;
   btn.classList.toggle("go", on && !G.busy && !G.target);
   btn.classList.toggle("cursor", on && !G.busy && !G.target);
   btn.style.background = t.color;
+  fitThrow(btn); // ▶ 커서(.cursor)가 붙은 뒤에 재야 폭이 맞다
   // ✨ 기술 버튼: 사람 차례에 쓸 기술이 있을 때만 (대상을 고르는 중이면 "취소")
   const sb = $("#btn-skill");
   if (sb) {
@@ -2071,6 +2148,7 @@ function mountGame() {
     (async () => {
       if (G.s.settings.mode === "rocket") { await rocketIntro(); await rocketGacha(); }
       await coinToss();
+      await wordsIntro();
       await announceStartSkills();
       await announceTurn(G.s.turn, true);
       G.busy = false;
@@ -2148,9 +2226,9 @@ function showDests(ms, cpu) {
       (nodeXY(at)[0] >= 50 ? " flip" : ""); // 판 오른쪽 반은 말풍선을 왼쪽으로 늘인다 (영어 글이 길어 판 밖으로 잘리지 않게)
     placeAt(b, at);
     b.dataset.move = m.id;
-    b.setAttribute("aria-label", m.finish ? "Goal" : RES[m.result].name);
+    b.setAttribute("aria-label", m.finish ? "Goal" : (yutWord(m.result) || {}).word || RES[m.result].name);
     const wild = !m.finish && (G.s.spots || []).some(sp => !sp.used && sp.node === m.to.node);
-    b.innerHTML = "<b>" + (m.finish ? "🏁 Goal!" : RES[m.result].name + (m.capture.length ? " Battle!" : m.stack.length ? " Stack" : "") + (wild ? " 🌿" : "") + "<small>" + RES[m.result].steps + "</small>") + "</b>";
+    b.innerHTML = "<b>" + (m.finish ? "🏁 Goal!" : resLabel(m.result) + (m.capture.length ? " Battle!" : m.stack.length ? " Stack" : "") + (wild ? " 🌿" : "") + "<small>" + RES[m.result].steps + "</small>") + "</b>";
     b.addEventListener("click", ev => { ev.stopPropagation(); if (!G.busy && humanTurn()) doMove(m.id); });
     box.appendChild(b);
   });
@@ -2238,15 +2316,22 @@ async function animSticks(sticks) {
 }
 function showResult(r) {
   return new Promise(res => {
-    const info = RES[r];
+    const info = RES[r], wd = yutWord(r);
     const w = document.createElement("div");
-    w.className = "result-pop r" + r;
+    w.className = "result-pop r" + r + (wd ? " word" : "");
+    // 🔤 단어 세트: 카드에는 그 판의 단어를 크게 ("🐑 sheep"), 아래에 윷 이름·칸 수 — 빽도는 그대로
     w.innerHTML = '<div class="result-card"><div class="rays"></div><img src="' + artUrl(CAST.yut[r]) + '" alt="' + esc(nameOf(CAST.yut[r])) + '">' +
-      '<div class="result-name">' + info.name + '!<span class="result-en">' + info.en + "</span></div>" +
-      '<div class="result-sub">' + info.emoji + " " + (info.animal ? info.animal + " · " : "") + info.steps + (Yut.RESULTS[r].again ? " · Throw again!" : "") + "</div></div>";
+      (wd ? '<div class="result-name result-word">' + wordPic(wd) + '<span class="rw">' + esc(wd.word) + "</span></div>" +
+            '<div class="result-sub">' + info.name + " · " + info.steps + "</div>" // "Throw again!" 은 바로 뒤 배너·소리로 (카드 아래 줄이 길어지면 단어를 가린다)
+          : '<div class="result-name">' + info.name + '!<span class="result-en">' + info.en + "</span></div>" +
+            '<div class="result-sub">' + info.emoji + " " + info.steps + "</div>") + "</div>";
     document.body.appendChild(w);
+    if (wd) { // 긴 단어(watermelon·Wednesday)는 도트 글꼴이 또렷한 크기(66·44·33·22)로만 줄인다
+      const rw = $(".result-word .rw", w);
+      for (const px of [66, 44, 33, 22]) { if (px > parseFloat(getComputedStyle(rw).fontSize)) continue; rw.style.fontSize = px + "px"; if (rw.scrollWidth <= rw.clientWidth + 1) break; }
+    }
     SFX.result(r);
-    TTS.say(info.say); // 영어판: info.say 에 칸 수까지 들어 있어서 info.en 은 따로 읽지 않는다 (화면에만)
+    TTS.say(wd ? [wd.word, STEP_SAY[r]] : info.say); // "Sheep! Three spaces!" (빽도: "Back-do! Back one space!")
     let done = false;
     const close = () => {
       if (done) return;
@@ -2319,6 +2404,8 @@ async function animMove(e, prev) {
   }
   el.classList.remove("can", "sel");
   el.classList.add("moving");
+  const back = !!(e.back || e.result < 0);
+  let cnt = null;
   if (e.fly && e.path.length) {                // 🦅 공중날기: 한 번에 훨훨
     el.classList.add("flying");
     SFX.throwBall();
@@ -2329,7 +2416,16 @@ async function animMove(e, prev) {
     placeAt(el, e.path[k]);
     el.classList.remove("hop"); void el.offsetWidth; el.classList.add("hop");
     SFX.hop(k);
-    await sleep(e.back || e.result < 0 ? 420 : 250);
+    // 🔢 영어로 칸 세기: 칸 위에 "2 two" + 소리 "two" (녹음된 숫자) — 세는 소리가 들리게 한 칸씩 조금 천천히
+    if (cnt) cnt.remove(); // 앞 칸 숫자는 바로 치운다 (다음 칸에 선 말을 가리지 않게)
+    cnt = fxAt(e.path[k], "<b>" + (k + 1) + "</b><i>" + numWord(k + 1) + "</i>", "fx-count" + (back ? " back" : ""));
+    TTS.say(String(k + 1));
+    await sleep(back ? 480 : 440);
+  }
+  if (e.path.length) { // 다 가면 몇 칸 갔는지 한 줄 ("3 spaces!" / "Back 1 space!")
+    const n = e.path.length, sp = n + (n === 1 ? " space" : " spaces");
+    const x = nodeXY(e.path[n - 1])[0]; // 판 가장자리에서는 말풍선이 판 안쪽으로 펼쳐지게
+    fxAt(e.path[n - 1], esc((back ? "⬅ Back " : "➡ ") + sp + "!"), "fx-sum" + (back ? " back" : "") + (x > 70 ? " r" : x < 30 ? " l" : ""), 1500);
   }
   el.classList.remove("moving", "hop", "enter");
   el.dataset.node = e.finish ? 0 : e.to.node; // 골인한 말은 참먹이(0)에 서 있다가 빠져나간다
@@ -2857,6 +2953,24 @@ async function animSkip(e) {
   toast(allBack ? "↩️ Back-do! No pieces on the board. Take a break! 😴" : "No piece can move. Take a break! 😴", 2000);
   TTS.say("Take a break!");
   await sleep(1400);
+}
+// 🔤 판 시작: 오늘의 단어 5개를 보여 주고 읽어 준다 (누르면 넘김)
+function wordsIntro() {
+  return new Promise(res => {
+    const ws = wordSet();
+    const el = document.createElement("div");
+    el.className = "words-ov";
+    el.innerHTML = '<div class="words-card"><h2>' + ws.emoji + " Today's words: " + esc(ws.name) + "</h2>" +
+      '<div class="words-row">' + ws.words.map((w, i) => '<div class="wtile" style="--i:' + i + '">' + wordPic({ pic: w[0], k: w[2] }) +
+        "<b>" + esc(w[1]) + "</b><small>" + RES[i + 1].name + " · " + (i + 1) + "</small></div>").join("") + "</div>" +
+      '<p class="words-tap">Tap to start!</p></div>';
+    document.body.appendChild(el);
+    TTS.say([vo("Today's words!"), ws.name].concat(ws.words.map(w => w[1])));
+    let done = false;
+    const close = () => { if (done) return; done = true; el.classList.add("out"); setTimeout(() => { el.remove(); res(); }, 250 * SPEED); };
+    el.addEventListener("click", close);
+    setTimeout(close, 7000 * SPEED);
+  });
 }
 async function announceTurn(ti, first) {
   const t = G.s.teams[ti];
@@ -4013,6 +4127,7 @@ function coinToss() {
       '<h2 class="ct-title">Who goes first?</h2></div>' +
       '<div class="bt-dialog ct-dialog"><p class="ct-say" id="ct-say">🪙 Coin toss! Tap the coin to toss it!</p><i class="bt-more">▼</i></div>';
     document.body.appendChild(el);
+    $$(".ct-pt b", el).forEach(b => fitText(b, 12)); // "😈 Team Rocket" 처럼 긴 영어 이름이 잘리지 않게
     document.body.classList.add("coining"); // 동전이 떨어질 때까지 누구 차례인지 가린다
     const auto = netOn() || SPEED < 1;
     let tossed = false, done = false;

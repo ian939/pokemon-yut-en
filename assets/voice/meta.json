@@ -1142,6 +1142,15 @@
 "text": "Anorith",
 "voice": "en-US-AnaNeural"
 },
+"ant": {
+"clip": [
+0.103,
+0.5
+],
+"file": "63b07e828b.mp3",
+"text": "ant",
+"voice": "en-US-AnaNeural"
+},
 "appeared": {
 "clip": [
 0.103,
@@ -1149,6 +1158,15 @@
 ],
 "file": "5e08e76c66.mp3",
 "text": "appeared!",
+"voice": "en-US-AnaNeural"
+},
+"apple": {
+"clip": [
+0.103,
+0.566
+],
+"file": "1f3870be27.mp3",
+"text": "apple",
 "voice": "en-US-AnaNeural"
 },
 "appletun": {
@@ -1448,6 +1466,15 @@
 "text": "Azurill",
 "voice": "en-US-AnaNeural"
 },
+"baby": {
+"clip": [
+0.103,
+0.553
+],
+"file": "6848d756da.mp3",
+"text": "baby",
+"voice": "en-US-AnaNeural"
+},
 "back do": {
 "clip": [
 0.103,
@@ -1700,6 +1727,24 @@
 "text": "Bidoof",
 "voice": "en-US-AnaNeural"
 },
+"big": {
+"clip": [
+0.103,
+0.421
+],
+"file": "d861877da5.mp3",
+"text": "big",
+"voice": "en-US-AnaNeural"
+},
+"bike": {
+"clip": [
+0.103,
+0.487
+],
+"file": "dde2c7ad63.mp3",
+"text": "bike",
+"voice": "en-US-AnaNeural"
+},
 "binacle": {
 "clip": [
 0.103,
@@ -1806,6 +1851,15 @@
 ],
 "file": "a03490c03e.mp3",
 "text": "Blizzard",
+"voice": "en-US-AnaNeural"
+},
+"blue": {
+"clip": [
+0.103,
+0.474
+],
+"file": "48d6215903.mp3",
+"text": "blue",
 "voice": "en-US-AnaNeural"
 },
 "body slam": {
@@ -2168,6 +2222,15 @@
 "text": "Capsakid",
 "voice": "en-US-AnaNeural"
 },
+"car": {
+"clip": [
+0.103,
+0.539
+],
+"file": "e6d9650259.mp3",
+"text": "car",
+"voice": "en-US-AnaNeural"
+},
 "carbink": {
 "clip": [
 0.103,
@@ -2229,6 +2292,15 @@
 ],
 "file": "608338e869.mp3",
 "text": "Castform",
+"voice": "en-US-AnaNeural"
+},
+"cat": {
+"clip": [
+0.103,
+0.487
+],
+"file": "d077f244de.mp3",
+"text": "cat",
 "voice": "en-US-AnaNeural"
 },
 "caterpie": {
@@ -2771,6 +2843,15 @@
 "text": "Counter",
 "voice": "en-US-AnaNeural"
 },
+"cow": {
+"clip": [
+0.103,
+0.434
+],
+"file": "81566e986c.mp3",
+"text": "cow",
+"voice": "en-US-AnaNeural"
+},
 "crabominable": {
 "clip": [
 0.103,
@@ -2993,7 +3074,7 @@
 0.487
 ],
 "file": "df3939f119.mp3",
-"text": "Dad",
+"text": "dad",
 "voice": "en-US-AnaNeural"
 },
 "darkrai": {
@@ -3030,6 +3111,15 @@
 ],
 "file": "a90698d15a.mp3",
 "text": "Darumaka",
+"voice": "en-US-AnaNeural"
+},
+"days of the week": {
+"clip": [
+0.103,
+1.145
+],
+"file": "69e859e215.mp3",
+"text": "Days of the week",
 "voice": "en-US-AnaNeural"
 },
 "decidueye": {
@@ -3266,6 +3356,15 @@
 "text": "Doduo",
 "voice": "en-US-AnaNeural"
 },
+"dog": {
+"clip": [
+0.103,
+0.487
+],
+"file": "06d80eb0c5.mp3",
+"text": "dog",
+"voice": "en-US-AnaNeural"
+},
 "dolliv": {
 "clip": [
 0.103,
@@ -3273,6 +3372,15 @@
 ],
 "file": "20939f0380.mp3",
 "text": "Dolliv",
+"voice": "en-US-AnaNeural"
+},
+"dolphin": {
+"clip": [
+0.103,
+0.697
+],
+"file": "36cdf8b887.mp3",
+"text": "dolphin",
 "voice": "en-US-AnaNeural"
 },
 "dondozo": {
@@ -3788,6 +3896,15 @@
 "text": "Elekid",
 "voice": "en-US-AnaNeural"
 },
+"elephant": {
+"clip": [
+0.103,
+0.763
+],
+"file": "e4b48fd541.mp3",
+"text": "elephant",
+"voice": "en-US-AnaNeural"
+},
 "elgyem": {
 "clip": [
 0.103,
@@ -3959,6 +4076,15 @@
 "text": "Falinks",
 "voice": "en-US-AnaNeural"
 },
+"family": {
+"clip": [
+0.102,
+0.697
+],
+"file": "0d3fda0bdb.mp3",
+"text": "Family",
+"voice": "en-US-AnaNeural"
+},
 "farfetch'd": {
 "clip": [
 0.103,
@@ -4103,6 +4229,15 @@
 "text": "Fire Punch",
 "voice": "en-US-AnaNeural"
 },
+"fish": {
+"clip": [
+0.102,
+0.566
+],
+"file": "83e4a96aed.mp3",
+"text": "fish",
+"voice": "en-US-AnaNeural"
+},
 "five": {
 "clip": [
 0.102,
@@ -4110,6 +4245,15 @@
 ],
 "file": "30056e1cab.mp3",
 "text": "Five",
+"voice": "en-US-AnaNeural"
+},
+"five spaces throw again": {
+"clip": [
+0.102,
+3.056
+],
+"file": "15652f3320.mp3",
+"text": "Five spaces. Throw again!",
 "voice": "en-US-AnaNeural"
 },
 "flaaffy": {
@@ -4301,6 +4445,15 @@
 "text": "Four",
 "voice": "en-US-AnaNeural"
 },
+"four spaces throw again": {
+"clip": [
+0.103,
+2.963
+],
+"file": "0eacd271cc.mp3",
+"text": "Four spaces. Throw again!",
+"voice": "en-US-AnaNeural"
+},
 "fraxure": {
 "clip": [
 0.103,
@@ -4308,6 +4461,15 @@
 ],
 "file": "dc0f1f8997.mp3",
 "text": "Fraxure",
+"voice": "en-US-AnaNeural"
+},
+"friday": {
+"clip": [
+0.103,
+0.658
+],
+"file": "f6f7fec07f.mp3",
+"text": "Friday",
 "voice": "en-US-AnaNeural"
 },
 "friend": {
@@ -4380,6 +4542,15 @@
 ],
 "file": "43b9f1587f.mp3",
 "text": "froze!",
+"voice": "en-US-AnaNeural"
+},
+"fruits": {
+"clip": [
+0.103,
+0.724
+],
+"file": "e4c139569f.mp3",
+"text": "Fruits",
 "voice": "en-US-AnaNeural"
 },
 "fuecoco": {
@@ -4955,7 +5126,16 @@
 0.632
 ],
 "file": "224c1c878d.mp3",
-"text": "Grandpa",
+"text": "grandpa",
+"voice": "en-US-AnaNeural"
+},
+"grape": {
+"clip": [
+0.103,
+0.5
+],
+"file": "b781cbb290.mp3",
+"text": "grape",
 "voice": "en-US-AnaNeural"
 },
 "grapploct": {
@@ -5019,6 +5199,15 @@
 ],
 "file": "4134d54366.mp3",
 "text": "Greedent",
+"voice": "en-US-AnaNeural"
+},
+"green": {
+"clip": [
+0.103,
+0.566
+],
+"file": "9f27410725.mp3",
+"text": "green",
 "voice": "en-US-AnaNeural"
 },
 "greninja": {
@@ -5498,6 +5687,15 @@
 "text": "Horn Drill",
 "voice": "en-US-AnaNeural"
 },
+"horse": {
+"clip": [
+0.103,
+0.618
+],
+"file": "f1bdf5ed1d.mp3",
+"text": "horse",
+"voice": "en-US-AnaNeural"
+},
 "horsea": {
 "clip": [
 0.103,
@@ -5541,6 +5739,15 @@
 ],
 "file": "2d8ef3d186.mp3",
 "text": "How much is it in all?",
+"voice": "en-US-AnaNeural"
+},
+"huge": {
+"clip": [
+0.103,
+0.605
+],
+"file": "b7cf27ffe6.mp3",
+"text": "huge",
 "voice": "en-US-AnaNeural"
 },
 "huntail": {
@@ -6056,6 +6263,15 @@
 "text": "Keldeo",
 "voice": "en-US-AnaNeural"
 },
+"kid": {
+"clip": [
+0.103,
+0.434
+],
+"file": "7de007e43f.mp3",
+"text": "kid",
+"voice": "en-US-AnaNeural"
+},
 "kilowattrel": {
 "clip": [
 0.103,
@@ -6504,6 +6720,15 @@
 ],
 "file": "aae659cd66.mp3",
 "text": "Linoone",
+"voice": "en-US-AnaNeural"
+},
+"lion": {
+"clip": [
+0.103,
+0.579
+],
+"file": "6b42d00c4c.mp3",
+"text": "lion",
 "voice": "en-US-AnaNeural"
 },
 "litleo": {
@@ -7055,6 +7280,15 @@
 "text": "Meditite",
 "voice": "en-US-AnaNeural"
 },
+"medium": {
+"clip": [
+0.103,
+0.737
+],
+"file": "075a3e36a0.mp3",
+"text": "medium",
+"voice": "en-US-AnaNeural"
+},
 "mega kick": {
 "clip": [
 0.103,
@@ -7107,6 +7341,15 @@
 ],
 "file": "18b07b9ae2.mp3",
 "text": "Meloetta",
+"voice": "en-US-AnaNeural"
+},
+"melon": {
+"clip": [
+0.103,
+0.605
+],
+"file": "3a2cf27458.mp3",
+"text": "melon",
 "voice": "en-US-AnaNeural"
 },
 "meltan": {
@@ -7394,7 +7637,16 @@
 0.539
 ],
 "file": "bd1d7b0809.mp3",
-"text": "Mom",
+"text": "mom",
+"voice": "en-US-AnaNeural"
+},
+"monday": {
+"clip": [
+0.103,
+0.632
+],
+"file": "944ba223a5.mp3",
+"text": "Monday",
 "voice": "en-US-AnaNeural"
 },
 "monferno": {
@@ -7458,6 +7710,15 @@
 ],
 "file": "024645470d.mp3",
 "text": "Mothim",
+"voice": "en-US-AnaNeural"
+},
+"mouse": {
+"clip": [
+0.103,
+0.592
+],
+"file": "40203abe6e.mp3",
+"text": "mouse",
 "voice": "en-US-AnaNeural"
 },
 "moves work 90 of the time": {
@@ -7793,6 +8054,15 @@
 "text": "Nosepass",
 "voice": "en-US-AnaNeural"
 },
+"numbers": {
+"clip": [
+0.103,
+0.816
+],
+"file": "ee5c35ce3d.mp3",
+"text": "Numbers",
+"voice": "en-US-AnaNeural"
+},
 "numel": {
 "clip": [
 0.103,
@@ -7845,6 +8115,15 @@
 ],
 "file": "436d0d9665.mp3",
 "text": "Octillery",
+"voice": "en-US-AnaNeural"
+},
+"octopus": {
+"clip": [
+0.102,
+0.895
+],
+"file": "fcf1eed859.mp3",
+"text": "octopus",
 "voice": "en-US-AnaNeural"
 },
 "oddish": {
@@ -7937,6 +8216,15 @@
 "text": "One more try!",
 "voice": "en-US-AnaNeural"
 },
+"one space": {
+"clip": [
+0.103,
+1.039
+],
+"file": "1202593d5b.mp3",
+"text": "One space!",
+"voice": "en-US-AnaNeural"
+},
 "onix": {
 "clip": [
 0.103,
@@ -7953,6 +8241,15 @@
 ],
 "file": "5f077c7153.mp3",
 "text": "Oops! Let's look together!",
+"voice": "en-US-AnaNeural"
+},
+"orange": {
+"clip": [
+0.103,
+0.658
+],
+"file": "fe01d67a00.mp3",
+"text": "orange",
 "voice": "en-US-AnaNeural"
 },
 "oranguru": {
@@ -8349,6 +8646,15 @@
 ],
 "file": "209758197d.mp3",
 "text": "Pidove",
+"voice": "en-US-AnaNeural"
+},
+"pig": {
+"clip": [
+0.103,
+0.461
+],
+"file": "f74c6af46a.mp3",
+"text": "pig",
 "voice": "en-US-AnaNeural"
 },
 "pignite": {
@@ -8927,6 +9233,15 @@
 "text": "Rain Dance",
 "voice": "en-US-AnaNeural"
 },
+"rainbow colors": {
+"clip": [
+0.103,
+1.316
+],
+"file": "15b581e7ce.mp3",
+"text": "Rainbow colors",
+"voice": "en-US-AnaNeural"
+},
 "ralts": {
 "clip": [
 0.103,
@@ -8997,6 +9312,15 @@
 ],
 "file": "1c28883e52.mp3",
 "text": "Razor Leaf",
+"voice": "en-US-AnaNeural"
+},
+"red": {
+"clip": [
+0.103,
+0.447
+],
+"file": "bda9643ac6.mp3",
+"text": "red",
 "voice": "en-US-AnaNeural"
 },
 "regice": {
@@ -9186,6 +9510,15 @@
 ],
 "file": "68e4878ecb.mp3",
 "text": "Rock Smash",
+"voice": "en-US-AnaNeural"
+},
+"rocket": {
+"clip": [
+0.103,
+0.605
+],
+"file": "fdfedc01c6.mp3",
+"text": "rocket",
 "voice": "en-US-AnaNeural"
 },
 "rockruff": {
@@ -9467,6 +9800,15 @@
 "text": "Scolipede",
 "voice": "en-US-AnaNeural"
 },
+"scooter": {
+"clip": [
+0.103,
+0.711
+],
+"file": "e8fbc1f035.mp3",
+"text": "scooter",
+"voice": "en-US-AnaNeural"
+},
 "scorbunny": {
 "clip": [
 0.103,
@@ -9528,6 +9870,15 @@
 ],
 "file": "efee64258d.mp3",
 "text": "Scyther",
+"voice": "en-US-AnaNeural"
+},
+"sea friends": {
+"clip": [
+0.103,
+1.092
+],
+"file": "8694e55d48.mp3",
+"text": "Sea friends",
 "voice": "en-US-AnaNeural"
 },
 "seadra": {
@@ -9683,6 +10034,15 @@
 "text": "Shedinja",
 "voice": "en-US-AnaNeural"
 },
+"sheep": {
+"clip": [
+0.103,
+0.5
+],
+"file": "23ec24c5ca.mp3",
+"text": "sheep",
+"voice": "en-US-AnaNeural"
+},
 "shelgon": {
 "clip": [
 0.103,
@@ -9753,6 +10113,15 @@
 ],
 "file": "889083520e.mp3",
 "text": "Shinx",
+"voice": "en-US-AnaNeural"
+},
+"shrimp": {
+"clip": [
+0.103,
+0.618
+],
+"file": "34842e464f.mp3",
+"text": "shrimp",
 "voice": "en-US-AnaNeural"
 },
 "shroodle": {
@@ -9908,6 +10277,15 @@
 "text": "Sirfetch’d",
 "voice": "en-US-AnaNeural"
 },
+"sizes": {
+"clip": [
+0.103,
+0.829
+],
+"file": "b027168eed.mp3",
+"text": "Sizes",
+"voice": "en-US-AnaNeural"
+},
 "sizzlipede": {
 "clip": [
 0.103,
@@ -10061,6 +10439,15 @@
 "text": "Slither Wing",
 "voice": "en-US-AnaNeural"
 },
+"slow to fast": {
+"clip": [
+0.103,
+1.289
+],
+"file": "83a3dcac70.mp3",
+"text": "Slow to fast",
+"voice": "en-US-AnaNeural"
+},
 "slowbro": {
 "clip": [
 0.103,
@@ -10122,6 +10509,24 @@
 ],
 "file": "8d0d94bc64.mp3",
 "text": "Slurpuff",
+"voice": "en-US-AnaNeural"
+},
+"small": {
+"clip": [
+0.102,
+0.658
+],
+"file": "eb5c1399a8.mp3",
+"text": "small",
+"voice": "en-US-AnaNeural"
+},
+"small to big animals": {
+"clip": [
+0.103,
+1.776
+],
+"file": "9359d7ff23.mp3",
+"text": "Small to big animals",
 "voice": "en-US-AnaNeural"
 },
 "smeargle": {
@@ -10599,6 +11004,15 @@
 ],
 "file": "8c95770a1f.mp3",
 "text": "Stoutland",
+"voice": "en-US-AnaNeural"
+},
+"strawberry": {
+"clip": [
+0.103,
+0.895
+],
+"file": "495bf98406.mp3",
+"text": "strawberry",
 "voice": "en-US-AnaNeural"
 },
 "string shot": {
@@ -11150,6 +11564,15 @@
 "text": "Three",
 "voice": "en-US-AnaNeural"
 },
+"three spaces": {
+"clip": [
+0.102,
+1.224
+],
+"file": "f728454ab1.mp3",
+"text": "Three spaces!",
+"voice": "en-US-AnaNeural"
+},
 "throh": {
 "clip": [
 0.102,
@@ -11202,6 +11625,15 @@
 ],
 "file": "b6bbf5108e.mp3",
 "text": "Thundurus",
+"voice": "en-US-AnaNeural"
+},
+"thursday": {
+"clip": [
+0.102,
+0.724
+],
+"file": "c395246f71.mp3",
+"text": "Thursday",
 "voice": "en-US-AnaNeural"
 },
 "thwackey": {
@@ -11258,6 +11690,15 @@
 "text": "Tinkatuff",
 "voice": "en-US-AnaNeural"
 },
+"tiny": {
+"clip": [
+0.103,
+0.553
+],
+"file": "d60cadf1a4.mp3",
+"text": "tiny",
+"voice": "en-US-AnaNeural"
+},
 "tirtouga": {
 "clip": [
 0.103,
@@ -11265,6 +11706,15 @@
 ],
 "file": "c72f5ba793.mp3",
 "text": "Tirtouga",
+"voice": "en-US-AnaNeural"
+},
+"today's words": {
+"clip": [
+0.103,
+1.25
+],
+"file": "d28c873614.mp3",
+"text": "Today's words!",
 "voice": "en-US-AnaNeural"
 },
 "toedscool": {
@@ -11438,6 +11888,15 @@
 "text": "Toxtricity",
 "voice": "en-US-AnaNeural"
 },
+"train": {
+"clip": [
+0.103,
+0.579
+],
+"file": "61b3a8faa9.mp3",
+"text": "train",
+"voice": "en-US-AnaNeural"
+},
 "tranquill": {
 "clip": [
 0.103,
@@ -11537,6 +11996,15 @@
 "text": "Tsareena",
 "voice": "en-US-AnaNeural"
 },
+"tuesday": {
+"clip": [
+0.103,
+0.684
+],
+"file": "1a31a6f65c.mp3",
+"text": "Tuesday",
+"voice": "en-US-AnaNeural"
+},
 "turtonator": {
 "clip": [
 0.103,
@@ -11580,6 +12048,15 @@
 ],
 "file": "b8a9f715db.mp3",
 "text": "Two",
+"voice": "en-US-AnaNeural"
+},
+"two spaces": {
+"clip": [
+0.103,
+1.158
+],
+"file": "1971f7dc23.mp3",
+"text": "Two spaces!",
 "voice": "en-US-AnaNeural"
 },
 "tympole": {
@@ -12086,6 +12563,15 @@
 "text": "Water Gun",
 "voice": "en-US-AnaNeural"
 },
+"watermelon": {
+"clip": [
+0.103,
+0.961
+],
+"file": "41fca3a29a.mp3",
+"text": "watermelon",
+"voice": "en-US-AnaNeural"
+},
 "wattrel": {
 "clip": [
 0.103,
@@ -12122,6 +12608,15 @@
 "text": "Weavile",
 "voice": "en-US-AnaNeural"
 },
+"wednesday": {
+"clip": [
+0.103,
+0.737
+],
+"file": "aae446086f.mp3",
+"text": "Wednesday",
+"voice": "en-US-AnaNeural"
+},
 "weedle": {
 "clip": [
 0.103,
@@ -12156,6 +12651,15 @@
 ],
 "file": "5863f1edc0.mp3",
 "text": "Welcome to the Pokémon Center!",
+"voice": "en-US-AnaNeural"
+},
+"whale": {
+"clip": [
+0.103,
+0.513
+],
+"file": "1ebfd5913e.mp3",
+"text": "whale",
 "voice": "en-US-AnaNeural"
 },
 "what time is it": {
@@ -12473,6 +12977,15 @@
 "text": "Yay! You knocked out",
 "voice": "en-US-AnaNeural"
 },
+"yellow": {
+"clip": [
+0.103,
+0.618
+],
+"file": "d487dd0b55.mp3",
+"text": "yellow",
+"voice": "en-US-AnaNeural"
+},
 "you knocked out": {
 "clip": [
 0.103,
@@ -12507,6 +13020,15 @@
 ],
 "file": "ed7d52625b.mp3",
 "text": "Yut",
+"voice": "en-US-AnaNeural"
+},
+"yut animals": {
+"clip": [
+0.103,
+1.145
+],
+"file": "294230cf76.mp3",
+"text": "Yut animals",
 "voice": "en-US-AnaNeural"
 },
 "yut four spaces throw again": {

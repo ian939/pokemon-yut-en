@@ -842,10 +842,12 @@ def scenario_v4(browser, base, errors):
     check(ev(page, "[window.__yut.Yut.formOf(s, 0), s.pieces[0].base]") == [5, 1], "잡은 리자드는 리자드부터 출발")
     page.reload(); page.wait_for_timeout(400); page.click("[data-act=resume]"); wait_idle(page)
     check(page.query_selector(".gacha-ov") is None, "이어하기에서는 캡슐 뽑기가 다시 안 나옴")
-    # 🔤 영어: 개 = Two
+    # 🔤 영어판 단어 세트: 개 = 그 판 세트의 두 번째 단어 (예: 🐶 dog), 아래 줄에 "Gae · 2 spaces"
     page.click("#btn-throw", force=True)
-    page.wait_for_selector(".result-pop .result-en", timeout=10000)
-    check(page.inner_text(".result-pop .result-en") == "Two", "윷 결과에 영어 (개 = Two)")
+    page.wait_for_selector(".result-pop .result-word", timeout=10000)
+    want = page.evaluate("() => yutWord(2).word")
+    check(page.inner_text(".result-pop .result-word .rw") == want and "Gae" in page.inner_text(".result-pop .result-sub"),
+          f"윷 결과 카드에 그 판의 단어 (개 = {want}) + 'Gae · 2 spaces'")
     wait_idle(page)
     # 💡 잡을 수 있었는데 다른 수
     page.evaluate("""() => { const Y = window.__yut, s = Y.G.s, at = (i, n) => Object.assign(s.pieces[i], { state: 'board', atGoal: false }, Y.Yut.settle('OUT', n));
