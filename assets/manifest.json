@@ -1,0 +1,53 @@
+{
+  "updated": "2026-09-25T10:40:03.701Z",
+  "cast": {
+    "yut": [
+      498,
+      58,
+      179,
+      128,
+      77,
+      79
+    ],
+    "rocket": [
+      24,
+      109,
+      52,
+      202
+    ],
+    "friends": [
+      25,
+      133,
+      143,
+      54,
+      132,
+      39,
+      35,
+      175
+    ]
+  },
+  "front": {
+    "count": 1025,
+    "bytes": 1085946,
+    "missing": []
+  },
+  "back": {
+    "count": 1025,
+    "bytes": 940923,
+    "missing": []
+  },
+  "official_src": {
+    "count": 18,
+    "bytes": 2561029,
+    "missing": []
+  },
+  "items": {
+    "count": 5,
+    "bytes": 1435,
+    "missing": []
+  },
+  "assets_total": {
+    "count": 2097,
+    "bytes": 3248500
+  }
+}

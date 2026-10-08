@@ -1,0 +1,6 @@
+# PokeAPI 응답 캐시
+tools/.cache/
+node_modules/
+# Codex 원본 그림 (최종본은 assets/)
+art-src/
+__pycache__/

@@ -1,0 +1,214 @@
+{
+  "_설명": "Codex 이미지 생성 목록. tools/gen-art.py 가 art-src/gen/{id}.png 로 그리고, tools/postprocess.py --gen 이 assets/ 로 다듬는다. 다시 그릴 땐 --variant v2 → {id}-v2.png, 고른 것은 use 에 적는다.",
+  "styles": {
+    "pixel": "Style: top-down 2D pixel art like the overworld maps of classic 2000s handheld monster-collecting RPGs, limited bright palette, crisp dark 1-pixel outlines, soft cheerful colors, flat even lighting, clean readable shapes. No text, no letters, no numbers, no creatures, no animals, no people, no characters.",
+    "illust": "Style: clean cel-shaded anime game illustration like official monster-collecting game key art, soft two-tone shading, smooth bold outlines, bright saturated colors, cheerful sunny mood. No text, no letters, no numbers, no creatures, no animals, no people, no characters."
+  },
+  "items": [
+    {
+      "id": "field",
+      "tone": "pixel",
+      "phase": 1,
+      "prompt": "A square top-down pixel art game map of a sunny grassy meadow clearing that serves as the floor of a board game. Even short green grass with a subtle small checkered grass-tile texture covers the whole image. Only a thin border hugging the very outer edge of the image has small bushes, little flowers and four small round trees tucked into the four corners. Everything else, the entire inner area, is plain open grass with only a few tiny scattered flowers: no paths, no stones, no buildings, no water, no objects. Viewed straight from above. The reference images only show the pixel-art look to match (palette, outline thickness, shading); do not draw anything from them.",
+      "refs": [
+        "assets/sprites/front/1.png",
+        "assets/sprites/front/4.png",
+        "assets/sprites/front/25.png"
+      ],
+      "out": "assets/board/field.png",
+      "lowres": 512,
+      "colors": 48
+    },
+    {
+      "id": "title-bg",
+      "tone": "illust",
+      "phase": 1,
+      "prompt": "Wide 16:9 landscape background illustration of a sunny traditional Korean hanok house courtyard: dark tiled roofs with gracefully curved eaves and wooden pillars in the background, a bright green grassy yard, a round woven straw mat (meongseok) in the lower center with four short wooden yut sticks lying on it, colorful rainbow-striped saekdong festival flags hanging on strings, clear blue sky with fluffy white clouds. Keep the upper middle of the sky open and calm so a title can be placed there.",
+      "refs": [
+        "art-src/official/25.png"
+      ],
+      "out": "assets/ui/title-bg.webp",
+      "size": 1280
+    },
+    {
+      "id": "path",
+      "tone": "pixel",
+      "phase": 2,
+      "prompt": "A seamless tileable square pixel art texture of a light sandy dirt path seen from directly above, warm beige sand with tiny scattered pebbles and subtle darker specks, evenly lit, the pattern fills the whole square edge to edge with no border and no vignette, so it can repeat without visible seams.",
+      "refs": [
+        "@field"
+      ],
+      "out": "assets/board/path.png",
+      "lowres": 64,
+      "colors": 16
+    },
+    {
+      "id": "tile-normal",
+      "tone": "pixel",
+      "phase": 2,
+      "prompt": "A single round flat stepping stone for a board game space, seen from above at a slight top-down RPG map angle, light warm grey stone with a darker outline, a small highlight on the top edge and a soft shadow under it. Only the stone, isolated and centered on a plain solid pure white background with nothing else.",
+      "refs": [
+        "@field"
+      ],
+      "out": "assets/board/tile-normal.png",
+      "transparent": true,
+      "lowres": 48,
+      "colors": 16
+    },
+    {
+      "id": "tile-corner",
+      "tone": "pixel",
+      "phase": 2,
+      "prompt": "A single large round flat stepping stone for a special corner space of a board game, seen from above at a slight top-down RPG map angle, light warm grey stone with a darker outline, surrounded by a neat ring of small red, yellow and pink flowers and leaves. Only the stone and flowers, isolated and centered on a plain solid pure white background with nothing else.",
+      "refs": [
+        "@field"
+      ],
+      "out": "assets/board/tile-corner.png",
+      "transparent": true,
+      "lowres": 64,
+      "colors": 24
+    },
+    {
+      "id": "tile-center",
+      "tone": "pixel",
+      "phase": 2,
+      "prompt": "A single large round stone plaza tile for the center space of a board game, seen from above at a slight top-down RPG map angle: a circular stone disc whose upper half is inlaid in red and lower half in white, divided by a dark horizontal band with a small white circle button in the middle, with a grey stone rim around it. Only the disc, isolated and centered on a plain solid pure white background with nothing else.",
+      "refs": [
+        "@field",
+        "assets/items/poke-ball.png"
+      ],
+      "out": "assets/board/tile-center.png",
+      "transparent": true,
+      "lowres": 72,
+      "colors": 24
+    },
+    {
+      "id": "tile-start",
+      "tone": "pixel",
+      "phase": 2,
+      "prompt": "A single large round flat stone tile for the start and finish space of a board game, seen from above at a slight top-down RPG map angle, golden-yellow stone with a darker outline and a small red-and-white checkered flag planted on its back edge. Only the tile and flag, isolated and centered on a plain solid pure white background with nothing else.",
+      "refs": [
+        "@field"
+      ],
+      "out": "assets/board/tile-start.png",
+      "transparent": true,
+      "lowres": 72,
+      "colors": 24
+    },
+    {
+      "id": "sticks",
+      "tone": "pixel",
+      "phase": 2,
+      "prompt": "Three identical traditional Korean yut sticks (short straight wooden game sticks with a half-round cross-section and rounded ends) lying vertically side by side with wide equal empty gaps between them, viewed straight from above. Left stick: flat side facing up, smooth pale honey-colored wood with fine grain lines. Middle stick: rounded side facing up, darker brown curved wooden surface with a soft highlight stripe. Right stick: exactly like the left stick but with one small bold red X mark painted in its center. All three the same size and shape. Isolated on a plain solid pure white background with nothing else.",
+      "refs": [
+        "@field"
+      ],
+      "split": [
+        "assets/ui/stick-flat.png",
+        "assets/ui/stick-round.png",
+        "assets/ui/stick-back.png"
+      ],
+      "transparent": true,
+      "lowres": 112,
+      "colors": 16
+    },
+    {
+      "id": "mat",
+      "tone": "pixel",
+      "phase": 2,
+      "prompt": "A single round woven straw mat (Korean meongseok) seen from directly above, golden straw woven in concentric circles with a thicker darker woven rim, cozy and simple. Only the mat, isolated and centered on a plain solid pure white background with nothing else.",
+      "refs": [
+        "@field"
+      ],
+      "out": "assets/ui/mat.png",
+      "transparent": true,
+      "lowres": 192,
+      "colors": 24
+    },
+    {
+      "id": "win-bg",
+      "tone": "illust",
+      "phase": 2,
+      "prompt": "Wide 16:9 festive celebration background: bright blue sky, colorful rainbow-striped saekdong flags on strings across the top, confetti and paper streamers falling, soft firework bursts and sparkles, a gentle green grassy hill along the bottom. Leave the center open and uncluttered so characters can be placed there later.",
+      "refs": [
+        "@title-bg"
+      ],
+      "out": "assets/ui/win-bg.webp",
+      "size": 1280
+    },
+    {
+      "id": "app-icon",
+      "tone": "illust",
+      "phase": 2,
+      "prompt": "A square app icon: four short wooden yut sticks arranged in a neat fan shape in front of a big round emblem whose upper half is red and lower half is white with a dark band across the middle, on a sky-blue rounded-square background. Thick clean outlines, simple, bold and cute, the design fills the frame.",
+      "refs": [
+        "@title-bg"
+      ],
+      "out": "assets/ui/icon-512.png",
+      "icon": [
+        512,
+        180
+      ],
+      "size": 512
+    },
+    {
+      "id": "battle-bg",
+      "tone": "pixel",
+      "phase": 2,
+      "prompt": "A wide 16:9 pixel art battle scene background like the battles of classic 2000s handheld monster-collecting RPGs: a bright blue sky with a few soft white clouds across the top half, a line of small round trees and distant green hills along the horizon in the middle, and a sunny flat grassy meadow filling the bottom half. Completely empty scene: no platforms, no paths, no stones, no creatures, no objects in the foreground.",
+      "refs": [
+        "@field"
+      ],
+      "out": "assets/ui/battle-bg.png",
+      "wh": [
+        480,
+        270
+      ],
+      "colors": 48
+    },
+    {
+      "id": "battle-pad",
+      "tone": "pixel",
+      "phase": 2,
+      "prompt": "A single flat oval grassy battle platform for a monster-collecting RPG battle, seen from a low three-quarter angle: a wide ellipse of short light-green grass with a darker green rim and a thin soft shadow under its front edge, about three times wider than tall. Only the platform, isolated and centered on a plain solid pure white background with nothing else.",
+      "refs": [
+        "@field"
+      ],
+      "out": "assets/ui/battle-pad.png",
+      "transparent": true,
+      "keepAspect": true,
+      "lowres": 160,
+      "colors": 20
+    },
+    {
+      "id": "grass",
+      "tone": "pixel",
+      "phase": 2,
+      "prompt": "A single tuft of tall wild grass for a monster-collecting RPG map, seen from above at a slight top-down angle: a dense round clump of tall green grass blades with lighter tips and a darker shadow at its base, the kind of tall grass where wild creatures hide. Only the grass clump, isolated and centered on a plain solid pure white background with nothing else.",
+      "refs": [
+        "@field"
+      ],
+      "out": "assets/board/grass.png",
+      "transparent": true,
+      "lowres": 56,
+      "colors": 16
+    },
+    {
+      "id": "chest",
+      "tone": "pixel",
+      "phase": 2,
+      "prompt": "Two identical small treasure chests standing side by side with a wide empty gap between them, pixel art item sprites like classic handheld RPGs, seen from a slight three-quarter front view. Left chest: closed, made of wood with red-and-gold metal bands and a golden lock. Right chest: exactly the same chest with its lid wide open and warm golden light glowing out of it. Both chests the same size and style. Isolated on a plain solid pure white background with nothing else.",
+      "refs": [
+        "@field",
+        "assets/items/poke-ball.png"
+      ],
+      "split": [
+        "assets/ui/chest-closed.png",
+        "assets/ui/chest-open.png"
+      ],
+      "transparent": true,
+      "lowres": 112,
+      "colors": 24
+    }
+  ]
+}
