@@ -900,7 +900,8 @@ def scenario_v4(browser, base, errors):
     wait_idle(page)
     page.click(".unit.can[data-node='3']", force=True)
     page.click(".dest[data-move='n3/2']", force=True)
-    page.wait_for_selector(".bt-stamp.super", timeout=20000)
+    # 도장은 빠르게 모드에서 0.3초쯤만 떠 있다 — wait_for_selector 는 오래 기다리면 1초마다만 보므로 놓친다 → 0.05초마다 본다
+    page.wait_for_function("() => !!document.querySelector('.bt-stamp.super')", polling=50, timeout=20000)
     check("Fire" in page.inner_text(".bt-text") or "super effective" in page.inner_text(".bt-stage"), "💧 꼬부기가 🔥 파이리를 잡으면 '효과가 굉장했다!'")
     page.screenshot(path=str(OUT / "99j-super.png"))
     while page.query_selector(".bt-skip"):

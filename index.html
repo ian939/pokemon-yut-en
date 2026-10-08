@@ -474,7 +474,10 @@ body.game-land #toast.show { transform: none; }
 .bt-flash { position: absolute; inset: 0; pointer-events: none; opacity: 0; }
 .bt-stamp { position: absolute; left: 50%; top: 22%; transform: translate(-50%, -50%); font-family: var(--pixel); font-weight: 700; font-size: var(--t4); color: #ffd23f; white-space: nowrap; pointer-events: none;
   text-shadow: 4px 0 0 var(--ink), -4px 0 0 var(--ink), 0 4px 0 var(--ink), 0 -4px 0 var(--ink), 4px 4px 0 var(--ink), -4px 4px 0 var(--ink), 4px -4px 0 var(--ink), -4px -4px 0 var(--ink), 0 9px 0 rgba(0,0,0,.3);
-  animation: popIn calc(.35s * var(--spd)) cubic-bezier(.2,1.6,.4,1) both; }
+  animation: stamp-in calc(.35s * var(--spd)) cubic-bezier(.2,1.6,.4,1) both; }
+/* popIn 은 transform 을 scale 로 덮어써서 가운데 맞춤(translate)이 풀렸다 → 도장이 무대 오른쪽 반에서 시작해 긴 영어가 잘리던 것 */
+@keyframes stamp-in { 0% { transform: translate(-50%, -50%) scale(.3); opacity: 0; } 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; } }
+.bt-plate b.long { font-family: var(--font); font-weight: 900; font-size: 16px; } /* 긴 영어 이름(Charmander)은 보통 글꼴로 작게 — 도트 글꼴은 22px 아래로 줄이면 뭉개진다 */
 .bt-intro { position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(0deg, #111 0 7%, #fff 7% 14%); animation: btIntro calc(.55s * var(--spd)) steps(6) forwards; }
 .bt-dialog { position: relative; width: min(100%, 1000px, calc((100vh - 200px) * 16 / 9)); min-height: 90px; background: var(--paper); border: 5px solid var(--ink); border-radius: 16px; box-shadow: var(--win), 0 6px 0 rgba(0,0,0,.3); padding: 16px 44px 16px 24px; font-family: var(--pixel); font-size: var(--t2); font-weight: 700; line-height: 1.4; color: var(--ink); }
 .bt-dialog .bt-more { position: absolute; right: 16px; bottom: 10px; font-style: normal; color: var(--red); font-size: 18px; animation: blink 1s steps(1) infinite; }
@@ -934,7 +937,7 @@ body.coining .tcard.active { border-color: var(--ink) !important; box-shadow: va
 .prob-bars em { font-style: normal; text-align: right; color: var(--ink-soft); }
 .result-en { display: block; font-size: var(--t2); color: #fff; margin-top: 4px; }
 .rules-res i.en { display: block; font-style: normal; font-weight: 900; color: var(--blue); font-size: 13px; }
-.bt-stamp.super { top: 36%; color: #ff7a3c; font-size: var(--t3); white-space: normal; width: 92%; text-align: center; line-height: 1.1; }
+.bt-stamp.super { top: 36%; color: #ff7a3c; font-size: var(--t3); text-align: center; line-height: 1.1; }
 
 /* ===== 🏠 친구 대결 ===== */
 .net-card { display: grid; gap: 12px; justify-items: center; text-align: center; }
@@ -1061,7 +1064,7 @@ body.coining .tcard.active { border-color: var(--ink) !important; box-shadow: va
 /* ================================================================
    설정
 ================================================================ */
-const APP_VERSION = "2026-10-08c";
+const APP_VERSION = "2026-10-08d";
 const D = window.YUT_DATA;
 const Q = new URLSearchParams(location.search);
 const SPEED = Q.has("fast") ? 0.12 : 1;           // 테스트용: ?fast=1 이면 연출을 빠르게
@@ -2007,6 +2010,22 @@ function fitText(el, min) {
   let fs = parseFloat(getComputedStyle(el).fontSize) || 16;
   while (el.scrollWidth > el.clientWidth + 1 && fs > (min || 11)) { fs -= 1; el.style.fontSize = fs + "px"; }
 }
+// ⚔️ 배틀 도장("Knocked out!" · "It's super effective!")이 무대보다 길면 도트 글꼴이 또렷한 크기(66·44·33·22)로 줄인다 (영어판: 영어가 길어 잘리던 것)
+function fitPlateName(b) {
+  if (!b) return;
+  b.classList.remove("long"); b.style.fontSize = "";
+  if (b.scrollWidth > b.clientWidth + 1) { b.classList.add("long"); fitText(b, 11); }
+}
+function fitStamp(el) {
+  if (!el || !el.parentElement) return;
+  const room = el.parentElement.clientWidth * 0.94;
+  const start = parseFloat(getComputedStyle(el).fontSize);
+  for (const px of [66, 44, 33, 22]) {
+    if (px > start) continue;
+    el.style.fontSize = px + "px";
+    if (el.scrollWidth <= room) break;
+  }
+}
 // 던지기 버튼 글 맞추기 — 긴 글 → (넘치면) 짧은 글 → (그래도 넘치면) 글자 줄이기. 버튼 크기가 바뀔 때마다 다시
 function fitThrow(btn) {
   if (!btn || !btn.dataset.full) return;
@@ -2537,6 +2556,7 @@ function openStage(o) {
     skip: false, closed: false,
   };
   c.done = new Promise(r => { resolveDone = r; });
+  $$(".bt-plate b", el).forEach(fitPlateName);
   if (o.allyLater) { c.allyEl.style.opacity = "0"; $(".bt-plate.ally", el).style.opacity = "0"; }
   c.live = () => !c.skip;
   c.wait = ms => c.skip ? Promise.resolve() : sleep(ms);
@@ -2670,7 +2690,7 @@ async function stageThrow(c, ball, res) {
     SFX.catchOk();
     stageStars(c, x, y - 4);
     c.stage.querySelectorAll(".bt-rar").forEach(e => e.remove()); // 등급 표시는 치우고 "잡았다!"만
-    c.stage.insertAdjacentHTML("beforeend", '<div class="bt-stamp">Gotcha!</div>');
+    c.stage.insertAdjacentHTML("beforeend", '<div class="bt-stamp">Gotcha!</div>'); fitStamp(c.stage.lastElementChild);
     return;
   }
   SFX.pop();
@@ -2726,7 +2746,7 @@ function battle(e, prev) {
     const sup = superEffective(atk, foes);
     if (sup && c.live()) {
       c.stage.classList.remove("quake"); void c.stage.offsetWidth; c.stage.classList.add("quake");
-      c.stage.insertAdjacentHTML("beforeend", '<div class="bt-stamp super">It\'s super effective!</div>');
+      c.stage.insertAdjacentHTML("beforeend", '<div class="bt-stamp super">It\'s super effective!</div>'); fitStamp(c.stage.lastElementChild);
       SFX.hit();
       await c.say("It's super effective! " + sup, vo("It's super effective!"));
       await c.wait(700);
@@ -2738,7 +2758,7 @@ function battle(e, prev) {
     if (c.live()) {
       SFX.catchOk();
       stageStars(c, 27, 70);
-      c.stage.insertAdjacentHTML("beforeend", '<div class="bt-stamp">Knocked out!</div>');
+      c.stage.insertAdjacentHTML("beforeend", '<div class="bt-stamp">Knocked out!</div>'); fitStamp(c.stage.lastElementChild);
     }
     if (aTeam.cpu) await c.say("Team Rocket knocked out " + foeNames + ", meow! 😼", vo("Team Rocket won the battle, meow!"));
     else if (vTeam.cpu) await c.say("You knocked out Team Rocket's " + foeNames + "! Team Rocket lost again, meow!", [vo("You knocked out")].concat(foes.map(nameOf), [vo("Team Rocket lost again, meow!")]));
@@ -2805,7 +2825,7 @@ function encounter(e, auto) {
       c.stage.classList.add("quake", "legend"); setTimeout(() => c.stage.classList.remove("quake"), 650 * SPEED);
       const fl = $(".bt-flash", c.el); fl.style.background = "radial-gradient(circle, #fff6c2, #f5b82e)"; c.anim(fl, [{ opacity: 0.95 }, { opacity: 0 }], 900, { fill: "none" });
       SFX.win();
-      c.stage.insertAdjacentHTML("beforeend", '<div class="bt-stamp legend">👑 Legendary Pokémon!</div>');
+      c.stage.insertAdjacentHTML("beforeend", '<div class="bt-stamp legend">👑 Legendary Pokémon!</div>'); fitStamp(c.stage.lastElementChild);
       setTimeout(() => { const st = $(".bt-stamp.legend", c.el); if (st) st.remove(); }, 1800 * SPEED);
     }
     if (c.live()) Cry.play(id);
@@ -3713,7 +3733,7 @@ async function offerSwap(c, e, id) {
     c.allyEl = nx;
     await c.anim(c.allyEl, [{ transform: "scale(.2)", opacity: 0 }, { transform: "none", opacity: 1 }], 420);
     const plate = $(".bt-plate.ally b", c.el);
-    if (plate) plate.textContent = name;
+    if (plate) { plate.textContent = name; fitPlateName(plate); }
   }
   if (!c.skip) TTS.say(["Go!", name]);
   await c.say("Go, " + name + "! 🔄");
