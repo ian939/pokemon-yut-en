@@ -1069,7 +1069,7 @@ body.coining .tcard.active { border-color: var(--ink) !important; box-shadow: va
 /* ================================================================
    설정
 ================================================================ */
-const APP_VERSION = "2026-10-10a";
+const APP_VERSION = "2026-10-10b";
 const D = window.YUT_DATA;
 const Q = new URLSearchParams(location.search);
 const SPEED = Q.has("fast") ? 0.12 : 1;           // 테스트용: ?fast=1 이면 연출을 빠르게
@@ -1158,7 +1158,7 @@ const SKILL_UI = {
   nitro: { emoji: "🔥", desc: "Go 2 spaces forward right now!" },
   flame: { emoji: "🔥", desc: "Knock out an enemy up to 3 spaces ahead!" },
   surf: { emoji: "🌊", desc: "Push one enemy piece back 2 spaces." },
-  rain: { emoji: "🌧️", desc: "Rain for your next 3 turns! Do or Back-do becomes Gae." },
+  splash: { emoji: "🐟", desc: "Splash like Magikarp! Half the time nothing happens… half the time you jump 4 spaces!" }, // 영어판 2026-10-10: 비바라기 대신
   growth: { emoji: "🌱", desc: "Make one result one step bigger! (Gae→Geol)" },
   sleep: { emoji: "💤", desc: "One enemy piece falls asleep. It can't move 2 times. (It may wake up!)" },
   discharge: { emoji: "⚡", desc: "All enemy pieces can't move 1 time." },
@@ -3475,6 +3475,15 @@ function goHome(el) {
 }
 // 기술이 만든 사건들의 연출 (playEvents 가 부른다)
 const EVENT_ANIM = {
+  // 🐟 튀어오르기: 퐁! 반은 "But nothing happened!" (포켓몬 게임의 그 말), 반은 4칸 점프 (점프는 뒤따르는 move 사건이 보여 준다)
+  async splash(e, prev) {
+    const st = prev || G.s, p = st.pieces[e.pieces[0]];
+    if (p && p.state === "board") fxAt(Yut.posOf(p), "🐟💦");
+    SFX.pop();
+    if (e.hop) { toast("🐟 Splash! " + namesOf(e.pieces) + " jumps 4 spaces!", 1600); TTS.say([vo("Splash!"), vo("Jump four spaces!")]); }
+    else { toast("🐟 Splash! …But nothing happened!", 1800); TTS.say(vo("Splash! But nothing happened!")); }
+    await sleep(1000);
+  },
   async skill(e, prev) {
     markSeen(e.key);
     const st = prev || G.s;

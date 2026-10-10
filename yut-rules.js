@@ -382,7 +382,7 @@
     nitro: { name: "Flame Charge", type: "불꽃", kind: "active", when: "any", target: "none", cat: "move" },
     flame: { name: "Flamethrower", type: "불꽃", kind: "active", when: "any", target: "enemy", cat: "attack" },
     surf: { name: "Surf", type: "물", kind: "active", when: "any", target: "enemy", cat: "attack" },
-    rain: { name: "Rain Dance", type: "물", kind: "active", when: "any", target: "none", cat: "throw" },
+    splash: { name: "Splash", type: "물", kind: "active", when: "any", target: "none", cat: "move" }, // 영어판 2026-10-10: 비바라기 대신 — 반은 아무 일 없음, 반은 4칸 점프
     growth: { name: "Growth", type: "풀", kind: "active", when: "pending", target: "pending", cat: "throw" },
     sleep: { name: "Sleep Powder", type: "풀", kind: "active", when: "any", target: "enemy", cat: "attack" },
     discharge: { name: "Discharge", type: "전기", kind: "active", when: "any", target: "none", cat: "attack" },
@@ -415,13 +415,13 @@
     kiss: { name: "Sweet Kiss", type: "페어리", kind: "active", when: "any", target: "enemy", cat: "attack" },
   };
   const TYPE_SKILLS = {
-    "노말": ["metronome", "wish"], "불꽃": ["nitro", "flame"], "물": ["surf", "rain"], "풀": ["growth", "sleep"],
+    "노말": ["metronome", "wish"], "불꽃": ["nitro", "flame"], "물": ["surf", "splash"], "풀": ["growth", "sleep"],
     "전기": ["discharge", "wildcharge"], "얼음": ["veil", "icecharge"], "격투": ["counter", "bulkup"], "독": ["toxic", "poisonjab"], "땅": ["quake", "dig"],
     "비행": ["fly", "tailwind"], "에스퍼": ["future", "allyswitch"], "벌레": ["uturn", "web"], "바위": ["rock", "stoneedge"],
     "고스트": ["spite", "bond"], "드래곤": ["ddance", "outrage"], "악": ["snatch", "spike"], "강철": ["iron", "magnet"], "페어리": ["moon", "kiss"],
   };
   // v8: 없어진 기술 → 새 기술 (옛 판 이어 하기)
-  const RENAMED = { haze: "icecharge", twave: "discharge" };
+  const RENAMED = { haze: "icecharge", twave: "discharge", rain: "splash" }; // rain → splash: 영어판 2026-10-10
   // 카운터가 되돌리는 방해 기술
   const REFLECTABLE = ["surf", "discharge", "sleep", "flame", "quake", "toxic", "spite", "snatch", "icecharge", "poisonjab", "kiss", "stoneedge", "outrage", "allyswitch"];
 
@@ -644,7 +644,7 @@
         return q.team !== team && q.state !== "done" && q.skill && !q.used && !(q.state === "board" && isVeiled(s, q));
       });
       case "veil": return unitVeiled(s, u) ? [] : [null];
-      case "rain": return isRaining(s, team) ? [] : [null];
+      case "splash": return planForward(s, team, u, 4) ? [null] : [];
       case "tailwind": return unitsOf(s, team).some(x => { const d = stepMove(x, 1); return d && (d.finish || !piecesAt(s, d.node).some(j => s.pieces[j].team !== team)); }) ? [null] : [];
       case "allyswitch": return foes.map(x => x.node);
       case "rock": case "web": case "spike": return trapNodes(s);
@@ -991,10 +991,12 @@
         break;
       }
       case "veil": setStatus(s, ev, u.pieces, "veil", untilFor(s, opp[0], 2), key); break;
-      case "rain":
-        teamFx(s, team).rain = s.turnNo + s.teams.length * 2; // 이번 차례 포함 우리 차례 세 번
-        ev.push({ type: "status", kind: "rain", team, pieces: [], skill: key });
+      case "splash": { // 🐟 튀어오르기: 잉어킹처럼 퐁! 반은 아무 일 없음, 반은 4칸 점프 (기술 난수 srng)
+        const hop = srand(s) < 0.5;
+        ev.push({ type: "splash", team, pieces: u.pieces.slice(), hop, skill: key });
+        if (hop) doMove(s, ev, team, makeMove(s, team, 4, -1, "n" + u.node, u.pieces, u, planForward(s, team, u, 4)), { skill: key });
         break;
+      }
       case "tailwind": tailwind(s, ev, team); break;
       case "allyswitch": { // v8: 우리 말 ↔ 상대 말 (잡기 없음, 업힌 말은 같이)
         const v = foeAt(tg);
@@ -1403,7 +1405,7 @@
       case "snatch": return 40;
       case "rock": case "web": case "spike": return trapValue(tg);
       case "veil": return threat(s, u.node, team) > 0.25 ? 35 : 4;
-      case "rain": return 16;
+      case "splash": return 4 + moveValue(planForward(s, team, u, 4)) / 2; // 반만 되니까 값도 반
       case "tailwind": return 6 * unitsOf(s, team).length;
       case "allyswitch": { const x = foeAt(tg); const g = rem(u) - rem(x); return g > 2 ? 6 + 4 * g * u.pieces.length : -5; }
       case "growth": return 12;
@@ -1464,8 +1466,18 @@
     } catch (e) { return false; }
   }
   // 옛 저장(v1, 기술 전)을 v2 로 — 옛 판은 기술 없이 그대로 이어 한다
+  // 영어판 2026-10-10: 비바라기(rain) → 튀어오르기(splash) — 예전 판의 기술 이름만 바꾼다 (이미 오는 비 효과는 그대로 끝까지)
+  function migrateSplash(s) {
+    if (!s || !Array.isArray(s.teams) || !Array.isArray(s.pieces) || s.kSplash) return s;
+    const u = clone(s), ren = k => (k === "rain" ? "splash" : k);
+    u.teams.forEach(t => { if (Array.isArray(t.pools)) t.pools = t.pools.map(p => Array.isArray(p) ? Array.from(new Set(p.map(ren))) : p); });
+    u.pieces.forEach(p => { if (p.skill) p.skill = ren(p.skill); if (p.gift && p.gift.key) p.gift.key = ren(p.gift.key); });
+    if (Array.isArray(u.gifts)) u.gifts.forEach(g => { if (g) g.key = ren(g.key); });
+    u.kSplash = true;
+    return u;
+  }
   function upgrade(s) {
-    if (s && typeof s === "object" && s.v === 2) return migrate8(s);
+    if (s && typeof s === "object" && s.v === 2) return migrateSplash(migrate8(s));
     if (!s || typeof s !== "object" || s.v !== 1 || !Array.isArray(s.teams) || !Array.isArray(s.pieces)) return s;
     const u = clone(s);
     u.v = 2;

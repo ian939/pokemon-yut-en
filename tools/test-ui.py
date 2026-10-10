@@ -629,7 +629,7 @@ def scenario_v3(browser, base, errors):
 
     # ⑤ 🔄 잡은 포켓몬으로 바로 말 바꾸기 (가족 대결)
     ctx, page = ctx_page()
-    start(page, "?seed=2&force=3&spots=3:133&catch=1&fast=1&swappool=rain")
+    start(page, "?seed=2&force=3&spots=3:133&catch=1&fast=1&swappool=splash")
     page.click("#btn-throw", force=True); wait_idle(page)
     page.click(".dest[data-move='new/3']", force=True)
     for _ in range(3): answer_quiz(page)                 # 🕐 시계 문제 세 번 먼저
@@ -910,7 +910,7 @@ def scenario_v4(browser, base, errors):
 
     # ⑪ 🎁 기술을 못 쓰고 골인 → 받을 팀원 고르기 → 기술 두 개 → 받은 기술 쓰기
     ctx, page = ctx_page()
-    start(page, "?seed=2&spots=none&fast=1&early=1&pools=nitro,ddance,surf|toxic,quake,rain", study=False)
+    start(page, "?seed=2&spots=none&fast=1&early=1&pools=nitro,ddance,surf|toxic,quake,splash", study=False)
     page.evaluate("""() => { const Y = window.__yut, s = Y.G.s, at = (i, n) => Object.assign(s.pieces[i], { state: 'board', atGoal: false }, Y.Yut.settle('OUT', n));
       at(0, 18); at(1, 3); s.turn = 0; s.phase = 'choose'; s.pending = [3]; s.throwsLeft = 0; Y.Act['skill-cancel'](); }""")
     wait_idle(page)

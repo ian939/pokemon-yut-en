@@ -332,11 +332,11 @@ const atThrow = (st, no, team) => { const c = clone(st); c.turn = team; c.turnNo
 t("34. 마지막 모습이 되면 기술을 배운다 · 시험용(now)은 처음부터 · 기술을 끄면 안 배움", () => {
   let s = sk();
   eq([s.pieces[0].skill, s.pieces[1].skill, s.pieces[2].skill], ["nitro", "nitro", null]);
-  s = sk({ p1: [["surf", "rain"], ["surf"]] });
+  s = sk({ p1: [["surf", "splash"], ["surf"]] });
   put(s, 2, 8); s.pieces[2].walk = 8;
   const r = Y.applyMove(choose(s, [2], 1), "n8/2");   // 10칸 → 거북왕
   eq(evTypes(r).filter(x => x === "evolve" || x === "learn"), ["evolve", "learn"]);
-  eq(Y.formOf(r.state, 2), 9); ok(["surf", "rain"].includes(r.state.pieces[2].skill));
+  eq(Y.formOf(r.state, 2), 9); ok(["surf", "splash"].includes(r.state.pieces[2].skill));
   const s1 = Y.newGame({ pieces: 1, seed: 3, teams: [{ name: "A", picks: [128], pools: [["wish"]] }, { name: "B", picks: [4], paths: [[4, 5, 6]], pools: [["nitro"]] }] }, D.evoFrom);
   eq([s1.pieces[0].skill, s1.pieces[1].skill], [null, null], "진화하지 않는 켄타로스도 처음부터는 아님 (v4: 15칸)");
   eq(sk({ skills: false }).pieces[0].skill, null, "기술 끄기");
@@ -474,21 +474,31 @@ t("43. 오로라베일 — 상대 차례 두 번 동안 그 칸에 못 멈추고
   });
   ok(Y.legalMoves(at(s1, 6, 1)).some(m => m.to && m.to.node === 8), "세 번째엔 풀림");
 });
-t("44. 맹독(다음 윷 빽도, 빽도 끈 판은 도) · 비바라기(우리 차례 세 번 도·빽도 → 개) · 비가 맹독을 이김", () => {
-  let s = sk({ p0: [["toxic"], ["rain"]] }); put(s, 0, 3); put(s, 1, 4);
+t("44. 맹독(다음 윷 빽도, 빽도 끈 판은 도) · 튀어오르기(반은 그대로, 반은 4칸 점프) · 예전 비바라기는 튀어오르기로", () => {
+  let s = sk({ p0: [["toxic"], ["splash"]] }); put(s, 0, 3); put(s, 1, 4);
   let s1 = Y.applySkill(s, 0, null).state;
   eq(s1.teams[1].fx.poison, true);
   let r = Y.applyThrow(atThrow(s1, 2, 1), 3);
   eq([r.events[0].result, r.events[0].poisoned, r.state.teams[1].fx.poison], [-1, true, false]);
-  s = sk({ p0: [["toxic"], ["rain"]], backdo: false }); put(s, 0, 3);
+  s = sk({ p0: [["toxic"], ["splash"]], backdo: false }); put(s, 0, 3);
   eq(Y.applyThrow(atThrow(Y.applySkill(s, 0, null).state, 2, 1), 3).events[0].result, 1);
-  s = sk({ p0: [["toxic"], ["rain"]] }); put(s, 1, 4);
-  s1 = Y.applySkill(s, 1, null).state;
-  r = Y.applyThrow(s1, 1); eq([r.events[0].result, r.events[0].rained], [2, 1]);
-  [3, 5].forEach(no => eq(Y.applyThrow(atThrow(s1, no, 0), -1).events[0].result, 2, "차례 " + no));
-  eq(Y.applyThrow(atThrow(s1, 7, 0), 1).events[0].result, 1, "네 번째 차례엔 그침");
-  const cp = clone(s1); cp.teams[0].fx.poison = true;
-  eq(Y.applyThrow(cp, 3).events[0].result, 2, "비 + 맹독 → 개");
+  // 🐟 튀어오르기 (영어판 2026-10-10, 비바라기 대신): 반은 아무 일 없음, 반은 4칸 점프 — 기술 난수(srng)로
+  s = sk({ p0: [["toxic"], ["splash"]] }); put(s, 1, 4);
+  let hops = 0, stays = 0;
+  for (let seed = 1; seed <= 200; seed++) {
+    const c = clone(s); c.srng = seed * 7919;
+    const rr = Y.applySkill(c, 1, null);
+    const sp = rr.events.find(e => e.type === "splash");
+    ok(sp, "splash 사건");
+    if (sp.hop) { hops++; eq(Y.posOf(rr.state.pieces[1]), 8, "4칸 점프"); }
+    else { stays++; eq(Y.posOf(rr.state.pieces[1]), 4, "아무 일 없음"); }
+    eq(rr.state.pieces[1].used, true, "한 번 쓰면 끝");
+  }
+  ok(hops > 60 && stays > 60, "반반쯤: 점프 " + hops + " · 그대로 " + stays);
+  eq(Y.upgrade(Object.assign(clone(s), { kSplash: false })).teams[0].pools[1][0], "splash");
+  const old = clone(s); delete old.kSplash; old.pieces[1].skill = "splash"; old.teams[0].pools[1] = ["splash"];
+  const up = Y.upgrade(old);
+  eq([up.pieces[1].skill, up.teams[0].pools[1][0]], ["splash", "splash"], "예전 판의 비바라기는 튀어오르기로");
 });
 t("45. 미래예지(맞히면 한 번 더) · 희망사항(원하는 결과, 한 번 더 없음) · 성장(한 단계, 모는 못 올림)", () => {
   let s = sk({ p0: [["future"], ["wish"]] }); put(s, 0, 3); put(s, 1, 4);
@@ -688,7 +698,7 @@ t("56. 기술을 아무렇게나 쓰는 무작위 3,000판 — 한 칸에 두 �
       }
       if (g % 7 === 0 && rnd() < 0.03) {
         const cand = s.pieces.map((p, i) => i).filter(i => Y.swapOk(s, i, 133));
-        if (cand.length) s = Y.applySwap(s, cand[Math.floor(rnd() * cand.length)], { id: 133, path: [133, 134], base: 0, pool: ["surf", "rain"], early: false }).state;
+        if (cand.length) s = Y.applySwap(s, cand[Math.floor(rnd() * cand.length)], { id: 133, path: [133, 134], base: 0, pool: ["surf", "splash"], early: false }).state;
       }
       ok(Y.validate(s), "validate 실패");
       const where = {};
@@ -854,7 +864,7 @@ t("65. 🎁 받은 기술 — 저절로 기술도 나감 · 이미 받은 기술
   eq([r.state.pieces[3].state, r.state.pieces[3].gift.used], ["board", true], "받은 철벽이 튕겨 냄");
   // 받은 기술을 이미 든 팀원은 후보에서 빠지고, 받을 팀원이 없으면 버림
   s = sk({ n: 3, p0: [["nitro"], ["surf"], ["ddance"]] }); put(s, 0, 18); put(s, 1, 3); s.pieces[2].state = "done";
-  s.pieces[1].gift = { key: "rain", used: false };
+  s.pieces[1].gift = { key: "splash", used: false };
   r = Y.applyMove(choose(s, [3]), "n18/3");
   ok(!evTypes(r).includes("giftask") && !(r.state.gifts || []).length, "받을 팀원이 없음");
   // 마지막 말이 골인해서 이기면 넘기지 않음
@@ -862,12 +872,12 @@ t("65. 🎁 받은 기술 — 저절로 기술도 나감 · 이미 받은 기술
   r = Y.applyMove(choose(s, [3]), "n18/3");
   eq([r.state.phase, (r.state.gifts || []).length], ["over", 0]);
   // 두 기술(제 것 + 받은 것)을 못 쓰고 골인 → 두 개가 줄에
-  s = sk({ n: 3, p0: [["nitro"], ["surf"], ["ddance"]] }); put(s, 0, 18); s.pieces[0].gift = { key: "rain", used: false }; put(s, 1, 3); put(s, 2, 5);
+  s = sk({ n: 3, p0: [["nitro"], ["surf"], ["ddance"]] }); put(s, 0, 18); s.pieces[0].gift = { key: "splash", used: false }; put(s, 1, 3); put(s, 2, 5);
   r = Y.applyMove(choose(s, [3]), "n18/3");
-  eq(r.state.gifts.map(x => x.key), ["nitro", "rain"]);
+  eq(r.state.gifts.map(x => x.key), ["nitro", "splash"]);
   let g = Y.applyGift(r.state, 1);
   g = Y.applyGift(g.state, 2);
-  eq([g.state.pieces[1].gift.key, g.state.pieces[2].gift.key], ["nitro", "rain"]);
+  eq([g.state.pieces[1].gift.key, g.state.pieces[2].gift.key], ["nitro", "splash"]);
   let threw = false; try { Y.applyGift(g.state, 1); } catch (e) { threw = true; } ok(threw, "줄이 비었으면 오류");
   // 로켓단(cpu)은 알아서 바로
   s = Y.newGame({ pieces: 2, seed: 3, skills: true, teams: [

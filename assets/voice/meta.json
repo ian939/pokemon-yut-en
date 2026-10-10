@@ -6164,6 +6164,15 @@
 "text": "Joltik",
 "voice": "en-US-AnaNeural"
 },
+"jump four spaces": {
+"clip": [
+0.103,
+1.579
+],
+"file": "4ac73f0dfe.mp3",
+"text": "Jump four spaces!",
+"voice": "en-US-AnaNeural"
+},
 "jumpluff": {
 "clip": [
 0.103,
@@ -9233,15 +9242,6 @@
 "text": "Raikou",
 "voice": "en-US-AnaNeural"
 },
-"rain dance": {
-"clip": [
-0.103,
-1.053
-],
-"file": "032ab755fe.mp3",
-"text": "Rain Dance",
-"voice": "en-US-AnaNeural"
-},
 "rainbow colors": {
 "clip": [
 0.103,
@@ -10811,10 +10811,19 @@
 "splash": {
 "clip": [
 0.103,
-0.803
+0.829
 ],
 "file": "cbead73389.mp3",
-"text": "Splash",
+"text": "Splash!",
+"voice": "en-US-AnaNeural"
+},
+"splash but nothing happened": {
+"clip": [
+0.103,
+3.187
+],
+"file": "5b80394945.mp3",
+"text": "Splash! But nothing happened!",
 "voice": "en-US-AnaNeural"
 },
 "spoink": {
