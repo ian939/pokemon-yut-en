@@ -176,6 +176,11 @@ img { -webkit-user-drag: none; }
 /* ===== 윷판 화면 ===== */
 .game .bar { min-height: 66px; padding: 6px 12px; }
 .turn-pill { flex: 1; display: flex; justify-content: center; min-width: 0; }
+.room-chip { flex: none; display: flex; flex-direction: column; align-items: center; line-height: 1; background: var(--paper); border: 3px solid var(--ink); border-radius: 10px; padding: 3px 7px 4px; box-shadow: 0 3px 0 var(--ink); }
+.room-note { background: var(--paper-2); border-radius: 12px; padding: 8px 10px; }
+.room-note b { font-family: var(--pixel); font-size: var(--t2); letter-spacing: 3px; }
+.room-chip small { font-size: 11px; font-weight: 900; color: var(--ink-soft); }
+.room-chip b { font-family: var(--pixel); font-size: var(--t1); letter-spacing: 1px; }
 .turn-pill span { background: var(--tc, var(--ink)); color: #fff; font-family: var(--pixel); font-weight: 700; font-size: var(--t1); padding: 9px 20px 8px; border: 3px solid var(--ink); border-radius: 12px; box-shadow: inset 0 0 0 2px rgba(255,255,255,.5), 0 4px 0 var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
 .game-main { flex: 1; min-height: 0; display: flex; gap: 16px; padding: 0 14px 14px; align-items: center; justify-content: center; }
 .game.port .game-main { flex-direction: column; justify-content: flex-start; }
@@ -1064,7 +1069,7 @@ body.coining .tcard.active { border-color: var(--ink) !important; box-shadow: va
 /* ================================================================
    설정
 ================================================================ */
-const APP_VERSION = "2026-10-08d";
+const APP_VERSION = "2026-10-10a";
 const D = window.YUT_DATA;
 const Q = new URLSearchParams(location.search);
 const SPEED = Q.has("fast") ? 0.12 : 1;           // 테스트용: ?fast=1 이면 연출을 빠르게
@@ -1481,8 +1486,8 @@ const TTS = {
       .toLowerCase().replace(/[’‘`]/g, "'").replace(/[^a-z0-9'\uac00-\ud7a3]+/g, " ").trim();
   },
   clip(text) { const V = window.VOICE || {}; return V[this.key(text)] || null; },
-  say(text) { this.stop(); this.queue(text); },
-  sayEn(text) { this.queue(text); },
+  say(text) { this.stop(); return this.queue(text); }, // 다 읽으면 끝나는 Promise (소리 끔이면 undefined)
+  sayEn(text) { return this.queue(text); },
   queue(text) {
     if (Store.data.sound === false) return;
     const parts = (Array.isArray(text) ? text : [text]).map(p => plain(p)).filter(p => this.key(p));
@@ -1491,7 +1496,7 @@ const TTS = {
     const items = (this.clip(whole) ? [whole] : parts).map(p => ({ text: p, clip: this.clip(p) }));
     items.forEach(it => { if (it.clip) this.load(it.clip[0]).catch(() => {}); }); // 미리 받아 두면 조각 사이가 덜 끊긴다
     const my = this.seq;
-    this.chain = this.chain.then(async () => {
+    return this.chain = this.chain.then(async () => {
       for (const it of items) {
         if (my !== this.seq) return;
         try { await (it.clip ? this.playClip(it.clip, my) : this.synth(it.text, my)); } catch (e) { /* 하나 못 읽어도 다음으로 */ }
@@ -1864,6 +1869,7 @@ const unitAt = (team, node) => $('#units .unit[data-team="' + team + '"][data-no
 Screens.game = sec => {
   sec.innerHTML =
     '<header class="bar"><button class="btn icon" data-act="pause" aria-label="Pause">⏸</button>' +
+      (netOn() ? '<span class="room-chip" title="Room code"><small>Room</small><b>' + esc(G.net.code) + "</b></span>" : "") + // 🏠 잘못 나가도 이 번호로 다시 들어온다
       '<div class="turn-pill" id="turn-pill"></div>' +
       '<button class="btn icon bagchip" data-act="bag" aria-label="Bag">🎒<i id="bag-n"></i></button>' +
       (netOn() ? '<button class="btn icon emote-btn" data-act="emote" id="emote-btn" aria-label="Emotes">💬</button>' : "") +
@@ -3905,8 +3911,9 @@ function quizWindow(o) {
         SFX.catchOk();
         b.insertAdjacentHTML("beforeend", '<span class="qz-star">⭐</span>');
         ex.innerHTML = "<b>" + (o.okText || "Correct!") + "</b>";
-        TTS.say(o.okSay || vo("Correct!")); // o.okSay = 말할 조각 배열 (okText 는 화면용)
-        await sleep(1500);
+        const spoken = TTS.say(o.okSay || vo("Correct!")); // o.okSay = 말할 조각 배열 (okText 는 화면용)
+        // 정답 금액·시각을 끝까지 듣고 넘어간다 (1.5초 만에 닫혀 다음 문제 소리가 끊어 버리던 것) — 최대 7초
+        await (SPEED < 1 ? sleep(1500) : Promise.race([Promise.all([spoken, sleep(1500)]), sleep(7000)]).then(() => sleep(400)));
         close(true);
         return;
       }
@@ -4018,7 +4025,7 @@ async function moneyQuizOnce(step, right, again) { // again = 앞 문제를 틀�
       : [again ? vo("One more try!") : vo("Next customer!"), vo("How much is it in all?")],
     choices: q.choices.map(Yut.Study.won), answer: q.answer,
     okText: "Correct! " + Yut.Study.won(q.total) + " (" + Yut.Study.koNum(q.total) + " won) ⭐ Unique·Legendary +" + MONEY_BOOST[lv - 1] + "%!",
-    okSay: [vo("Correct!"), Yut.Study.won(q.total)],
+    okSay: [vo("Correct!")].concat(wonSay(q.total)),
     explain: () => moneyExplain(q),
   });
   studyRecord("money", r.ok);
@@ -4768,7 +4775,7 @@ async function saveFetch() {
   }
 }
 const netParse = j => { try { return typeof j === "string" ? JSON.parse(j) : null; } catch (e) { return null; } };
-function netSave() { if (G.net) { Store.data.net = G.s && G.s.phase === "over" ? null : { code: G.net.code, me: G.net.me, seq: G.net.seq, pid: G.net.pid, round: G.net.round || 0, first: G.net.first || 0 }; Store.save(); } } // 끝난 판은 이어하기에서 빼기
+function netSave() { if (G.net) { Store.data.lastNet = { code: G.net.code, me: G.net.me }; Store.data.net = G.s && G.s.phase === "over" ? null : { code: G.net.code, me: G.net.me, seq: G.net.seq, pid: G.net.pid, round: G.net.round || 0, first: G.net.first || 0 }; Store.save(); } } // 끝난 판은 이어하기에서 빼기
 // 내 동작을 올린다 — busy: 아직 연출·조우·선물 고르기 중 (상대는 기다린다)
 let netChain = Promise.resolve();
 function netSend(events, busy) {
@@ -5030,6 +5037,19 @@ async function netJoin() {
   $("#net-go").disabled = true;
   try {
     const room = await Net.get(N.code);
+    // 🔁 하던 판이 있는 방이면 다시 들어가기 (잘못 나갔을 때) — 이 패드가 그 방에서 앉았던 자리로, 모르면 고르게
+    // (이름으로 맞추지 않는다: 두 집 다 기본 이름 "Dreamer" 일 수 있다)
+    if (room && room.guest && room.status === "play" && room.stateJ && Date.now() - (room.created || 0) <= ROOM_TTL) {
+      const names = [room.host.name, room.guest.name];
+      const last = Store.data.lastNet;
+      $("#net-go").disabled = false;
+      if (last && last.code === N.code && (last.me === 0 || last.me === 1)) netRejoin(N.code, room, last.me);
+      else showModal("<h2>🏠 Back to the game!</h2><p>Room " + esc(N.code) + " has a game going.<br>Which one are you?</p>" +
+        '<div class="btns">' + names.map((n, i) => '<button class="btn big" data-act="net-rejoin" data-i="' + i + '" style="--tc:' + TEAM_COLORS[i] + '">' + esc(n) + "</button>").join("") +
+        '<button class="btn" data-act="close-modal">Cancel</button></div>');
+      Setup.rejoinRoom = room;
+      return;
+    }
     const bad = !room ? "There's no room with that code. Please check the code" : Date.now() - (room.created || 0) > ROOM_TTL || room.status === "over" ? "This room is over or too old" : room.guest ? "A friend is already in this room" : "";
     if (bad) { err.textContent = bad; $("#net-go").disabled = false; return; }
     const gname = name;
@@ -5043,6 +5063,31 @@ async function netJoin() {
     err.textContent = e.message === "denied" ? "The server isn't ready yet" : "Couldn't join. Check the internet 📶";
     $("#net-go").disabled = false;
   }
+}
+// 💰 금액을 녹음된 조각으로 읽기: 32500 → ["32", "thousand", "5", "hundred", "won"] (숫자 0~100 은 녹음돼 있다)
+function wonSay(n) {
+  const out = [], th = Math.floor(n / 1000), h = Math.floor(n % 1000 / 100), r = n % 100;
+  if (th) {
+    if (th >= 100) { out.push(String(Math.floor(th / 100)), vo("hundred")); if (th % 100) out.push(String(th % 100)); }
+    else out.push(String(th));
+    out.push(vo("thousand"));
+  }
+  if (h) out.push(String(h), vo("hundred"));
+  if (r) out.push(String(r));
+  out.push(vo("won"));
+  return out;
+}
+// 🔁 하던 친구 대결로 다시 들어가기 — 서버의 판을 그대로 받아 내 자리(me)로 이어서
+function netRejoin(code, room, me) {
+  const st = room.settings || {};
+  Object.assign(Setup, { mode: "net", pieces: st.pieces || Setup.pieces, backdo: st.backdo !== false, skills: st.skills !== false, battle: st.battle !== false, timer: st.timer == null ? 20 : st.timer });
+  Setup.net = { code, me, round: room.round || 0, first: room.first || 0, names: [room.host.name, room.guest.name], avatars: [room.host.avatar || null, room.guest.avatar || null] };
+  G.net = { code, me, seq: room.seq || 0, queue: [], running: false, remoteBusy: false, note: null, pid: Setup.t0, round: room.round || 0, first: room.first || 0 };
+  G.s = fillV8(netParse(room.stateJ));
+  closeModal();
+  persist(); netSave();
+  SFX.again(); toast("🏠 Back in room " + code + "!", 2000);
+  showScreen("game");
 }
 // 고르기 끝 — 방 만든 집: 올리고 기다리기 / 들어간 집: 판을 만들어 올리기
 async function netPickDone() {
@@ -5110,6 +5155,7 @@ function openPause() {
   clearTimeout(G.cpuTimer);
   showModal(
     '<h2>⏸ Pause</h2><p>The game saves by itself.<br>Leave and come back any time — tap <b>Continue</b> to keep playing.</p>' +
+    (netOn() ? '<p class="room-note">🏠 Room code <b>' + esc(G.net.code) + "</b><br><small>If you leave by mistake: 🏠 Friend Battle → 🔢 Join with code → type this code</small></p>" : "") +
     '<div class="btns"><button class="btn big green" data-act="close-modal">▶ Keep playing</button>' +
     '<button class="btn big" data-act="pause-home">🏠 Home</button>' +
     '<button class="btn" data-act="pause-giveup">🏳️ Quit game</button></div>',
@@ -5267,6 +5313,7 @@ const Act = {
   }),
   "rematch": rematch,
   "net-rematch": () => netRematch(),
+  "net-rejoin": el => { const r = Setup.rejoinRoom; if (r) netRejoin(Setup.join.code, r, Number(el.dataset.i)); },
   "win-home": () => showScreen("home"),
   "close-modal": closeModal,
   "app-update": () => location.replace(location.pathname + "?v=" + Date.now()),

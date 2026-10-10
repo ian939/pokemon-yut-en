@@ -5750,6 +5750,15 @@
 "text": "huge",
 "voice": "en-US-AnaNeural"
 },
+"hundred": {
+"clip": [
+0.103,
+0.684
+],
+"file": "34b569aa5f.mp3",
+"text": "hundred",
+"voice": "en-US-AnaNeural"
+},
 "huntail": {
 "clip": [
 0.102,
@@ -11555,6 +11564,15 @@
 "text": "Thievul",
 "voice": "en-US-AnaNeural"
 },
+"thousand": {
+"clip": [
+0.103,
+0.763
+],
+"file": "41b1df40c9.mp3",
+"text": "thousand",
+"voice": "en-US-AnaNeural"
+},
 "three": {
 "clip": [
 0.103,
@@ -12822,6 +12840,15 @@
 ],
 "file": "145d33c318.mp3",
 "text": "Wobbuffet",
+"voice": "en-US-AnaNeural"
+},
+"won": {
+"clip": [
+0.103,
+0.487
+],
+"file": "7b63d1cafe.mp3",
+"text": "won",
 "voice": "en-US-AnaNeural"
 },
 "woobat": {
