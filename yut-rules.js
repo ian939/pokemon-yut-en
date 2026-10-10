@@ -165,7 +165,9 @@
    * 효과는 "몇 번째 차례(turnNo)까지"로 적는다 — 그 차례가 끝나면 풀린다.
    *   말 fx: para(마비) · sleep(잠) · veil(얼음 장막)   팀 fx: poison(다음 윷 빽도) · seal(기술 봉인) · rain(비)
    * v8: 못 움직임 freeze(아이스차징) · tired(지침: 와일드볼트·역린) · spike(독압정) — k+"From" 이 있으면 그 차례부터
-   *     숨음 dig(구멍파기 — 장막처럼) · 횟수 bulk(+1칸) · weak(−1칸) · digup(+1칸) · confuse(다음 이동 뒤로)   팀 fx: chill(그 차례 윷이 빽도·도·개만) */
+   *     숨음 dig(구멍파기 — 장막처럼) · 횟수 bulk(+1칸) · weak(−1칸) · digup(+1칸) · confuse(다음 이동 뒤로)   팀 fx: chill(그 차례 윷이 빽도·도·개만)
+   * 2026-10-10 (기술 54개): 횟수 polish(+2칸, 록커트) · gear(+1칸, 기어업) · string(−1칸, 실뿜기) · slow(−1칸, 용성군 쓴 말)
+   *     팀 fx: cotton(다음 윷 한 단계 작게, 목화포자) · mist(미스트필드 — 상대 기술이 우리 팀에 안 통함) · lastSkill(흉내내기가 따라 할 기술) */
   const fxP = p => p.fx || {};
   const BLOCKS = ["para", "sleep", "freeze", "tired", "spike"];
   const blockOn = (s, f, k) => (f[k] || 0) >= s.turnNo && (f[k + "From"] || 0) <= s.turnNo;
@@ -173,11 +175,16 @@
   const isVeiled = (s, p) => (fxP(p).veil || 0) >= s.turnNo || (fxP(p).dig || 0) >= s.turnNo;
   const cnt = (s, u, k) => u.pieces.some(i => (fxP(s.pieces[i])[k] || 0) > 0);
   // 윷으로 앞으로 갈 때 더하고 빼는 칸 (💪 벌크업 +1 · 🕳️ 구멍파기 다음 이동 +1 · 🧪 독찌르기 −1)
-  const stepMod = (s, u) => (cnt(s, u, "bulk") ? 1 : 0) + (cnt(s, u, "digup") ? 1 : 0) - (cnt(s, u, "weak") ? 1 : 0);
+  // 2026-10-10: 🪨 록커트 +2 · ⚙️ 기어업 +1 · 🧵 실뿜기 −1 · 🐢 용성군(쓴 말) −1
+  const COUNT_KEYS = ["bulk", "weak", "digup", "polish", "gear", "string", "slow"];
+  const stepMod = (s, u) => (cnt(s, u, "bulk") ? 1 : 0) + (cnt(s, u, "digup") ? 1 : 0) - (cnt(s, u, "weak") ? 1 : 0)
+    + (cnt(s, u, "polish") ? 2 : 0) + (cnt(s, u, "gear") ? 1 : 0) - (cnt(s, u, "string") ? 1 : 0) - (cnt(s, u, "slow") ? 1 : 0);
   const isConfused = (s, u) => cnt(s, u, "confuse");
   const teamFx = (s, t) => s.teams[t].fx || (s.teams[t].fx = {});
   const isSealed = (s, t) => ((s.teams[t].fx || {}).seal || 0) >= s.turnNo;
   const isRaining = (s, t) => ((s.teams[t].fx || {}).rain || 0) >= s.turnNo;
+  // 🌸 미스트필드: 상대 기술(방해·기술로 잡기)이 이 팀에 안 통한다. 윷으로 잡히는 건 그대로
+  const isMisted = (s, t) => ((s.teams[t].fx || {}).mist || 0) >= s.turnNo;
   const pfx = p => p.fx || (p.fx = {});
   // 팀 t 의 k번째 다음 차례 (지금이 t 차례면 이번 차례는 빼고 센다)
   function untilFor(s, t, k) {
@@ -188,6 +195,8 @@
   }
   const unitBlocked = (s, u) => u.pieces.some(i => isBlocked(s, s.pieces[i]));
   const unitVeiled = (s, u) => u.pieces.some(i => isVeiled(s, s.pieces[i]));
+  // 상대 기술이 안 닿는 말: 장막·구멍 속 · 미스트필드 팀
+  const unitShield = (s, u) => unitVeiled(s, u) || isMisted(s, s.pieces[u.pieces[0]].team);
   const veiledEnemyAt = (s, team, node) => piecesAt(s, node).some(i => s.pieces[i].team !== team && isVeiled(s, s.pieces[i]));
 
   /* ---------- v3: 함정 (바위·거미줄 · v8 독압정) — 그 칸이 비어 있을 때만 걸린다 ---------- */
@@ -270,7 +279,7 @@
           return;
         }
         const n = r > 0 ? r + stepMod(state, u) : r;
-        if (n === 0) return; // 🧪 약해진 말은 도로 못 움직인다
+        if (r > 0 && n <= 0) return; // 🧪 약해진 말은 도로 못 움직인다 (빼는 효과가 겹쳐도 뒤로 가지는 않는다)
         const d = planForward(state, t, u, n);
         if (d) out.push(makeMove(state, t, r, ri, "n" + u.node, u.pieces, u, d));
       });
@@ -371,7 +380,7 @@
     Object.assign(p, { state: "wait", route: "OUT", step: 0, atGoal: false, fx: {} });
   }
 
-  /* ---------- v8: 기술 36개 (타입마다 2개, 사용자 확정 2026-09-28) ----------
+  /* ---------- v8: 기술 36개 (타입마다 2개, 사용자 확정 2026-09-28) → 2026-10-10: 54개 (타입마다 3개, 사용자 확정) ----------
    * kind: active(내가 골라 씀) · react(때가 되면 저절로)
    * when: any(내 차례 아무 때) · throw(던지기 전) · pending(남은 결과가 있을 때)
    * target: none · enemy(상대 말 칸) · enemyPiece(상대 말) · ally(우리 말 칸) · node(빈 칸) · pending(남은 결과) · result(결과 고르기) · move(뒤로 갈 결과)
@@ -413,23 +422,44 @@
     magnet: { name: "Magnet Pull", type: "강철", kind: "active", when: "any", target: "ally", cat: "move" },
     moon: { name: "Moonlight", type: "페어리", kind: "react", cat: "guard" },
     kiss: { name: "Sweet Kiss", type: "페어리", kind: "active", when: "any", target: "enemy", cat: "attack" },
+    // 2026-10-10: 타입마다 하나씩 더 (18개, 사용자 확정)
+    mimic: { name: "Mimic", type: "노말", kind: "active", when: "any", target: "none", cat: "random" },
+    heatwave: { name: "Heat Wave", type: "불꽃", kind: "active", when: "any", target: "none", cat: "attack" },
+    soak: { name: "Soak", type: "물", kind: "active", when: "any", target: "enemyPiece", cat: "attack" },
+    cotton: { name: "Cotton Spore", type: "풀", kind: "active", when: "any", target: "none", cat: "attack" },
+    zap: { name: "Zap Cannon", type: "전기", kind: "active", when: "any", target: "none", cat: "attack" },
+    avalanche: { name: "Avalanche", type: "얼음", kind: "active", when: "any", target: "none", cat: "attack" },
+    lowkick: { name: "Low Kick", type: "격투", kind: "active", when: "any", target: "enemy", cat: "attack" },
+    venoshock: { name: "Venoshock", type: "독", kind: "active", when: "any", target: "enemy", cat: "attack" },
+    earthpower: { name: "Earth Power", type: "땅", kind: "active", when: "any", target: "none", cat: "move" },
+    acrobatics: { name: "Acrobatics", type: "비행", kind: "active", when: "any", target: "none", cat: "move" },
+    psychup: { name: "Psych Up", type: "에스퍼", kind: "active", when: "throw", target: "none", cat: "throw" },
+    stringshot: { name: "String Shot", type: "벌레", kind: "active", when: "any", target: "none", cat: "attack" },
+    rockpolish: { name: "Rock Polish", type: "바위", kind: "active", when: "any", target: "none", cat: "move" },
+    shadowsneak: { name: "Shadow Sneak", type: "고스트", kind: "active", when: "any", target: "none", cat: "attack" },
+    dracometeor: { name: "Draco Meteor", type: "드래곤", kind: "active", when: "any", target: "enemy", cat: "attack" },
+    pursuit: { name: "Pursuit", type: "악", kind: "active", when: "any", target: "none", cat: "move" },
+    gearup: { name: "Gear Up", type: "강철", kind: "active", when: "any", target: "none", cat: "move" },
+    mistyterrain: { name: "Misty Terrain", type: "페어리", kind: "active", when: "any", target: "none", cat: "guard" },
   };
   const TYPE_SKILLS = {
-    "노말": ["metronome", "wish"], "불꽃": ["nitro", "flame"], "물": ["surf", "splash"], "풀": ["growth", "sleep"],
-    "전기": ["discharge", "wildcharge"], "얼음": ["veil", "icecharge"], "격투": ["counter", "bulkup"], "독": ["toxic", "poisonjab"], "땅": ["quake", "dig"],
-    "비행": ["fly", "tailwind"], "에스퍼": ["future", "allyswitch"], "벌레": ["uturn", "web"], "바위": ["rock", "stoneedge"],
-    "고스트": ["spite", "bond"], "드래곤": ["ddance", "outrage"], "악": ["snatch", "spike"], "강철": ["iron", "magnet"], "페어리": ["moon", "kiss"],
+    "노말": ["metronome", "wish", "mimic"], "불꽃": ["nitro", "flame", "heatwave"], "물": ["surf", "splash", "soak"], "풀": ["growth", "sleep", "cotton"],
+    "전기": ["discharge", "wildcharge", "zap"], "얼음": ["veil", "icecharge", "avalanche"], "격투": ["counter", "bulkup", "lowkick"], "독": ["toxic", "poisonjab", "venoshock"],
+    "땅": ["quake", "dig", "earthpower"], "비행": ["fly", "tailwind", "acrobatics"], "에스퍼": ["future", "allyswitch", "psychup"], "벌레": ["uturn", "web", "stringshot"],
+    "바위": ["rock", "stoneedge", "rockpolish"], "고스트": ["spite", "bond", "shadowsneak"], "드래곤": ["ddance", "outrage", "dracometeor"], "악": ["snatch", "spike", "pursuit"],
+    "강철": ["iron", "magnet", "gearup"], "페어리": ["moon", "kiss", "mistyterrain"],
   };
   // v8: 없어진 기술 → 새 기술 (옛 판 이어 하기)
   const RENAMED = { haze: "icecharge", twave: "discharge", rain: "splash" }; // rain → splash: 영어판 2026-10-10
   // 카운터가 되돌리는 방해 기술
-  const REFLECTABLE = ["surf", "discharge", "sleep", "flame", "quake", "toxic", "spite", "snatch", "icecharge", "poisonjab", "kiss", "stoneedge", "outrage", "allyswitch"];
+  const REFLECTABLE = ["surf", "discharge", "sleep", "flame", "quake", "toxic", "spite", "snatch", "icecharge", "poisonjab", "kiss", "stoneedge", "outrage", "allyswitch",
+    "heatwave", "soak", "cotton", "zap", "avalanche", "lowkick", "venoshock", "stringshot", "shadowsneak", "dracometeor"];
 
   /* ---------- v8: 🎲 기술 발동 확률 (사용자 확정 2026-09-28) ----------
    * 쓰는 말의 희귀도: 일반 60 · 레어 70 · 유니크 80 · 전설 90%. 상대 말 하나에 거는 기술이면 타입 상성으로 ±10%
    * 희귀도(teams[].rar)·타입(teams[].types[말][단계])은 화면 쪽이 넘긴다. 없으면(옛 시험) 늘 성공 */
   const CHANCE = { c: 0.6, r: 0.7, u: 0.8, l: 0.9 };
-  const MATCH_SKILLS = ["flame", "surf", "sleep", "icecharge", "poisonjab", "allyswitch", "stoneedge", "kiss", "snatch"];
+  const MATCH_SKILLS = ["flame", "surf", "sleep", "icecharge", "poisonjab", "allyswitch", "stoneedge", "kiss", "snatch", "soak", "lowkick", "venoshock", "dracometeor"];
   // 원작 상성표: 공격 타입 → { 2: 효과가 굉장함, h: 별로, 0: 안 통함 }
   const TYPE_CHART = {
     "노말": { h: "바위 강철", 0: "고스트" },
@@ -463,6 +493,14 @@
     return Array.isArray(T) && T.length ? T[Math.min(q.stage, T.length - 1)] || null : null;
   }
   const FLY_STOPS = [5, 10, 15, 22]; // 공중날기: 모·뒷모·찌모·방 (참먹이면 골인)
+  const AVALANCHE_NODES = [5, 10, 15, 22]; // ❄️ 눈사태: 꺾이는 칸 (모·뒷모·찌모·방 — 참먹이는 빼고)
+  // ⚡ 전자포·🌍 대지의힘의 "직선 줄": 바깥 네 변 + 대각선 두 개. 칸이 여러 줄에 걸치면(모서리·방·참먹이) 모든 줄
+  const SIDES = [[0, 1, 2, 3, 4, 5], [5, 6, 7, 8, 9, 10], [10, 11, 12, 13, 14, 15], [15, 16, 17, 18, 19, 0], [5, 20, 21, 22, 23, 24, 15], [10, 25, 26, 22, 27, 28, 0]];
+  function lineNodes(node) {
+    const out = [];
+    SIDES.forEach(l => { if (l.indexOf(node) >= 0) l.forEach(n => { if (n !== node && out.indexOf(n) < 0) out.push(n); }); });
+    return out;
+  }
 
   // 저절로 기술이 나갈 수 있는가 (마비·잠이어도 나간다, 봉인이면 쉰다)
   /* 🎁 받은 기술 (v5, 사용자 확정 2026-09-27): 기술을 못 쓰고 골인한 팀원의 기술을 고른 팀원이 받는다.
@@ -503,13 +541,69 @@
   // 🗿 스톤에지가 노리는 말: 뒤로 밀 수 있는 상대 중 골인에 가장 가까운 말
   function leadFoe(s, team) {
     const rem = x => x.atGoal ? 0 : remainingOf(x.route, x.step);
-    const c = enemyUnits(s, team).filter(x => !unitVeiled(s, x) && canPushBack(s, x)).sort((a, b) => rem(a) - rem(b));
+    const c = enemyUnits(s, team).filter(x => !unitShield(s, x) && canPushBack(s, x)).sort((a, b) => rem(a) - rem(b));
     return c[0] || null;
   }
   // 🐲 역린: 앞쪽 1~2칸의 상대 말
   function outrageFoes(s, team, u) {
     const nodes = [1, 2].map(r => stepMove(u, r)).filter(d => d && !d.finish).map(d => d.node);
-    return enemyUnits(s, team).filter(x => !unitVeiled(s, x) && nodes.indexOf(x.node) >= 0);
+    return enemyUnits(s, team).filter(x => !unitShield(s, x) && nodes.indexOf(x.node) >= 0);
+  }
+  /* ---------- 2026-10-10: 새 기술 18개가 노리는 말·가는 칸 ---------- */
+  const NO_COPY = ["mimic", "metronome", "uturn"];
+  // 🪞 흉내내기: 상대 팀이 바로 전에 (성공해서) 쓴 누르는 기술
+  function mimicKey(s, i) {
+    const team = s.pieces[i].team;
+    for (const o of others(s, team)) {
+      const k = (s.teams[o].fx || {}).lastSkill;
+      if (k && SKILLS[k] && SKILLS[k].kind === "active" && NO_COPY.indexOf(k) < 0) return k;
+    }
+    return null;
+  }
+  // 🔥 열풍: 앞쪽 4칸 안의 상대 말
+  function heatFoes(s, team, u) {
+    const nodes = [1, 2, 3, 4].map(r => stepMove(u, r)).filter(d => d && !d.finish).map(d => d.node);
+    return nodes.map(n => enemyUnits(s, team).find(x => x.node === n && !unitShield(s, x))).filter(Boolean);
+  }
+  // ⚡ 전자포: 이 말의 직선 줄 위 상대 말
+  function zapFoes(s, team, u) {
+    const nodes = lineNodes(u.node);
+    return enemyUnits(s, team).filter(x => !unitShield(s, x) && nodes.indexOf(x.node) >= 0);
+  }
+  // ❄️ 눈사태: 모서리·방의 상대 말
+  const avalancheFoes = (s, team) => enemyUnits(s, team).filter(x => !unitShield(s, x) && !x.atGoal && AVALANCHE_NODES.indexOf(x.node) >= 0);
+  // 👤 야습: 바로 뒤 2칸 안의 상대 말
+  function sneakFoes(s, team, u) {
+    const nodes = backSteps(u, 2).map(p => p.node);
+    return nodes.map(n => enemyUnits(s, team).find(x => x.node === n && !unitShield(s, x))).filter(Boolean);
+  }
+  // 🌍 대지의힘: 이 말의 직선 줄 위 우리 말 (참먹이 위에서는 못 씀 — 모두 골인 직전으로 끌어오는 꼼수 막기)
+  function earthAllies(s, team, u) {
+    if (u.atGoal) return [];
+    const nodes = lineNodes(u.node);
+    return unitsOf(s, team).filter(x => x.node !== u.node && nodes.indexOf(x.node) >= 0);
+  }
+  // 🧪 독에 걸린 말: 독찌르기(약해짐) · 독압정(아직 못 움직임) · 그 팀에 맹독(다음 윷 빽도)
+  function isPoisoned(s, x) {
+    const t = s.pieces[x.pieces[0]].team;
+    return cnt(s, x, "weak") || x.pieces.some(i => (fxP(s.pieces[i]).spike || 0) >= s.turnNo) || !!(s.teams[t].fx || {}).poison;
+  }
+  // 😈 따라가때리기: 앞쪽의 가장 가까운 상대 말 바로 뒤 칸까지 (바로 앞이 상대 말이면 못 씀)
+  function pursuitPlan(s, team, u) {
+    if (u.atGoal) return null;
+    const last = ROUTES[u.route].length - 1;
+    for (let r = 1; u.step + r < last; r++) {
+      const d = stepMove(u, r);
+      if (!d || d.finish) return null;
+      if (piecesAt(s, d.node).some(j => s.pieces[j].team !== team)) return r < 2 ? null : planForward(s, team, u, r - 1);
+    }
+    return null;
+  }
+  // 💦 물붓기: 씻어 낼 기술이 있는 상대 말 (집에 있는 말도)
+  function soakable(s, team, j) {
+    const q = s.pieces[j];
+    if (q.team === team || q.state === "done" || isMisted(s, q.team) || (q.state === "board" && isVeiled(s, q))) return false;
+    return !!(q.skill && !q.used) || giftReady(q);
   }
   // 💋 헷갈린 말: 윷 결과만큼 뒤로 (1칸째보다 뒤로 안 감, 상대 말 칸 앞에서 멈춤, 못 가면 제자리)
   function confusedPlan(s, team, u, r) {
@@ -527,7 +621,7 @@
   // 기술이 맞는 상대 말들 (상성 계산용)
   function matchPieces(s, i, key, tg) {
     const team = s.pieces[i].team;
-    if (key === "snatch") return tg != null ? [tg] : [];
+    if (key === "snatch" || key === "soak") return tg != null ? [tg] : [];
     if (key === "stoneedge") { const x = leadFoe(s, team); return x ? x.pieces : []; }
     const x = enemyUnits(s, team).find(y => y.node === tg);
     return x ? x.pieces : [];
@@ -606,7 +700,7 @@
     const p = s.pieces[i], team = p.team, u = unitOfPiece(s, i);
     if (!u) return [];
     const opp = others(s, team);
-    const foes = enemyUnits(s, team).filter(x => !unitVeiled(s, x));
+    const foes = enemyUnits(s, team).filter(x => !unitShield(s, x));
     switch (key) {
       case "metronome": return metroPool(s, i).length ? [null] : [];
       case "nitro": return planForward(s, team, u, 2) ? [null] : [];
@@ -637,12 +731,31 @@
         const rem = x => x.atGoal ? 0 : remainingOf(x.route, x.step);
         return unitsOf(s, team).filter(x => x.node !== u.node && rem(x) > rem(u)).map(x => x.node);
       }
-      case "toxic": return opp.some(t => !teamFx(s, t).poison) ? [null] : [];
-      case "spite": return opp.some(t => !isSealed(s, t)) ? [null] : [];
+      case "toxic": return opp.some(t => !isMisted(s, t) && !teamFx(s, t).poison) ? [null] : [];
+      case "spite": return opp.some(t => !isMisted(s, t) && !isSealed(s, t)) ? [null] : [];
       case "snatch": return s.pieces.map((q, j) => j).filter(j => {
         const q = s.pieces[j];
-        return q.team !== team && q.state !== "done" && q.skill && !q.used && !(q.state === "board" && isVeiled(s, q));
+        return q.team !== team && q.state !== "done" && q.skill && !q.used && !isMisted(s, q.team) && !(q.state === "board" && isVeiled(s, q));
       });
+      // 2026-10-10: 새 기술 18개
+      case "mimic": { const k = mimicKey(s, i); return k && targetsFor(s, i, k).length ? [null] : []; }
+      case "heatwave": return heatFoes(s, team, u).some(x => canPushBack(s, x)) ? [null] : [];
+      case "soak": return s.pieces.map((q, j) => j).filter(j => soakable(s, team, j));
+      case "cotton": return opp.some(t => !isMisted(s, t) && !teamFx(s, t).cotton) ? [null] : [];
+      case "zap": return zapFoes(s, team, u).length ? [null] : [];
+      case "avalanche": return avalancheFoes(s, team).length ? [null] : [];
+      case "lowkick": return foes.filter(x => canPushBack(s, x)).map(x => x.node);
+      case "venoshock": return foes.filter(x => isPoisoned(s, x) || canPushBack(s, x)).map(x => x.node);
+      case "earthpower": return earthAllies(s, team, u).length ? [null] : [];
+      case "acrobatics": return planForward(s, team, u, u.pieces.length > 1 ? 1 : 3) ? [null] : [];
+      case "psychup": return s.psych == null ? [null] : [];
+      case "stringshot": return foes.some(x => x.pieces.some(j => !(fxP(s.pieces[j]).string > 0))) ? [null] : [];
+      case "rockpolish": return u.pieces.every(j => (fxP(s.pieces[j]).polish || 0) >= 2) ? [] : [null];
+      case "shadowsneak": return sneakFoes(s, team, u).length ? [null] : [];
+      case "dracometeor": return foes.map(x => x.node);
+      case "pursuit": return pursuitPlan(s, team, u) ? [null] : [];
+      case "gearup": return unitsOf(s, team).some(x => x.pieces.some(j => !(fxP(s.pieces[j]).gear > 0))) ? [null] : [];
+      case "mistyterrain": return isMisted(s, team) ? [] : [null];
       case "veil": return unitVeiled(s, u) ? [] : [null];
       case "splash": return planForward(s, team, u, 4) ? [null] : [];
       case "tailwind": return unitsOf(s, team).some(x => { const d = stepMove(x, 1); return d && (d.finish || !piecesAt(s, d.node).some(j => s.pieces[j].team !== team)); }) ? [null] : [];
@@ -825,7 +938,7 @@
   // ⚡ 방전: 팀 t 의 판 위 말 모두 (장막·구멍 속은 빼고) 그 팀 다음 차례에 못 움직임
   function discharge(s, ev, t, key) {
     const at = untilFor(s, t, 1);
-    const us = unitsOf(s, t).filter(x => !unitVeiled(s, x));
+    const us = unitsOf(s, t).filter(x => !unitShield(s, x));
     if (!us.length) return;
     const all = [].concat(...us.map(x => x.pieces));
     all.forEach(i => { const f = pfx(s.pieces[i]); f.para = at; f.paraFrom = at; });
@@ -863,10 +976,11 @@
   // 카운터가 되돌린 기술 — 기술을 쓴 말(과 그 팀)이 당한다. 되돌린 효과에는 또 반응하지 않는다
   function reflect(s, ev, i, key, byTeam) {
     const team = s.pieces[i].team, u = unitOfPiece(s, i);
-    const open = u && !unitVeiled(s, u);
+    const open = u && !unitShield(s, u);
+    if (isMisted(s, team)) return; // 🌸 미스트필드면 되돌아온 기술도 안 통한다
     if (key === "surf" && open) pushUnit(s, ev, u, 2, byTeam, key);
     else if (key === "quake") {
-      const plans = unitsOf(s, team).filter(x => !unitVeiled(s, x));
+      const plans = unitsOf(s, team).filter(x => !unitShield(s, x));
       plans.forEach(x => pushUnit(s, ev, x, 1, byTeam, key));
     } else if (key === "discharge") discharge(s, ev, team, key);
     else if (key === "sleep" && open) setSleep(s, ev, u.pieces, key);
@@ -874,13 +988,42 @@
     else if (key === "poisonjab" && open) setCount(s, ev, u.pieces, "weak", 2, key);
     else if (key === "kiss" && open) setCount(s, ev, u.pieces, "confuse", 1, key);
     else if (key === "stoneedge") { const x = leadFoe(s, byTeam); if (x) pushUnit(s, ev, x, 3, byTeam, key); }
-    else if ((key === "flame" || key === "outrage") && open) {
+    else if (key === "heatwave" && open) pushUnit(s, ev, u, 2, byTeam, key);
+    else if (key === "lowkick" && open) pushUnit(s, ev, u, 1 + Math.floor(srand(s) * 5), byTeam, key);
+    else if (key === "venoshock" && open && !isPoisoned(s, u)) pushUnit(s, ev, u, 2, byTeam, key);
+    else if (key === "cotton") { teamFx(s, team).cotton = true; ev.push({ type: "status", kind: "cotton", team, pieces: [], skill: key }); }
+    else if (key === "stringshot") stringShot(s, ev, team, key);
+    // 되돌아와서 쓴 말이 집으로: 화염방사·역린·야습·용성군 · 독에 걸린 말에 베놈쇼크 · 꺾이는 칸에서 눈사태 · 전자포는 반의 확률
+    else if (open && (key === "flame" || key === "outrage" || key === "shadowsneak" || key === "dracometeor" || key === "venoshock" ||
+      (key === "avalanche" && !u.atGoal && AVALANCHE_NODES.indexOf(u.node) >= 0) || (key === "zap" && srand(s) < 0.5))) {
       const node = u.node;
       u.pieces.forEach(j => sendHome(s, j));
       ev.push({ type: "home", pieces: u.pieces.slice(), node, team, skill: key });
     } else if (key === "toxic") { teamFx(s, team).poison = true; ev.push({ type: "status", kind: "poison", team, pieces: [], skill: key }); }
     else if (key === "spite") { teamFx(s, team).seal = untilFor(s, team, 3); ev.push({ type: "status", kind: "seal", team, pieces: [], skill: key }); }
-    // 가로챈다·사이드체인지는 막기만 한다
+    // 가로챈다·사이드체인지·물붓기는 막기만 한다 (빗나간 전자포·꺾이는 칸이 아닌 눈사태도 아무 일 없음)
+  }
+  // 🧵 실뿜기: 팀 t 의 판 위 말 모두 다음 한 번 1칸 덜 (장막·구멍 속은 빼고)
+  function stringShot(s, ev, t, key) {
+    const us = unitsOf(s, t).filter(x => !unitShield(s, x));
+    if (!us.length) return;
+    const all = [].concat(...us.map(x => x.pieces));
+    all.forEach(i => { pfx(s.pieces[i]).string = 1; });
+    ev.push({ type: "status", kind: "string", pieces: all, nodes: us.map(x => x.node), node: null, team: t, skill: key });
+  }
+  // ⚡ 전자포 · ❄️ 눈사태 · 👤 야습: 여러 상대 말을 기술로 잡기 (철벽이면 그 말만 막힘, 한 번 더는 한 번만)
+  function multiCapture(s, ev, team, u, nodes, key) {
+    let hit = false;
+    for (const n of nodes) {
+      if (u.pieces.some(j => s.pieces[j].state !== "board")) break; // 길동무로 같이 집에 갔으면 그만
+      const x = enemyUnits(s, team).find(y => y.node === n && !unitShield(s, y));
+      if (!x || ironBlock(s, ev, team, u, x)) continue;
+      captureAt(s, ev, team, u.pieces, x.pieces, n, { remote: true, skill: key });
+      if (hit) s.throwsLeft -= 1;
+      hit = true;
+    }
+    if (hit) ev.push({ type: "bonus", team });
+    return hit;
   }
   function effect(s, ev, i, key, tg) {
     const p = s.pieces[i], team = p.team;
@@ -890,7 +1033,7 @@
     if (key === "flame" && ironBlock(s, ev, team, u, foeAt(tg))) return;
     // 🥊 카운터 — 상대 팀에 준비된 카운터가 있으면 방해 기술을 되돌린다
     if (REFLECTABLE.indexOf(key) >= 0) {
-      const vt = key === "snatch" ? s.pieces[tg].team : tg != null && foeAt(tg) ? s.pieces[foeAt(tg).pieces[0]].team : others(s, team)[0];
+      const vt = (key === "snatch" || key === "soak") ? s.pieces[tg].team : tg != null && foeAt(tg) ? s.pieces[foeAt(tg).pieces[0]].team : others(s, team)[0];
       const c = findReact(s, vt, "counter");
       if (c != null && reactRoll(s, ev, c, "counter")) {
         spend(s, c, "counter");
@@ -928,7 +1071,7 @@
       case "surf": pushUnit(s, ev, foeAt(tg), 2, team, key); break;
       case "quake": {
         // 모두 한꺼번에 (원래 자리 기준) — 붙어 있던 말끼리 밀려서 엉키지 않게
-        const plans = enemyUnits(s, team).filter(x => !unitVeiled(s, x));
+        const plans = enemyUnits(s, team).filter(x => !unitShield(s, x));
         const evs = [];
         const moves = plans.map(x => { const tmp = []; pushUnit(clone(s), tmp, x, 1, team, key); return tmp[0]; });
         plans.forEach((x, k) => {
@@ -980,8 +1123,8 @@
         ev.push({ type: "magnet", team, pieces: v.pieces.slice(), from: v.node, to: u.node, all: u.pieces.concat(v.pieces) });
         break;
       }
-      case "toxic": opp.forEach(t => { teamFx(s, t).poison = true; ev.push({ type: "status", kind: "poison", team: t, pieces: [], skill: key }); }); break;
-      case "spite": opp.forEach(t => { teamFx(s, t).seal = untilFor(s, t, 3); ev.push({ type: "status", kind: "seal", team: t, pieces: [], skill: key }); }); break;
+      case "toxic": opp.forEach(t => { if (isMisted(s, t)) return; teamFx(s, t).poison = true; ev.push({ type: "status", kind: "poison", team: t, pieces: [], skill: key }); }); break;
+      case "spite": opp.forEach(t => { if (isMisted(s, t)) return; teamFx(s, t).seal = untilFor(s, t, 3); ev.push({ type: "status", kind: "seal", team: t, pieces: [], skill: key }); }); break;
       case "snatch": {
         const q = s.pieces[tg], k2 = q.skill;
         q.used = true;
@@ -1026,7 +1169,98 @@
         s.guess = { team, r: tg };
         ev.push({ type: "guess", team, r: tg });
         break;
+      /* ---------- 2026-10-10: 새 기술 18개 ---------- */
+      case "heatwave": { // 🔥 열풍: 앞쪽 4칸 안의 상대 말 모두 2칸 뒤로 (가까운 말부터)
+        heatFoes(s, team, u).map(x => x.node).forEach(n => {
+          const x = enemyUnits(s, team).find(y => y.node === n && !unitShield(s, y));
+          if (x) pushUnit(s, ev, x, 2, team, key);
+        });
+        break;
+      }
+      case "soak": { // 💦 물붓기: 그 말의 기술(제 것·받은 것)을 씻어 없앤다
+        const q = s.pieces[tg], keys = [];
+        if (q.skill && !q.used) { keys.push(q.skill); q.used = true; }
+        if (giftReady(q)) { keys.push(q.gift.key); q.gift.used = true; }
+        ev.push({ type: "soak", piece: i, target: tg, keys, team, tteam: q.team, node: q.state === "board" ? posOf(q) : null });
+        break;
+      }
+      case "cotton": opp.forEach(t => { if (isMisted(s, t)) return; teamFx(s, t).cotton = true; ev.push({ type: "status", kind: "cotton", team: t, pieces: [], skill: key }); }); break;
+      case "zap": { // ⚡ 전자포: 직선 줄 위 상대 말마다 반의 확률
+        const rolls = zapFoes(s, team, u).map(x => ({ node: x.node, hit: srand(s) < 0.5 }));
+        ev.push({ type: "zap", team, node: u.node, rolls });
+        multiCapture(s, ev, team, u, rolls.filter(r => r.hit).map(r => r.node), key);
+        break;
+      }
+      case "avalanche": { // ❄️ 눈사태: 모서리·방의 상대 말 모두
+        const nodes = avalancheFoes(s, team).map(x => x.node);
+        ev.push({ type: "avalanche", team, nodes });
+        multiCapture(s, ev, team, u, nodes, key);
+        break;
+      }
+      case "lowkick": pushUnit(s, ev, foeAt(tg), 1 + Math.floor(srand(s) * 5), team, key); break; // 🦵 1~5칸 무작위
+      case "venoshock": { // 🧪 베놈쇼크: 독에 걸린 말은 물리치고, 아니면 2칸 뒤로
+        const x = foeAt(tg), poisoned = !!isPoisoned(s, x);
+        ev.push({ type: "venoshock", team, node: tg, poisoned, pieces: x.pieces.slice() });
+        if (!poisoned) pushUnit(s, ev, x, 2, team, key);
+        else if (!ironBlock(s, ev, team, u, x)) { captureAt(s, ev, team, u.pieces, x.pieces, tg, { remote: true, skill: key }); ev.push({ type: "bonus", team }); }
+        break;
+      }
+      case "earthpower": { // 🌍 대지의힘: 직선 줄 위의 우리 말을 모두 끌어와 업는다 (칸 수엔 안 셈)
+        const groups = earthAllies(s, team, u).map(v => ({ from: v.node, pieces: v.pieces.slice() }));
+        groups.forEach(g => g.pieces.forEach(j => Object.assign(s.pieces[j], { route: u.route, step: u.step, atGoal: !!u.atGoal })));
+        ev.push({ type: "earthpower", team, groups, to: u.node, all: u.pieces.concat(...groups.map(g => g.pieces)) });
+        break;
+      }
+      case "acrobatics": { // 🤸 애크러뱃: 혼자면 3칸, 업고 있으면 1칸
+        const n = u.pieces.length > 1 ? 1 : 3;
+        doMove(s, ev, team, makeMove(s, team, n, -1, "n" + u.node, u.pieces, u, planForward(s, team, u, n)), { skill: key });
+        break;
+      }
+      case "psychup": s.psych = team; ev.push({ type: "psych", team }); break; // 🧘 다음 윷 두 번 → 좋은 쪽 (applyThrow)
+      case "stringshot": opp.forEach(t => { if (!isMisted(s, t)) stringShot(s, ev, t, key); }); break;
+      case "rockpolish": setCount(s, ev, u.pieces, "polish", 2, key); break;
+      case "shadowsneak": multiCapture(s, ev, team, u, sneakFoes(s, team, u).map(x => x.node), key); break;
+      case "dracometeor": { // ☄️ 용성군: 아무 상대 말 하나를 물리치고, 쓴 말은 다음 두 번 1칸씩 덜
+        const x = foeAt(tg);
+        if (ironBlock(s, ev, team, u, x)) break;
+        captureAt(s, ev, team, u.pieces, x.pieces, tg, { remote: true, skill: key });
+        ev.push({ type: "bonus", team });
+        const live = u.pieces.filter(j => s.pieces[j].state === "board");
+        if (live.length) setCount(s, ev, live, "slow", 2, key);
+        break;
+      }
+      case "pursuit": { // 😈 따라가때리기: 앞쪽 가장 가까운 상대 말 바로 뒤 칸까지
+        const d = pursuitPlan(s, team, u);
+        doMove(s, ev, team, makeMove(s, team, d.path.length, -1, "n" + u.node, u.pieces, u, d), { skill: key });
+        break;
+      }
+      case "gearup": { // ⚙️ 기어업: 판 위 우리 말 모두 다음 한 번 1칸 더
+        const us = unitsOf(s, team), all = [].concat(...us.map(x => x.pieces));
+        all.forEach(j => { pfx(s.pieces[j]).gear = 1; });
+        ev.push({ type: "status", kind: "gear", pieces: all, nodes: us.map(x => x.node), node: null, team, skill: key });
+        break;
+      }
+      case "mistyterrain": teamFx(s, team).mist = untilFor(s, opp[0], 2); ev.push({ type: "status", kind: "mist", team, pieces: [], skill: key }); break;
     }
+  }
+  // 손가락흔들기·흉내내기는 다른 기술을 대신 쓴다 → 실제로 나간 기술 key
+  function runSkill(s, ev, i, key, tg) {
+    const team = s.pieces[i].team;
+    if (key === "metronome") {
+      const pool = metroPool(s, i);
+      const k = pool[Math.floor(srand(s) * pool.length)];
+      const t2 = bestTarget(s, i, k);
+      ev.push({ type: "metronome", piece: i, key: k, target: t2, team });
+      return runSkill(s, ev, i, k, t2);
+    }
+    if (key === "mimic") {
+      const k = mimicKey(s, i);
+      const t2 = bestTarget(s, i, k);
+      ev.push({ type: "mimic", piece: i, key: k, target: t2, team });
+      return runSkill(s, ev, i, k, t2);
+    }
+    effect(s, ev, i, key, tg);
+    return key;
   }
   function closeAction(s, ev) {
     if (s.phase !== "over" && teamDone(s, s.turn)) {
@@ -1060,13 +1294,8 @@
       return closeAction(s, ev);
     }
     s.__slot = entry.slot;   // 가로챈다: 빼앗은 기술을 같은 칸에 (아래에서 지움)
-    if (key0 === "metronome") {
-      const pool = metroPool(s, i);
-      const key = pool[Math.floor(srand(s) * pool.length)];
-      const t2 = bestTarget(s, i, key);
-      ev.push({ type: "metronome", piece: i, key, target: t2, team: p.team });
-      effect(s, ev, i, key, t2);
-    } else effect(s, ev, i, key0, tg);
+    const done = runSkill(s, ev, i, key0, tg);
+    teamFx(s, p.team).lastSkill = done; // 🪞 흉내내기가 따라 할 기술 (실제로 나간 기술)
     delete s.__slot;
     return closeAction(s, ev);
   }
@@ -1171,9 +1400,10 @@
     s.pending = [];
     s.turnNo++;
     s.guess = null;
+    s.psych = null;
     // 끝난 효과는 치운다 (화면 표시가 깔끔하게)
     s.pieces.forEach(p => { const f = p.fx; if (f) BLOCKS.concat(["veil", "dig"]).forEach(k => { if (f[k] && f[k] < s.turnNo) { delete f[k]; delete f[k + "From"]; } }); });
-    s.teams.forEach(t => { const f = t.fx; if (f) ["seal", "rain", "chill"].forEach(k => { if (f[k] && f[k] < s.turnNo) delete f[k]; }); });
+    s.teams.forEach(t => { const f = t.fx; if (f) ["seal", "rain", "chill", "mist"].forEach(k => { if (f[k] && f[k] < s.turnNo) delete f[k]; }); });
     ev.push({ type: "turn", team: s.turn });
     wakeCheck(s, ev);
   }
@@ -1212,17 +1442,28 @@
       t = throwSticks(s.rng, s.settings.backdo);
       s.rng = t.rng;
     }
-    let res = t.result, poisoned = false, rained = null, chilled = null;
+    // 🧘 자기암시: 두 번 던져서 더 큰 쪽 (빽도가 가장 작다)
+    let psych = null;
+    if (s.psych != null && s.psych === s.turn) {
+      s.psych = null;
+      const t2 = throwSticks(s.rng, s.settings.backdo);
+      s.rng = t2.rng;
+      psych = [t.result, t2.result];
+      const rank = r => (r === BACKDO ? 0 : r);
+      if (rank(t2.result) > rank(t.result)) t = { result: t2.result, sticks: t2.sticks };
+    }
+    let res = t.result, poisoned = false, rained = null, chilled = null, cottoned = null;
     const tf = teamFx(s, s.turn);
     if (tf.poison) { tf.poison = false; poisoned = true; res = s.settings.backdo ? BACKDO : 1; } // ☠️ 맹독: 다음 윷이 빽도 (빽도를 끈 판이면 도)
     if (isRaining(s, s.turn) && (res === 1 || res === BACKDO)) { rained = res; res = 2; }       // 🌧️ 비: 도·빽도 → 개
     if (tf.chill === s.turnNo && res >= 3) { chilled = res; res = 2; }                           // 🧊 아이스차징: 걸·윷·모 → 개
+    if (tf.cotton) { tf.cotton = false; if (res >= 2) { cottoned = res; res -= 1; } }            // 🌼 목화포자: 한 단계 작게 (도·빽도는 그대로)
     const sticks = res === t.result ? t.sticks : sticksFor(res);
     s.pending.push(res);
     s.throwsLeft -= 1;
     if (RESULTS[res].again) s.throwsLeft += 1;
     s.lastThrow = { result: res, sticks };
-    ev.push({ type: "throw", team: s.turn, result: res, sticks, again: RESULTS[res].again, poisoned, rained, chilled });
+    ev.push({ type: "throw", team: s.turn, result: res, sticks, again: RESULTS[res].again, poisoned, rained, chilled, cottoned, psych });
     // 🔮 미래예지: 맞히면 한 번 더
     if (s.guess && s.guess.team === s.turn) {
       const ok = s.guess.r === res;
@@ -1292,7 +1533,7 @@
     mod.forEach(i => {
       const f = s.pieces[i].fx;
       if (!f) return;
-      ["bulk", "weak", "digup"].forEach(k => { if (f[k] > 0) { f[k]--; if (!f[k]) delete f[k]; } });
+      COUNT_KEYS.forEach(k => { if (f[k] > 0) { f[k]--; if (!f[k]) delete f[k]; } });
       if (m.confused) delete f.confuse;
     });
     return closeAction(s, ev);
@@ -1412,6 +1653,25 @@
       case "wish": return 10 + 3 * tg;
       case "future": return tg === 2 || tg === 3 ? 14 : 2;
       case "metronome": return 18;
+      // 2026-10-10: 새 기술 18개
+      case "mimic": { const k = mimicKey(s, i); return k ? scoreSkill(s, i, k, bestTarget(s, i, k)) - 2 : -999; }
+      case "heatwave": return heatFoes(s, team, u).filter(x => canPushBack(s, x)).reduce((t, x) => t + 6 + 3 * x.pieces.length + Math.round((20 - rem(x)) / 3), 0);
+      case "soak": { const q = s.pieces[tg]; const k = q.skill && !q.used ? q.skill : q.gift && q.gift.key; return (SKILLS[k] && SKILLS[k].kind === "react" ? 30 : 24) + (giftReady(q) && q.skill && !q.used ? 10 : 0); }
+      case "cotton": return 16;
+      case "zap": return 50 * zapFoes(s, team, u).reduce((t, x) => t + x.pieces.length, 0) - 5;
+      case "avalanche": return 100 * avalancheFoes(s, team).reduce((t, x) => t + x.pieces.length, 0);
+      case "lowkick": { const x = foeAt(tg); return 10 + Math.round((20 - rem(x)) / 2) + 4 * x.pieces.length; }
+      case "venoshock": { const x = foeAt(tg); return isPoisoned(s, x) ? 110 + (20 - rem(x)) : 10 + (20 - rem(x)) + 6 * x.pieces.length; }
+      case "earthpower": return earthAllies(s, team, u).reduce((t, v) => t + 3 * (rem(v) - rem(u)) * v.pieces.length, 4);
+      case "acrobatics": return 4 + moveValue(planForward(s, team, u, u.pieces.length > 1 ? 1 : 3));
+      case "psychup": return 12;
+      case "stringshot": return 4 + 5 * enemyUnits(s, team).filter(x => !unitShield(s, x)).reduce((t, x) => t + x.pieces.length, 0);
+      case "rockpolish": return 18;
+      case "shadowsneak": return 100 * sneakFoes(s, team, u).reduce((t, x) => t + x.pieces.length, 0);
+      case "dracometeor": { const x = foeAt(tg); return 95 + (20 - rem(x)) + 5 * x.pieces.length; }
+      case "pursuit": return 6 + moveValue(pursuitPlan(s, team, u));
+      case "gearup": return 5 * unitsOf(s, team).length;
+      case "mistyterrain": return s.pieces.some(q => q.team !== team && q.state !== "done" && q.skill && !q.used) ? 24 : 6;
     }
     return 0;
   }
@@ -1690,6 +1950,8 @@
     giftReady, giftTargets, applyGift, autoGiftTarget,
     applySwap, swapOk, cpuSwapTarget,
     isBlocked, isVeiled, isSealed, isRaining, unitOfPiece, piecesAt, trapAt, flyPlan, planForward, backPlan, backSteps,
+    // 2026-10-10: 새 기술 18개
+    isMisted, mimicKey, lineNodes, heatFoes, zapFoes, avalancheFoes, sneakFoes, earthAllies, isPoisoned, pursuitPlan, AVALANCHE_NODES, COUNT_KEYS,
   };
   if (typeof module !== "undefined" && module.exports) module.exports = Yut;
   else root.Yut = Yut;

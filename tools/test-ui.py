@@ -684,7 +684,8 @@ def scenario_v3(browser, base, errors):
     page.click("[data-act=help]"); page.wait_for_timeout(200)
     check(page.query_selector(".help-tabs [data-tab=rules].on") is not None and "How to play" in page.inner_text(".modal h2"), "📖 방법 · 도감 한 창 (처음엔 방법)")
     page.click("[data-act=help-tab][data-tab=dex]"); page.wait_for_timeout(200)
-    check(len(page.query_selector_all(".dex-card")) == 36, "기술 도감: 36개 (타입마다 2개)")
+    check(len(page.query_selector_all(".dex-card")) == 54, "기술 도감: 54개 (타입마다 3개)")
+    check(all(len(r.query_selector_all(".dex-card")) == 3 for r in page.query_selector_all(".dex-row")), "기술 도감: 타입 줄마다 3개")
     check(len(page.query_selector_all(".tchart .tc-row")) == 18 and "Strong" in page.inner_text(".tchart"), "기술 도감 아래 ⚔️ 타입 상성표 (18타입)")
     page.evaluate("() => document.querySelector('.tchart').scrollIntoView()")
     page.screenshot(path=str(OUT / "91b-typechart.png"))
@@ -1035,7 +1036,7 @@ def scenario_v4(browser, base, errors):
 
 
 def scenario_v8(browser, base, errors):
-    """v8: ✨ 기술 36개 (새 기술 쓰기·효과 표시) · 🎲 발동 확률 (성공 %·상성·실패하면 기술이 남음)."""
+    """v8: ✨ 기술 36개 (새 기술 쓰기·효과 표시) · 🎲 발동 확률 (성공 %·상성·실패하면 기술이 남음) · 2026-10-10 새 기술 18개 (54개)."""
     def ctx_page(vw=1180, vh=820):
         ctx = browser.new_context(viewport={"width": vw, "height": vh}, has_touch=True)
         ctx.add_init_script("localStorage.setItem('engmon_yut_en_v1', JSON.stringify({ settings: { study: false } }));")
@@ -1179,6 +1180,41 @@ def scenario_v8(browser, base, errors):
     page.wait_for_timeout(800)
     measure(page, "🎲 기술 창 (폰)")
     page.screenshot(path=str(OUT / "v8-5-phone-menu.png"))
+    ctx.close()
+
+    # ⑤ 2026-10-10 새 기술: 용성군(대상 고르기 → 물리치기 + 🐢) · 록커트(💎) · 미스트필드(팀 카드 🌸) · 물붓기(상대 말 고르기)
+    ctx, page = ctx_page()
+    start(page, "?seed=2&spots=none&fast=1&early=1&luck=1&pools=dracometeor,rockpolish,mistyterrain,soak|nitro,nitro,nitro,nitro")
+    inject(page, "reset(); fresh(0); s.settings.battle = false; at(0, 3); at(4, 14); at(5, 27)")
+    pick = open_skill(page, "dracometeor")
+    if pick:
+        pick.click()
+        sel = "#dests .dest.skill-t[data-node='14']"
+        page.wait_for_selector(sel, timeout=5000)
+        label = page.inner_text(sel)
+        check("Knock out" in label and page.query_selector("#dests .dest.skill-t[data-node='27']") is not None, f"용성군: 판 위 아무 상대 말이나 고름 ({label.strip()})")
+        page.screenshot(path=str(OUT / "v10-1-dracometeor-target.png"))
+        page.click(sel, force=True)
+        wait_idle(page)
+    check(ev(page, "[s.pieces[4].state, (s.pieces[0].fx || {}).slow]") == ["wait", 2], "용성군: 물리치고, 쓴 말은 두 번 1칸씩 덜 (🐢)")
+    badge = page.query_selector("#units .unit[data-node='3'] .badge-s")
+    check(badge is not None and "🐢" in badge.inner_text(), "용성군 쓴 말 모서리에 🐢")
+    inject(page, "fresh(0); at(1, 7)")
+    pick = open_skill(page, "rockpolish")
+    if pick:
+        pick.click(); wait_idle(page)
+    badge = page.query_selector("#units .unit[data-node='7'] .badge-s")
+    check(ev(page, "(s.pieces[1].fx || {}).polish") == 2 and badge is not None and "💎" in badge.inner_text(), "록커트: 두 번 2칸씩 더 (💎)")
+    inject(page, "fresh(0); at(2, 9)")
+    pick = open_skill(page, "mistyterrain")
+    if pick:
+        pick.click(); wait_idle(page)
+    cards = page.query_selector_all(".tcard")
+    check(ev(page, "Y.Yut.isMisted(s, 0)") and len(cards) > 0 and "🌸" in cards[0].inner_text(), "미스트필드: 우리 팀 카드에 🌸")
+    page.screenshot(path=str(OUT / "v10-2-mist-polish.png"))
+    inject(page, "fresh(0); at(3, 11); at(6, 12)")
+    label = use_on(page, "soak", 12)
+    check("Wash" in label and ev(page, "s.pieces[6].used") is True, f"물붓기: 상대 말을 골라 기술을 씻어 냄 ({label.strip()})")
     ctx.close()
 
 

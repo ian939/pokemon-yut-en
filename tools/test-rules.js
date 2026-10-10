@@ -712,9 +712,11 @@ t("56. 기술을 아무렇게나 쓰는 무작위 3,000판 — 한 칸에 두 �
         ok(p.atGoal || p.step >= 1, "1칸째보다 뒤");
         const f = p.fx || {};
         ["para", "sleep", "veil", "freeze", "tired", "spike", "dig"].forEach(k => ok(!f[k] || f[k] <= s.turnNo + 8, "끝나지 않는 효과 " + k));
-        ["bulk", "weak", "digup", "confuse"].forEach(k => ok(!f[k] || (f[k] >= 1 && f[k] <= 2), "횟수 효과 " + k));
+        Y.COUNT_KEYS.concat(["confuse"]).forEach(k => ok(!f[k] || (f[k] >= 1 && f[k] <= 2), "횟수 효과 " + k));
         ok(p.stage < s.teams[p.team].paths[p.slot].length, "진화 단계 범위");
       });
+      s.teams.forEach(tm => ok(!(tm.fx || {}).mist || tm.fx.mist <= s.turnNo + 8, "끝나지 않는 미스트필드"));
+      ok(s.psych == null || s.phase === "throw", "자기암시는 던지기 전에만 남음");
     }
     ok(Y.teamDone(s, s.winner), "이긴 팀 말이 다 안 들어옴");
     longest = Math.max(longest, steps);
@@ -1082,8 +1084,11 @@ t("78. 옛 판 이어 하기 (v8) — 흑안개 → 아이스차징 · 전기자
   ok(Y.validate(u));
   eq([u.teams[0].pools, u.teams[0].need, u.pieces[0].skill, u.pieces[1].gift.key], [[["icecharge"], ["discharge", "sleep"]], [10, 10], "icecharge", "discharge"]);
   eq(Y.upgrade(u), u, "두 번 해도 같음");
-  eq(Object.keys(Y.TYPE_SKILLS).map(k => Y.TYPE_SKILLS[k].length), Array(18).fill(2), "타입마다 2개");
-  eq(Object.keys(Y.SKILLS).length, 36);
+  eq(Object.keys(Y.TYPE_SKILLS).map(k => Y.TYPE_SKILLS[k].length), Array(18).fill(3), "타입마다 3개 (2026-10-10)");
+  eq(Object.keys(Y.SKILLS).length, 54);
+  const all = [].concat(...Object.keys(Y.TYPE_SKILLS).map(k => Y.TYPE_SKILLS[k]));
+  eq([all.length, new Set(all).size], [54, 54], "기술마다 한 타입");
+  ok(all.every(k => Y.SKILLS[k] && Y.TYPE_SKILLS[Y.SKILLS[k].type].indexOf(k) >= 0), "기술의 type 과 TYPE_SKILLS 가 맞음");
 });
 
 t("79. 10칸 전에 윷·모로 골인해도 들어오면서 기술을 배우고 → 팀원에게 넘김 (순풍 골인도)", () => {
@@ -1103,6 +1108,236 @@ t("79. 10칸 전에 윷·모로 골인해도 들어오면서 기술을 배우고
   r = Y.applySkill(s, 0, null);
   eq([r.state.pieces[1].state, r.state.pieces[1].skill, (r.state.gifts || []).length], ["done", "nitro", 1], "순풍으로 골인해도");
 });
+// ---------- 2026-10-10: ✨ 새 기술 18개 (타입마다 3개, 54개) ----------
+t("80. 흉내내기 — 상대가 바로 전에 쓴 기술을 따라 씀 (쓴 게 없으면 못 씀, 손가락흔들기로 나온 기술도 그 기술로)", () => {
+  const s = sk({ p0: [["mimic"], ["nitro"]], p1: [["surf"], ["surf"]], e1: [true, true] });
+  put(s, 0, 9); put(s, 1, 4); put(s, 2, 6); put(s, 3, 14);
+  ok(!Y.legalSkills(s).some(x => x.piece === 0), "상대가 쓴 게 없으면 못 씀");
+  const b = Y.applySkill(atThrow(s, 2, 1), 2, 9).state;
+  eq([node(b, 0), b.teams[1].fx.lastSkill], [7, "surf"]);
+  const a = atThrow(b, 3, 0);
+  eq(Y.mimicKey(a, 0), "surf");
+  const r = Y.applySkill(a, 0, null);
+  ok(r.events.some(e => e.type === "mimic" && e.key === "surf"), "mimic 사건");
+  ok(r.events.some(e => e.type === "push" && e.skill === "surf" && e.by === 0), "파도타기가 나감");
+  eq(r.state.teams[0].fx.lastSkill, "surf", "따라 쓴 기술도 '쓴 기술'로");
+  // 실패한 기술은 따라 할 수 없음
+  const f = atThrow(s, 2, 1); f.teams[1].rar = ["c", "c"];
+  for (let k = 1; k < 300; k++) { const c = clone(f); c.srng = k; const rr = Y.applySkill(c, 2, 9); if (evTypes(rr).includes("skillfail")) { eq(rr.state.teams[1].fx.lastSkill, undefined); break; } }
+  // 손가락흔들기로 나온 기술이 기록됨
+  const m = sk({ p0: [["metronome"], ["mimic"]], p1: [["mimic"], ["nitro"]], e1: [true, true] }); put(m, 0, 3); put(m, 2, 5);
+  const rm = Y.applySkill(m, 0, null);
+  const k = rm.events.find(e => e.type === "metronome").key;
+  ok(k === "mimic" || rm.state.teams[0].fx.lastSkill === k, "손가락흔들기 → " + k);
+});
+t("81. 열풍 — 앞쪽 4칸 안의 상대 말 모두 2칸 뒤로 (가까운 말부터, 우리 말 앞에서 멈춤), 5칸째는 그대로", () => {
+  const s = sk({ n: 3, p0: [["heatwave"], ["nitro"], ["nitro"]] });
+  put(s, 0, 3); put(s, 3, 5); put(s, 4, 7); put(s, 5, 9);
+  const r = Y.applySkill(s, 0, null);
+  eq([node(r.state, 3), node(r.state, 4), node(r.state, 5)], [4, 5, 9]);
+  eq(r.events.filter(e => e.type === "push" && e.skill === "heatwave").length, 2);
+  const s2 = sk({ n: 3, p0: [["heatwave"], ["nitro"], ["nitro"]] }); put(s2, 0, 3); put(s2, 3, 4); put(s2, 5, 9);
+  ok(!Y.legalSkills(s2).some(x => x.piece === 0), "바로 앞 말은 못 밀고 9는 멀어서 못 씀");
+});
+t("82. 물붓기 — 상대 말 하나의 기술(제 것·받은 것)을 씻어 없앰, 집에 있는 말도 · 기술 없는 말은 대상 아님", () => {
+  const s = sk({ p0: [["soak"], ["nitro"]], p1: [["nitro"], ["iron"]], e1: [true, true] });
+  put(s, 0, 3); put(s, 2, 10); s.pieces[2].gift = { key: "splash", used: false };
+  eq(Y.legalSkills(s).find(x => x.piece === 0).targets, [2, 3]);
+  let r = Y.applySkill(s, 0, 2);
+  eq([r.state.pieces[2].used, r.state.pieces[2].gift.used], [true, true]);
+  eq(r.events.find(e => e.type === "soak").keys, ["nitro", "splash"]);
+  ok(!Y.legalSkills(atThrow(r.state, 2, 1)).some(x => x.piece === 2), "씻긴 말은 기술을 못 씀");
+  r = Y.applySkill(s, 0, 3);
+  eq(r.state.pieces[3].used, true, "집에 있는 철벽도 씻김");
+  const s2 = sk({ p0: [["soak"], ["nitro"]], p1: [["nitro"], ["iron"]], e1: [false, false] }); put(s2, 0, 3); put(s2, 2, 10);
+  ok(!Y.legalSkills(s2).some(x => x.piece === 0), "기술이 없는 상대뿐이면 못 씀");
+});
+t("83. 목화포자 — 상대의 다음 윷 한 단계 작게 (걸→개 · 개→도 · 윷→걸 · 모→윷, 도·빽도는 그대로), 한 번만", () => {
+  const s = sk({ p0: [["cotton"], ["nitro"]] }); put(s, 0, 3);
+  const s1 = Y.applySkill(s, 0, null).state;
+  eq(s1.teams[1].fx.cotton, true);
+  [[3, 2], [2, 1], [4, 3], [5, 4], [1, 1], [-1, -1]].forEach(([a, b]) => {
+    const r = Y.applyThrow(atThrow(s1, 2, 1), a);
+    eq([r.events[0].result, r.events[0].cottoned, r.state.teams[1].fx.cotton], [b, a === b ? null : a, false], a + " → " + b);
+  });
+  eq(Y.applyThrow(atThrow(s1, 2, 1), 5).events[0].again, true, "모 → 윷은 한 번 더");
+  const r2 = Y.applyThrow(atThrow(s1, 2, 1), 3);
+  eq(Y.applyThrow(atThrow(r2.state, 4, 1), 3).events[0].result, 3, "그다음엔 그대로");
+  ok(!Y.legalSkills(atThrow(s1, 3, 0)).some(x => x.key === "cotton"), "이미 걸려 있으면 또 못 씀");
+});
+t("84. 전자포 — 이 말의 직선 줄(모서리면 두 변 + 대각선) 위 상대 말마다 반의 확률로 물리침, 줄 밖은 그대로", () => {
+  eq(Y.lineNodes(8).sort((a, b) => a - b), [5, 6, 7, 9, 10]);
+  eq(Y.lineNodes(22).sort((a, b) => a - b), [0, 5, 10, 15, 20, 21, 23, 24, 25, 26, 27, 28]);
+  let hits = 0, tries = 0;
+  for (let k = 1; k <= 300; k++) {
+    const s = sk({ n: 3, p0: [["zap"], ["nitro"], ["nitro"]] });
+    put(s, 0, 5); put(s, 3, 8); put(s, 4, 21); put(s, 5, 12);
+    s.srng = (k * 2654435761 >>> 0) || 1;
+    const r = Y.applySkill(s, 0, null);
+    const z = r.events.find(e => e.type === "zap");
+    eq(z.rolls.map(x => x.node).sort((a, b) => a - b), [8, 21]);
+    z.rolls.forEach(x => { tries++; const j = x.node === 8 ? 3 : 4; eq(r.state.pieces[j].state, x.hit ? "wait" : "board"); if (x.hit) hits++; });
+    eq(r.state.pieces[5].state, "board", "줄 밖");
+    eq(r.state.throwsLeft, z.rolls.some(x => x.hit) ? 2 : 1, "한 번 더는 한 번만");
+  }
+  ok(Math.abs(hits / tries - 0.5) < 0.07, "반쯤 " + hits / tries);
+});
+t("85. 눈사태 — 모서리·방(5·10·15·22)의 상대 말 모두 집으로, 다른 칸은 그대로 · 없으면 못 씀", () => {
+  const s = sk({ n: 3, p0: [["avalanche"], ["nitro"], ["nitro"]] });
+  put(s, 0, 3); put(s, 3, 10); put(s, 4, 22, "A"); put(s, 5, 7);
+  const r = Y.applySkill(s, 0, null);
+  eq([r.state.pieces[3].state, r.state.pieces[4].state, r.state.pieces[5].state, r.state.throwsLeft], ["wait", "wait", "board", 2]);
+  const s2 = sk({ n: 3, p0: [["avalanche"], ["nitro"], ["nitro"]] }); put(s2, 0, 3); put(s2, 3, 7);
+  ok(!Y.legalSkills(s2).some(x => x.piece === 0));
+});
+t("86. 로킥 — 상대 말 하나를 1~5칸 중 무작위로 뒤로", () => {
+  const seen = {};
+  for (let k = 1; k <= 200; k++) {
+    const s = sk({ p0: [["lowkick"], ["nitro"]] }); put(s, 0, 3); put(s, 2, 12);
+    s.srng = (k * 2654435761 >>> 0) || 1;
+    const r = Y.applySkill(s, 0, 12);
+    const n = 12 - node(r.state, 2);
+    ok(n >= 1 && n <= 5, "칸 " + n); seen[n] = 1;
+  }
+  eq(Object.keys(seen).map(Number).sort(), [1, 2, 3, 4, 5]);
+});
+t("87. 베놈쇼크 — 독(독찌르기·맹독·독압정)에 걸린 상대 말은 물리치고, 아니면 2칸 뒤로", () => {
+  const v = () => { const s = sk({ p0: [["venoshock"], ["nitro"]] }); put(s, 0, 3); put(s, 2, 10); return s; };
+  let r = Y.applySkill(v(), 0, 10);
+  eq([node(r.state, 2), r.events.find(e => e.type === "venoshock").poisoned], [8, false]);
+  let s = v(); s.pieces[2].fx = { weak: 2 };
+  r = Y.applySkill(s, 0, 10); eq([r.state.pieces[2].state, r.state.throwsLeft], ["wait", 2], "독찌르기");
+  s = v(); s.teams[1].fx.poison = true;
+  eq(Y.applySkill(s, 0, 10).state.pieces[2].state, "wait", "맹독");
+  s = v(); s.pieces[2].fx = { spike: 2, spikeFrom: 2 };
+  eq(Y.applySkill(s, 0, 10).state.pieces[2].state, "wait", "독압정");
+  s = v(); put(s, 1, 9);
+  ok(!Y.legalSkills(s).some(x => x.piece === 0), "독도 없고 뒤가 막혔으면 못 씀");
+  s.pieces[2].fx = { weak: 1 };
+  eq(Y.legalSkills(s).find(x => x.piece === 0).targets, [10], "독이 있으면 뒤가 막혀도 됨");
+});
+t("88. 대지의힘 — 이 말의 직선 줄 위 우리 말을 모두 끌어와 업음 (칸 수엔 안 셈), 줄 밖은 그대로 · 참먹이 위에서는 못 씀", () => {
+  const s = sk({ n: 4, p0: [["earthpower"], ["nitro"], ["nitro"], ["nitro"]] });
+  put(s, 0, 5); put(s, 1, 8); put(s, 2, 12); put(s, 3, 21);
+  const r = Y.applySkill(s, 0, null);
+  eq([0, 1, 2, 3].map(i => node(r.state, i)), [5, 5, 12, 5]);
+  eq([r.state.pieces[1].walk, Y.unitsOf(r.state, 0).length], [0, 2]);
+  ok(Y.validate(r.state));
+  const s2 = sk({ n: 2, p0: [["earthpower"], ["nitro"]] });
+  Object.assign(s2.pieces[0], { state: "board", route: "OUT", step: 0, atGoal: true }); put(s2, 1, 3);
+  ok(!Y.legalSkills(s2).some(x => x.piece === 0), "참먹이 위");
+});
+t("89. 애크러뱃 — 혼자면 3칸, 업고 있으면 1칸 (잡기도)", () => {
+  let s = sk({ p0: [["acrobatics"], ["nitro"]] }); put(s, 0, 3); put(s, 2, 6);
+  let r = Y.applySkill(s, 0, null);
+  eq([node(r.state, 0), r.state.pieces[2].state, r.state.pieces[0].walk], [6, "wait", 3]);
+  s = sk({ p0: [["acrobatics"], ["nitro"]] }); put(s, 0, 3); put(s, 1, 3);
+  r = Y.applySkill(s, 0, null);
+  eq([node(r.state, 0), node(r.state, 1)], [4, 4]);
+});
+t("90. 자기암시 — 던지기 전에만, 다음 윷을 두 번 던져 큰 쪽 (빽도가 가장 작음), 한 번만", () => {
+  const s = sk({ p0: [["psychup"], ["nitro"]] }); put(s, 0, 3);
+  ok(!Y.legalSkills(choose(clone(s), [2])).some(x => x.piece === 0), "고르는 중엔 못 씀");
+  const s1 = Y.applySkill(s, 0, null).state;
+  eq([s1.psych, s1.phase], [0, "throw"]);
+  const rank = r => (r === -1 ? 0 : r);
+  for (let k = 1; k <= 200; k++) {
+    const c = clone(s1); c.rng = k;
+    const e = Y.applyThrow(c).events[0];
+    const t1 = Y.throwSticks(k, true), t2 = Y.throwSticks(t1.rng, true);
+    eq(e.psych, [t1.result, t2.result]);
+    eq(e.result, rank(t2.result) > rank(t1.result) ? t2.result : t1.result);
+  }
+  const r = Y.applyThrow(clone(s1), 1);
+  ok(r.events[0].result >= 1 && r.events[0].psych[0] === 1, "정한 결과(시험)도 두 번 중 큰 쪽");
+  eq(r.state.psych, null, "한 번만");
+});
+t("91. 실뿜기 — 상대 말 모두 다음 한 번 1칸씩 덜 (도는 못 씀), 한 번 뒤엔 보통", () => {
+  const s = sk({ p0: [["stringshot"], ["nitro"]] }); put(s, 0, 3); put(s, 2, 10); put(s, 3, 13);
+  const s1 = Y.applySkill(s, 0, null).state;
+  eq([s1.pieces[2].fx.string, s1.pieces[3].fx.string], [1, 1]);
+  const b = at(s1, 2, 1, [1, 2]);
+  ok(!Y.legalMoves(b).some(m => m.id === "n10/1"), "도는 못 씀");
+  const r = Y.applyMove(b, "n10/2");
+  eq([node(r.state, 2), r.state.pieces[2].fx.string, r.state.pieces[3].fx.string], [25, undefined, 1], "뒷모에서 개가 1칸 (대각선)");
+  ok(!Y.legalSkills(atThrow(s1, 3, 0)).some(x => x.key === "stringshot"), "모두 걸려 있으면 또 못 씀");
+});
+t("92. 록커트 — 다음 두 번 2칸씩 더, 그다음엔 보통", () => {
+  const s = sk({ p0: [["rockpolish"], ["nitro"]] }); put(s, 0, 3);
+  const s1 = Y.applySkill(s, 0, null).state;
+  eq(s1.pieces[0].fx.polish, 2);
+  let r = Y.applyMove(choose(clone(s1), [2]), "n3/2"); eq(node(r.state, 0), 7);
+  r = Y.applyMove(choose(r.state, [1]), "n7/1"); eq(node(r.state, 0), 10);
+  r = Y.applyMove(choose(r.state, [1]), "n10/1"); eq([node(r.state, 0), r.state.pieces[0].fx.polish], [25, undefined]);
+});
+t("93. 야습 — 바로 뒤 2칸 안의 상대 말을 모두 물리침 (한 번 더는 한 번), 3칸 뒤·앞은 그대로", () => {
+  const s = sk({ n: 3, p0: [["shadowsneak"], ["nitro"], ["nitro"]] });
+  put(s, 0, 8); put(s, 3, 7); put(s, 4, 6); put(s, 5, 9);
+  const r = Y.applySkill(s, 0, null);
+  eq([r.state.pieces[3].state, r.state.pieces[4].state, r.state.pieces[5].state, node(r.state, 0), r.state.throwsLeft], ["wait", "wait", "board", 8, 2]);
+  const s2 = sk({ n: 3, p0: [["shadowsneak"], ["nitro"], ["nitro"]] }); put(s2, 0, 8); put(s2, 3, 5); put(s2, 5, 9);
+  ok(!Y.legalSkills(s2).some(x => x.piece === 0));
+  const s3 = sk({ n: 3, p0: [["shadowsneak"], ["nitro"], ["nitro"]] }); put(s3, 0, 20); put(s3, 3, 5);
+  eq(Y.applySkill(s3, 0, null).state.pieces[3].state, "wait", "대각선에서 뒤 = 모");
+});
+t("94. 용성군 — 판 위 아무 상대 말 하나를 물리침, 쓴 말은 다음 두 번 1칸씩 덜 · 철벽이면 막힘", () => {
+  let s = sk({ p0: [["dracometeor"], ["nitro"]] }); put(s, 0, 3); put(s, 2, 14); put(s, 3, 27);
+  eq(Y.legalSkills(s).find(x => x.piece === 0).targets.sort((a, b) => a - b), [14, 27]);
+  let r = Y.applySkill(s, 0, 14);
+  eq([r.state.pieces[2].state, r.state.throwsLeft, r.state.pieces[0].fx.slow], ["wait", 2, 2]);
+  let m = Y.applyMove(choose(clone(r.state), [2]), "n3/2"); eq(node(m.state, 0), 4, "1칸 덜");
+  m = Y.applyMove(choose(m.state, [3]), "n4/3"); eq(node(m.state, 0), 6);
+  m = Y.applyMove(choose(m.state, [2]), "n6/2"); eq([node(m.state, 0), m.state.pieces[0].fx.slow], [8, undefined]);
+  s = sk({ p0: [["dracometeor"], ["nitro"]], p1: [["iron"], ["iron"]], e1: [true, true] }); put(s, 0, 3); put(s, 2, 14);
+  r = Y.applySkill(s, 0, 14);
+  eq([r.state.pieces[2].state, (r.state.pieces[0].fx || {}).slow], ["board", undefined]); ok(evTypes(r).includes("block"));
+});
+t("95. 따라가때리기 — 앞쪽 가장 가까운 상대 말 바로 뒤 칸까지 (칸 수에 셈, 잡지 않음) · 바로 앞이면·없으면 못 씀", () => {
+  let s = sk({ p0: [["pursuit"], ["nitro"]] }); put(s, 0, 3); put(s, 2, 9); put(s, 3, 12);
+  let r = Y.applySkill(s, 0, null);
+  eq([node(r.state, 0), r.state.pieces[0].walk, r.state.pieces[2].state], [8, 5, "board"]);
+  s = sk({ p0: [["pursuit"], ["nitro"]] }); put(s, 0, 3); put(s, 2, 4); put(s, 3, 12);
+  ok(!Y.legalSkills(s).some(x => x.piece === 0), "바로 앞");
+  s = sk({ p0: [["pursuit"], ["nitro"]] }); put(s, 0, 3);
+  ok(!Y.legalSkills(s).some(x => x.piece === 0), "앞에 없음");
+  s = sk({ p0: [["pursuit"], ["nitro"]] }); put(s, 0, 20); put(s, 2, 23);
+  eq(node(Y.applySkill(s, 0, null).state, 0), 22, "대각선 길을 따라");
+});
+t("96. 기어업 — 판 위 우리 말 모두 다음 한 번 1칸씩 더", () => {
+  const s = sk({ n: 3, p0: [["gearup"], ["nitro"], ["nitro"]] }); put(s, 0, 3); put(s, 1, 7);
+  const s1 = Y.applySkill(s, 0, null).state;
+  eq([s1.pieces[0].fx.gear, s1.pieces[1].fx.gear, (s1.pieces[2].fx || {}).gear], [1, 1, undefined], "집에 있는 말은 아님");
+  const r = Y.applyMove(choose(clone(s1), [2]), "n7/2");
+  eq([node(r.state, 1), r.state.pieces[1].fx.gear, r.state.pieces[0].fx.gear], [10, undefined, 1]);
+});
+t("97. 미스트필드 — 상대 차례 두 번 동안 상대 기술(방해·기술로 잡기)이 우리 팀에 안 통함, 윷으로 잡히는 건 그대로", () => {
+  const s = sk({ p0: [["mistyterrain"], ["nitro"]], p1: [["surf"], ["toxic"]], e1: [true, true] });
+  put(s, 0, 8); put(s, 1, 4); put(s, 2, 6); put(s, 3, 12);
+  const s1 = Y.applySkill(s, 0, null).state;
+  ok(Y.isMisted(s1, 0));
+  [2, 4].forEach(no => eq(Y.legalSkills(atThrow(s1, no, 1)), [], "차례 " + no + ": 상대 기술이 안 통함"));
+  ok(Y.legalSkills(atThrow(s1, 6, 1)).length > 0, "세 번째엔 풀림");
+  eq(Y.applyMove(at(s1, 2, 1, [2]), "n6/2").state.pieces[0].state, "wait", "윷으로는 잡힘");
+  const f = sk({ p0: [["mistyterrain"], ["nitro"]], p1: [["flame"], ["dracometeor"]], e1: [true, true] }); put(f, 0, 8); put(f, 2, 6); put(f, 3, 2);
+  eq(Y.legalSkills(atThrow(Y.applySkill(f, 0, null).state, 2, 1)), [], "화염방사·용성군도 안 통함");
+  ok(!Y.legalSkills(atThrow(s1, 3, 0)).some(x => x.key === "mistyterrain"), "이미 켜져 있으면 또 못 씀");
+});
+t("98. 카운터가 새 기술도 되돌림 — 열풍(쓴 말이 밀림) · 목화포자(쓴 팀 윷) · 용성군(쓴 말이 집으로) · 물붓기(막기만)", () => {
+  const c = p0 => sk({ p0, p1: [["counter"], ["counter"]], e1: [true, true] });
+  let s = c([["heatwave"], ["nitro"]]); put(s, 0, 7); put(s, 2, 9);
+  let r = Y.applySkill(s, 0, null);
+  eq([node(r.state, 0), node(r.state, 2)], [5, 9]); ok(evTypes(r).includes("reflect"));
+  s = c([["cotton"], ["nitro"]]); put(s, 0, 3); put(s, 2, 9);
+  r = Y.applySkill(s, 0, null);
+  eq([r.state.teams[0].fx.cotton, !!r.state.teams[1].fx.cotton], [true, false]);
+  s = c([["dracometeor"], ["nitro"]]); put(s, 0, 3); put(s, 2, 14);
+  r = Y.applySkill(s, 0, 14);
+  eq([r.state.pieces[0].state, r.state.pieces[2].state], ["wait", "board"]);
+  s = sk({ p0: [["soak"], ["nitro"]], p1: [["counter"], ["nitro"]], e1: [true, true] }); put(s, 0, 3); put(s, 2, 9); put(s, 3, 12);
+  r = Y.applySkill(s, 0, 3);
+  eq([r.state.pieces[3].used, r.state.pieces[2].used], [false, true], "물붓기는 막히고 카운터만 씀");
+});
+
 // ---------- 무작위 대국 (불변 조건 확인) ----------
 t("22. 무작위 3,000판 끝까지 — 멈춤·규칙 위반 없음", () => {
   let rs = 99;

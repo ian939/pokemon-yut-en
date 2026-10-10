@@ -971,6 +971,15 @@
 "text": "Accelgor",
 "voice": "en-US-AnaNeural"
 },
+"acrobatics": {
+"clip": [
+0.103,
+1.092
+],
+"file": "17c6eb9052.mp3",
+"text": "Acrobatics",
+"voice": "en-US-AnaNeural"
+},
 "aegislash": {
 "clip": [
 0.103,
@@ -1419,6 +1428,15 @@
 ],
 "file": "12aa9ac3cf.mp3",
 "text": "Aurorus",
+"voice": "en-US-AnaNeural"
+},
+"avalanche": {
+"clip": [
+0.103,
+0.908
+],
+"file": "3188c31a53.mp3",
+"text": "Avalanche",
 "voice": "en-US-AnaNeural"
 },
 "avalugg": {
@@ -2112,6 +2130,15 @@
 ],
 "file": "344b27b3df.mp3",
 "text": "Burmy",
+"voice": "en-US-AnaNeural"
+},
+"but there was no move to wash away": {
+"clip": [
+0.103,
+2.316
+],
+"file": "3c39603107.mp3",
+"text": "But there was no move to wash away.",
 "voice": "en-US-AnaNeural"
 },
 "butterfree": {
@@ -2823,6 +2850,15 @@
 ],
 "file": "027704e848.mp3",
 "text": "Cosmog",
+"voice": "en-US-AnaNeural"
+},
+"cotton spore": {
+"clip": [
+0.103,
+1.066
+],
+"file": "3b4ed4e3bc.mp3",
+"text": "Cotton Spore",
 "voice": "en-US-AnaNeural"
 },
 "cottonee": {
@@ -4688,6 +4724,15 @@
 "text": "Gastrodon",
 "voice": "en-US-AnaNeural"
 },
+"gear up": {
+"clip": [
+0.103,
+0.618
+],
+"file": "d93c1f5b26.mp3",
+"text": "Gear Up",
+"voice": "en-US-AnaNeural"
+},
 "genesect": {
 "clip": [
 0.103,
@@ -4877,6 +4922,24 @@
 "text": "Go!",
 "voice": "en-US-AnaNeural"
 },
+"goes 1 more space next time": {
+"clip": [
+0.103,
+2.289
+],
+"file": "9b8cc856bc.mp3",
+"text": "goes 1 more space next time!",
+"voice": "en-US-AnaNeural"
+},
+"goes 1 space less next time": {
+"clip": [
+0.103,
+2.408
+],
+"file": "1dec4ea5d4.mp3",
+"text": "goes 1 space less next time!",
+"voice": "en-US-AnaNeural"
+},
 "goes first": {
 "clip": [
 0.103,
@@ -5010,6 +5073,15 @@
 ],
 "file": "8a54bcc03f.mp3",
 "text": "got confused!",
+"voice": "en-US-AnaNeural"
+},
+"got faster": {
+"clip": [
+0.103,
+1.053
+],
+"file": "bb6d1ffc90.mp3",
+"text": "got faster!",
 "voice": "en-US-AnaNeural"
 },
 "got tired": {
@@ -5498,6 +5570,15 @@
 "text": "Heart Stamp",
 "voice": "en-US-AnaNeural"
 },
+"heat wave": {
+"clip": [
+0.103,
+0.842
+],
+"file": "95778b48f7.mp3",
+"text": "Heat Wave",
+"voice": "en-US-AnaNeural"
+},
 "heatmor": {
 "clip": [
 0.103,
@@ -5588,6 +5669,15 @@
 "text": "Hippowdon",
 "voice": "en-US-AnaNeural"
 },
+"hit": {
+"clip": [
+0.103,
+0.447
+],
+"file": "f09328d495.mp3",
+"text": "hit!",
+"voice": "en-US-AnaNeural"
+},
 "hitmonchan": {
 "clip": [
 0.102,
@@ -5613,6 +5703,15 @@
 ],
 "file": "dd433dbcd9.mp3",
 "text": "Hitmontop",
+"voice": "en-US-AnaNeural"
+},
+"hits": {
+"clip": [
+0.103,
+0.605
+],
+"file": "46ab2997ca.mp3",
+"text": "hits!",
 "voice": "en-US-AnaNeural"
 },
 "ho oh": {
@@ -6064,6 +6163,24 @@
 "file": "2bd1f0dc96.mp3",
 "text": "is ours now, meow!",
 "voice": "en-US-GuyNeural"
+},
+"is safe from moves for 2 turns": {
+"clip": [
+0.103,
+2.605
+],
+"file": "216d2286c1.mp3",
+"text": "is safe from moves for 2 turns!",
+"voice": "en-US-AnaNeural"
+},
+"is tired out": {
+"clip": [
+0.102,
+1.105
+],
+"file": "dd95994a07.mp3",
+"text": "is tired out…",
+"voice": "en-US-AnaNeural"
 },
 "it's okay help me again next time": {
 "clip": [
@@ -6803,6 +6920,15 @@
 "text": "Lopunny",
 "voice": "en-US-AnaNeural"
 },
+"lost its move": {
+"clip": [
+0.103,
+1.158
+],
+"file": "cda670821a.mp3",
+"text": "lost its move!",
+"voice": "en-US-AnaNeural"
+},
 "lotad": {
 "clip": [
 0.103,
@@ -6819,6 +6945,15 @@
 ],
 "file": "0b8b184d0a.mp3",
 "text": "Loudred",
+"voice": "en-US-AnaNeural"
+},
+"low kick": {
+"clip": [
+0.103,
+0.855
+],
+"file": "7dcbd815d7.mp3",
+"text": "Low Kick",
 "voice": "en-US-AnaNeural"
 },
 "lucario": {
@@ -7613,6 +7748,15 @@
 "text": "Mismagius",
 "voice": "en-US-AnaNeural"
 },
+"missed them all": {
+"clip": [
+0.103,
+1.026
+],
+"file": "5c01298397.mp3",
+"text": "Missed them all!",
+"voice": "en-US-AnaNeural"
+},
 "mist ball": {
 "clip": [
 0.103,
@@ -7620,6 +7764,15 @@
 ],
 "file": "4ee0b30530.mp3",
 "text": "Mist Ball",
+"voice": "en-US-AnaNeural"
+},
+"misty terrain": {
+"clip": [
+0.103,
+1.145
+],
+"file": "b011f3ca4e.mp3",
+"text": "Misty Terrain",
 "voice": "en-US-AnaNeural"
 },
 "mo": {
@@ -7928,6 +8081,15 @@
 "text": "next throw:",
 "voice": "en-US-AnaNeural"
 },
+"next throw gets smaller": {
+"clip": [
+0.103,
+1.842
+],
+"file": "e47dd4b5a4.mp3",
+"text": "next throw gets smaller!",
+"voice": "en-US-AnaNeural"
+},
 "nickit": {
 "clip": [
 0.103,
@@ -8034,6 +8196,15 @@
 ],
 "file": "5fd2cde48b.mp3",
 "text": "No balls in your Bag!",
+"voice": "en-US-AnaNeural"
+},
+"no poison push 2 spaces": {
+"clip": [
+0.103,
+3.384
+],
+"file": "dd0c010c74.mp3",
+"text": "No poison! Push 2 spaces.",
 "voice": "en-US-AnaNeural"
 },
 "noctowl": {
@@ -9026,6 +9197,15 @@
 "text": "Psybeam",
 "voice": "en-US-AnaNeural"
 },
+"psych up": {
+"clip": [
+0.103,
+0.724
+],
+"file": "47c8ff8afa.mp3",
+"text": "Psych Up",
+"voice": "en-US-AnaNeural"
+},
 "psychic": {
 "clip": [
 0.103,
@@ -9087,6 +9267,15 @@
 ],
 "file": "a695eac1c4.mp3",
 "text": "Purrloin",
+"voice": "en-US-AnaNeural"
+},
+"pursuit": {
+"clip": [
+0.103,
+0.671
+],
+"file": "ad4abefb99.mp3",
+"text": "Pursuit",
 "voice": "en-US-AnaNeural"
 },
 "purugly": {
@@ -9501,6 +9690,15 @@
 ],
 "file": "fd3f0b42e5.mp3",
 "text": "Roaring Moon",
+"voice": "en-US-AnaNeural"
+},
+"rock polish": {
+"clip": [
+0.103,
+1.171
+],
+"file": "1f76fa1c47.mp3",
+"text": "Rock Polish",
 "voice": "en-US-AnaNeural"
 },
 "rock slide": {
@@ -10014,6 +10212,15 @@
 ],
 "file": "8864f227ae.mp3",
 "text": "Shadow Punch",
+"voice": "en-US-AnaNeural"
+},
+"shadow sneak": {
+"clip": [
+0.103,
+1.132
+],
+"file": "35597ff08b.mp3",
+"text": "Shadow Sneak",
 "voice": "en-US-AnaNeural"
 },
 "sharpedo": {
@@ -10644,6 +10851,15 @@
 ],
 "file": "9200ffedf8.mp3",
 "text": "Snubbull",
+"voice": "en-US-AnaNeural"
+},
+"soak": {
+"clip": [
+0.103,
+0.539
+],
+"file": "17bb7d3e59.mp3",
+"text": "Soak",
 "voice": "en-US-AnaNeural"
 },
 "sobble": {
@@ -11555,6 +11771,15 @@
 "text": "The net broke, meow!",
 "voice": "en-US-GuyNeural"
 },
+"the poison spreads": {
+"clip": [
+0.103,
+1.487
+],
+"file": "2140e16997.mp3",
+"text": "The poison spreads!",
+"voice": "en-US-AnaNeural"
+},
 "these are our pokemon this game meow": {
 "clip": [
 0.103,
@@ -12347,6 +12572,15 @@
 "text": "Venonat",
 "voice": "en-US-AnaNeural"
 },
+"venoshock": {
+"clip": [
+0.103,
+0.934
+],
+"file": "d4f2531411.mp3",
+"text": "Venoshock",
+"voice": "en-US-AnaNeural"
+},
 "venusaur": {
 "clip": [
 0.103,
@@ -13020,6 +13254,15 @@
 ],
 "file": "d487dd0b55.mp3",
 "text": "yellow",
+"voice": "en-US-AnaNeural"
+},
+"you keep the better one": {
+"clip": [
+0.103,
+1.434
+],
+"file": "f207f36653.mp3",
+"text": "You keep the better one:",
 "voice": "en-US-AnaNeural"
 },
 "you knocked out": {
