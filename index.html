@@ -19,6 +19,7 @@
   - file:// 로 열어도 동작. 저장은 윷놀이 것(localStorage engmon_yut_v1)만 쓴다 — 잉글리시몬 저장은 읽지도 쓰지도 않는다.
 -->
 <script src="lock.js"></script>
+<script src="lang.js"></script>
 <style>
 /* ===== 패드 터치 잠금 (pad-input-lock 스킬) — 스타일시트 맨 위 ===== */
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -707,6 +708,14 @@ body.coining .tcard.active { border-color: var(--ink) !important; box-shadow: va
 .pf-h { margin: 6px 0 6px; } .pf-h small { font-weight: 700; color: var(--ink-soft); font-size: 13px; }
 .pf-set { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
 .pf-set .btn { min-height: 48px; }
+/* 🔒 부모 모드 */
+.pg-q b { font-family: var(--pixel); font-size: var(--t2); }
+#pg-in { font-size: 28px; text-align: center; width: 140px; }
+.pm-h { margin: 6px 0 8px; }
+.lang-opts { flex-direction: column; }
+.lang-opt.on { background: var(--gold); }
+.lang-opt small { font-size: 14px; font-weight: 700; opacity: .85; }
+.lang-now { font-style: normal; font-size: 14px; margin-left: 6px; }
 .pc-study { color: #2f6fd6 !important; }
 .rank-by { justify-content: center; margin-bottom: 10px; }
 .rank-by .chip { min-height: 48px; font-size: 17px; }
@@ -1070,7 +1079,7 @@ body.coining .tcard.active { border-color: var(--ink) !important; box-shadow: va
 /* ================================================================
    설정
 ================================================================ */
-const APP_VERSION = "2026-10-10c";
+const APP_VERSION = "2026-10-11a";
 const D = window.YUT_DATA;
 const Q = new URLSearchParams(location.search);
 const SPEED = Q.has("fast") ? 0.12 : 1;           // 테스트용: ?fast=1 이면 연출을 빠르게
@@ -1285,11 +1294,41 @@ function sprFail(img) { img.onerror = null; img.src = "assets/items/poke-ball.pn
 function artFail(img, id) { img.onerror = null; img.src = frontUrl(id); img.classList.add("pix"); }
 
 /* ================================================================
-   저장 (윷놀이 영어판 전용) — engmon_yut_en_v1 (한국어판 engmon_yut_v1 은 처음 한 번 읽기만)
+   저장 — 한국어판과 같은 engmon_yut_v1 (2026-10-11: 부모 모드에서 언어를 바꿔도 포켓몬·볼·하던 판이 그대로)
+   예전 영어판 저장(engmon_yut_en_v1, 2026-10-08~10)은 처음 열 때 한 번 합친다 (mergeOld)
 ================================================================ */
 const Store = {
-  KEY: "engmon_yut_en_v1",
-  KO_KEY: "engmon_yut_v1", // 한국어판 저장 (읽기만 한다)
+  KEY: "engmon_yut_v1",
+  OLD_EN: "engmon_yut_en_v1", // 예전 영어판 따로 저장 — 합친 뒤 지운다 (…_merged 로 한 번 남겨 둠)
+  // 예전 영어판 저장을 같은 저장에 합친다: 프로필은 같은 id 끼리 — 잡은 포켓몬은 합치고, 볼·전적·공부는 판을 더 많이 한 쪽, 저장 코드는 있는 쪽
+  mergeOld() {
+    let en = null, ko = null;
+    try { en = JSON.parse(localStorage.getItem(this.OLD_EN)); } catch (e) { en = null; }
+    if (!en || typeof en !== "object") return;
+    try { ko = JSON.parse(localStorage.getItem(this.KEY)); } catch (e) { ko = null; }
+    let out = en;
+    if (ko && typeof ko === "object" && ko.profiles && en.profiles) {
+      out = ko;
+      out.order = Array.isArray(out.order) ? out.order : [];
+      Object.keys(en.profiles).forEach(id => {
+        const a = ko.profiles[id], b = en.profiles[id];
+        if (!b) return;
+        if (!a) { out.profiles[id] = b; if (out.order.indexOf(id) < 0) out.order.push(id); return; }
+        const seen = new Set((a.collection || []).map(x => x && x.id));
+        a.collection = (a.collection || []).concat((b.collection || []).filter(x => x && !seen.has(x.id)));
+        if (((b.stats || {}).games || 0) > ((a.stats || {}).games || 0)) { a.bag = b.bag; a.stats = b.stats; a.study = b.study || a.study; }
+        if (!a.cloud && b.cloud) a.cloud = b.cloud;
+      });
+      if (!out.game && en.game) { out.game = en.game; out.net = en.net || null; }
+      out.seenSkills = Array.from(new Set((out.seenSkills || []).concat(en.seenSkills || [])));
+      if (en.lastNet) out.lastNet = en.lastNet;
+    } else if (ko && typeof ko === "object" && !en.profiles) out = ko;
+    try {
+      localStorage.setItem(this.KEY, JSON.stringify(out));
+      localStorage.setItem(this.OLD_EN + "_merged", JSON.stringify(en));
+      localStorage.removeItem(this.OLD_EN);
+    } catch (e) { /* 저장이 안 되는 환경 — 다음에 다시 */ }
+  },
   data: null,
   warned: false,
   defaults() {
@@ -1309,16 +1348,8 @@ const Store = {
     const d = this.defaults();
     let raw = null;
     try {
+      this.mergeOld();
       raw = JSON.parse(localStorage.getItem(this.KEY));
-      // 🇰🇷 처음 열면 한국어판(같은 주소 ian939.github.io 라 저장을 읽을 수 있다)의 프로필·포켓몬·볼을 한 번 가져온다 — 하던 판은 빼고
-      if (!raw && Q.get("fresh") !== "1") {
-        const ko = JSON.parse(localStorage.getItem(this.KO_KEY));
-        if (ko && typeof ko === "object" && ko.profiles) {
-          // 💾 저장 코드는 가져오지 않는다 — 두 판이 같은 코드에 번갈아 쓰면 기록이 엉킨다 (영어판은 새 코드를 따로 켠다)
-          Object.values(ko.profiles).forEach(p => { if (p) p.cloud = null; });
-          raw = Object.assign({}, ko, { game: null, lastGame: null, fromKo: true });
-        }
-      }
       if (raw && typeof raw === "object") {
         Object.assign(d, raw);
         delete d.familyDex; // 옛 버전(잉글리시몬 가족 도감 읽기)이 남긴 것
@@ -1505,7 +1536,7 @@ const TTS = {
   },
   // 녹음 찾기 열쇠 — gen-voice.py 의 key() 와 똑같이 유지
   key(s) {
-    return plain(s).replace(/♀/g, " female").replace(/♂/g, " male").normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    return plain(s).replace(/♀/g, " female").replace(/♂/g, " male").normalize("NFD").replace(/[\u0300-\u036f]/g, "").normalize("NFC") // \u00e9 \u2192 e, \ud55c\uae00\uc740 \ub2e4\uc2dc \ud569\uce68
       .toLowerCase().replace(/[’‘`]/g, "'").replace(/[^a-z0-9'\uac00-\ud7a3]+/g, " ").trim();
   },
   clip(text) { const V = window.VOICE || {}; return V[this.key(text)] || null; },
@@ -4751,7 +4782,7 @@ Screens.profiles = sec => {
   const D2 = Store.data;
   sec.innerHTML = '<header class="bar"><button class="btn icon" data-act="home" aria-label="Home">←</button><h2>👤 Profiles</h2><span class="side"></span></header>' +
     '<div class="scroll"><div class="card">' +
-      '<h3 class="pf-h">⚙️ Settings <small>this tablet</small></h3><div class="pf-set"><button class="btn" data-act="sound" id="sound-btn">' + soundLabel() + "</button></div>" +
+      '<h3 class="pf-h">⚙️ Settings <small>this tablet</small></h3><div class="pf-set"><button class="btn" data-act="sound" id="sound-btn">' + soundLabel() + '</button><button class="btn" data-act="parent">🔒 Parent mode</button></div>' +
       '<h3 class="pf-h">👤 Profiles</h3><p class="note">Each person picks a <b>name</b> and a <b>buddy Pokémon</b>. Caught Pokémon, balls and quiz records are kept for each person. Make a 💾 save code to play on other tablets too — and be in 🥇 Ranking!</p>' +
       '<div class="prof-list">' + D2.order.map(id => {
         const p = D2.profiles[id];
@@ -5382,6 +5413,8 @@ const Act = {
   "save-load": openSaveLoad,
   "save-key": el => saveKey(el.dataset.k),
   "save-fetch": saveFetch,
+  "parent": openParentGate,
+  "set-lang": el => setLang(el.dataset.v),
   "sound": () => { Store.data.sound = Store.data.sound === false; Store.save(); const b = $("#sound-btn"); if (b) b.textContent = soundLabel(); if (Store.data.sound) SFX.tap(); else TTS.stop(); },
   "sound-game": () => { Act.sound(); const b = $("#sound-icon"); if (b) b.textContent = Store.data.sound === false ? "🔇" : "🔊"; },
   "set": el => {
@@ -5485,6 +5518,52 @@ function tellUpdate() {
 document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") checkUpdate(); });
 window.addEventListener("online", () => checkUpdate(true));
 setInterval(() => checkUpdate(), 10 * 60000);
+
+/* ---------- 🌐 "English + 기술 이름은 한국어" (부모 모드 en-ko) — 판 기술 이름만 한국어판 이름으로 (설명·나머지는 영어)
+   한글 이름은 gen-voice.py 가 한국어 목소리(ko-KR)로 녹음한다 ---------- */
+const SKILL_KO = {
+  metronome: vo("손가락흔들기"), wish: vo("희망사항"), nitro: vo("니트로차지"), flame: vo("화염방사"), surf: vo("파도타기"), splash: vo("튀어오르기"),
+  growth: vo("성장"), sleep: vo("수면가루"), discharge: vo("방전"), wildcharge: vo("와일드볼트"), veil: vo("오로라베일"), icecharge: vo("아이스차징"),
+  counter: vo("카운터"), bulkup: vo("벌크업"), toxic: vo("맹독"), poisonjab: vo("독찌르기"), quake: vo("지진"), dig: vo("구멍파기"),
+  fly: vo("공중날기"), tailwind: vo("순풍"), future: vo("미래예지"), allyswitch: vo("사이드체인지"), uturn: vo("유턴"), web: vo("끈적끈적네트"),
+  rock: vo("스텔스록"), stoneedge: vo("스톤에지"), spite: vo("원한"), bond: vo("길동무"), ddance: vo("용의춤"), outrage: vo("역린"),
+  snatch: vo("가로챈다"), spike: vo("독압정"), iron: vo("철벽"), magnet: vo("자력선"), moon: vo("달빛"), kiss: vo("천사의키스"),
+  mimic: vo("흉내내기"), heatwave: vo("열풍"), soak: vo("물붓기"), cotton: vo("목화포자"), zap: vo("전자포"), avalanche: vo("눈사태"),
+  lowkick: vo("로킥"), venoshock: vo("베놈쇼크"), earthpower: vo("대지의힘"), acrobatics: vo("애크러뱃"), psychup: vo("자기암시"), stringshot: vo("실뿜기"),
+  rockpolish: vo("록커트"), shadowsneak: vo("야습"), dracometeor: vo("용성군"), pursuit: vo("따라가때리기"), gearup: vo("기어업"), mistyterrain: vo("미스트필드"),
+};
+if (window.YutLang && YutLang.get() === "en-ko") Object.keys(SKILL_KO).forEach(k => { if (Yut.SKILLS[k]) Yut.SKILLS[k].name = SKILL_KO[k]; });
+
+/* ---------- 🔒 부모 모드 (사용자 확정 2026-10-11) — 곱셈 문제를 맞혀야 열린다 (초1은 못 풀고 어른은 바로) · 🌐 언어 3가지 ---------- */
+function openParentGate() {
+  const a = 6 + Math.floor(Math.random() * 4), b = 6 + Math.floor(Math.random() * 4);
+  showModal('<h2>🔒 Parent mode</h2><p>For grown-ups only. Type the answer.</p><p class="pg-q"><b>' + a + " × " + b + ' = ?</b></p>' +
+    '<input id="pg-in" inputmode="numeric" autocomplete="off" spellcheck="false" maxlength="3">' +
+    '<p class="net-err" id="pg-err"></p><div class="btns"><button class="btn big green" id="pg-ok">Enter</button><button class="btn" data-act="close-modal">Cancel</button></div>');
+  const inp = $("#pg-in"), go = () => {
+    if (Number(inp.value.trim()) === a * b) { SFX.tap(); openParentMode(); }
+    else { $("#pg-err").textContent = "Try again"; inp.value = ""; }
+  };
+  $("#pg-ok").addEventListener("click", go);
+  inp.addEventListener("keydown", ev => { if (ev.key === "Enter") go(); });
+  setTimeout(() => inp.focus(), 50);
+}
+function openParentMode() {
+  const cur = (window.YutLang && YutLang.get()) || "en";
+  const opt = (v, label) => '<button class="btn big lang-opt' + (cur === v ? " on" : "") + '" data-act="set-lang" data-v="' + v + '">' + label + (cur === v ? ' <i class="lang-now">✓ Now</i>' : "") + "</button>";
+  showModal('<h2>🔒 Parent mode</h2><h3 class="pm-h">🌐 Language</h3><div class="btns lang-opts">' +
+    opt("ko", "🇰🇷 한국어") + opt("en", "🇺🇸 English") + opt("en-ko", "🇺🇸 English <small>move names in Korean</small>") + "</div>" +
+    '<p class="note">The game moves to that language. Pokémon, balls and the game in progress stay the same.</p><div class="btns"><button class="btn" data-act="close-modal">Close</button></div>');
+}
+function setLang(v) {
+  if (!window.YutLang) return;
+  YutLang.set(v);
+  const t = YutLang.target(v);
+  if (t) { location.replace(t); return; }
+  const here = YutLang.site || "en", want = v === "ko" ? "ko" : "en";
+  if (want !== here) { closeModal(); toast("Can't switch sites from this address (setting saved)", 2600); return; }
+  location.reload(); // 같은 판 안에서 (영어 ↔ 영어+한국어 기술 이름)
+}
 
 /* ================================================================
    시작

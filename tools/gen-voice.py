@@ -11,7 +11,7 @@
   → 문장을 바꾸거나 새로 쓰면 이 스크립트를 다시 돌린다 (안 돌리면 그 말만 브라우저 목소리로 나온다).
 - 결과: assets/voice/<열쇠의 md5 10자>.mp3 + assets/voice/voice.js (window.VOICE = { 열쇠: [파일, 말 시작초, 길이초] })
   열쇠 = 글자를 소문자로, 기호·이모지를 빼고 — index.html TTS.key() 와 똑같이 유지할 것
-- 목소리: 보통은 en-US-AnaNeural (아이 목소리), "meow" 가 든 로켓단 말은 en-US-GuyNeural
+- 목소리: 보통은 en-US-AnaNeural (아이 목소리), "meow" 가 든 로켓단 말은 en-US-GuyNeural, 한글(기술 이름 한국어 모드)은 ko-KR-SunHiNeural
 - 쓰지 않게 된 mp3 는 지운다.
 """
 import asyncio
@@ -33,6 +33,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "assets" / "voice"
 VOICE = "en-US-AnaNeural"
 ROCKET_VOICE = "en-US-GuyNeural"
+KO_VOICE = "ko-KR-SunHiNeural"  # 한글 기술 이름 (부모 모드 en-ko)
 RATE = "-5%"
 EMOJI = re.compile("[\U0001F000-\U0001FAFF☀-➿️‍]")
 
@@ -40,7 +41,7 @@ EMOJI = re.compile("[\U0001F000-\U0001FAFF☀-➿️‍]")
 def key(s):
     """index.html 의 TTS.key() 와 같게"""
     s = EMOJI.sub("", s).strip().replace("♀", " female").replace("♂", " male")
-    s = "".join(c for c in unicodedata.normalize("NFD", s) if not unicodedata.combining(c))
+    s = unicodedata.normalize("NFC", "".join(c for c in unicodedata.normalize("NFD", s) if not unicodedata.combining(c)))  # é → e, 한글은 다시 합침
     s = s.lower()
     s = re.sub("[’‘`]", "'", s)
     s = re.sub("[^a-z0-9'가-힣]+", " ", s)
@@ -106,10 +107,13 @@ def phrases():
     def add(s, why):
         t = speak_text(s)
         k = key(t)
-        if not k or not re.search("[a-z]", k) and not k.isdigit():
+        if not k:
             return
-        if re.search("[가-힣]", k):
-            skipped.append(t)
+        if re.search("[가-힣]", k):  # 한글(부모 모드 "기술 이름은 한국어"의 SKILL_KO) — 한국어 목소리로
+            if re.search("[a-z]", k):
+                skipped.append(t)
+                return
+        elif not re.search("[a-z]", k) and not k.isdigit():
             return
         found.setdefault(k, (t, why))
 
@@ -169,7 +173,7 @@ async def main():
     meta = json.loads(meta_f.read_text(encoding="utf-8")) if meta_f.exists() and "--all" not in sys.argv else {}
     todo = []
     for k, (t, why) in found.items():
-        voice = ROCKET_VOICE if "meow" in k else VOICE
+        voice = KO_VOICE if re.search("[가-힣]", k) else ROCKET_VOICE if "meow" in k else VOICE
         f = hashlib.md5(k.encode("utf-8")).hexdigest()[:10] + ".mp3"
         old = meta.get(k)
         if old and old.get("text") == t and old.get("voice") == voice and (OUT / f).exists():

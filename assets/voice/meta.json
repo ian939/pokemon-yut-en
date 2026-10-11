@@ -13462,5 +13462,491 @@
 "file": "376e22d52e.mp3",
 "text": "Zygarde",
 "voice": "en-US-AnaNeural"
+},
+"가로챈다": {
+"clip": [
+0.103,
+0.961
+],
+"file": "3d7b6ed01d.mp3",
+"text": "가로챈다",
+"voice": "ko-KR-SunHiNeural"
+},
+"공중날기": {
+"clip": [
+0.103,
+1.079
+],
+"file": "bd9bd1d0d1.mp3",
+"text": "공중날기",
+"voice": "ko-KR-SunHiNeural"
+},
+"구멍파기": {
+"clip": [
+0.103,
+1.0
+],
+"file": "f8bd96ff15.mp3",
+"text": "구멍파기",
+"voice": "ko-KR-SunHiNeural"
+},
+"기어업": {
+"clip": [
+0.103,
+0.776
+],
+"file": "0918514eab.mp3",
+"text": "기어업",
+"voice": "ko-KR-SunHiNeural"
+},
+"길동무": {
+"clip": [
+0.103,
+0.895
+],
+"file": "dc2f6e0601.mp3",
+"text": "길동무",
+"voice": "ko-KR-SunHiNeural"
+},
+"끈적끈적네트": {
+"clip": [
+0.103,
+1.342
+],
+"file": "52f975d6da.mp3",
+"text": "끈적끈적네트",
+"voice": "ko-KR-SunHiNeural"
+},
+"눈사태": {
+"clip": [
+0.103,
+0.882
+],
+"file": "329352400e.mp3",
+"text": "눈사태",
+"voice": "ko-KR-SunHiNeural"
+},
+"니트로차지": {
+"clip": [
+0.103,
+1.066
+],
+"file": "87691aabb3.mp3",
+"text": "니트로차지",
+"voice": "ko-KR-SunHiNeural"
+},
+"달빛": {
+"clip": [
+0.103,
+0.645
+],
+"file": "f58fd685c9.mp3",
+"text": "달빛",
+"voice": "ko-KR-SunHiNeural"
+},
+"대지의힘": {
+"clip": [
+0.103,
+1.013
+],
+"file": "dba0b0c428.mp3",
+"text": "대지의힘",
+"voice": "ko-KR-SunHiNeural"
+},
+"독압정": {
+"clip": [
+0.103,
+0.987
+],
+"file": "6a3df93a47.mp3",
+"text": "독압정",
+"voice": "ko-KR-SunHiNeural"
+},
+"독찌르기": {
+"clip": [
+0.103,
+0.947
+],
+"file": "54843139d1.mp3",
+"text": "독찌르기",
+"voice": "ko-KR-SunHiNeural"
+},
+"따라가때리기": {
+"clip": [
+0.103,
+1.079
+],
+"file": "0b1ee6659d.mp3",
+"text": "따라가때리기",
+"voice": "ko-KR-SunHiNeural"
+},
+"로킥": {
+"clip": [
+0.103,
+0.645
+],
+"file": "655366f00d.mp3",
+"text": "로킥",
+"voice": "ko-KR-SunHiNeural"
+},
+"록커트": {
+"clip": [
+0.103,
+0.947
+],
+"file": "05c1c2988f.mp3",
+"text": "록커트",
+"voice": "ko-KR-SunHiNeural"
+},
+"맹독": {
+"clip": [
+0.103,
+0.645
+],
+"file": "71a7cdab92.mp3",
+"text": "맹독",
+"voice": "ko-KR-SunHiNeural"
+},
+"목화포자": {
+"clip": [
+0.103,
+0.961
+],
+"file": "00d667d38d.mp3",
+"text": "목화포자",
+"voice": "ko-KR-SunHiNeural"
+},
+"물붓기": {
+"clip": [
+0.103,
+0.855
+],
+"file": "b35cd60db5.mp3",
+"text": "물붓기",
+"voice": "ko-KR-SunHiNeural"
+},
+"미래예지": {
+"clip": [
+0.103,
+0.974
+],
+"file": "ce0ce9d16b.mp3",
+"text": "미래예지",
+"voice": "ko-KR-SunHiNeural"
+},
+"미스트필드": {
+"clip": [
+0.103,
+1.092
+],
+"file": "d5e1552efc.mp3",
+"text": "미스트필드",
+"voice": "ko-KR-SunHiNeural"
+},
+"방전": {
+"clip": [
+0.103,
+0.855
+],
+"file": "48e8b51d0b.mp3",
+"text": "방전",
+"voice": "ko-KR-SunHiNeural"
+},
+"벌크업": {
+"clip": [
+0.103,
+0.711
+],
+"file": "bace057347.mp3",
+"text": "벌크업",
+"voice": "ko-KR-SunHiNeural"
+},
+"베놈쇼크": {
+"clip": [
+0.103,
+1.118
+],
+"file": "184b328857.mp3",
+"text": "베놈쇼크",
+"voice": "ko-KR-SunHiNeural"
+},
+"사이드체인지": {
+"clip": [
+0.103,
+1.289
+],
+"file": "50af28d6eb.mp3",
+"text": "사이드체인지",
+"voice": "ko-KR-SunHiNeural"
+},
+"성장": {
+"clip": [
+0.103,
+0.803
+],
+"file": "c7d4cc9ebd.mp3",
+"text": "성장",
+"voice": "ko-KR-SunHiNeural"
+},
+"손가락흔들기": {
+"clip": [
+0.103,
+1.316
+],
+"file": "901fa6bf31.mp3",
+"text": "손가락흔들기",
+"voice": "ko-KR-SunHiNeural"
+},
+"수면가루": {
+"clip": [
+0.103,
+0.934
+],
+"file": "eead702c5c.mp3",
+"text": "수면가루",
+"voice": "ko-KR-SunHiNeural"
+},
+"순풍": {
+"clip": [
+0.103,
+0.789
+],
+"file": "0cf7e83677.mp3",
+"text": "순풍",
+"voice": "ko-KR-SunHiNeural"
+},
+"스텔스록": {
+"clip": [
+0.103,
+0.829
+],
+"file": "ac38c3d707.mp3",
+"text": "스텔스록",
+"voice": "ko-KR-SunHiNeural"
+},
+"스톤에지": {
+"clip": [
+0.103,
+0.921
+],
+"file": "04607e3f8d.mp3",
+"text": "스톤에지",
+"voice": "ko-KR-SunHiNeural"
+},
+"실뿜기": {
+"clip": [
+0.103,
+1.0
+],
+"file": "746ce608c5.mp3",
+"text": "실뿜기",
+"voice": "ko-KR-SunHiNeural"
+},
+"아이스차징": {
+"clip": [
+0.103,
+1.158
+],
+"file": "54b3b193d0.mp3",
+"text": "아이스차징",
+"voice": "ko-KR-SunHiNeural"
+},
+"애크러뱃": {
+"clip": [
+0.103,
+0.724
+],
+"file": "227ab2359d.mp3",
+"text": "애크러뱃",
+"voice": "ko-KR-SunHiNeural"
+},
+"야습": {
+"clip": [
+0.103,
+0.579
+],
+"file": "f049c7b7ae.mp3",
+"text": "야습",
+"voice": "ko-KR-SunHiNeural"
+},
+"역린": {
+"clip": [
+0.103,
+0.776
+],
+"file": "1233dda5e0.mp3",
+"text": "역린",
+"voice": "ko-KR-SunHiNeural"
+},
+"열풍": {
+"clip": [
+0.103,
+0.789
+],
+"file": "fd01d99997.mp3",
+"text": "열풍",
+"voice": "ko-KR-SunHiNeural"
+},
+"오로라베일": {
+"clip": [
+0.103,
+1.039
+],
+"file": "e40bd4b6d1.mp3",
+"text": "오로라베일",
+"voice": "ko-KR-SunHiNeural"
+},
+"와일드볼트": {
+"clip": [
+0.103,
+1.171
+],
+"file": "5979bc1840.mp3",
+"text": "와일드볼트",
+"voice": "ko-KR-SunHiNeural"
+},
+"용성군": {
+"clip": [
+0.103,
+0.947
+],
+"file": "b2fce3f07c.mp3",
+"text": "용성군",
+"voice": "ko-KR-SunHiNeural"
+},
+"용의춤": {
+"clip": [
+0.103,
+0.908
+],
+"file": "a9e838c950.mp3",
+"text": "용의춤",
+"voice": "ko-KR-SunHiNeural"
+},
+"원한": {
+"clip": [
+0.103,
+0.737
+],
+"file": "3e74ab46ab.mp3",
+"text": "원한",
+"voice": "ko-KR-SunHiNeural"
+},
+"유턴": {
+"clip": [
+0.103,
+0.789
+],
+"file": "19d2ac90c1.mp3",
+"text": "유턴",
+"voice": "ko-KR-SunHiNeural"
+},
+"자기암시": {
+"clip": [
+0.103,
+1.092
+],
+"file": "a56a22fa3f.mp3",
+"text": "자기암시",
+"voice": "ko-KR-SunHiNeural"
+},
+"자력선": {
+"clip": [
+0.103,
+1.0
+],
+"file": "8019e96cc8.mp3",
+"text": "자력선",
+"voice": "ko-KR-SunHiNeural"
+},
+"전자포": {
+"clip": [
+0.103,
+0.974
+],
+"file": "fba23b1d8c.mp3",
+"text": "전자포",
+"voice": "ko-KR-SunHiNeural"
+},
+"지진": {
+"clip": [
+0.103,
+0.724
+],
+"file": "95635b801c.mp3",
+"text": "지진",
+"voice": "ko-KR-SunHiNeural"
+},
+"천사의키스": {
+"clip": [
+0.103,
+1.211
+],
+"file": "063fe600cc.mp3",
+"text": "천사의키스",
+"voice": "ko-KR-SunHiNeural"
+},
+"철벽": {
+"clip": [
+0.103,
+0.618
+],
+"file": "ec96ada981.mp3",
+"text": "철벽",
+"voice": "ko-KR-SunHiNeural"
+},
+"카운터": {
+"clip": [
+0.103,
+0.855
+],
+"file": "6993c5ac9c.mp3",
+"text": "카운터",
+"voice": "ko-KR-SunHiNeural"
+},
+"튀어오르기": {
+"clip": [
+0.103,
+0.961
+],
+"file": "5928f495ec.mp3",
+"text": "튀어오르기",
+"voice": "ko-KR-SunHiNeural"
+},
+"파도타기": {
+"clip": [
+0.103,
+0.908
+],
+"file": "1da75653d5.mp3",
+"text": "파도타기",
+"voice": "ko-KR-SunHiNeural"
+},
+"화염방사": {
+"clip": [
+0.103,
+1.053
+],
+"file": "42f1fba5bd.mp3",
+"text": "화염방사",
+"voice": "ko-KR-SunHiNeural"
+},
+"흉내내기": {
+"clip": [
+0.103,
+0.987
+],
+"file": "3a4038b74e.mp3",
+"text": "흉내내기",
+"voice": "ko-KR-SunHiNeural"
+},
+"희망사항": {
+"clip": [
+0.103,
+1.066
+],
+"file": "767f571982.mp3",
+"text": "희망사항",
+"voice": "ko-KR-SunHiNeural"
 }
 }

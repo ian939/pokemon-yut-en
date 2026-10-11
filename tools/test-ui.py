@@ -295,7 +295,7 @@ def scenario_v2(browser, base, errors):
     def ctx_page(vw=1180, vh=820, bag=None):
         ctx = browser.new_context(viewport={"width": vw, "height": vh}, has_touch=True)
         if bag is not None:
-            ctx.add_init_script("if (!localStorage.getItem('engmon_yut_en_v1')) localStorage.setItem('engmon_yut_en_v1', " + json.dumps(json.dumps({"bag": bag})) + ");")
+            ctx.add_init_script("if (!localStorage.getItem('engmon_yut_v1')) localStorage.setItem('engmon_yut_v1', " + json.dumps(json.dumps({"bag": bag})) + ");")
         page = ctx.new_page()
         page.on("pageerror", lambda e: errors.append("pageerror: " + str(e)))
         return ctx, page
@@ -828,7 +828,7 @@ def scenario_v4(browser, base, errors):
 
     # ⑬ v6: 🎰 슬롯머신 · 😈 로켓단 무작위 · 진화형부터 · 💡 잡기 힌트 · 🎲 확률 막대 · 💧🔥 상성 · 🔤 영어
     ctx, page = ctx_page()
-    page.add_init_script("if (!localStorage.getItem('engmon_yut_en_v1')) localStorage.setItem('engmon_yut_en_v1', JSON.stringify({ collection: [{ id: 5, t: 1 }], bag: { poke: 3, great: 0, ultra: 0, luxury: 0, master: 0 } }));")
+    page.add_init_script("if (!localStorage.getItem('engmon_yut_v1')) localStorage.setItem('engmon_yut_v1', JSON.stringify({ collection: [{ id: 5, t: 1 }], bag: { poke: 3, great: 0, ultra: 0, luxury: 0, master: 0 } }));")
     page.goto(base + "?seed=2&spots=none&fast=1&force=2"); page.wait_for_timeout(300)
     page.click("[data-act=new-family]"); page.click("[data-act=set][data-field=pieces][data-value='2']")
     page.click("[data-act=set][data-field=study][data-value='false']")
@@ -943,7 +943,7 @@ def scenario_v4(browser, base, errors):
 
     # ⑩ v8: 전설도 10칸 · 기술 성공 90% + 👑 전설 연출
     ctx, page = ctx_page()
-    page.add_init_script("if (!localStorage.getItem('engmon_yut_en_v1')) localStorage.setItem('engmon_yut_en_v1', JSON.stringify({ collection: [{ id: 150, t: 1 }] }));")
+    page.add_init_script("if (!localStorage.getItem('engmon_yut_v1')) localStorage.setItem('engmon_yut_v1', JSON.stringify({ collection: [{ id: 150, t: 1 }] }));")
     # 빠르게 모드에서는 배너가 0.2초만 떠서 기다리기로는 놓친다 — 뜨는 배너를 모두 적어 둔다
     page.add_init_script("window.__banners = []; new MutationObserver(ms => ms.forEach(m => m.addedNodes.forEach(n => { if (n.classList && n.classList.contains('banner') && n.classList.contains('legend')) window.__banners.push(n.textContent); }))).observe(document, { childList: true, subtree: true });")
     page.goto(base + "?seed=2&spots=none&fast=1&pools=nitro,nitro&luck=1")
@@ -1039,7 +1039,7 @@ def scenario_v8(browser, base, errors):
     """v8: ✨ 기술 36개 (새 기술 쓰기·효과 표시) · 🎲 발동 확률 (성공 %·상성·실패하면 기술이 남음) · 2026-10-10 새 기술 18개 (54개)."""
     def ctx_page(vw=1180, vh=820):
         ctx = browser.new_context(viewport={"width": vw, "height": vh}, has_touch=True)
-        ctx.add_init_script("localStorage.setItem('engmon_yut_en_v1', JSON.stringify({ settings: { study: false } }));")
+        ctx.add_init_script("localStorage.setItem('engmon_yut_v1', JSON.stringify({ settings: { study: false } }));")
         # 빠르게 모드에서는 안내가 금방 바뀐다 — 안내 칸에 뜬 글을 모두 적어 둔다
         ctx.add_init_script("window.__hints = []; window.__rolls = []; new MutationObserver(ms => ms.forEach(m => { const t = m.target; if (t && t.id === 'hint') window.__hints.push(t.textContent); if (t && t.classList && t.classList.contains('roll-res') && t.textContent) window.__rolls.push(t.textContent); })).observe(document, { childList: true, subtree: true });")
         page = ctx.new_page()
@@ -1228,7 +1228,7 @@ def scenario_save(browser, base, errors):
 
     def mk(save):
         ctx = browser.new_context(viewport={"width": 1180, "height": 820}, has_touch=True)
-        ctx.add_init_script("if (!localStorage.getItem('engmon_yut_en_v1')) localStorage.setItem('engmon_yut_en_v1', " + json.dumps(json.dumps(save)) + ");")
+        ctx.add_init_script("if (!localStorage.getItem('engmon_yut_v1')) localStorage.setItem('engmon_yut_v1', " + json.dumps(json.dumps(save)) + ");")
         page = ctx.new_page()
         page.on("pageerror", lambda e: errors.append("pageerror: " + str(e)))
         page.on("console", lambda m: errors.append("console: " + m.text) if m.type == "error" and "ERR_" not in m.text else None)
@@ -1409,7 +1409,7 @@ def scenario_land(browser, base, errors):
     """안드로이드 가로 화면(주소창·버튼줄 때문에 낮음): 윷 멍석이 늘 보이고, 패널이 위쪽 줄을 덮지 않음 (2026-10-02 사용자 제보: 가로에서 윷이 안 보임)."""
     for vw, vh in ((740, 340), (800, 360), (915, 380), (818, 757), (884, 700), (952, 628), (1024, 560), (1180, 650), (1280, 690)):
         ctx = browser.new_context(viewport={"width": vw, "height": vh}, has_touch=True, is_mobile=True)
-        ctx.add_init_script("localStorage.setItem('engmon_yut_en_v1', JSON.stringify({ settings: { study: false } }));")
+        ctx.add_init_script("localStorage.setItem('engmon_yut_v1', JSON.stringify({ settings: { study: false } }));")
         page = ctx.new_page()
         page.on("pageerror", lambda e: errors.append("pageerror: " + str(e)))
         page.goto(base + "?fast=1&seed=2&spots=none&first=0&force=4,2"); page.wait_for_timeout(300)
@@ -1449,7 +1449,7 @@ def scenario_net(browser, base, errors):
 
     def mk(save):
         ctx = browser.new_context(viewport={"width": 1180, "height": 820}, has_touch=True)
-        ctx.add_init_script("if (!localStorage.getItem('engmon_yut_en_v1')) localStorage.setItem('engmon_yut_en_v1', " + json.dumps(json.dumps(save)) + ");")
+        ctx.add_init_script("if (!localStorage.getItem('engmon_yut_v1')) localStorage.setItem('engmon_yut_v1', " + json.dumps(json.dumps(save)) + ");")
         page = ctx.new_page()
         page.on("pageerror", lambda e: errors.append("pageerror: " + str(e)))
         page.on("console", lambda m: errors.append("console: " + m.text) if m.type == "error" and "ERR_" not in m.text else None)
@@ -1738,7 +1738,7 @@ def main():
 
         # ---------- 1. 가족 대결 (가로 패드) ----------
         ctx = browser.new_context(viewport={"width": 1180, "height": 820}, device_scale_factor=1, has_touch=True)
-        ctx.add_init_script("if (!localStorage.getItem('engmon_yut_en_v1')) localStorage.setItem('engmon_yut_en_v1', " + json.dumps(YUT_SAVE) + ");")
+        ctx.add_init_script("if (!localStorage.getItem('engmon_yut_v1')) localStorage.setItem('engmon_yut_v1', " + json.dumps(YUT_SAVE) + ");")
         page = ctx.new_page()
         page.on("console", lambda m: errors.append("console: " + m.text) if m.type == "error" else None)
         page.on("pageerror", lambda e: errors.append("pageerror: " + str(e)))
