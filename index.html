@@ -1079,7 +1079,7 @@ body.coining .tcard.active { border-color: var(--ink) !important; box-shadow: va
 /* ================================================================
    설정
 ================================================================ */
-const APP_VERSION = "2026-10-11a";
+const APP_VERSION = "2026-10-11b";
 const D = window.YUT_DATA;
 const Q = new URLSearchParams(location.search);
 const SPEED = Q.has("fast") ? 0.12 : 1;           // 테스트용: ?fast=1 이면 연출을 빠르게
@@ -5519,7 +5519,7 @@ document.addEventListener("visibilitychange", () => { if (document.visibilitySta
 window.addEventListener("online", () => checkUpdate(true));
 setInterval(() => checkUpdate(), 10 * 60000);
 
-/* ---------- 🌐 "English + 기술 이름은 한국어" (부모 모드 en-ko) — 판 기술 이름만 한국어판 이름으로 (설명·나머지는 영어)
+/* ---------- 🌐 "English + 기술 이름은 한국어" (부모 모드 en-ko) — 판 기술 이름·설명을 한국어판 그대로 (나머지는 영어)
    한글 이름은 gen-voice.py 가 한국어 목소리(ko-KR)로 녹음한다 ---------- */
 const SKILL_KO = {
   metronome: vo("손가락흔들기"), wish: vo("희망사항"), nitro: vo("니트로차지"), flame: vo("화염방사"), surf: vo("파도타기"), splash: vo("튀어오르기"),
@@ -5532,7 +5532,67 @@ const SKILL_KO = {
   lowkick: vo("로킥"), venoshock: vo("베놈쇼크"), earthpower: vo("대지의힘"), acrobatics: vo("애크러뱃"), psychup: vo("자기암시"), stringshot: vo("실뿜기"),
   rockpolish: vo("록커트"), shadowsneak: vo("야습"), dracometeor: vo("용성군"), pursuit: vo("따라가때리기"), gearup: vo("기어업"), mistyterrain: vo("미스트필드"),
 };
-if (window.YutLang && YutLang.get() === "en-ko") Object.keys(SKILL_KO).forEach(k => { if (Yut.SKILLS[k]) Yut.SKILLS[k].name = SKILL_KO[k]; });
+// 기술 설명도 한국어판 그대로 (사용자 요청 2026-10-11 — "기술 설명도 한글로") — 한국어판 SKILL_UI 의 desc 와 같게 유지
+const SKILL_DESC_KO = {
+  metronome: "무슨 기술이 나올까? 다른 기술 하나가 무작위로!",
+  wish: "윷을 던지는 대신 원하는 결과를 골라요",
+  nitro: "지금 바로 2칸 앞으로!",
+  flame: "앞쪽 3칸 안의 상대 말을 물리쳐요!",
+  surf: "상대 말 하나를 2칸 뒤로 밀어요",
+  splash: "잉어킹처럼 퐁! 반은 아무 일도 없고, 반은 4칸 점프!",
+  growth: "윷 결과 하나를 한 단계 크게! (개→걸)",
+  sleep: "상대 말 하나가 쿨쿨 — 두 번 못 움직여요 (깰 수도 있어요!)",
+  discharge: "상대 말이 모두 한 번 못 움직여요",
+  wildcharge: "바로 3칸 앞으로 돌진! 대신 다음 차례엔 쉬어요",
+  veil: "얼음 장막! 상대 차례 두 번 동안 안 잡히고 기술도 안 맞아요",
+  icecharge: "상대 말 하나를 얼려요! 다음엔 그 팀 윷도 작게 (빽도·도·개만)",
+  bulkup: "힘을 모아요! 다음 두 번은 1칸씩 더 가요",
+  poisonjab: "상대 말 하나가 두 번 동안 1칸씩 덜 가요",
+  dig: "땅속에 숨어요! 한 번 안 잡히고, 다음엔 1칸 더",
+  stoneedge: "가장 앞선 상대 말을 3칸 뒤로!",
+  outrage: "앞쪽 2칸 안의 상대를 모두 물리쳐요! 대신 두 번 쉬어요",
+  spike: "빈 칸에 독 압정! 상대가 멈추면 한 번 못 움직여요",
+  magnet: "뒤에 있는 우리 말을 끌어와 업어요",
+  kiss: "상대 말 하나가 헷갈려서, 다음엔 뒤로 가요",
+  counter: "우리 팀에 온 방해 기술을 되돌려요",
+  toxic: "상대의 다음 윷이 빽도가 돼요",
+  quake: "상대 말이 모두 한 칸씩 뒤로!",
+  fly: "앞쪽의 가장 가까운 모서리로 날아가요",
+  tailwind: "우리 말이 모두 한 칸씩 앞으로",
+  future: "던지기 전에 결과를 맞혀 봐요. 맞히면 한 번 더!",
+  allyswitch: "우리 말과 상대 말이 자리를 바꿔요",
+  uturn: "이번엔 뒤로 갈 수도 있어요",
+  web: "빈 칸에 거미줄! 상대가 지나가다 걸려서 멈춰요",
+  rock: "빈 칸에 뾰족 바위! 상대가 거기 멈추면 집으로",
+  spite: "상대 팀이 세 번 동안 기술을 못 써요",
+  bond: "이 말이 잡히면 잡은 상대도 같이 집으로!",
+  ddance: "한 칸 앞으로 + 한 번 더 던지기!",
+  snatch: "상대 기술을 빼앗아 와요",
+  iron: "잡으러 온 상대를 튕겨 내요!",
+  moon: "잡혀도 집 대신 한 칸 뒤로만",
+  mimic: "상대가 바로 전에 쓴 기술을 똑같이 따라 해요",
+  heatwave: "뜨거운 바람! 앞쪽 4칸 안의 상대 말을 모두 2칸 뒤로",
+  soak: "상대 말 하나에 물을 부어 기술을 씻어 없애요",
+  cotton: "상대의 다음 윷이 한 단계 작아져요 (걸→개)",
+  zap: "이 말과 같은 줄에 있는 상대 말을 반의 확률로 물리쳐요",
+  avalanche: "모서리와 가운데 방에 있는 상대 말을 모두 물리쳐요!",
+  lowkick: "상대 말 하나를 넘어뜨려 1~5칸 뒤로!",
+  venoshock: "독에 걸린 상대 말은 물리쳐요! 독이 없으면 2칸 뒤로",
+  earthpower: "같은 줄에 있는 우리 말을 모두 끌어와 업어요",
+  acrobatics: "혼자면 3칸, 업고 있으면 1칸 앞으로!",
+  psychup: "다음 윷을 두 번 던져서 더 좋은 걸로!",
+  stringshot: "실을 뿜어요! 상대 말이 모두 다음 한 번 1칸씩 덜 가요",
+  rockpolish: "몸을 반짝반짝! 다음 두 번은 2칸씩 더 가요",
+  shadowsneak: "바로 뒤 2칸 안의 상대 말을 몰래 물리쳐요",
+  dracometeor: "아무 상대 말 하나를 물리쳐요! 대신 두 번 1칸씩 덜 가요",
+  pursuit: "앞쪽 가장 가까운 상대 말 바로 뒤까지 쫓아가요",
+  gearup: "우리 말이 모두 다음 한 번 1칸씩 더 가요",
+  mistyterrain: "상대 차례 두 번 동안 상대 기술이 우리 팀에 안 통해요"
+};
+if (window.YutLang && YutLang.get() === "en-ko") Object.keys(SKILL_KO).forEach(k => {
+  if (Yut.SKILLS[k]) Yut.SKILLS[k].name = SKILL_KO[k];
+  if (SKILL_UI[k] && SKILL_DESC_KO[k]) SKILL_UI[k].desc = SKILL_DESC_KO[k];
+});
 
 /* ---------- 🔒 부모 모드 (사용자 확정 2026-10-11) — 곱셈 문제를 맞혀야 열린다 (초1은 못 풀고 어른은 바로) · 🌐 언어 3가지 ---------- */
 function openParentGate() {
@@ -5552,7 +5612,7 @@ function openParentMode() {
   const cur = (window.YutLang && YutLang.get()) || "en";
   const opt = (v, label) => '<button class="btn big lang-opt' + (cur === v ? " on" : "") + '" data-act="set-lang" data-v="' + v + '">' + label + (cur === v ? ' <i class="lang-now">✓ Now</i>' : "") + "</button>";
   showModal('<h2>🔒 Parent mode</h2><h3 class="pm-h">🌐 Language</h3><div class="btns lang-opts">' +
-    opt("ko", "🇰🇷 한국어") + opt("en", "🇺🇸 English") + opt("en-ko", "🇺🇸 English <small>move names in Korean</small>") + "</div>" +
+    opt("ko", "🇰🇷 한국어") + opt("en", "🇺🇸 English") + opt("en-ko", "🇺🇸 English <small>moves in Korean</small>") + "</div>" +
     '<p class="note">The game moves to that language. Pokémon, balls and the game in progress stay the same.</p><div class="btns"><button class="btn" data-act="close-modal">Close</button></div>');
 }
 function setLang(v) {
